@@ -1,29 +1,24 @@
 <header class="header">
-	<div class="max-wrap layout">
-		<div class="header__holder">
-			<!--logo-->
-			<strong class="logo">
-				<@@if(currentItem == "Главная"){span}@@if(currentItem != "Главная"){a href="index.html" title="Кондитерская фабрика «Коммунарка»"}>Кондитерская фабрика «Коммунарка»</@@if(currentItem == "Главная"){span}@@if(currentItem != "Главная"){a}>
-				<img style="display: none;" src="img/logo.png" alt="Кондитерская фабрика «Коммунарка»">
+  <div class="layout-page layout-page-spaces">
+    <div class="header__holder">
+      <!--logo-->
+      <strong class="logo">
+				@@if(context.currentItem === "Главная"){<span>Кондитерская фабрика «Коммунарка»</span>}
+				@@if(context.currentItem !== "Главная"){<a href="index.html" title="Перейти на главную">Кондитерская фабрика «Коммунарка»</a>}
+        <img style="display: none;" src="img/logo.png" alt="Print version logotype"> <img style="display: none;" src="img/logo.png" alt="">
 			</strong>
-			<!--logo end-->
+      <!--logo end-->
 
-			<!--navigation-->
-			<div class="nav-wrap shutter--nav-js">
-				<nav class="nav">
-					@@include('_tpl_nav-constructor.html', {
-						"currentItem": "@@currentItem",
-						"bsKey": "nav"
-					})
-				</nav>
-				<div class="nav-footer"></div>
-			</div>
-			<!--navigation end-->
-		</div>
-	</div>
+      <!--navigation-->
+      <div class="nav-wrap shutter--nav-js">
+        <nav class="nav">
+          @@include('_tpl_nav-constructor.html', { "currentItem": "@@currentItem", "bsKey": "nav" })
+        </nav>
+        <div class="nav-footer"></div>
+      </div>
+      <!--navigation end-->
+    </div>
+  </div>
 </header>
 
-<a href="#" class="btn-menu btn-nav-js" title="Главное меню">
-	<span>Главное меню</span>
-	<i>&nbsp;</i>
-</a>
+<a href="#" class="btn-menu btn-nav-js" title="Главное меню"> <span>Главное меню</span> <i>&nbsp;</i> </a>

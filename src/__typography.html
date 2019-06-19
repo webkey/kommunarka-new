@@ -3,8 +3,6 @@
 	"pageClass": ""
 })
 
-@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
-
 <!--HEADER-->
 @@include('_tpl_layout_header.html', {
 	"currentItem": "Пункт 1 (Типографика)"
@@ -13,7 +11,7 @@
 
 <!--MAIN-->
 <div class="main">
-	<div class="max-wrap layout">
+	<div class="layout-page layout-page-spaces">
 		<div class="main__holder">
 			<!--CONTENT-->
 			<div class="content-wrap">
@@ -706,32 +704,6 @@
 						<p>Обычный стандарт для интерлиньяжа — это около 1,4em, хотя очень часто он слишком плотный для экранов: одна из ключевых характеристик для шрифта, который будет хорошо работать на экранах — это большие контура, которые будут требовать увеличить интерлиньяж, чтобы соответствовать иерархии пространства.</p>
 						<hr>
 
-						<!--===============images-slider===============-->
-						@@include('_tpl_title-anchor.html', {
-							"taId": "imagesCarousel",
-							"taText": "Карусель с подписями"
-						})
-						<!--images slider-->
-						<div class="images-slider images-slider-js">
-							<div class="images-slider__list">
-								@@loop("_tpl_sliders_images-slider--items.html", "includes/json/sliders_images-slider.json")
-							</div>
-						</div>
-						<!--images slider end-->
-						<!--===============images-slider end===============-->
-
-						<hr>
-
-						<!--===============search-page===============-->
-						@@include('_tpl_title-anchor.html', {
-							"taId": "searchPage",
-							"taText": "Пример страницы поиска"
-						})
-						<div class="layout-text">
-							@@include('_tpl_search-page-bitrix.html')
-						</div>
-						<!--===============search-page end===============-->
-
 						<hr>
 
 						<!--===============feature-list===============-->
@@ -743,16 +715,6 @@
 							@@loop("_tpl_feature-list-item.html", "includes/json/feature-list-item.json")
 						</div>
 						<!--===============feature-list end===============-->
-
-						<div class="user-spacer">&nbsp;</div>
-
-						<!--===============icons list===============-->
-						@@include('_tpl_title-anchor.html', {
-							"taId": "iconsList",
-							"taText": "Иконки"
-						})
-						@@include("_tpl_typography_icons-list.html")
-						<!--===============icons list end===============-->
 
 						<div class="user-spacer">&nbsp;</div>
 
@@ -786,7 +748,5 @@
 <!--FOOTER-->
 @@include('_tpl_layout_footer.html')
 <!--FOOTER end-->
-
-@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "END" })
 
 @@include('_tpl_layout_foot.html')

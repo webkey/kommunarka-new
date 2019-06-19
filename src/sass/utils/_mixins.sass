@@ -36,8 +36,8 @@
 /// }
 
 =size($width, $height: $width)
-	width: $width
-	height: $height
+  width: $width
+  height: $height
 
 // =============================================================================
 // Position
@@ -51,8 +51,8 @@
 /// @example css - Вывод CSS
 
 =position($t: 0, $l: $t)
-	top: $t
-	left: $l
+  top: $t
+  left: $l
 
 // =============================================================================
 // font
@@ -73,9 +73,9 @@
 ///   line-height: 1.5;
 /// }
 
-=font($font-size: inherit, $line-height: inherit)
-	font-size: $font-size
-	line-height: $line-height
+=font-size($font-size: inherit, $line-height: inherit)
+  font-size: $font-size
+  line-height: $line-height
 
 // =============================================================================
 // display inline block + vertical align
@@ -83,16 +83,16 @@
 /// Примесь задает пару свойст display: inline-block и vertical-align для
 /// выравнивания инлайн-блок элементов по вертикали
 =display-inline-block-top()
-	display: inline-block
-	vertical-align: top
+  display: inline-block
+  vertical-align: top
 
 =display-inline-block-middle()
-	display: inline-block
-	vertical-align: middle
+  display: inline-block
+  vertical-align: middle
 
 =display-inline-block-bottom()
-	display: inline-block
-	vertical-align: baseline
+  display: inline-block
+  vertical-align: baseline
 
 // =============================================================================
 // pseudo
@@ -128,24 +128,24 @@
 /// }
 
 =pseudo($content: '', $display: block, $pos: absolute)
-	content: $content
-	display: $display
-	position: $pos
+  content: $content
+  display: $display
+  position: $pos
 
 =pseudo-block-relative($content: '')
-	+pseudo($content: $content, $display: block, $pos: relative)
+  +pseudo($content: $content, $display: block, $pos: relative)
 
 =pseudo-relative($content: '')
-	+pseudo($content: $content, $display: null, $pos: relative)
+  +pseudo($content: $content, $display: null, $pos: relative)
 
 =pseudo-inline-block($content: '')
-	+pseudo($content: $content, $display: inline-block, $pos: null)
+  +pseudo($content: $content, $display: inline-block, $pos: null)
 
 =pseudo-inline-block-relative($content: '')
-	+pseudo($content: $content, $display: inline-block, $pos: relative)
+  +pseudo($content: $content, $display: inline-block, $pos: relative)
 
 =pseudo-content($content: '')
-	+pseudo($content: $content, $display: null, $pos: null)
+  +pseudo($content: $content, $display: null, $pos: null)
 
 // =============================================================================
 // antialiased
@@ -158,14 +158,14 @@
 /// @example css - Вывод CSS
 
 =antialiased()
-	-webkit-font-smoothing: antialiased
-	-moz-osx-font-smoothing: grayscale
-	-webkit-touch-callout: none
-	-webkit-user-select: none
-	-khtml-user-select: none
-	-moz-user-select: none
-	-ms-user-select: none
-	user-select: none
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
 
 // =============================================================================
 // clear
@@ -175,10 +175,10 @@
 /// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix
 
 =clear()
-	&::after
-		content: ''
-		display: table
-		clear: both
+  &::after
+    content: ''
+    display: table
+    clear: both
 
 // =============================================================================
 // truncate
@@ -191,10 +191,10 @@
 /// @example css - Вывод CSS
 
 =truncate($max-width: 320px)
-	max-width: $max-width
-	white-space: nowrap
-	text-overflow: ellipsis
-	overflow: hidden
+  max-width: $max-width
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
 
 // =============================================================================
 // margin-horizontal / margin-vertical / padding-horizontal / padding-vertical
@@ -228,24 +228,24 @@
 /// }
 
 =margin-horizontal($left, $right: $left)
-	margin:
-		right: $right
-		left: $left
+  margin:
+    right: $right
+    left: $left
 
 =margin-vertical($top, $bottom:$top)
-	margin:
-		top: $top
-		bottom: $bottom
+  margin:
+    top: $top
+    bottom: $bottom
 
 =padding-horizontal($left, $right: $left)
-	padding:
-		right: $right
-		left: $left
+  padding:
+    right: $right
+    left: $left
 
 =padding-vertical($top, $bottom:$top)
-	padding:
-		top: $top
-		bottom: $bottom
+  padding:
+    top: $top
+    bottom: $bottom
 
 // =============================================================================
 // margin / padding
@@ -275,34 +275,34 @@
 /// }
 
 =margin($top: null, $right: null, $bottom: null, $left: null)
-	@if($top and $right and $bottom and $left)
-		margin: $top $right $bottom $left
+  @if ($top and $right and $bottom and $left)
+    margin: $top $right $bottom $left
 
-	@else
-		margin:
-			@if $top
-				top: $top
-			@if $right
-				right: $right
-			@if $bottom
-				bottom: $bottom
-			@if $left
-				left: $left
+  @else
+    margin:
+      @if $top
+        top: $top
+      @if $right
+        right: $right
+      @if $bottom
+        bottom: $bottom
+      @if $left
+        left: $left
 
 =padding($top: null, $right: null, $bottom: null, $left: null)
-	@if($top and $right and $bottom and $left)
-		padding: $top $right $bottom $left
+  @if ($top and $right and $bottom and $left)
+    padding: $top $right $bottom $left
 
-	@else
-		padding:
-			@if $top
-				top: $top
-			@if $right
-				right: $right
-			@if $bottom
-				bottom: $bottom
-			@if $left
-				left: $left
+  @else
+    padding:
+      @if $top
+        top: $top
+      @if $right
+        right: $right
+      @if $bottom
+        bottom: $bottom
+      @if $left
+        left: $left
 
 /// Примесь центрирует блочный элемент с ограниченной шириной.
 ///
@@ -319,7 +319,7 @@
 /// }
 
 =push-auto()
-	+margin-horizontal(auto)
+  +margin-horizontal(auto)
 
 /// Примесь позволяет сохранять пропорции элементов при респонсиве
 ///
@@ -359,18 +359,18 @@
 /// }
 
 =ratio($x: 1, $y: 1, $pseudo: false)
-	$padding: round-float($y / $x * 100%, 2)
+  $padding: round-float($y / $x * 100%, 2)
 
-	@if $pseudo
-		&::before
-			+pseudo($pos: relative)
+  @if $pseudo
+    &::before
+      +pseudo($pos: relative)
 
-			height: 0
-			padding-top: $padding
+      height: 0
+      padding-top: $padding
 
-	@else
-		height: 0
-		padding-top: $padding
+  @else
+    height: 0
+    padding-top: $padding
 
 // =============================================================================
 // Сentering
@@ -382,47 +382,47 @@
 /// @example Sass - Использование
 /// @example css - Вывод CSS
 =centering($width: null, $height: null, $transform: true, $pos: absolute)
-	position: $pos
-	left: 50%
-	top: 50%
+  position: $pos
+  left: 50%
+  top: 50%
 
-	@if $transform
-		transform: translate(-50%, -50%)
+  @if $transform
+    transform: translate(-50%, -50%)
 
-	@else
-		width: $width
-		height: $height
-		+margin($top: round(-$height*0.5), $left: round(-$width*0.5))
+  @else
+    width: $width
+    height: $height
+    +margin($top: round(-$height*0.5), $left: round(-$width*0.5))
 
 /// 1.1 С помощью "transform: translate" без позициирования:
 =centering-transform($pos: null)
-	position: $pos
-	left: 50%
-	top: 50%
-	transform: translate(-50%, -50%)
+  position: $pos
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
 
 /// 1.2 С помощью "transform: translate" + "position: absolute":
 =centering-transform-abs()
-	+centering-transform($pos: absolute)
+  +centering-transform($pos: absolute)
 
 /// 1.3 С помощью "transform: translate" + "position: relative":
 =centering-transform-rel()
-	+centering-transform($pos: relative)
+  +centering-transform($pos: relative)
 
 /// 2. С помощью margin:
 =centering-margin($width: null, $height: null, $pos: null)
-	position: $pos
-	left: 50%
-	top: 50%
-	+margin($top: round(-$height*0.5), $left: round(-$width*0.5))
+  position: $pos
+  left: 50%
+  top: 50%
+  +margin($top: round(-$height*0.5), $left: round(-$width*0.5))
 
 // =============================================================================
 // Reset for inline-block elements
 // =============================================================================
 /// обнуляет горизонтальные отступы между `inline-block` елементами
 =clear-spacing()
-	font-size: 0
-	letter-spacing: -4px
+  font-size: 0
+  letter-spacing: -4px
 
 // =============================================================================
 // Grid Item
@@ -441,74 +441,74 @@
 /// @example css - Вывод CSS
 
 =grid-parent($horizontal-space: 20px)
-	margin:
-		@if $horizontal-space == 0
-			left: 0
-			right: 0
-		@else
-			left: -#{round($horizontal-space/2)}
-			right: -#{round($horizontal-space/2)}
+  margin:
+    @if $horizontal-space == 0
+      left: 0
+      right: 0
+    @else
+      left: -#{round($horizontal-space/2)}
+      right: -#{round($horizontal-space/2)}
 
 =grid-item($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
-	display: inline-block
-	vertical-align: top
-	width: round-float(100%/$length-in-row, 2)
-	padding:
-		left: round($horizontal-space/2)
-		right: round($horizontal-space/2)
+  display: inline-block
+  vertical-align: top
+  width: round-float(100%/$length-in-row, 2)
+  padding:
+    left: round($horizontal-space/2)
+    right: round($horizontal-space/2)
 
-	&:nth-child(n)
-		margin-top: $bottom-space
+  &:nth-child(n)
+    margin-top: $bottom-space
 
-	&:nth-child(-n+#{$length-in-row})
-		margin-top: 0
+  &:nth-child(-n+#{$length-in-row})
+    margin-top: 0
 
 /// использовать если нужно только поменять количество колонок
 =grid-item-responsive($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
-	width: round-float(100%/$length-in-row, 2)
-	padding:
-		left: round($horizontal-space/2)
-		right: round($horizontal-space/2)
+  width: round-float(100%/$length-in-row, 2)
+  padding:
+    left: round($horizontal-space/2)
+    right: round($horizontal-space/2)
 
-	&:nth-child(n)
-		margin-top: $bottom-space
+  &:nth-child(n)
+    margin-top: $bottom-space
 
-	&:nth-child(-n+#{$length-in-row})
-		margin-top: 0
+  &:nth-child(-n+#{$length-in-row})
+    margin-top: 0
 
 =grid-item-float($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
-	float: left
-	width: round-float(100%/$length-in-row, 2)
-	padding:
-		left: round($horizontal-space/2)
-		right: round($horizontal-space/2)
+  float: left
+  width: round-float(100%/$length-in-row, 2)
+  padding:
+    left: round($horizontal-space/2)
+    right: round($horizontal-space/2)
 
-	&:nth-child(n)
-		margin-top: $bottom-space
-		clear: none
+  &:nth-child(n)
+    margin-top: $bottom-space
+    clear: none
 
-	&:nth-child(-n+#{$length-in-row})
-		margin-top: 0
+  &:nth-child(-n+#{$length-in-row})
+    margin-top: 0
 
-	&:nth-child(#{$length-in-row}n+1)
-		clear: left
+  &:nth-child(#{$length-in-row}n+1)
+    clear: left
 
 /// использовать если нужно только поменять количество колонок
 =grid-item-float-responsive($length-in-row: 1, $horizontal-space: 0, $bottom-space: $horizontal-space)
-	width: round-float(100%/$length-in-row, 2)
-	padding:
-		left: round($horizontal-space/2)
-		right: round($horizontal-space/2)
+  width: round-float(100%/$length-in-row, 2)
+  padding:
+    left: round($horizontal-space/2)
+    right: round($horizontal-space/2)
 
-	&:nth-child(n)
-		margin-top: $bottom-space
-		clear: none
+  &:nth-child(n)
+    margin-top: $bottom-space
+    clear: none
 
-	&:nth-child(-n+#{$length-in-row})
-		margin-top: 0
+  &:nth-child(-n+#{$length-in-row})
+    margin-top: 0
 
-	&:nth-child(#{$length-in-row}n+1)
-		clear: left
+  &:nth-child(#{$length-in-row}n+1)
+    clear: left
 
 // =============================================================================
 // Fill parent with absolute or relative position or without position
@@ -543,16 +543,16 @@
 /// }
 
 =cover($position: null)
-	@if $position
-		position: $position
-	+position(0, 0)
-	+size(100%)
+  @if $position
+    position: $position
+  +position(0, 0)
+  +size(100%)
 
 =cover-abs()
-	+cover($position: absolute)
+  +cover($position: absolute)
 
 =cover-rel()
-	+cover($position: relative)
+  +cover($position: relative)
 
 /// Примесь позволяет указывает изображению способ заполнения блока,
 /// в котором находится
@@ -582,18 +582,18 @@
 /// }
 
 =object-fit-position($fit: cover, $pos: relative)
-	position: $pos
-	top: 50%
-	left: 50%
-	min-width: 0
-	min-height: 0
-	max-width: none
-	max-height: none
-	height: 100%
-	width: 100%
-	transform: translate(-50%, -50%)
-	backface-visibility: hidden
-	object-fit: $fit
+  position: $pos
+  top: 50%
+  left: 50%
+  min-width: 0
+  min-height: 0
+  max-width: none
+  max-height: none
+  height: 100%
+  width: 100%
+  transform: translate(-50%, -50%)
+  backface-visibility: hidden
+  object-fit: $fit
 
 /// This mixin can be used to set the object-fit:
 /// +object-fit(contain)
@@ -608,14 +608,14 @@
 /// max-width: none
 
 =object-fit($fit: fill, $position: null)
-	//-o-object-fit: $fit
-	object-fit: $fit
-	@if $position
-		//-o-object-position: $position
-		object-position: $position
-		font-family: 'object-fit: #{$fit}; object-position: #{$position}'
-	@else
-		font-family: 'object-fit: #{$fit}'
+  //-o-object-fit: $fit
+  object-fit: $fit
+  @if $position
+    //-o-object-position: $position
+    object-position: $position
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}'
+  @else
+    font-family: 'object-fit: #{$fit}'
 
 // =============================================================================
 // Hide text for screen reader
@@ -623,22 +623,22 @@
 /// Примесь скрывает текст, который остается видимым для генераторов речи
 
 =hide-text()
-	border: 0
-	clip: rect(0 0 0 0)
-	height: 1px
-	margin: -1px
-	overflow: hidden
-	padding: 0
-	position: absolute
-	width: 1px
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
 
-	&:active, &:focus
-		clip: auto
-		height: auto
-		margin: 0
-		overflow: visible
-		position: static
-		width: auto
+  &:active, &:focus
+    clip: auto
+    height: auto
+    margin: 0
+    overflow: visible
+    position: static
+    width: auto
 
 // =============================================================================
 // Input placeholder
@@ -687,74 +687,74 @@
 /// }
 
 =optional-at-root($sel)
-	@at-root #{if(not &, $sel, selector-append(&, $sel))}
-		@content
+  @at-root #{if(not &, $sel, selector-append(&, $sel))}
+    @content
 
 =placeholder()
-	+optional-at-root('::-webkit-input-placeholder')
-		@content
+  +optional-at-root('::-webkit-input-placeholder')
+    @content
 
-	+optional-at-root(':-moz-placeholder')
-		@content
+  +optional-at-root(':-moz-placeholder')
+    @content
 
-	+optional-at-root('::-moz-placeholder')
-		opacity: 1
-		@content
+  +optional-at-root('::-moz-placeholder')
+    opacity: 1
+    @content
 
-	+optional-at-root(':-ms-input-placeholder')
-		opacity: 1
-		@content
+  +optional-at-root(':-ms-input-placeholder')
+    opacity: 1
+    @content
 
-	+optional-at-root('.placeholder')
-		@content
+  +optional-at-root('.placeholder')
+    @content
 
 =placeholder-focus()
-	+optional-at-root(':focus::-webkit-input-placeholder')
-		@content
+  +optional-at-root(':focus::-webkit-input-placeholder')
+    @content
 
-	+optional-at-root(':focus:-moz-placeholder')
-		@content
+  +optional-at-root(':focus:-moz-placeholder')
+    @content
 
-	+optional-at-root(':focus::-moz-placeholder')
-		@content
+  +optional-at-root(':focus::-moz-placeholder')
+    @content
 
-	+optional-at-root(':focus:-ms-input-placeholder')
-		@content
+  +optional-at-root(':focus:-ms-input-placeholder')
+    @content
 
-	+optional-at-root('.placeholder:focus')
-		@content
+  +optional-at-root('.placeholder:focus')
+    @content
 
 =placeholder-hover()
-	+optional-at-root(':hover::-webkit-input-placeholder')
-		@content
+  +optional-at-root(':hover::-webkit-input-placeholder')
+    @content
 
-	+optional-at-root(':hover:-moz-placeholder')
-		@content
+  +optional-at-root(':hover:-moz-placeholder')
+    @content
 
-	+optional-at-root(':hover::-moz-placeholder')
-		@content
+  +optional-at-root(':hover::-moz-placeholder')
+    @content
 
-	+optional-at-root(':hover:-ms-input-placeholder')
-		@content
+  +optional-at-root(':hover:-ms-input-placeholder')
+    @content
 
-	+optional-at-root('.placeholder:hover')
-		@content
+  +optional-at-root('.placeholder:hover')
+    @content
 
 =placeholder-active()
-	+optional-at-root(':active::-webkit-input-placeholder')
-		@content
+  +optional-at-root(':active::-webkit-input-placeholder')
+    @content
 
-	+optional-at-root(':active:-moz-placeholder')
-		@content
+  +optional-at-root(':active:-moz-placeholder')
+    @content
 
-	+optional-at-root(':active::-moz-placeholder')
-		@content
+  +optional-at-root(':active::-moz-placeholder')
+    @content
 
-	+optional-at-root(':active:-ms-input-placeholder')
-		@content
+  +optional-at-root(':active:-ms-input-placeholder')
+    @content
 
-	+optional-at-root('.placeholder:active')
-		@content
+  +optional-at-root('.placeholder:active')
+    @content
 
 // =============================================================================
 // Scroll lock
@@ -764,13 +764,13 @@
 /// @param hasn't params
 
 =scroll-blocked()
-	width: 100% !important
-	height: 100% !important
-	max-width: 100% !important
-	max-height: 100% !important
-	margin: 0 !important
-	padding: 0 !important
-	overflow: hidden !important
+  width: 100% !important
+  height: 100% !important
+  max-width: 100% !important
+  max-height: 100% !important
+  margin: 0 !important
+  padding: 0 !important
+  overflow: hidden !important
 
 // =============================================================================
 // Triangle helper mixin
@@ -806,23 +806,23 @@
 /// 	bottom: 100%;
 /// }
 =triangle($direction, $color: tomato, $size: 1em, $kef: 1.5)
-	@if not index(top right bottom left, $direction)
-		@error "Direction must be either `top`, `right`, `bottom` or `left`."
+  @if not index(top right bottom left, $direction)
+    @error "Direction must be either `top`, `right`, `bottom` or `left`."
 
-	//+pseudo()
-	width: 0
-	height: 0
-	z-index: 2
-	border-#{opposite-direction($direction)}: (round($size * $kef)) solid $color
+  //+pseudo()
+  width: 0
+  height: 0
+  z-index: 2
+  border-#{opposite-direction($direction)}: (round($size * $kef)) solid $color
 
-	$perpendicular-borders: $size solid transparent
+  $perpendicular-borders: $size solid transparent
 
-	@if $direction == top or $direction == bottom
-		border-left: $perpendicular-borders
-		border-right: $perpendicular-borders
-	@else if $direction == right or $direction == left
-		border-bottom: $perpendicular-borders
-		border-top: $perpendicular-borders
+  @if $direction == top or $direction == bottom
+    border-left: $perpendicular-borders
+    border-right: $perpendicular-borders
+  @else if $direction == right or $direction == left
+    border-bottom: $perpendicular-borders
+    border-top: $perpendicular-borders
 
 // =============================================================================
 // triangle pretty
@@ -882,93 +882,93 @@
 // }
 
 =triangle-pretty($direction, $origins-map: (), $color: brown, $size-towards: 30px, $size-across: $size-towards, $bd-color: tomato, $bd-width: 2px)
-	@if not index(top right bottom left, $direction)
-		@error "Direction must be either `top`, `right`, `bottom` or `left`."
+  @if not index(top right bottom left, $direction)
+    @error "Direction must be either `top`, `right`, `bottom` or `left`."
 
-	$unit-size-toward: unit($size-towards)
-	$unit-size-across: unit($size-across)
+  $unit-size-toward: unit($size-towards)
+  $unit-size-across: unit($size-across)
 
-	@if $unit-size-across != $unit-size-across
-		@error "Значение высоты треугольника и его основания должны быть в одинаковых единицах измерения"
+  @if $unit-size-across != $unit-size-across
+    @error "Значение высоты треугольника и его основания должны быть в одинаковых единицах измерения"
 
-	// переменные для смещения стрелки-треугольника назад на половину ширины основания
-	$top: null
-	$right: null
-	$bottom: null
-	$left: null
-	$margin-direct: null
-	$i: 0
+  // переменные для смещения стрелки-треугольника назад на половину ширины основания
+  $top: null
+  $right: null
+  $bottom: null
+  $left: null
+  $margin-direct: null
+  $i: 0
 
-	// определение направления и величины смещения
-	@each $origin, $value in $origins-map
-		@if $i == 0
-			$margin-direct: $origin
-			//@debug $margin-direct
+  // определение направления и величины смещения
+  @each $origin, $value in $origins-map
+    @if $i == 0
+      $margin-direct: $origin
+    //@debug $margin-direct
 
-		$i: $i + 1
+    $i: $i + 1
 
-		@if $origin == top
-			$top: $value
-			//@debug 'top: ' + $value
-		@if $origin == right
-			$right: $value
-			//@debug 'right: ' + $value
-		@if $origin == bottom
-			$bottom: $value
-			//@debug 'bottom: ' + $value
-		@if $origin == left
-			$left: $value
-			//@debug 'left: ' + $value
+    @if $origin == top
+      $top: $value
+    //@debug 'top: ' + $value
+    @if $origin == right
+      $right: $value
+    //@debug 'right: ' + $value
+    @if $origin == bottom
+      $bottom: $value
+    //@debug 'bottom: ' + $value
+    @if $origin == left
+      $left: $value
+  //@debug 'left: ' + $value
 
-	// вывод общих стилей
-	&::before, &::after
-		+pseudo()
-		top: $top
-		right: $right
-		bottom: $bottom
-		left: $left
-		pointer-events: none
+  // вывод общих стилей
+  &::before, &::after
+    +pseudo()
+    top: $top
+    right: $right
+    bottom: $bottom
+    left: $left
+    pointer-events: none
 
-	// вывод стилей большой (внешней) стрелки-треугольника
-	&::before
-		z-index: 2
-		@if $margin-direct
-			margin-#{$margin-direct}: -#{$size-across*0.5}
-		border-#{opposite-direction($direction)}: $size-towards solid $bd-color
+  // вывод стилей большой (внешней) стрелки-треугольника
+  &::before
+    z-index: 2
+    @if $margin-direct
+      margin-#{$margin-direct}: -#{$size-across*0.5}
+    border-#{opposite-direction($direction)}: $size-towards solid $bd-color
 
-		$perpendicular-borders: (round($size-across * 0.5)) solid transparent
+    $perpendicular-borders: (round($size-across * 0.5)) solid transparent
 
-		@if $direction == top or $direction == bottom
-			border-left: $perpendicular-borders
-			border-right: $perpendicular-borders
-		@else if $direction == right or $direction == left
-			border-bottom: $perpendicular-borders
-			border-top: $perpendicular-borders
+    @if $direction == top or $direction == bottom
+      border-left: $perpendicular-borders
+      border-right: $perpendicular-borders
+    @else if $direction == right or $direction == left
+      border-bottom: $perpendicular-borders
+      border-top: $perpendicular-borders
 
-	// рассчет маленькой стрелки-треугольника по размеру бордера
-	$tg-angle: (2*$size-towards/$size-across)
-	$angle: atan($tg-angle)
-	$sin-angle: sin($angle)
-	$height-large: $size-across*$sin-angle
-	$height-small: $height-large - $bd-width*2
-	$small-size-across: $height-small/$sin-angle
-	$small-size-toward: $small-size-across/2*$tg-angle
+  // рассчет маленькой стрелки-треугольника по размеру бордера
+  $tg-angle: (2*$size-towards/$size-across)
+  $angle: atan($tg-angle)
+  $sin-angle: sin($angle)
+  $height-large: $size-across*$sin-angle
+  $height-small: $height-large - $bd-width*2
+  $small-size-across: $height-small/$sin-angle
+  $small-size-toward: $small-size-across/2*$tg-angle
 
-	// вывод стилей маленькой (внутренней) стрелки-треугольника
-	&::after
-		z-index: 3
-		@if $margin-direct
-			margin-#{$margin-direct}: -(round($small-size-across*0.5))
-		border-#{opposite-direction($direction)}: round($small-size-toward) solid $color
+  // вывод стилей маленькой (внутренней) стрелки-треугольника
+  &::after
+    z-index: 3
+    @if $margin-direct
+      margin-#{$margin-direct}: -(round($small-size-across*0.5))
+    border-#{opposite-direction($direction)}: round($small-size-toward) solid $color
 
-		$perpendicular-borders: (round($small-size-across * 0.5)) solid transparent
+    $perpendicular-borders: (round($small-size-across * 0.5)) solid transparent
 
-		@if $direction == top or $direction == bottom
-			border-left: $perpendicular-borders
-			border-right: $perpendicular-borders
-		@else if $direction == right or $direction == left
-			border-bottom: $perpendicular-borders
-			border-top: $perpendicular-borders
+    @if $direction == top or $direction == bottom
+      border-left: $perpendicular-borders
+      border-right: $perpendicular-borders
+    @else if $direction == right or $direction == left
+      border-bottom: $perpendicular-borders
+      border-top: $perpendicular-borders
 
 // =============================================================================
 // Leaner gradient -vendor
@@ -980,23 +980,23 @@
 /// @return {Number} Converted angle
 ///
 @function convert-angle($value, $unit)
-	$convertable-units: deg grad turn rad
-	$conversion-factors: 1 (10grad / 9deg) (1turn / 360deg) (3.14159rad / 180deg)
+  $convertable-units: deg grad turn rad
+  $conversion-factors: 1 (10grad / 9deg) (1turn / 360deg) (3.14159rad / 180deg)
 
-	@if index($convertable-units, unit($value)) and index($convertable-units, $unit)
-		@return $value / nth($conversion-factors, index($convertable-units, unit($value))) * nth($conversion-factors, index($convertable-units, $unit))
+  @if index($convertable-units, unit($value)) and index($convertable-units, $unit)
+    @return $value / nth($conversion-factors, index($convertable-units, unit($value))) * nth($conversion-factors, index($convertable-units, $unit))
 
-	@warn "Cannot convert `#{unit($value)}` to `#{$unit}`."
+  @warn "Cannot convert `#{unit($value)}` to `#{$unit}`."
 
 /// Test if `$value` is an angle
 /// @param {*} $value - Value to test
 /// @return {Bool}
 ///
 @function is-direction($value)
-	$is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value)
-	$is-angle: type-of($value) == "number" and index("deg" "grad" "turn" "rad", unit($value))
+  $is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value)
+  $is-angle: type-of($value) == "number" and index("deg" "grad" "turn" "rad", unit($value))
 
-	@return $is-direction or $is-angle
+  @return $is-direction or $is-angle
 
 /// Convert a direction to legacy syntax
 /// @param {Keyword | Angle} $value - Value to convert
@@ -1004,15 +1004,15 @@
 /// @require {function} convert-angle
 ///
 @function legacy-direction($value)
-	@if is-direction($value) == false
-		@warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction"
+  @if is-direction($value) == false
+    @warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction"
 
-	$conversion-map: (to top: bottom, to top right: bottom left, to right top: left bottom, to right: left, to bottom right: top left, to right bottom: left top, to bottom: top, to bottom left: top right, to left bottom: right top, to left: right, to left top: right bottom, to top left: bottom right)
+  $conversion-map: (to top: bottom, to top right: bottom left, to right top: left bottom, to right: left, to bottom right: top left, to right bottom: left top, to bottom: top, to bottom left: top right, to left bottom: right top, to left: right, to left top: right bottom, to top left: bottom right)
 
-	@if map-has-key($conversion-map, $value)
-		@return map-get($conversion-map, $value)
+  @if map-has-key($conversion-map, $value)
+    @return map-get($conversion-map, $value)
 
-	@return 90deg - convert-angle($value, "deg")
+  @return 90deg - convert-angle($value, "deg")
 
 /// Mixin printing a linear-gradient
 /// as well as a plain color fallback
@@ -1021,13 +1021,13 @@
 /// @param {Arglist} $color-stops - List of color-stops composing the gradient
 ///
 =linear-gradient($direction, $color-stops...)
-	@if is-direction($direction) == false
-		$color-stops: $direction, $color-stops
-		$direction: 180deg
+  @if is-direction($direction) == false
+    $color-stops: $direction, $color-stops
+    $direction: 180deg
 
-	background: nth(nth($color-stops, 1), 1)
-	background: -webkit-linear-gradient(legacy-direction($direction), $color-stops)
-	background: linear-gradient($direction, $color-stops)
+  background: nth(nth($color-stops, 1), 1)
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops)
+  background: linear-gradient($direction, $color-stops)
 
 // Tests
 //.test-1
@@ -1067,30 +1067,30 @@
 /// }
 
 @function str-replace($string, $search, $replace: "")
-	$index: str-index($string, $search)
+  $index: str-index($string, $search)
 
-	@if $index
-		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+  @if $index
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
 
-	@return $string
+  @return $string
 
 =font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg)
-	$src: null
+  $src: null
 
-	$extmods: (eot: "?", svg: "#" + str-replace($name, " ", "_"))
+  $extmods: (eot: "?", svg: "#" + str-replace($name, " ", "_"))
 
-	$formats: (otf: "opentype", ttf: "truetype")
+  $formats: (otf: "opentype", ttf: "truetype")
 
-	@each $ext in $exts
-		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext)
-		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext)
-		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma)
+  @each $ext in $exts
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext)
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext)
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma)
 
-	@font-face
-		font-family: quote($name)
-		font-style: $style
-		font-weight: $weight
-		src: $src
+  @font-face
+    font-family: quote($name)
+    font-style: $style
+    font-weight: $weight
+    src: $src
 
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -1106,43 +1106,43 @@
 // ПРИМЕСИ ДЛЯ ПРИНТ ВЕРСИИ
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 =print-reset()
-	display: block !important
-	float: none !important
-	position: relative !important
-	overflow: visible !important
-	height: auto !important
-	min-height: 0 !important
-	max-height: none !important
-	width: auto !important
-	min-width: 0 !important
-	max-width: none !important
-	left: auto !important
-	top: auto !important
-	right: auto !important
-	bottom: auto !important
-	padding: 0 !important
-	margin: 0 !important
-	transform: none !important
-	text-align: left !important
-	border: none !important
-	box-shadow: none !important
-	opacity: 1 !important
-	visibility: visible !important
-	z-index: auto !important
+  display: block !important
+  float: none !important
+  position: relative !important
+  overflow: visible !important
+  height: auto !important
+  min-height: 0 !important
+  max-height: none !important
+  width: auto !important
+  min-width: 0 !important
+  max-width: none !important
+  left: auto !important
+  top: auto !important
+  right: auto !important
+  bottom: auto !important
+  padding: 0 !important
+  margin: 0 !important
+  transform: none !important
+  text-align: left !important
+  border: none !important
+  box-shadow: none !important
+  opacity: 1 !important
+  visibility: visible !important
+  z-index: auto !important
 
 =prints-space-bottom-sm()
-	margin-top: 0 !important
-	margin-bottom: 0.5cm !important
-	padding-bottom: 0 !important
+  margin-top: 0 !important
+  margin-bottom: 0.5cm !important
+  padding-bottom: 0 !important
 
 =prints-space-bottom-md()
-	margin-top: 0 !important
-	margin-bottom: 1cm !important
-	padding-bottom: 0 !important
+  margin-top: 0 !important
+  margin-bottom: 1cm !important
+  padding-bottom: 0 !important
 
 =prints-space-bottom-lg()
-	margin-bottom: 1.5cm !important
-	padding-bottom: 0 !important
+  margin-bottom: 1.5cm !important
+  padding-bottom: 0 !important
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // ПРИМЕСИ ДЛЯ ПРИНТ ВЕРСИИ конец

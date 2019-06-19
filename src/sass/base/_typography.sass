@@ -2,118 +2,117 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-h1, h2, h3, h4, h5, h6
-	padding: 0
-	+font-medium
-	color: $title-color
-	margin: 0 0 $bottom-space
+body
+  // выделение текста
+  *::selection
+    background-color: $base-color
+    color: white
 
-	+media('<mob-lg')
-		margin-bottom: 3rem
+// Заголовки
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6
+  margin: 0 0 $bottom-space
+  padding: 0
+  +font-medium
+  color: $title-color
 
-	&:last-child
-		margin-bottom: 0
+  &:last-child
+    margin-bottom: 0
 
-	a
-		text-decoration: none
-		color: inherit
+  a
+    text-decoration: none
+    color: inherit
 
-		.no-touchevents &:hover
-			color: $base-color
-			text-decoration: underline
+    &:hover
+      color: $link-color
+      text-decoration: underline
 
-h1
-	+font($font-size-h1, $line-height-h1)
+h1, .h1
+  font-weight: normal
+  +font-h1
 
-	+media('<tab-lg')
-		+font($font-size-h1--sm, $line-height-h1--sm)
+h2, .h2
+  +font-h2
 
-h2
-	+font($font-size-h2, $line-height-h2)
+h3, .h3
+  +font-h3
 
-	+media('<tab-lg')
-		+font($font-size-h2--sm, $line-height-h2--sm)
+h4, .h4
+  +font-size($font-size-h4, $line-height-h4)
 
-h3
-	+font($font-size-h3, $line-height-h3)
+h5, .h5
+  +font-size($font-size-h5, $line-height-h5)
 
-h4
-	+font($font-size-h4, $line-height-h4)
-
-h5
-	+font($font-size-h5, $line-height-h5)
-
-h6
-	+font($font-size-h6, $line-height-h6)
-	text-transform: uppercase
+h6, .h6
+  +font-size($font-size-h6, $line-height-h6)
+  text-transform: uppercase
 
 p
-	padding: 0
-	margin: 0 0 $bottom-space
+  padding: 0
+  margin: 0 0 $bottom-space
+
+  &:last-child
+    margin-bottom: 0
 
 hr
-	line-height: 1px
-	height: 0
-	border: none
-	background: none
-	border-bottom: 1px solid $border-color
-	margin-bottom: $bottom-space
+  line-height: 1px
+  height: 0
+  border: none
+  background: none
+  border-bottom: 1px solid $border-color
+  margin-bottom: $bottom-space
 
 a
-	color: $link-color
-	text-decoration: underline
-	cursor: default
-	//outline: none
+  color: $link-color
+  text-decoration: underline
+  cursor: default
+  -webkit-tap-highlight-color: transparent
 
-	&:link
-		cursor: pointer
+  &:link
+    cursor: pointer
 
-	.no-touchevents &:hover
-		text-decoration: none
+  &:hover
+    text-decoration: none
 
-	&[href^="tel"], .no-touchevents &[href^="tel"]:hover
-		text-decoration: none !important
-		color: inherit
-		cursor: default
-
-	&[href^="javascript:"]
-		cursor: default
+  &[href^="javascript:"]
+    cursor: default
+    pointer-events: none
 
 img
-	border: none
-	vertical-align: top
-	max-width: 100%
+  border: none
+  vertical-align: top
+  max-width: 100%
 
-	table &
-		max-width: none
+  table &
+    max-width: none
 
 b, strong, th
-	+font-bold
+  +font-bold
 
 i, em
-	+font-italic
+  +font-italic
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
-	+font-bold-italic
+  +font-bold-italic
 
 .enter
-	+font-normal
-	+font(2.2rem, round-float(30/24, 2))
-	text-align: center
-	max-width: $text-layout-width
-	margin: 0 auto 5rem
+  +font-normal
+  +font-size(2.2rem, 3rem)
+  text-align: center
+  max-width: $layout-text-width
+  margin: 0 auto 5rem
 
-	+media('<mob-lg')
-		margin-bottom: 3rem
+  +media('<mob')
+    margin-bottom: 3rem
 
-	h1, h2
-		margin-bottom: 3rem
+  h1, h2, .h1, .h2
+    margin-bottom: 3rem
 
-		&:last-child
-			margin-bottom: 0
+    &:last-child
+      margin-bottom: 0
 
-	p
-		margin: 0 0 2rem
+  p
+    margin: 0 0 2rem
 
-		&:last-child
-			margin-bottom: 0
+    &:last-child
+      margin-bottom: 0

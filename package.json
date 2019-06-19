@@ -23,6 +23,7 @@
     "gulp-file-include": "^1.0.0",
     "gulp-html-beautify": "^1.0.1",
     "gulp-imagemin": "^3.1.1",
+    "gulp-index": "^0.2.0",
     "gulp-remove-empty-lines": "^0.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-rev-timestamp": "0.0.1",

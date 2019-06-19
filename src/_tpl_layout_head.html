@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]>      <html class="no-js old-ie" lang="ru"> <![endif]-->
-<!--[if IE 9]>         <html class="no-js ie9" lang="ru"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+<html class="no-js" lang="ru">
 <head>
 	<meta charset="UTF-8">
 	<title>@@title</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<!--Theme color-->
-	<meta name="theme-color" content="#fff">
+	<meta name="theme-color" content="#6a0707">
 	<!--SEO-->
 	<meta name="description" content="описание">
 	<meta name="keywords" content="ключевые слова">
@@ -31,9 +29,8 @@
 	<!--Style-->
 	<link rel="stylesheet" href="css/main.css?rev=@@hash">
 	<!--Modernizr-->
-	<script src="js/modernizr.min.js"></script>
+	<script src="js/modernizr.min.js?rev=@@hash"></script>
 </head>
-<body @@if (pageClass !== "") {class="@@pageClass"}>
+<body @@if(context.pageClass){ class="@@pageClass"}>
 <noscript><div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div></noscript>
-<!--[if lt IE 9]> <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
-<!-- >>> head.tpl END <<< -->
+<!--[if lte IE 9]> <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->

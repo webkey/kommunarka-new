@@ -1,168 +1,14 @@
 @import ../utils/functions
 @import ../utils/placeholders
 
+// ==========================================================================
+// Variables
+// ==========================================================================
+
 // medium query
-//$breakpoints: ('mob-sm': 320px, 'mob-md': 480px, 'mob-lg': 640px, 'tab-sm': 768px, 'tab-lg': 992px, 'desk-sm': 1200px, 'desk-md': 1366px, 'desk-lg': 1600px, 'desk-hd': 1920px)
-$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1366px, 'desk-sm': 1280px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
+$breakpoints: ("desk-l": 2560px, "desk": 1920px, "desk-s": 1600px, "lap-l": 1440px, "lap": 1366px, "lap-s": 1280px, "net": 1200px, "tab": 992px, "tab-s": 768px, "mob": 640px, "mob-s": 480px, "mob-xs": 375px, "mob-xxs": 360px)
 
-// base
-$font-size: 1.8rem !default
-$line-height: round-float(2.4rem/$font-size, 2) !default
-// ===============
-$font-size--sm: 1.6rem !default
-$line-height--sm: round-float(2.4rem/$font-size--sm, 2) !default
-// ===============
-$font-size--less: 1.4rem !default
-$line-height--less: round-float(2.0rem/$font-size--less, 2) !default
 
-// =======h1========
-$font-size-h1: 7.2rem !default
-$line-height-h1: round-float(10rem/$font-size-h1, 2) !default
-// sm ===
-$font-size-h1--sm: 3.6rem !default
-$line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 2) !default
-
-// =======h2========
-$font-size-h2: round-float($font-size-h1*3.6rem/4.8rem, 1) !default
-$line-height-h2: round-float(4.8rem/3.6rem, 2) !default
-// sm ===
-$font-size-h2--sm: round-float($font-size-h1--sm*0.87, 1) !default
-$line-height-h2--sm: round-float(($line-height-h1--sm*1.01),2) !default
-
-// =======h3========
-$font-size-h3: round-float($font-size-h1*2.4rem/4.8rem, 1) !default
-$line-height-h3: round-float(3.6rem/2.4rem, 2) !default
-// sm ===
-$font-size-h3--sm: round-float($font-size-h1--sm*0.73, 1) !default
-$line-height-h3--sm: round-float(($line-height-h1--sm*1.05),2) !default
-
-// =======h4========
-$font-size-h4: round-float($font-size-h1*1.8rem/4.8rem, 1) !default
-$line-height-h4: round-float(3.0rem/1.8rem, 2) !default
-
-// =======h5========
-$font-size-h5: $font-size !default
-$line-height-h5: $line-height !default
-
-// =======h6========
-$font-size-h6: round-float($font-size*0.75, 1) !default
-$line-height-h6: round-float($line-height*1.25, 2) !default
-
-$bottom-space: round-float($font-size*$line-height, 1) !default
-$bottom-space--lg: round-float($font-size*$line-height*3, 1) !default
-$bottom-space--md: round-float($font-size*$line-height*2.0, 1) !default
-$bottom-space--ml: round-float($font-size*$line-height*1.5, 1) !default
-$bottom-space--sm: round-float($font-size*$line-height*0.75, 1) !default
-
-// =======Цветовая схема========
-// цвет бренда
-$base-color: #c4161c !default
-$base-color-alt: #e7dad2 !default
-// главные контрастные цвета (обычно, белый и черный)
-$text-color-base: black !default
-$bg-color-base: white !default
-// цвет фона страницы
-$bg-color: #d4c0b3 !default
-// цвет фона элементов выделяющихся на страницы
-$bg-color-alt: #f3f3f3 !default
-// цвет основного текста
-$text-color: #403b38 !default
-// цвет основных заголовков
-$title-color: #403b38 !default
-// цвет текста светлее основного
-$text-color-light: gray !default
-// цвет ссылки
-$link-color: #c4161c !default
-// цвет линий и границ
-$border-color: lightgray !default
-// цвет специальных элементов
-$mark-color: tomato !default
-
-// =======Класс текстовой страницы========
-// user content class
-// class на контейнере, в котором будет использоваться стилизация
-// типографических элементов: списков, таблиц, цытат и т.д.
-$user-content: user-content !default
-
-// =======Layout========
-// отступы для всего сайта
-$page-layout-space: 0 150px !default // v h
-$page-layout-space--md: 0 100px !default // v h
-$page-layout-space--sm: 0 30px !default // v h
-$page-layout-space--mob: 0 20px !default // v h
-// максимальная ширина сайта
-$page-layout-width: 1920px !default
-// минимальные отступы у текствого блока
-$text-layout-space: 50px 60px !default // v h
-$text-layout-space--md: 25px 30px !default // v h
-$text-layout-space--sm: 13px 15px !default // v h
-$text-layout-space--mob: 8px 10px !default // v h
-// максимальная ширина текстового блока
-$text-layout-width: 960px !default
-// максимальная ширина текстового блока выходящего за пределы текста
-$flood-layout-width: 1000px !default
-// отступы внутри блочных элементов
-$grid-space: 28px 30px !default // v h
-$grid-space--lg: 18px 20px !default // v h
-$grid-space--sm: 8px 10px !default // v h
-// отступы в дефолтных списках
-$list-space: 30px
-
-// sidebar
-$sidebar-width: 260px !default
-
-// aside
-$aside-width: 160px !default
-
-// header
-$header-height: 50px
-$logo-size: 120px 151px // h w
-$logo-short-size: 37px 139px // h w
-
-// footer
-$footer-grid-space: 30px 0 !default // v h
-
-// =======Form========
-$form-text-color: $text-color !default
-$form-placeholder-color: lightgray !default
-$form-bg-color: white !default
-$form-border-color: lightgray !default
-$form-border-focus-color: darken($form-border-color, 20%) !default
-$form-error-color: red !default
-$form-success-color: lightseagreen !default
-$form-bottom-space: 3rem !default
-$form-bottom-space--sm: 1.5em !default
-$form-gap: 40px !default
-// ========checkbox&radio==========
-$checkbox-color: blue
-// =========form font=========
-$form-font-size: 16px !default
-$form-line-height: 24px !default
-$form-input-height: 50px !default
-$form-letter-spacing: null !default
-// =========form layout=========
-$form-border-width: 2px !default
-$form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width*2)/2) !default // верхний паддинг округляем в нижнюю сторону
-$form-input-space-vb: ceil(($form-input-height - $form-line-height - $form-border-width*2)/2) !default // нижний паддинг округляем в верхнюю сторону
-$form-input-space-h: 18px !default
-// =========select=========
-$select-space-v: 12px !default
-$select-space-h: $form-input-space-h !default
-$select-arrow-width: 40px !default
-$select-arrow-height: 100% !default
-$multiple-item-space: 3px
-
-// =========Buttons=========
-$btn-bg-color: $base-color !default
-$btn-bg-hover-color: darken($btn-bg-color, 20%) !default
-$btn-text-color: white !default
-$btn-disabled-color: #ccc !default
-
-// =========Animation=========
-$animation-speed: 0.2s !default
-$animation-speed-mouseleave: 0.35s !default
-
-// =========fonts style=========
 $font-norm: 'AkzidenzGroteskPro Cond', sans-serif !default
 //$font-norm: 'AkzidenzGroteskPro Cond Bold', sans-serif !default
 //$font-norm: 'AkzidenzGroteskPro Cond Bold Italic', sans-serif !default
@@ -170,59 +16,335 @@ $font-norm: 'AkzidenzGroteskPro Cond', sans-serif !default
 $font-light: 'AkzidenzGroteskPro Light Cond', sans-serif !default
 $font-medium: 'AkzidenzGroteskPro Medium Cond', sans-serif !default
 
-// ============= обнуление жирности и наклонности шрифта ==============
-// ============= использовать, если подключается font-face ==============
-=font-reset()
-	font:
-		weight: normal
-		style: normal
-
-// ============= основоной шрифт ==============
+// Main font
 =font-normal()
-	font-family: $font-norm
-	+font-reset
+  font-family: $font-norm
 
 =font-bold()
-	font-family: $font-norm
-	+font-reset
+  font-family: $font-norm
+  font-weight: normal
 
 =font-italic()
-	font-family: $font-norm
-	+font-reset
+  font-family: $font-norm
+  font-style: normal
 
 =font-bold-italic()
-	font-family: $font-norm
-	+font-reset
+  font-family: $font-norm
+  font-style: normal
+  font-weight: normal
 
 =font-light()
-	font-family: $font-light
-	+font-reset
+  font-family: $font-light
+  font-weight: normal
 
 =font-medium()
-	font-family: $font-medium
-	+font-reset
+  font-family: $font-medium
+  font-weight: normal
 
-// ========== дополнительный шрифт ============
-//=font-alt()
-	font:
-		family: $font-alt
-		style: normal
-		weight: normal
 
-//=font-alt-bold()
-	font:
-		family: $font-alt
-		style: normal
-		weight: 700
+// Base
+// ==========================================================================
 
-//=font-alt-italic()
-	font:
-		family: $font-alt
-		style: italic
-		weight: normal
+$font-size: 1.8rem !default
+$line-height: 2.4rem !default
+$letter-spacing: normal !default
 
-//=font-alt-bold-italic()
-	font:
-		family: $font-alt
-		style: italic
-		weight: 700
+// Heading h1
+$font-size-h1: 7.2rem !default
+$line-height-h1: 10rem !default
+$line-height-h1-kef: $line-height-h1 / $font-size-h1
+// ----------------------------------------------------
+$font-size-h1--tab: 3.6rem !default
+$line-height-h1--tab: 4.2rem !default
+// ----------------------------------------------------
+$font-size-h1--mob: 3.0rem !default
+$line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+// ----------------------------------------------------
+=font-h1()
+  font-size: $font-size-h1
+  line-height: $line-height-h1
+
+  +media('<tab')
+    font-size: $font-size-h1--tab
+    line-height: $line-height-h1--tab
+
+  +media('<mob')
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
+
+// Heading h2
+$font-size-h2: 3.6rem !default
+$line-height-h2: 4.8rem !default
+$line-height-h2-kef: $line-height-h2 / $font-size-h2
+// ----------------------------------------------------
+$font-size-h2--tab: 2.8rem !default
+$line-height-h2--tab: round-float($font-size-h2--tab * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+// ----------------------------------------------------
+$font-size-h2--mob: 2.4rem !default
+$line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+// ----------------------------------------------------
+=font-h2()
+  font-size: $font-size-h2
+  line-height: $line-height-h2
+
+  +media('<tab')
+    font-size: $font-size-h2--tab
+    line-height: $line-height-h2--tab
+
+  +media('<mob')
+    font-size: $font-size-h2--mob
+    line-height: $line-height-h2--mob
+
+// Heading h3
+$font-size-h3: 2.4rem !default
+$line-height-h3: 3.0rem !default
+$line-height-h3-kef: $line-height-h3 / $font-size-h3
+// ----------------------------------------------------
+$font-size-h3--tab: 2.2rem !default
+$line-height-h3--tab: round-float($font-size-h3--tab * $line-height-h3-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+// ----------------------------------------------------
+$font-size-h3--mob: 1.8rem !default
+$line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+
+// ----------------------------------------------------
+=font-h3()
+  font-size: $font-size-h3
+  line-height: $line-height-h3
+
+  +media('<tab')
+    font-size: $font-size-h3--tab
+    line-height: $line-height-h3--tab
+
+  +media('<mob')
+    font-size: $font-size-h3--mob
+    line-height: $line-height-h3--mob
+
+// Heading h4
+$font-size-h4: $font-size !default
+$line-height-h4: $line-height !default
+
+// Heading h5
+$font-size-h5: $font-size !default
+$line-height-h5: $line-height !default
+
+// Heading h6
+$font-size-h6: $font-size !default
+$line-height-h6: $line-height !default
+
+// Spaces
+$bottom-space: $line-height !default
+$bottom-space--large: $line-height * 3 !default
+$bottom-space--small: round-float($line-height*0.75, 1) !default
+
+
+// Colors
+// ==========================================================================
+
+// Color of brands
+$base-color: #c4161c !default
+$base-color-alt: #e7dad2 !default
+// ----------------------------------------------------
+$bg-color: #d4c0b3 !default
+$bg-color-alt: #f3f3f3 !default
+// ----------------------------------------------------
+$text-color: #403b38 !default
+$text-color-muted: #6c757d !default
+$text-color-light: #ccc !default
+// ----------------------------------------------------
+$title-color: #403b38 !default
+// ----------------------------------------------------
+$link-color: #c4161c !default
+$focus-color: #0080ff !default
+// ----------------------------------------------------
+$border-color: #d3d3d3 !default
+// ----------------------------------------------------
+$mark-color: #fd0cff !default
+// ----------------------------------------------------
+$success-color: #28a745 !default
+$error-color: #dc3545 !default
+$info-color: #17a2b8 !default
+$warning-color: #ffc107 !default
+$light-color: #f8f9fa !default
+$dark-color: #343a40 !default
+
+
+// Class for article page / article content / typography
+// ==========================================================================
+// @example Sass - Использование
+// .#{$article-style-class}
+//
+// @example css - Вывод CSS
+// .article-content
+$article-style-class: article-content !default
+$typography-style-class: typography !default
+
+// Layout
+// ==========================================================================
+
+// Минимальная ширина сайта
+$layout-page-min-width: 32rem !default
+// Максимальная ширина сайта
+$layout-page-max-width: 192rem !default
+// Отступы для всего сайта
+$layout-page-space: 0 15rem !default
+$layout-page-space--md: 0 10rem !default
+$layout-page-space--sm: 0 3rem !default
+$layout-page-space--mob: 0 2rem !default
+
+// Максимальная ширина текстового блока
+$layout-text-width: 96rem !default
+// Отступы у текствого блока
+$layout-text-space: 5rem 6rem !default
+$layout-text-space--md: 2.5rem 3rem !default
+$layout-text-space--sm: 1.3rem 1.5rem !default
+$layout-text-space--mob: 0.8rem 1rem !default
+
+// Максимальная ширина элементов выходящих за пределы текста
+$layout-flood-width: 100rem !default
+
+// Внутренние отступы
+$grid-space: 2.8rem 3rem !default
+$grid-space--lg: 1.8rem 2rem !default
+$grid-space--sm: 0.8rem 1rem !default
+
+
+// отступы в дефолтных списках
+$list-space: 30px
+
+
+// Header
+// ==========================================================================
+$header-height: 5rem
+$logo-size: 12rem 15.1rem
+$logo-short-size: 3.7rem 13.9rem
+
+
+// Footer
+// ==========================================================================
+$footer-grid-space: 3rem 0 !default
+
+
+// =========Buttons=========
+$btn-height: 5rem !default
+$btn-bg-color: $base-color !default
+$btn-bg-hover-color: invert($base-color) !default
+$btn-text-color: white !default
+$btn-disabled-color: #ccc !default
+
+=btn-disabled()
+  cursor: default !important
+  color: white !important
+  border-color: $btn-disabled-color !important
+  background-color: $btn-disabled-color !important
+  box-shadow: none !important
+  pointer-events: none
+
+
+// Forms
+// ==========================================================================
+
+// Colors of forms
+$form-text-color: $text-color !default
+$form-placeholder-color: lighten($form-text-color, 65%) !default
+$form-bg-color: white !default
+$form-border-color: lighten($form-text-color, 70%) !default
+// validation
+$form-error-color: $error-color !default
+$form-success-color: $success-color !default
+// disabled
+$form-text-color--disabled: #ced4da !default
+$form-bg-color--disabled: #e9ecef !default
+$form-border-color--disabled: #ced4da !default
+// focus
+$form-border-color--focus: darken($form-border-color, 20%) !default
+
+// Fonts of forms
+$form-font-size: 16px !default
+$form-line-height: 24px !default
+$form-input-height: 50px !default
+$form-letter-spacing: null !default
+
+// @example Sass - Использование
+// @example css - Вывод CSS
+=inputs-font()
+  //+font-alt
+  font-family: inherit
+  font-size: $form-font-size
+  line-height: $form-line-height
+  @if $form-letter-spacing
+    letter-spacing: $form-letter-spacing
+  color: $form-text-color
+
+=selects-font()
+  +inputs-font
+
+// Layout of forms
+$form-border-width: 1px !default
+$form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width*2)/2) !default
+// верхний паддинг округляем в нижнюю сторону
+$form-input-space-vb: ceil(($form-input-height - $form-line-height - $form-border-width*2)/2) !default
+// нижний паддинг округляем в верхнюю сторону
+$form-input-space-h: 18px !default
+$form-bottom-space: 3rem !default
+$form-bottom-space--mob: 3rem !default
+
+// Vertical spaces
+=forms-space()
+  margin: 0 0 $form-bottom-space
+
+  +media('<mob')
+    margin: 0 0 $form-bottom-space--mob
+
+// Checkboxes
+// Radio Buttons
+$checkbox-color: #ff3aa3 !default
+
+// Select
+$select-space-v: 12px !default
+$multiple-item-space: 3px !default
+
+// Select custom arrow
+$select-arrow-width: 40px !default
+$select-arrow-height: $form-input-height !default
+
+// Style Selection
+=selectSelection()
+  height: $form-input-height
+  width: 100%
+  padding: $form-input-space-vt $select-arrow-width $form-input-space-vb $form-input-space-h
+  background: $form-bg-color
+  border: #{$form-border-width} solid #{$form-border-color}
+  border-radius: 0
+  box-shadow: none
+  text-indent: 0
+  outline: none
+
+// States
+=form-success()
+  color: $form-success-color
+  border-color: $form-success-color
+
+=form-error()
+  color: $form-error-color
+  border-color: $form-error-color
+
+=filled()
+  color: blueviolet
+  border-color: blueviolet
+
+=focused()
+  //color: $form-border-focus-color
+  border-color: $form-border-color--focus
+
+
+// Form validate feedback
+// ==========================================================================
+$validate-feedback-font-size: 1.2rem
+$validate-feedback-line-height: 1.6rem
+$validate-feedback-height: 2.2rem // Высота предупреждения, если оно занимает одну строку
+
+
+// Animation
+// ==========================================================================
+$animation-speed: 0.2s !default
+$animation-speed-mouseleave: 0.35s !default
