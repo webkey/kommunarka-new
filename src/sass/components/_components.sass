@@ -1,0 +1,617 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* products
+.products
+	// хорошо получается с flex, но не работает в ie10
+	//display: flex
+	//justify-content: center
+	position: relative
+	margin-bottom: 5rem
+	text-align: center
+
+	&:last-child
+		margin-bottom: 0
+
+.products__list
+	position: relative
+	display: inline-block
+	vertical-align: top
+	margin-top: -3rem
+	text-align: left
+	+clear-spacing
+
+	+media('<tab-sm')
+		justify-content: flex-start
+
+.products__item
+	position: relative
+	display: inline-block
+	vertical-align: top
+	min-width: 320px
+	width: calc(100% / 5)
+	margin-top: 4rem
+	color: inherit
+	text-decoration: inherit
+	letter-spacing: normal
+	font-size: 1.6rem
+
+	+media('<1920px')
+		width: calc(100% / 4)
+
+	+media('<1600px')
+		width: calc(100% / 3)
+
+	+media('<1280px')
+		width: calc(100% / 2)
+
+	+media('<992px')
+		width: calc(100% / 3)
+		min-width: 0
+
+	+media('<900px')
+		width: calc(100% / 2)
+
+	+media('<mob-lg')
+		width: calc(100% / 3)
+
+	+media('<mob-md')
+		width: calc(100% / 2)
+
+.products__item__inner
+	display: block
+	position: relative
+	color: inherit
+	text-decoration: inherit
+	min-height: 590px
+	z-index: 1
+
+	.no-touchevents
+		min-height: 0
+
+	+media('<tab-lg')
+		min-height: 0
+
+.products__item__img
+	position: relative
+	box-shadow: 0 15px 50px rgba(black, 0.2)
+	width: 194px
+	max-width: 90%
+	margin: 0 auto 2rem
+	z-index: 1
+
+	+media('<tab-lg')
+		width: 156px
+
+	+media('<mob-lg')
+		width: 80px
+		box-shadow: 0 10px 25px rgba(black, 0.25)
+
+.products__item__awards
+	position: absolute
+	right: 0
+	top: 20px
+	width: 50px
+	margin: 0 -25px
+
+	+media('<tab-lg')
+		width: 38px
+		margin: 0 -19px
+
+	+media('<mob-lg')
+		width: 30px
+		margin: 0 -15px
+
+	img
+		width: 100%
+		margin-top: -25px
+
+		+media('<tab-lg')
+			margin-top: -19px
+
+		+media('<mob-lg')
+			margin-top: -15px
+
+		&:first-child
+			margin-top: 0
+
+.products__item__title
+	+font(2.4rem, round-float(30/24, 2))
+	text-align: center
+	width: 260px
+	max-width: 100%
+	+padding-horizontal(15px)
+	margin: 0 auto
+	z-index: -1
+	$prop: transform, opacity
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: 0.33s
+
+	+media('<mob-lg')
+		+font(1.8rem, round-float(20/18, 2))
+
+.products__item__info
+	position: absolute
+	left: 0
+	top: 200px
+	width: 100%
+	background-color: $base-color
+	padding: 240px 15px 40px
+	+font-light
+	+font(1.8rem, round-float(24/18, 2))
+	color: white
+	transform: translateY(-20px)
+	opacity: 0
+	$prop: transform, opacity
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: 0.33s
+
+	.touchevents &
+		display: none
+
+	+media('<tab-lg')
+		top: 160px
+		padding-top: 195px
+
+	+media('<mob-lg')
+		top: 80px
+		padding: 105px 10px 15px
+		font-size: 1.6rem
+
+.info-list
+	&, .user-content &
+		margin: 0 auto
+		padding: 0
+
+		li
+			padding-left: 0
+			margin-bottom: 10px
+
+			&:last-child
+				margin-bottom: 0
+
+			&::before
+				content: none
+
+	&
+		max-width: 220px
+
+	li
+		position: relative
+		overflow: hidden
+
+		&::after
+			content: ""
+			display: block
+			position: absolute
+			left: 5px
+			right: 5px
+			bottom: 5px
+			//border-top: 1px dotted white
+			height: 1px
+			background: url(../../img/dot.png)
+			opacity: 0.6
+
+		& > div
+			max-width: 50%
+			position: relative
+			display: inline-block
+			vertical-align: top
+			background-color: $base-color
+			+padding-horizontal(10px)
+			z-index: 1
+
+			&:first-child
+				padding-left: 0
+				float: left
+
+			&:last-child
+				padding-right: 0
+				float: right
+
+// hover
+.no-touchevents .products__item:hover
+	z-index: 2
+
+	.products__item__title
+		opacity: 0
+		transform: translateY(40px)
+
+	.products__item__info
+		opacity: 1
+		transform: translateY(0)
+
+/* products end
+
+/* product
+.prod
+	width: 100%
+	height: 100%
+	position: relative
+
+.prod-descr
+	width: 50%
+	height: 100%
+	display: inline-block
+	+font-medium
+
+.prod-image
+	width: calc(50% + #{nth($page-layout-space, 2)})
+	margin-right: -#{nth($page-layout-space, 2)}
+	position: relative
+	position: sticky
+	overflow: hidden
+	top: $header-height
+	float: right
+
+	+media('<desk-sm')
+		width: calc(50% + #{nth($page-layout-space--md, 2)})
+		margin-right: -#{nth($page-layout-space--md, 2)}
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		width: 100%
+		height: 100%
+		left: 0
+		top: 0
+		background: url(../../img/bg-img.png) repeat 0 34px
+
+	.no-csspositionsticky &
+		top: auto
+
+.prod-wrap, .image-wrap
+	padding: 75px 160px
+
+	+media('<desk-hd')
+		+padding-horizontal(100px)
+
+	+media('<desk-lg')
+		+padding-horizontal(80px)
+
+	+media('<desk-sm')
+		+padding-horizontal(40px)
+
+	+media('<tab-lg')
+		padding: 50px 0 40px
+
+.prod-wrap
+	padding-left: 0
+
+.image-wrap
+	padding-right: 0
+	padding-left: 0
+	min-height: calc(100vh - #{$header-height})
+	
+	figure
+		margin: 0
+		padding: 0
+		box-shadow: 0 25px 50px rgba(black, 0.5)
+		position: absolute
+		z-index: 2
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		width: 290px
+
+		+media('<desk-md')
+			width: 220px
+
+		img
+			width: 100%
+
+.prod-circle
+	height: 500px
+	width: 500px
+	border-radius: 500px
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+
+	+media('<desk-md')
+		width: 380px
+		height: 380px
+
+.prod-prev, .prod-next
+	position: absolute
+	width: 120px
+	top: 50%
+	text-decoration: none
+	color: currentColor
+	z-index: 10
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+	$prop: opacity, visibility
+	opacity: 0.5
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
+
+	+media('<desk-sm')
+		width: 100px
+
+	+media('<tab-lg')
+		+size(90px)
+		opacity: 1
+
+	+media('<mob-md')
+		+size(60px, 100px)
+
+	img
+		position: relative
+
+	svg
+		display: block
+		+size(30px)
+		position: absolute
+		top: 50%
+		margin: -15px 50px 0
+		pointer-events: none
+		$prop: transform, opacity, visibility
+		opacity: 0
+		visibility: hidden
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
+
+		+media('<desk-lg')
+			+margin-horizontal(20px)
+
+		+media('<tab-lg')
+			opacity: 1
+			visibility: visible
+			+margin-horizontal(-15px)
+
+	path
+		fill: currentColor
+
+.prod-prev
+	left: 0
+	transform: translate(-50%, -50%)
+
+	+media('<tab-lg')
+		transform: translate(0, -50%)
+
+	svg
+		left: 100%
+		transform: rotate(0.25turn)
+
+		+media('<tab-lg')
+			left: 50%
+
+.prod-next
+	right: 0
+	transform: translate(50%, -50%)
+
+	+media('<tab-lg')
+		transform: translate(0, -50%)
+
+	svg
+		right: 100%
+		transform: rotate(-0.25turn)
+
+		+media('<tab-lg')
+			right: 50%
+
+// hover
+.prod-prev, .prod-next
+	.touchevents &, .no-touchevents &:hover
+		opacity: 1
+
+.prod-prev
+	.touchevents &, .no-touchevents &:hover
+		svg
+			opacity: 1
+			visibility: visible
+
+.prod-next
+	.touchevents &, .no-touchevents &:hover
+		svg
+			opacity: 1
+			visibility: visible
+
+// products awards
+.prod-icons
+	padding-bottom: 40px
+
+	img
+		display: inline-block
+		width: 50px
+		height: 50px
+
+.prod-descr
+	h2
+		margin-bottom: 4rem
+		font-size: 6.0rem
+		line-height: round-float(72/60, 2)
+
+		+media('<desk-md')
+			font-size: 4.2rem
+
+		+media('<tab-lg')
+			margin-bottom: 3rem
+			font-size: 3.6rem
+
+	p
+		+font-normal
+		font-size: 2.2rem
+		line-height: round-float(30/24, 2)
+
+		+media('<tab-lg')
+			font-size: 2rem
+
+	h3
+		font-size: 3.6rem
+		line-height: round-float(40/36, 2)
+
+		+media('<tab-lg')
+			font-size: 2.4rem
+
+	table
+		//display: block
+		width: 100%
+		margin-bottom: 3rem
+		font-size: 2.2rem
+		line-height: round-float(30/24, 2)
+		+font-normal
+
+		+media('<tab-lg')
+			font-size: 2rem
+
+		&:last-child
+			margin-bottom: 0
+
+		//tbody
+			display: block
+
+		tr
+			//display: block
+			//position: relative
+			//overflow: hidden
+			//margin-bottom: 20px
+			//z-index: 1
+
+			&:last-child
+				margin-bottom: 0
+
+			//&::before
+				content: ""
+				display: block
+				position: absolute
+				left: 5px
+				right: 5px
+				bottom: 7px
+				height: 1px
+				background: url(../../img/dot.png)
+				z-index: -1
+				filter: invert(1)
+				opacity: 0.4
+
+		td
+			$th-right-width: 200px
+			//display: block
+			//padding-bottom: 20px
+			//background-color: $bg-color
+			padding-bottom: 20px
+			vertical-align: bottom
+
+			tr:last-child &
+				padding-bottom: 0
+
+			&:first-child
+				//float: left
+				padding-right: 13px
+				text-align: left
+				//max-width: calc(100% - #{$th-right-width})
+
+			&:last-child
+				//float: right
+				text-align: right
+				padding-left: 13px
+				min-width: $th-right-width
+
+.prod-descr-circle
+	+size(280px)
+	border-radius: 280px
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+
+.prod-descr-circle.green,
+.prod-circle.green
+	background: #335346
+
+.prod-descr-circle.blue,
+.prod-circle.blue
+	background: #39485d
+
+.prod-descr-circle.red,
+.prod-circle.red
+	background: #654349
+
+.prod-descr-image
+	display: none
+	position: relative
+	margin: 0 -#{nth($page-layout-space--sm, 2)} 3rem
+	overflow: hidden
+
+	+media('<mob-lg')
+		+margin-horizontal(-#{nth($page-layout-space--mob, 2)})
+
+	figure
+		position: relative
+		padding: 0
+		margin: 0 auto
+		width: 160px
+
++media('<tab-lg')
+
+	.prod-descr-image
+		display: block
+
+	.prod-image
+		display: none
+
+	.prod-descr
+		width: 100%
+
+/* product end
+
+/* scene
+.scene
+	position: fixed
+	overflow: hidden
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	z-index: -1
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+	pointer-events: none
+
+	.sep-page &
+		position: absolute
+		top: 0
+		z-index: 9999
+
+	.touchevents &
+		display: none
+
+	+media('<tab-lg')
+		display: none
+
+	& > div
+		position: absolute
+		width: 100%
+		height: 100%
+		left: 0
+		top: 0
+
+		img
+			position: absolute
+
+		+media('<tab-lg')
+			&:nth-child(2)
+				img
+					left: auto !important
+					top: 38vh !important
+					right: 40px
+
+			&:nth-child(3)
+				img
+					left: auto !important
+					top: 45vh !important
+					right: -10px
+
+/* scene end

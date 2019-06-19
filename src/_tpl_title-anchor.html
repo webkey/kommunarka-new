@@ -1,0 +1,1 @@
+<@@if(!context.taTag){h3}@@if(context.taTag){@@taTag}><a href="#hash-@@taId" id="hash-@@taId" class="hashAnchor"><span class="mark">@@taText</span></a></@@if(!context.taTag){h3}@@if(context.taTag){@@taTag}>

@@ -1,0 +1,185 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+[class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button
+	display: inline-block
+	vertical-align: top
+	position: relative
+	text-align: center
+	text-decoration: none
+	cursor: pointer
+
+[class|="btn"], [class*=" btn-"]
+	& input[type="submit"], & input[type="button"], & input[type="reset"]
+		background: url("../../img/empty.png") repeat
+		display: block
+		+cover-abs()
+		padding: 0
+		border: none
+		z-index: 99
+		opacity: 0
+
+/* btn-default
+[class*="btn-default"]
+	position: relative
+	+font-bold
+	text-transform: uppercase
+	color: $btn-text-color
+	padding: 14px 38px
+	border: 2px solid transparent
+	background: $btn-bg-color
+	box-shadow: none
+	margin: 0
+
+	&, & > span
+		+font(14px, 18px)
+		letter-spacing: 0.2em
+
+	// hover
+	.no-touchevents &:hover
+		background-color: $btn-bg-hover-color
+
+	// disabled
+	&:disabled, &.disabled, &[data-disabled]
+		cursor: default
+		background-color: $btn-disabled-color !important
+
+		&::before, &::after
+			display: none
+
+/* btn-default end
+
+/* button toggle menu
+.btn-menu
+	$btn-menu-bg: transparent
+	$btn-menu-color: $base-color-alt
+	$btn-menu-lines-width: 24px
+	$btn-menu-lines-height: 3px
+	$btn-menu-lines-space: 5px
+	$btn-menu-lines-color: currentColor
+	$btn-menu-animation-speed: $animation-speed
+	$btn-menu-animation-delay: round-float($animation-speed*0.5, 2)
+
+	$user-options-cross-width: $btn-menu-lines-width
+	$user-options-cross-height: $btn-menu-lines-height
+	$user-options-cross-color: $text-color
+
+	// =====================
+
+	display: none
+	+size($header-height)
+	position: fixed
+	left: 0
+	top: 0
+	text-decoration: none
+	color: $btn-menu-color
+	background-color: $btn-menu-bg
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+	z-index: 99
+	transition:
+		property: background-color
+		duration: $animation-speed
+
+	+media('<tab-lg')
+		display: block
+
+	.touchevents &
+		// убрать подсветку при клике на тачскринах
+		user-select: none
+		-webkit-tap-highlight-color: transparent
+
+	& > span
+		+hide-text
+		white-space: normal
+
+	// крест
+	&::before, &::after
+		+pseudo()
+		+size($user-options-cross-width, $user-options-cross-height)
+		background-color: $user-options-cross-color
+		+position(50%)
+		+margin($top: -#{round($user-options-cross-height*0.5)}, $left: -#{round($user-options-cross-width*0.5)})
+		will-change: opacity, transform
+		opacity: 0
+		transition:
+			property: transform, opacity
+			duration: $btn-menu-animation-speed
+			delay: 0s
+			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+	// бутерброд
+	& > i
+		position: absolute
+		left: 50%
+		top: 50%
+		+size(13px, $btn-menu-lines-height)
+		background-color: $btn-menu-lines-color
+		+margin($top: -#{round($btn-menu-lines-height*0.5)}, $left: -#{round($btn-menu-lines-width*0.5)})
+		border-radius: $btn-menu-lines-height
+		backface-visibility: hidden
+		transition:
+			property: opacity
+			duration: $btn-menu-animation-speed
+			delay: $btn-menu-animation-delay
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			+size($btn-menu-lines-width, $btn-menu-lines-height)
+			border-radius: $btn-menu-lines-height
+			background-color: $btn-menu-lines-color
+			backface-visibility: hidden
+			transition:
+				property: transform
+				duration: $btn-menu-animation-speed
+				delay: $btn-menu-animation-delay
+
+		//first line menu
+		&::before
+			top: -#{$btn-menu-lines-height + $btn-menu-lines-space}
+
+		//third line menu
+		&::after
+			transform: scale(round-float(18/24, 2), 1)
+			transform-origin: left center
+			top: #{$btn-menu-lines-height + $btn-menu-lines-space}
+
+	// hover
+	.no-touchevents &:hover
+		box-shadow: inset 0 -2px 0 $base-color
+
+	// active
+	&.active
+		&::before, &::after
+			transition-delay: $btn-menu-animation-delay
+
+			opacity: 1
+
+		&::before
+			transform: rotate(45deg) translateZ(0)
+
+		&::after
+			transform: rotate(-45deg) translateZ(0)
+
+		& > i
+			opacity: 0
+			transition-delay: 0s
+
+			&::before, &::after
+				transition-delay: 0s
+
+			&::before
+				transform: translate(0, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+
+			&::after
+				transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+
+		.no-touchevents &:hover
+			box-shadow: none
+
+			&::before, &::after
+				background-color: $base-color
+
+/* button toggle menu end
