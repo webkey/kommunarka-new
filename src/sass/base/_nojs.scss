@@ -1,0 +1,14 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+/* no js warning */
+.no-js-warning {
+  border: 2px solid red;
+  color: red;
+  background: white;
+  padding: 5px 20px;
+  font-size: 18px;
+}
+
+/* no js warning end */

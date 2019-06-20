@@ -325,7 +325,7 @@ input[type="radio"]:focus {
 
 input[type="checkbox"]:focus {
   -moz-outline-offset: -1px !important;
-  -moz-outline: 1px solid #000 !important;
+  -moz-outline: 1px solid black !important;
 }
 
 input::-ms-clear {
@@ -389,8 +389,8 @@ ul {
   margin: 0;
   font-size: 28px;
   line-height: 42px;
-  color: #000;
-  background: #ccc;
+  color: black;
+  background: #cccccc;
   z-index: 99999;
 }
 
@@ -407,9 +407,9 @@ ul {
 /* browserupgrade end */
 /* no js warning */
 .no-js-warning {
-  border: 2px solid #f00;
-  color: #f00;
-  background: #fff;
+  border: 2px solid red;
+  color: red;
+  background: white;
   padding: 5px 20px;
   font-size: 18px;
 }
@@ -563,7 +563,6 @@ body.sep-page::before {
 .footer {
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  margin-top: auto;
 }
 
 /* ==================================== */
@@ -1045,7 +1044,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 .breadcrumbs__item::after {
   display: inline;
-  content: '•';
+  content: "•";
   padding-left: 0.7em;
 }
 
@@ -1430,7 +1429,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 .nav__list::after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -2322,7 +2321,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 .prod-descr h2 {
   margin-bottom: 4rem;
-  font-size: 6.0rem;
+  font-size: 6rem;
   line-height: 1.2;
 }
 
@@ -2528,16 +2527,16 @@ tr:last-child .prod-descr table td {
 .swiper-button-next {
   position: absolute;
   top: 50%;
-  width: 48px;
   height: 48px;
+  width: 48px;
   background: url(../img/carousel-arr.png) no-repeat;
   margin: -24px 0 0;
   padding: 0;
   border: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   visibility: visible;
   text-indent: -9999px;
   overflow: hidden;
@@ -2548,7 +2547,7 @@ tr:last-child .prod-descr table td {
 .swiper-button-prev:active,
 .swiper-button-next:active {
   -ms-transform: scale(0.96);
-  transform: scale(0.96);
+      transform: scale(0.96);
 }
 
 .swiper-button-prev {
@@ -2584,9 +2583,9 @@ tr:last-child .prod-descr table td {
   margin: 0 auto;
   box-sizing: border-box;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: white;
   border: 1px solid #e9cd78;
-  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #e9cd78;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #e9cd78;
 }
 
 .promo-slider.swiper-container-horizontal {
@@ -2642,7 +2641,7 @@ tr:last-child .prod-descr table td {
   .footerNews {
     background: white;
     border: 1px solid #e9cd78;
-    box-shadow: 0 0 0 3px #fff, 0 0 0 4px #e9cd78;
+    box-shadow: 0 0 0 3px white, 0 0 0 4px #e9cd78;
     border-radius: 10px;
     padding: 2.8rem 3rem;
   }
@@ -2723,7 +2722,7 @@ tr:last-child .prod-descr table td {
   text-decoration: underline;
 }
 
-.footerNews .allNews a:hover {
+.footerNews .allNews:hover {
   text-decoration: none;
 }
 
@@ -2734,10 +2733,10 @@ tr:last-child .prod-descr table td {
   width: 400px;
   max-width: 400px;
   float: left;
-  border: 1px solid #fff;
+  border: 1px solid white;
   border-radius: 10px;
   box-shadow: 0 0 0 2px #e9cd78;
-  background: #fff;
+  background: white;
 }
 
 @media (max-width: 1199px) {
@@ -2837,7 +2836,7 @@ tr:last-child .prod-descr table td {
     top: auto;
     right: auto;
     width: 400px;
-    border: 1px solid #fff;
+    border: 1px solid white;
     box-shadow: 0 0 0 2px #e9cd78;
     border-radius: 10px;
     overflow: hidden;

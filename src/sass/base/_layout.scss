@@ -1,0 +1,118 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+html {
+  font-size: 62.5%;
+  // блокировка скролла
+  &.css-scroll-fixed:not(.css-scroll-fixed) {
+    @include scroll-blocked;
+}
+  &.shutter-only-mob.css-scroll-fixed {
+    @include media("<tab") {
+      @include scroll-blocked;
+  }
+}
+}
+
+body {
+  min-width: $layout-page-min-width;
+  @include font-normal;
+  @include font-size($font-size, $line-height);
+  color: $text-color;
+  background: $bg-color url(../../img/bg-img.png) center;
+}
+
+/* === LAYOUT === */
+// Отступы по бокам страницы
+// Отступы по бокам основных элементов на странице
+.layout-page-spaces {
+  @include padding-horizontal(nth($layout-page-space, 2));
+  @include media("<lap-s") {
+    @include padding-horizontal(nth($layout-page-space--md, 2));
+}
+
+  @include media("<tab") {
+    @include padding-horizontal(nth($layout-page-space--sm, 2));
+}
+
+  @include media("<mob") {
+    @include padding-horizontal(nth($layout-page-space--mob, 2));
+}
+}
+
+// Выравнивание сайта и его максимальная ширина
+// Выравнивание основных элементов и их максимальная ширина
+.layout-page {
+  max-width: $layout-page-max-width;
+  box-sizing: content-box;
+  @include push-auto;
+  @include media("<lap-s") {
+    max-width: none;
+}
+}
+
+// Отступы по бокам текстовых элементов
+@if nth($layout-text-space, 2) != 0 {
+  .layout-text-spaces {
+    @include padding-horizontal(nth($layout-text-space, 2));
+}
+}
+
+// Выравнивание текстовых элементов и их максимальная ширина
+.layout-text {
+  max-width: $layout-text-width;
+  box-sizing: content-box;
+  @include push-auto;
+}
+
+// Выравнивание элементов выходящих за пределы текста
+.layout-flood {
+  max-width: $layout-flood-width;
+  box-sizing: content-box;
+  @include push-auto;
+}
+
+// Прижать футер к низу страницы
+// На html, body необходимо задать высоту 100% (Задано в reset.sass)
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 86px;
+  @include media("<tab") {
+    padding-top: 0;
+}
+
+  &.sep-page {
+    @include media(">desk") {
+      background-attachment: fixed;
+  }
+
+    &::before {
+      content: "";
+      display: none;
+      width: 50%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      background-color: $bg-color;
+      @include media(">=tab") {
+        display: block;
+    }
+  }
+}
+}
+
+.header {
+  flex-shrink: 0;
+}
+
+.main {
+  flex-shrink: 0;
+}
+
+.footer {
+  flex-shrink: 0;
+}

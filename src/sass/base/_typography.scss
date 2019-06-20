@@ -1,0 +1,136 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+body {
+  // выделение текста
+  *::selection {
+    background-color: $base-color;
+    color: white;
+  }
+}
+
+// Заголовки
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin: 0 0 $bottom-space;
+  padding: 0;
+  @include font-medium;
+  color: $title-color;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: $link-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+h1, .h1 {
+  font-weight: normal;
+  @include font-h1;
+}
+
+h2, .h2 {
+  @include font-h2;
+}
+
+h3, .h3 {
+  @include font-h3;
+}
+
+h4, .h4 {
+  @include font-size($font-size-h4, $line-height-h4);
+}
+
+h5, .h5 {
+  @include font-size($font-size-h5, $line-height-h5);
+}
+
+h6, .h6 {
+  @include font-size($font-size-h6, $line-height-h6);
+  text-transform: uppercase;
+}
+
+p {
+  padding: 0;
+  margin: 0 0 $bottom-space;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+hr {
+  line-height: 1px;
+  height: 0;
+  border: none;
+  background: none;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: $bottom-space;
+}
+
+a {
+  color: $link-color;
+  text-decoration: underline;
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+  &:link {
+    cursor: pointer;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &[href^="javascript:"] {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+img {
+  border: none;
+  vertical-align: top;
+  max-width: 100%;
+  table & {
+    max-width: none;
+  }
+}
+
+b, strong, th {
+  @include font-bold;
+}
+
+i, em {
+  @include font-italic;
+}
+
+i b, i strong, em b, em strong, b i, b em, strong i, strong em {
+  @include font-bold-italic;
+}
+
+.enter {
+  @include font-normal;
+  @include font-size(2.2rem, 3rem);
+  text-align: center;
+  max-width: $layout-text-width;
+  margin: 0 auto 5rem;
+  @include media("<mob") {
+    margin-bottom: 3rem;
+  }
+
+  h1, h2, .h1, .h2 {
+    margin-bottom: 3rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  p {
+    margin: 0 0 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
