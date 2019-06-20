@@ -105,14 +105,24 @@ $(function () {
 
   addClassScrollPosition();
 
-  $(window).on('scroll resizeByWidth', function () {
+  $(window)
+      .off('scroll resizeByWidth')
+      .on('scroll resizeByWidth', function () {
     addClassScrollPosition();
   });
 
   function addClassScrollPosition() {
     currentScrollTop = $(window).scrollTop();
 
-    $page.toggleClass(headerIsTopClass, $header.offset().top <= currentScrollTop);
+    var cond = $header.offset().top <= currentScrollTop;
+
+    $page.toggleClass(headerIsTopClass, cond);
+
+    if (cond) {
+      $header.css('min-height', $header.children().outerHeight());
+    } else {
+      $header.css('min-height', '');
+    }
   }
 });
 
@@ -150,17 +160,17 @@ function toggleShutters() {
 
     $nav.toggleClass(activeClass);
 
-    if ($curOpener.hasClass(activeClass)) {
-      $elemens.css({
-        'padding-right': getScrollSize().width,
-        'padding-bottom': getScrollSize().height
-      });
-    } else {
-      $elemens.css({
-        'padding-right': '',
-        'padding-bottom': ''
-      });
-    }
+    // if ($curOpener.hasClass(activeClass)) {
+    //   $elemens.css({
+    //     'padding-right': getScrollSize().width,
+    //     'padding-bottom': getScrollSize().height
+    //   });
+    // } else {
+    //   $elemens.css({
+    //     'padding-right': '',
+    //     'padding-bottom': ''
+    //   });
+    // }
 
     $overlay.toggleClass(activeClass, $curOpener.hasClass(activeClass));
     $html.toggleClass('shutter-after-open css-scroll-fixed shutter-only-mob', $curOpener.hasClass(activeClass));
@@ -514,6 +524,35 @@ function navAccordionInit() {
 }
 
 /**
+ * !Sliders initial
+ * */
+function slidersInit() {
+  // Footer slider with news and a video
+  var footerSlider = '.footerSlider';
+  if ( $(footerSlider).length ) {
+    $(footerSlider).slick({
+      slidesToShow: 1,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      lazyLoad: 'ondemand'
+    });
+  }
+
+  // Promo slider on the main page
+  var promoSlider = '.promo-slider-js';
+  if ($(promoSlider).length) {
+    new Swiper(promoSlider, {
+      spaceBetween: 0,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    });
+  }
+}
+
+/**
  * =========== !ready document, load/resize window ===========
  */
 
@@ -535,9 +574,10 @@ $(document).ready(function () {
   placeholderInit();
   printShow();
   objectFitImages(); // object-fit-images initial
-  stickyInit();
+  // stickyInit();
   toggleShutters();
   parallaxInit();
   initHoverClass();
   navAccordionInit();
+  slidersInit();
 });

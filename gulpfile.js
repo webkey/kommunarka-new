@@ -128,6 +128,7 @@ gulp.task('sassCompilation', ['normalize'], function () {
 gulp.task('mergeCssLibs', function () {
   return gulp.src([
     'src/css/temp/*.css'
+    , 'src/libs/swiper/dist/css/swiper.min.css'
     // , 'src/libs/select2/dist/css/select2.min.css'
   ])
       .pipe(concatCss("src/css/libs.css", {
@@ -159,6 +160,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
     , 'src/libs/stickybits/dist/stickybits.min.js' // sticky element on scroll
     , 'node_modules/parallax-js/dist/parallax.min.js' // parallax
+    , 'src/libs/swiper/dist/js/swiper.min.js' // swiper slider
+    , 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

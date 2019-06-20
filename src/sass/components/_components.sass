@@ -88,6 +88,7 @@
   +font-size(2.4rem, round-float(24/24, 2))
   color: #5a534f
   text-align: center
+  text-decoration: none
   z-index: 10
   // под хедером, но над контентом и футером
   $prop: background-color, opacity, visibility
@@ -100,6 +101,7 @@
 
   +media('<lap-s')
     width: nth($layout-page-space--md, 2)
+    font-size: 1.8rem
 
   +media('<tab')
     display: none
@@ -128,32 +130,39 @@
 /* ============== HEADER ==============
 /* ====================================
 .header
-  width: 100%
-  // нужно для браузеров не поддерживающих position: sticky
-  min-width: 320px
-  // нужно для браузеров не поддерживающих position: sticky
   margin: 0
-  background-color: #403b38
-  position: sticky
-  top: 0
-  z-index: 15
+  //position: sticky
+  //top: 0
+  //z-index: 15
+  z-index: 98
   transition:
     property: background-color
     duration: $animation-speed
-
-  .shutter-after-open &
-    +media('<tab')
-      background-color: $base-color-alt
 
   .layout-page-spaces
     +media('<tab')
       padding: 0
 
+.header-float
+  width: 100%
+  min-width: 320px
+  background-color: #403b38
+  z-index: inherit
+
+  .header-is-top &
+    position: fixed
+    left: 0
+    top: 0
+
+  .shutter-after-open &
+    +media('<tab')
+      background-color: $base-color-light
+
 .header__holder
   position: relative
   text-align: center
   height: $header-height
-  padding: 0 nth($logo-size, 2) + 10
+  padding: 0 nth($logo-size, 2) + 1
   z-index: 5
 
   +media('<tab')
@@ -259,7 +268,7 @@
     bottom: 0
     width: 100%
     height: calc(100% - #{$header-height})
-    background-color: $base-color-alt
+    background-color: $base-color-light
     opacity: 0
     visibility: hidden
     transition:
@@ -485,6 +494,12 @@
 
   +media('<tab')
     +padding-vertical(50px, 40px)
+
+  +media('<tab-s')
+    +padding-vertical(40px)
+
+  +media('<mob')
+    +padding-vertical(30px)
 
   .sep-page &
     padding: 0
@@ -1062,7 +1077,8 @@
   top: 0
   width: 100%
   height: 100%
-  z-index: -1
+  //z-index: -1
+  z-index: 95
   user-select: none
   -webkit-tap-highlight-color: transparent
   pointer-events: none
@@ -1102,3 +1118,440 @@
           right: -10px
 
 /* scene end
+
+/* slider arrow
+.swiper-button-prev,
+.swiper-button-next
+  position: absolute
+  top: 50%
+  width: 48px
+  height: 48px
+  background: url(../../img/carousel-arr.png) no-repeat
+  margin: -24px 0 0
+  padding: 0
+  border: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+  visibility: visible
+  text-indent: -9999px
+  overflow: hidden
+  cursor: pointer
+  outline: none
+
+.swiper-button-prev:active,
+.swiper-button-next:active
+  -webkit-transform: scale(0.96)
+  -ms-transform: scale(0.96)
+  transform: scale(0.96)
+
+.swiper-button-prev
+  left: 20px
+  background-position: 0 0
+
+.swiper-button-prev:hover
+  background-position: 0 -68px
+
+.swiper-button-next
+  right: 20px
+  background-position: -68px 0
+
+.swiper-button-next:hover
+  background-position: -68px -68px
+
+/* slider arrow end
+
+/* promo slider
+.main-slider
+  margin-bottom: 4rem
+
+  &:last-child
+    margin-bottom: 0
+
+.promo-slider
+  max-width: 100rem
+  //max-width: $layout-page-max-width
+  margin: 0 auto
+  box-sizing: border-box
+  border-radius: 10px
+  //border: 4px solid #e9cd78
+  background-color: #fff
+  border: 1px solid #e9cd78
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #e9cd78
+
+  &.swiper-container-horizontal
+    margin-bottom: 0
+
+.content .promo-slider
+  .swiper-wrapper, .swiper-slide
+    margin-bottom: 20px
+
+  .swiper-wrapper
+    align-items: center
+
+.promo-slider
+  .swiper-slide
+    box-sizing: border-box
+    overflow: hidden
+
+  a
+    display: block
+    text-decoration: none
+    color: currentColor
+
+  img
+    width: 100%
+
+  .swiper-button-prev
+    left: 30px
+
+  .swiper-button-next
+    right: 30px
+
+/* promo slider end
+
+/* footer news
+.footerNews
+  //height: 204px
+  margin: 0 auto 20px
+  position: relative
+  //height: 259px
+  min-height: 259px
+  width: 977px
+  max-width: 100%
+  padding: 55px 0 0 0
+  background: url("../../i/footer-news.png") no-repeat 0 0
+  background-size: 100% 100%
+
+  +media('<tab')
+    background: white
+    border: 1px solid $base-color-alt
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px $base-color-alt
+    border-radius: 10px
+    padding: $grid-space
+
+  +media('<tab-s')
+    padding: $grid-space--tab
+
+  +media('<mob')
+    padding: $grid-space--mob
+
+.footerNews:after
+  content: ""
+  clear: both
+  display: block
+
+.footerNewsTitle
+  width: 120px
+  height: 20px
+  background: url("../../i/footer-news-title.png") no-repeat 0 0
+  overflow: hidden
+  margin: 0 0 20px
+
+.footerNewsTitle a
+  display: block
+  height: 20px
+  width: 115px
+  background: url(../../i/blank.gif)
+
+.footerNews .shortNews
+  float: left
+  width: 190px
+  padding: 0 20px 0 0
+  color: #7d5822
+  //font: 14px/18px Cambria, "CambriaRegularWebfont", "Times New Roman"
+  font-size: 14px
+  line-height: 18px
+
+  +media('<tab')
+    float: none
+    max-width: 100%
+    margin-bottom: 3rem
+
+.footerNews .shortNews .date
+  color: #e9101b
+  //font: italic 13px/18px Cambria, "Times New Roman"
+  +font-italic
+  font-size: 13px
+  line-height: 18px
+
+.footerNews .shortNews a
+  color: #7d5822
+  text-decoration: none
+
+.footerNews .shortNews a:hover
+  text-decoration: underline
+
+.footerNews .allNews
+  padding: 15px 0 0
+
+.footerNews .allNews a
+  text-decoration: underline
+
+.footerNews .allNews a:hover
+  text-decoration: none
+
+/* footer news end
+
+/* footer slider
+.footerSlider
+  margin: -11px 40px 0 50px
+  width: 400px
+  max-width: 400px
+  //height: 150px
+  float: left
+  border: 1px solid #fff
+  border-radius: 10px
+  -webkit-box-shadow: 0 0 0 2px #e9cd78
+  box-shadow: 0 0 0 2px #e9cd78
+  background: #fff
+
+  +media('<net')
+    //height: 320px * 150px / 400px
+    width: 320px
+
+  +media('<tab')
+    width: auto
+    //height: 150px
+    float: none
+    margin: 0 0 30px
+
+  .slick-slide
+    overflow: hidden
+    position: relative
+    border-radius: 10px
+
+    &::before
+      content: ""
+      display: block
+      +ratio(400, 150)
+
+  img
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    object-fit: cover
+
+.footerSlider .slick-prev:before,
+.footerSlider .slick-next:before
+  display: none
+
+.footerSlider .slick-prev,
+.footerSlider .slick-prev:hover
+  background: transparent url("../../i/related-products-arrows.png") 0 -40px no-repeat
+  -webkit-background-size: 20px 80px
+  background-size: 20px 80px
+  left: -12px
+  border-radius: 50%
+  z-index: 50
+
+.footerSlider .slick-next,
+.footerSlider .slick-next:hover
+  background: transparent url("../../i/related-products-arrows.png") 0 0px no-repeat
+  -webkit-background-size: 20px 80px
+  background-size: 20px 80px
+  right: -12px
+  border-radius: 50%
+  z-index: 50
+
+.footerSlider .slick-prev:hover,
+.footerSlider .slick-next:hover
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5)
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5)
+
+/* footer slider end
+
+/* promo video
+.promoVideo
+  position: absolute
+  top: 42px
+  right: 30px
+  display: block
+  width: 230px
+  max-width: 100%
+  //height: 168px
+  color: #eddfbc
+  text-decoration: none
+  text-align: center
+  //font: italic 13px/18px Cambria, "Times New Roman"
+  +font-italic
+  font-size: 13px
+  line-height: 18px
+
+  &::before
+    content: ""
+    display: block
+    position: relative
+    +ratio(230, 168)
+
+  +media('<tab')
+    position: relative
+    top: auto
+    right: auto
+    width: 400px
+    border: 1px solid #fff
+    box-shadow: 0 0 0 2px $base-color-alt
+    border-radius: 10px
+    overflow: hidden
+
+.promoVideo img
+  position: absolute
+  top: 0
+  left: 0
+
+  +media('<tab')
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+.promoVideo span.over
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+  width: 230px
+  height: 168px
+  background: url("../../i/promo-video.png") no-repeat 0 0
+
+  +media('<tab')
+    display: none
+
+.promoVideo span.title
+  position: absolute
+  bottom: 21px
+  padding: 4px 0
+  width: 100%
+  left: 0
+  background: url("../../i/back50.png") repeat 0 0
+
+.promoVideo span.title span
+  padding: 0 15px
+
+.promoVideo a
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+  width: 230px
+  height: 168px
+  padding: 0 0 0
+  background: url("../../i/promo-video-play.png") no-repeat 0 43px
+  cursor: pointer
+
+  +media('<tab')
+    background: none
+    width: 100%
+    height: 100%
+
+    &::before
+      position: absolute
+      left: 50%
+      top: 50%
+      display: block
+      content: ""
+      width: 230px
+      height: 168px
+      margin: -84px 0 0 -115px
+      background: url("../../i/promo-video-play.png") no-repeat 0 43px
+
+.promoVideo a:hover
+  background-position: 100% 43px
+
+  +media('<tab')
+    &::before
+      background-position: 100% 43px
+
+/* promo video end
+
+/* b-legend
+.b-legend
+  //font: 15px/1.4 Cambria, "CambriaRegularWebfont", "Times New Roman"
+  font-size: 15px
+  line-height: 1.4
+  color: #7d5822
+  padding: 0 50px 30px
+
+  +media('<tab')
+    padding: 0
+    margin-bottom: 30px
+
+/* b-legend end
+
+/* b-prlist
+.b-prlist
+  padding-bottom: 20px
+
+.b-prlist a
+  text-decoration: none
+
+.b-prlist a:hover
+  text-decoration: underline
+
+.b-prlist ul
+  display: table
+  width: 100%
+  width: calc(100% - 50px)
+  table-layout: fixed
+  border-top: 1px dotted #ddcba9
+  border-bottom: 1px dotted #ddcba9
+  margin: 0 auto
+
+  +media('<tab')
+    display: flex
+    flex-wrap: wrap
+    width: auto
+    margin: 0 -10px
+    padding: #{round-float(nth($grid-space, 1) / 2, 1)} 0
+
+.b-prlist li
+  display: table-cell
+  padding: 30px 5px 20px 5px
+
+  +media('<tab')
+    display: block
+    flex-shrink: 0
+    $width: 33.3%
+    flex-basis: $width
+    width: $width
+    padding: #{round-float(nth($grid-space, 1) / 2, 1)} 10px
+
+  +media('<tab-s')
+    $width: 50%
+    flex-basis: $width
+    width: $width
+
+.b-prlist b
+  display: block
+  float: left
+  border-radius: 7px
+  border: 2px solid #e9cd78
+  padding: 3px
+  margin-right: 10px
+  background: rgba(255, 255, 255, 0.3)
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2)
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2)
+
+.b-prlist i
+  display: block
+  width: 40px
+  height: 40px
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  -webkit-background-size: contain
+  background-size: contain
+
+.b-prlist span
+  display: block
+  overflow: hidden
+  color: #7d5822
+  font-size: 13px
+  font-weight: 600
+  line-height: 16px
+
+.b-prlist li a
+  color: #7d5822
+
+/* b-prlist end
