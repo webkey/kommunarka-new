@@ -92,7 +92,6 @@
     }
   }
 }
-
 /* shutter overlay end */
 
 /* btn-to-top */
@@ -118,6 +117,7 @@
     property: $prop;
     duration: $animation-speed;
   };
+
   @include media("<lap-s") {
     width: nth($layout-page-space--md, 2);
     font-size: 1.8rem;
@@ -135,18 +135,20 @@
     display: inline-block;
     vertical-align: top;
   }
+
   path {
     fill: currentColor;
   }
+
   &.btn-to-top--show {
     opacity: 1;
     visibility: visible;
   }
+
   .no-touchevents &:hover {
     color: $base-color;
   }
 }
-
 /* btn-to-top end */
 
 /* ==================================== */
@@ -180,9 +182,9 @@
     top: 0;
   }
   .shutter-after-open & {
-    @include media("<tab") {
-      background-color: $base-color-light;
-    }
+    //@include media("<tab") {
+    //  background-color: $base-color-light;
+    //}
   }
 }
 
@@ -192,8 +194,9 @@
   height: $header-height;
   padding: 0 nth($logo-size, 2) + 1;
   z-index: 5;
+
   @include media("<tab") {
-    padding: 0 $header-height;
+    padding: 0 16rem 0 5rem;
   }
 }
 
@@ -202,78 +205,315 @@
   position: absolute;
   left: 0;
   top: 50%;
+  height: nth($logo-short-size, 1);
   width: nth($logo-size, 2);
-  margin: -#{round-float(nth($logo-size, 1) / 2, 1)} 0 0;
-  text-indent: -9999px;
-  text-align: left;
-  overflow: hidden;
+  margin: -#{round-float(nth($logo-short-size, 1) / 2, 1)} 0 0;
   z-index: 5;
+
   @include media("<tab") {
     width: nth($logo-short-size, 2);
-    margin: -#{round-float(nth($logo-short-size, 1) / 2, 1)} 0 0 -#{round-float(nth($logo-short-size, 2) / 2, 1)};
+    margin: -#{round-float(nth($logo-short-size, 1) / 2, 1)} -#{round-float(nth($logo-short-size, 2) / 2, 1) + 5};
     left: 50%;
   }
 
-  &::before, &::after {
-    content: "";
-    display: block;
-    $prop: opacity;
-    will-change: $prop;
-    transition: {
-      property: opacity;
-      duration: $animation-speed;
-    };
+  @include media("<mob-s") {
+    width: nth($logo-short-size--mob, 2);
+    margin: -#{round-float(nth($logo-short-size--mob, 1) / 2, 1)} -#{round-float(nth($logo-short-size--mob, 2) / 2, 1) + 4};
   }
-  &::before {
-    @include ratio(nth($logo-size, 2), nth($logo-size, 1));
-    background: url(../../img/logo.png) no-repeat;
-    @include media("<tab") {
-      @include ratio(nth($logo-short-size, 2), nth($logo-short-size, 1));
-      background: none;
-    }
 
-    .header-is-top & {
-      opacity: 0;
-    }
-  }
-  &::after {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    opacity: 0;
-    @include size(nth($logo-short-size, 2), nth($logo-short-size, 1));
-    background: url(../../img/logo-short.png) no-repeat;
-    margin: -#{round-float(nth($logo-short-size, 1) / 2 - 0.1, 1)} 0 0 -#{round-float(nth($logo-short-size, 2) / 2 - 0.1, 1)};
-    @include media("<tab") {
-      opacity: 1;
-      margin: -#{round-float(nth($logo-short-size, 1) / 2, 1)} 0 0 -#{round-float(nth($logo-short-size, 2) / 2, 1)};
-    }
-
-    .header-is-top & {
-      opacity: 1;
-    }
-  }
   a, & > span {
+    display: block;
     position: absolute;
     left: 0;
-    top: 50%;
-    width: 100%;
+    top: 0;
     height: 100%;
-    display: block;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
     z-index: 1;
-    transform: translate(0, -50%);
-    will-change: transform;
-    .header-is-top & {
+
+    &::before, &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      $prop: opacity;
+      will-change: $prop;
+      transition: {
+        property: opacity;
+        duration: $animation-speed;
+      };
+    }
+
+    &::before {
+      height: nth($logo-size, 1);
+      width: nth($logo-size, 2);
+      margin: -#{round-float(nth($logo-size, 1) / 2, 1)} -#{round-float(nth($logo-size, 2) / 2, 1)};
+      background: url(../../img/logo.png) no-repeat;
+      background-size: contain;
+
+      .header-is-top & {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      @include media("<tab") {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    &::after {
       height: nth($logo-short-size, 1);
+      width: nth($logo-short-size, 2);
+      margin: -#{round-float(nth($logo-short-size, 1) / 2 - 0.1, 1)} -#{round-float(nth($logo-short-size, 2) / 2 - 0.1, 1)};
+      background: url(../../img/logo-short.png) no-repeat;
+      background-size: contain;
+      opacity: 0;
+      pointer-events: none;
+
+      @include media("<tab") {
+        opacity: 1;
+        pointer-events: auto;
+        height: 100%;
+        width: 100%;
+      }
+
+      .header-is-top & {
+        opacity: 1;
+      }
+    }
+  }
+}
+/* logo end */
+
+/* search field */
+.searchicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: $header-btn-width * 0;
+  top: 0;
+  padding: 0.5rem;
+  height: 100%;
+  width: $header-btn-width;
+  color: $base-color-light;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 $base-color;
+  transition: box-shadow $animation-speed;
+
+  &::after {
+    opacity: 0;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    $size: 2.4rem;
+    height: $size;
+    width: $size;
+    margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)};
+    background: url(../../img/icon-cross-light.svg) no-repeat center;
+    background-size: 2.4rem;
+  }
+
+  svg {
+    $size: 2.4rem;
+    @include size($size);
+    display: inline-block;
+    will-change: opacity;
+    transition: opacity $animation-speed;
+
+    path {
+      fill: currentColor;
+    }
+  }
+
+  .no-touchevents &:hover {
+    box-shadow: inset 0 -0.2rem 0 $base-color;
+  }
+
+  &.active {
+    &::after {
+      opacity: 1;
+    }
+
+    svg {
+      opacity: 0;
     }
   }
 }
 
-/* logo end */
+.searchform {
+  position: absolute;
+  right: $header-btn-width;
+  top: 0;
+  height: 100%;
+  width: 32rem;
+  background-color: $bg-color-dark;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity $animation-speed, transform $animation-speed;
+  $translate: $header-btn-width, 0;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+
+  @include media('<mob-s') {
+    width: 27rem;
+  }
+
+  @include media('<mob-xs') {
+    width: 23rem;
+  }
+
+  form, fieldset {
+    display: block;
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  fieldset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: $header-btn-width;
+  }
+
+  [type="text"], [type="search"] {
+    $height: 5rem;
+    display: block;
+    width: 100%;
+    height: $height;
+    margin: 0;
+    padding: 0 1.2rem;
+    border: solid $bg-color-dark;
+    border-width: 2px 0 2px 2px;
+    background-color: $base-color-light;
+    box-shadow: none;
+    @include font-normal;
+    font-size: 2.0rem;
+    line-height: $height;
+    color: $text-color;
+
+    @include placeholder {
+      color: tint($text-color, 60%);
+    }
+  }
+
+  button {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    height: 100%;
+    width: $header-btn-width;
+    font-size: 0;
+    line-height: 0;
+    cursor: pointer;
+    background: $bg-color-dark url(../../img/icon-magnifier.svg) no-repeat center;
+    background-size: 2.4rem;
+    box-shadow: inset 0 0 0 $base-color;
+    transition: box-shadow $animation-speed;
+
+    .no-touchevents &:hover {
+      box-shadow: inset 0 -0.2rem 0 $base-color;
+    }
+  }
+
+  // Active state
+  &.active {
+    pointer-events: auto;
+    opacity: 1;
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+}
+/* search field end */
+
+/* lang */
+.lang {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: $header-btn-width * 1;
+  top: 0;
+  height: 100%;
+  cursor: default;
+
+  a, & > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0.5rem 0.4rem;
+    font-size: 2rem;
+    line-height: 1.25;
+    text-decoration: none;
+  }
+
+  a {
+    color: $base-color-light;
+    box-shadow: inset 0 0 0 $base-color;
+    transition: box-shadow $animation-speed;
+
+    .no-touchevents &:hover {
+      box-shadow: inset 0 -0.2rem 0 $base-color;
+    }
+  }
+
+  & > span {
+    color: $link-color;
+    cursor: default;
+  }
+}
+/* lang end */
+
+/* h-mail */
+.h-mail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 12rem;
+  top: 0;
+  padding: 0.5rem;
+  height: 100%;
+  width: $header-btn-width;
+  color: $base-color-light;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 $base-color;
+  transition: box-shadow $animation-speed;
+
+  svg {
+    $size: 2.4rem;
+    @include size($size);
+    display: inline-block;
+
+    path {
+      fill: currentColor;
+    }
+  }
+
+  .no-touchevents &:hover {
+    box-shadow: inset 0 -0.2rem 0 $base-color;
+  }
+}
+/* h-mail end */
 
 /* ==================================== */
 /* ============ NAVIGATION ============ */
 /* ==================================== */
+/* navigation */
 .nav-wrap, .nav-footer {
   &::before {
     position: absolute;
@@ -358,7 +598,7 @@
     align-items: center;
     height: $header-height;
     @include font-size(2.4rem, round-float(30 / 24, 2));
-    color: #e7dad2;
+    color: $base-color-light;
     text-decoration: none;
     @include media("<desk-s") {
       @include padding-horizontal(15px);
@@ -396,7 +636,7 @@
   li.current {
     a {
       color: white;
-      background-color: #c4161c;
+      background-color: $base-color;
       @include media("<tab") {
         background-color: transparent;
         color: $base-color;
@@ -418,6 +658,160 @@
     border-top-width: 1px;
   }
 }
+/* navigation end */
+
+/* button toggle menu */
+.btn-menu {
+  $btn-menu-bg: transparent;
+  $btn-menu-color: $base-color-light;
+  $btn-menu-lines-width: 24px;
+  $btn-menu-lines-height: 3px;
+  $btn-menu-lines-space: 5px;
+  $btn-menu-lines-color: currentColor;
+  $btn-menu-animation-speed: $animation-speed;
+  $btn-menu-animation-delay: round-float($animation-speed * 0.5, 2);
+  $user-options-cross-width: $btn-menu-lines-width;
+  $user-options-cross-height: $btn-menu-lines-height;
+  $user-options-cross-color: $btn-menu-color;
+  // =====================
+  display: none;
+  @include size($header-height);
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-decoration: none;
+  color: $btn-menu-color;
+  background-color: $btn-menu-bg;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 99;
+  transition: {
+    property: background-color;
+    duration: $animation-speed;
+  };
+  @include media("<tab") {
+    display: block;
+  }
+
+  .touchevents & {
+    // убрать подсветку при клике на тачскринах
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  & > span {
+    @include hide-text;
+    white-space: normal;
+  }
+
+  // крест
+  &::before, &::after {
+    @include pseudo;
+    @include size($user-options-cross-width, $user-options-cross-height);
+    background-color: $user-options-cross-color;
+    @include position(50%);
+    @include margin($top: -#{round($user-options-cross-height * 0.5)}, $left: -#{round($user-options-cross-width * 0.5)});
+    will-change: opacity, transform;
+    opacity: 0;
+    transition: {
+      property: transform, opacity;
+      duration: $btn-menu-animation-speed;
+      delay: 0s;
+      timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+    };
+  }
+
+  // бутерброд
+  & > i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include size(13px, $btn-menu-lines-height);
+    background-color: $btn-menu-lines-color;
+    @include margin($top: -#{round($btn-menu-lines-height * 0.5)}, $left: -#{round($btn-menu-lines-width * 0.5)});
+    border-radius: $btn-menu-lines-height;
+    backface-visibility: hidden;
+    transition: {
+      property: opacity;
+      duration: $btn-menu-animation-speed;
+      delay: $btn-menu-animation-delay;
+    };
+
+    &::before, &::after {
+      @include pseudo;
+      left: 0;
+      @include size($btn-menu-lines-width, $btn-menu-lines-height);
+      border-radius: $btn-menu-lines-height;
+      background-color: $btn-menu-lines-color;
+      backface-visibility: hidden;
+      transition: {
+        property: transform;
+        duration: $btn-menu-animation-speed;
+        delay: $btn-menu-animation-delay;
+      };
+    }
+
+    //first line menu
+    &::before {
+      top: -#{$btn-menu-lines-height + $btn-menu-lines-space};
+    }
+
+    //third line menu
+    &::after {
+      transform: scale(round-float(18 / 24, 2), 1);
+      transform-origin: left center;
+      top: #{$btn-menu-lines-height + $btn-menu-lines-space};
+    }
+  }
+
+  // hover
+  .no-touchevents &:hover {
+    box-shadow: inset 0 -2px 0 $base-color;
+  }
+
+  // active
+  &.active {
+    &::before, &::after {
+      transition-delay: $btn-menu-animation-delay;
+      opacity: 1;
+    }
+
+    &::before {
+      transform: rotate(45deg) translateZ(0);
+    }
+
+    &::after {
+      transform: rotate(-45deg) translateZ(0);
+    }
+
+    & > i {
+      opacity: 0;
+      transition-delay: 0s;
+
+      &::before, &::after {
+        transition-delay: 0s;
+      }
+
+      &::before {
+        transform: translate(0, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0);
+      }
+
+      &::after {
+        transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0);
+      }
+    }
+
+    //.no-touchevents &:hover {
+    //  box-shadow: none;
+    //
+    //  &::before, &::after {
+    //    background-color: $base-color;
+    //  }
+    //}
+  }
+}
+
+/* button toggle menu end */
 
 /* ==================================== */
 /* ============= FOOTER =============== */
@@ -1202,8 +1596,6 @@
     width: 100%;
   }
 }
-
-
 /* product end */
 
 /* scene */
@@ -1258,7 +1650,6 @@
     }
   }
 }
-
 /* scene end */
 
 /* slider arrow */
@@ -1269,7 +1660,8 @@
   height: 48px;
   width: 48px;
   background: url(../../img/carousel-arr.png) no-repeat;
-  margin: (-24px) 0 0;
+  background-size: 116px 116px;
+  margin: -24px 0 0;
   padding: 0;
   border: none;
   user-select: none;
@@ -1278,6 +1670,13 @@
   overflow: hidden;
   cursor: pointer;
   outline: none;
+
+  @include media('<mob') {
+    height: 2.4rem;
+    width: 2.4rem;
+    margin: -1.2rem 0 0;
+    background-size: 58px 58px;
+  }
 
   &:active {
     transform: scale(0.96);
@@ -1291,6 +1690,14 @@
   &:hover {
     background-position: 0 -68px;
   }
+
+  @include media('<mob') {
+    left: 1rem;
+
+    &:hover {
+      background-position: 0 -34px;
+    }
+  }
 }
 
 .swiper-button-next {
@@ -1300,8 +1707,16 @@
   &:hover {
     background-position: -68px -68px;
   }
-}
 
+  @include media('<mob') {
+    right: 1rem;
+    background-position: -34px 0;
+
+    &:hover {
+      background-position: -34px -34px;
+    }
+  }
+}
 /* slider arrow end */
 
 /* promo slider */
@@ -1320,8 +1735,8 @@
   border-radius: 10px;
   //border: 4px solid #e9cd78
   background-color: white;
-  border: 1px solid #e9cd78;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #e9cd78;
+  border: 1px solid #{nth($frame-color, 1)};
+  box-shadow: 0 0 0 3px #{nth($frame-color, 2)}, 0 0 0 4px #{nth($frame-color, 3)}, 0 15px 10px -10px #{nth($frame-color, 4)};
   &.swiper-container-horizontal {
     margin-bottom: 0;
   }
@@ -1351,12 +1766,19 @@
   }
   .swiper-button-prev {
     left: 30px;
+
+    @include media('<mob') {
+      left: 1rem;
+    }
   }
   .swiper-button-next {
     right: 30px;
+
+    @include media('<mob') {
+      right: 1rem;
+    }
   }
 }
-
 /* promo slider end */
 
 /* footer news */
@@ -1453,6 +1875,109 @@
   }
 }
 /* footer news end */
+
+/* previews news */
+.p-news {
+  margin: 0 auto 3rem;
+  position: relative;
+  min-height: 25.9rem;
+  width: 97.7rem;
+  max-width: 100%;
+  padding: 2rem 4rem 5rem;
+  background: url("../../i/footer-news.png") no-repeat 0 0;
+  background-size: 100% 100%;
+
+  @include media("<tab") {
+    background: #fff;
+    border: 1px solid #{nth($frame-color, 1)};
+    box-shadow: 0 0 0 3px #{nth($frame-color, 2)}, 0 0 0 4px #{nth($frame-color, 3)}, 0 15px 10px -10px #{nth($frame-color, 4)};
+    border-radius: 1rem;
+    padding: $grid-space;
+  }
+
+  @include media("<tab-s") {
+    padding: $grid-space--tab;
+  }
+
+  @include media("<mob") {
+    padding: $grid-space--mob;
+  }
+}
+
+.p-news__title {
+  text-align: center;
+  color: $title-color-alt;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 0 #fff, 2px 2px 0 #{tint($title-color-alt, 50%)};
+}
+
+$p-news-space: 2rem 2rem;
+$p-news-horizontal-space: round-float(nth($p-news-space, 2) / 2, 1);
+.p-news__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -#{$p-news-horizontal-space};
+}
+
+.p-news__item {
+  flex-grow: 1;
+  flex-shrink: 0;
+  $width: 25%;
+  flex-basis: $width;
+  max-width: $width;
+  padding: 0 #{$p-news-horizontal-space} #{nth($p-news-space, 1)};
+
+  @include media('<tab-s') {
+    $width: 50%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+
+  @include media('<mob-s') {
+    $width: 100%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+}
+
+.p-news__inner {
+  text-decoration: none;
+  color: inherit;
+}
+
+.p-news__date {
+  display: block;
+  font-size: 1.6rem;
+  line-height: 2.0rem;
+  margin-bottom: 1rem;
+  color: $base-color;
+}
+
+.p-news__text {
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+
+  a:hover & {
+    text-decoration: underline;
+  }
+}
+
+.p-news__footer {
+  text-align: center;
+
+  a {
+    text-decoration: underline;
+    color: $link-color;
+    font-size: 2.0rem;
+    line-height: 2.8rem;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* previews news end */
 
 /* footer slider */
 .footerSlider {
@@ -1648,21 +2173,20 @@
 
 /* b-legend */
 .b-legend {
-  //font: 15px/1.4 Cambria, "CambriaRegularWebfont", "Times New Roman"
-  font-size: 15px;
-  line-height: 1.4;
-  color: #7d5822;
-  padding: 0 50px 30px;
-  @include media("<tab") {
-    padding: 0;
-    margin-bottom: 30px;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 2.0rem;
+  line-height: 2.8rem;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 /* b-legend end */
 
 /* b-prlist */
 .b-prlist {
-  padding-bottom: 20px;
+  //padding-bottom: 20px;
 
   a {
     text-decoration: none;
@@ -1678,7 +2202,7 @@
     width: calc(100% - 50px);
     table-layout: fixed;
     border-top: 1px dotted #ddcba9;
-    border-bottom: 1px dotted #ddcba9;
+    //border-bottom: 1px dotted #ddcba9;
     margin: 0 auto;
 
     @include media("<tab") {
@@ -1686,13 +2210,13 @@
       flex-wrap: wrap;
       width: auto;
       margin: 0 -10px;
-      padding: #{round-float(nth($grid-space, 1) / 2, 1)} 0;
+      padding: #{round-float(nth($grid-space, 1) / 2, 1)} 0 0;
     }
   }
 
   li {
     display: table-cell;
-    padding: 30px 5px 20px 5px;
+    padding: 30px 5px 20px;
 
     @include media("<tab") {
       display: block;
@@ -1714,18 +2238,24 @@
     display: block;
     float: left;
     border-radius: 7px;
-    border: 2px solid #e9cd78;
     padding: 3px;
-    margin-right: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    margin-right: 1rem;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #{nth($frame-color, 1)};
+    box-shadow: 0 0 0 2px #{nth($frame-color, 2)}, 0 0 0 3px #{nth($frame-color, 3)}, 0 10px 5px -5px #{nth($frame-color, 4)};
+
+    @include media('<mob-s') {
+      float: none;
+      margin: 0 0 1rem;
+    }
   }
 
   i {
     display: block;
-    width: 40px;
-    height: 40px;
+    height: 100%;
+    width: 100%;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     -webkit-background-size: contain;
@@ -1736,9 +2266,9 @@
     display: block;
     overflow: hidden;
     color: #7d5822;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 16px;
+    @include font-normal;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
   }
 
   li a {
@@ -1746,3 +2276,61 @@
   }
 }
 /* b-prlist end */
+
+/* banners */
+.banners {
+  overflow: hidden;
+  width: calc(100% - 5rem);
+  margin: 0 auto 2rem;
+  padding: 3px;
+
+  @include media('<tab') {
+    width: auto;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.banners-list{
+  margin: 0 -10px;
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: -4px;
+}
+
+.banners-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 33.33%;
+  padding: 0 1rem 2rem;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: normal;
+
+  @include media('<mob') {
+    width: 100%;
+  }
+
+  a {
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    border: 1px solid #{nth($frame-color, 1)};
+    box-shadow: 0 0 0 3px #{nth($frame-color, 2)}, 0 0 0 4px #{nth($frame-color, 3)}, 0 15px 10px -10px #{nth($frame-color, 4)};
+    border-radius: 0.8rem;
+    box-sizing: border-box;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+
+/* banners end */

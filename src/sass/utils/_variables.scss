@@ -184,12 +184,15 @@ $base-color-light: #e7dad2 !default;
 // ----------------------------------------------------
 $bg-color: #d4c0b3 !default;
 $bg-color-alt: #f3f3f3 !default;
+$bg-color-dark: #403b38 !default;
 // ----------------------------------------------------
 $text-color: #403b38 !default;
+$text-color-alt: #7d5822 !default;
 $text-color-muted: #6c757d !default;
 $text-color-light: #ccc !default;
 // ----------------------------------------------------
 $title-color: #403b38 !default;
+$title-color-alt: #ad813d !default;
 // ----------------------------------------------------
 $link-color: #c4161c !default;
 $focus-color: #0080ff !default;
@@ -197,6 +200,8 @@ $focus-color: #0080ff !default;
 $border-color: #d3d3d3 !default;
 // ----------------------------------------------------
 $mark-color: #fd0cff !default;
+// ----------------------------------------------------
+$frame-color: #e9cd78, #fff, #cea21d, #ab7222 !default;
 // ----------------------------------------------------
 $success-color: #28a745 !default;
 $error-color: #dc3545 !default;
@@ -244,7 +249,7 @@ $layout-flood-width: 100rem !default;
 // Внутренние отступы
 $grid-space: 2.8rem 3rem !default;
 $grid-space--tab: 1.8rem 2rem !default;
-$grid-space--mob: 0.8rem 1rem !default;
+$grid-space--mob: 1.2rem 1rem !default;
 
 
 // отступы в дефолтных списках
@@ -256,6 +261,9 @@ $list-space: 30px;
 $header-height: 5rem;
 $logo-size: 12rem 15.1rem;
 $logo-short-size: 3.7rem 13.9rem;
+$logo-short-size--mob: 2.7rem 10rem;
+// ----------------------------------------------------
+$header-btn-width: 4rem;
 
 
 // Footer

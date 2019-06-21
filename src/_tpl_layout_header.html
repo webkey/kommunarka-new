@@ -6,7 +6,7 @@
         <strong class="logo">
           @@if(context.currentItem === "Главная"){<span>Кондитерская фабрика «Коммунарка»</span>}
           @@if(context.currentItem !== "Главная"){<a href="index.html" title="Перейти на главную">Кондитерская фабрика «Коммунарка»</a>}
-          <img style="display: none;" src="img/logo.png" alt="Print version logotype"> <img style="display: none;" src="img/logo.png" alt="">
+          <img style="display: none;" src="img/logo.png" alt="Print version logotype">
         </strong>
         <!--logo end-->
 
@@ -19,26 +19,33 @@
         </div>
         <!--navigation end-->
 
-        <!--search form-->
-        <div class="searchicon"><!-- --></div>
-        <div class="searchform">
-          <form action="http://www.kommunarka.by/search/">
-            <fieldset><input type="text" name="searchtext" value="поиск"><button>Искать</button></fieldset>
-          </form>
-        </div>
-        <!--search form end-->
-
         <!--mailto-->
-        <a href="mailto:info@kommunarka.by" class="mailLink mailLink-header"></a>
+        <a href="mailto:info@kommunarka.by" class="h-mail" title="Напишите нам">
+          @@include("includes/svg/icon-email.svg")
+        </a>
         <!--mailto end-->
 
         <!--lang-->
         <div class="lang">
-          <a href="http://eng.kommunarka.by/">EN</a>
+          <a href="http://eng.kommunarka.by/" title="English">EN</a>
           <span>RU</span>
-          <a href="http://ch.kommunarka.by/">CH</a>
+          <a href="http://ch.kommunarka.by/" title="Chinese">CH</a>
         </div>
         <!--lang end-->
+
+        <!--search form-->
+        <a href="javascript:void(0)" class="searchicon searchicon-js">
+          @@include("includes/svg/icon-magnifier.svg")
+        </a>
+        <div class="searchform searchform-js">
+          <form action="http://www.kommunarka.by/search/">
+            <fieldset>
+              <input type="text" name="searchtext" placeholder="Поиск..." class="searchform-input-js">
+              <button>Искать</button>
+            </fieldset>
+          </form>
+        </div>
+        <!--search form end-->
       </div>
     </div>
   </div>

@@ -35,7 +35,7 @@ var gulp = require('gulp')
  * @type {{dist: string}}
  */
 var path = {
-  'dist': '1'
+  'dist': 'new'
 };
 
 /**
@@ -227,6 +227,17 @@ gulp.task('copyImgToDist', function () {
       })))
       .pipe(gulp.dest(path.dist + '/img'));
 });
+gulp.task('copyIToDist', function () {
+  return gulp.src('src/i/**/*')
+      .pipe(cache(imagemin({
+        interlaced: true,
+        progressive: true,
+        // svgoPlugins: [{removeViewBox: false}],
+        optimizationLevel: 7, //степень сжатия от 0 до 7
+        use: [pngquant()]
+      })))
+      .pipe(gulp.dest(path.dist + '/i'));
+});
 
 /**
  * @description Таск для компиляции sass файлов без мапинга. Специально для релизной версии
@@ -254,7 +265,7 @@ gulp.task('sassCompilationForDist', function () {
 /**
  * @description Перенос файлов в папку релиза
  */
-gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'sassCompilationForDist', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
+gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'copyIToDist', 'sassCompilationForDist', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
   gulp.src(['src/ajax/**/*'])
       .pipe(gulp.dest(path.dist + '/ajax'));
