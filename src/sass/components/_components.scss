@@ -2331,6 +2331,370 @@ $p-news-horizontal-space: round-float(nth($p-news-space, 2) / 2, 1);
     box-sizing: border-box;
   }
 }
-
-
 /* banners end */
+
+/* catalog shutter */
+$catalog-shutter-header-height: 10rem;
+$catalog-shutter-header-height--lap: 8rem;
+$catalog-shutter-header-height--tab: 6rem;
+$catalog-shutter-header-height--mob: 4rem;
+
+.catalog-shutter {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  $translate: -50%, 0;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+  $prop: transform, opacity;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: $animation-speed;
+  };
+
+  &.catalog-is-open {
+    opacity: 1;
+    pointer-events: auto;
+    user-select: auto;
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+}
+
+.catalog-shutter__layout {
+  height: 100%;
+}
+
+.catalog-shutter__header {
+  position: relative;
+  height: $catalog-shutter-header-height;
+  //border-bottom: 5px solid $bg-color-dark;
+  background-color: $bg-color-dark;
+  box-shadow: 0 2px 10px rgba($bg-color-dark, 0.3);
+  z-index: 5;
+
+  @include media('<lap-l') {
+    height: $catalog-shutter-header-height--lap;
+  }
+
+  @include media('<tab-s') {
+    height: $catalog-shutter-header-height--tab;
+  }
+
+  @include media('<mob') {
+    height: $catalog-shutter-header-height--mob;
+  }
+}
+
+.catalog-nav-tabs-thumbs {
+  display: flex;
+  height: 100%;
+  padding-right: $catalog-shutter-header-height;
+
+  @include media('<lap-l') {
+    padding-right: $catalog-shutter-header-height--lap;
+  }
+
+  @include media('<tab-s') {
+    padding-right: $catalog-shutter-header-height--tab;
+  }
+
+  @include media('<mob') {
+    padding-right: $catalog-shutter-header-height--mob;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 0;
+    flex-shrink: 1;
+    $width: 50%;
+    flex-basis: $width;
+    max-width: $width;
+    height: 100%;
+    padding: 2rem 4rem;
+    font-size: 4.8rem;
+    line-height: 5.6rem;
+    color: $text-color-light;
+    text-decoration: none;
+    box-shadow: inset 0 0 0 $base-color;
+    transition: box-shadow $animation-speed, color $animation-speed;
+
+    @include media('<lap-l') {
+      font-size: 4.2rem;
+      line-height: 5.0rem;
+      padding: 1rem 2.5rem;
+    }
+
+    @include media('<tab-s') {
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+      padding: 0.5rem 2rem;
+    }
+
+    @include media('<mob') {
+      font-size: 2.0rem;
+      line-height: 2.0rem;
+      padding: 0.5rem 1rem;
+    }
+
+    &:hover {
+      box-shadow: inset 0 -0.6rem 0 $base-color;
+    }
+
+    &.current {
+      box-shadow: inset 0 -#{$catalog-shutter-header-height} 0 $base-color;
+      color: #fff;
+      cursor: default;
+
+      @include media('<lap-l') {
+        box-shadow: inset 0 -#{$catalog-shutter-header-height--lap} 0 $base-color;
+      }
+
+      @include media('<tab-s') {
+        box-shadow: inset 0 -#{$catalog-shutter-header-height--tab} 0 $base-color;
+      }
+
+      @include media('<mob') {
+        box-shadow: inset 0 -#{$catalog-shutter-header-height--mob} 0 $base-color;
+      }
+    }
+  }
+}
+
+.catalog-shutter-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $catalog-shutter-header-height;
+  font-size: 0;
+  line-height: 0;
+  background: url(../../img/icon-cross-light.svg) no-repeat center;
+  background-size: 60%;
+  box-shadow: inset 0 0 0 $base-color;
+  transition: box-shadow $animation-speed;
+
+  @include media('<lap-l') {
+    width: $catalog-shutter-header-height--lap;
+  }
+
+  @include media('<tab-s') {
+    width: $catalog-shutter-header-height--tab;
+  }
+
+  @include media('<mob') {
+    width: $catalog-shutter-header-height--mob;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    @include ratio(1, 1);
+  }
+
+  .no-touchevents &:hover {
+    box-shadow: inset 0 -0.6rem 0 $base-color;
+  }
+}
+
+.catalog-shutter__body {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  height: calc(100% - #{$catalog-shutter-header-height});
+
+  @include media('<lap-l') {
+    height: calc(100% - #{$catalog-shutter-header-height--lap});
+  }
+
+  @include media('<tab-s') {
+    height: calc(100% - #{$catalog-shutter-header-height--tab});
+  }
+
+  @include media('<mob') {
+    height: calc(100% - #{$catalog-shutter-header-height--mob});
+  }
+}
+
+// catalog navigation
+.catalog-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.catalog-nav__item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 0;
+  flex-shrink: 1;
+  $width: 50%;
+  flex-basis: $width;
+  max-width: $width;
+  min-height: 25%;
+  padding: 5rem 4rem;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: -1000% -1000%;
+  transition: background-color 0.8s;
+
+  @include media('<lap-l') {
+    padding: 3rem 2.5rem;
+  }
+
+  @include media('<net') {
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 0;
+  }
+
+  @include media('<tab-s') {
+    padding: 2.5rem 2rem;
+  }
+
+  @include media('<mob') {
+    padding: 1rem 1rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: inherit;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0;
+    $translate: -2%, -2%;
+    $scale: 0.85, 0.85;
+    transform: translate($translate) scale($scale);
+    transform: translate3d($translate, 0) scale3d($scale, 1);
+    $prop: transform, opacity;
+    will-change: $prop;
+    transition: {
+      property: $prop;
+      duration: 0.8s;
+    };
+  }
+
+  &:hover {
+    background-color: $base-color;
+    transition-duration: 0.4s;
+
+    &:before {
+      opacity: 0.7;
+      $translate: 0, 0;
+      $scale: 1.2, 1.2;
+      transform: translate($translate) scale($scale);
+      transform: translate3d($translate, 0) scale3d($scale, 1);
+    }
+  }
+}
+
+.catalog-nav__list {
+  position: relative;
+  width: 42rem;
+  max-width: 100%;
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+
+  @include media('<lap-l') {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
+
+  @include media('<tab-s') {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+    box-shadow: inset 0 0 0 currentColor;
+    transition: box-shadow $animation-speed, color 0.35s;
+
+    &:hover {
+      color: $link-color;
+    }
+
+    .catalog-nav__item:hover &{
+      color: #fff;
+
+      &:hover {
+        box-shadow: inset 0 -2px 0 currentColor;
+      }
+    }
+  }
+
+  & > li > a {
+    font-size: 4.8rem;
+    line-height: 5.6rem;
+
+    @include media('<lap-l') {
+      font-size: 4.2rem;
+      line-height: 5.0rem;
+    }
+
+    @include media('<lap-l') {
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+    }
+
+    @include media('<mob') {
+      font-size: 2.4rem;
+      line-height: 2.4rem;
+    }
+  }
+
+  & > li > ul {
+    margin-top: 1rem;
+  }
+
+  & > li > ul li {
+    margin-top: 1rem;
+  }
+}
+
+
+// catalog overlay
+.catalog-shutter-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9900;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  background-color: rgba(#000, 0.5);
+  will-change: opacity;
+  transition: opacity $animation-speed;
+
+  &.catalog-is-open {
+    opacity: 1;
+  }
+}
+
+/* catalog shutter end */
