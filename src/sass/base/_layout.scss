@@ -79,7 +79,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: 86px;
+  padding-top: 4rem;
   @include media("<tab") {
     padding-top: 0;
 }

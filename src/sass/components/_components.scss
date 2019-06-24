@@ -950,17 +950,14 @@
 
 .main {
   position: relative;
-  @include padding-vertical(75px, 50px);
-  @include media("<tab") {
-    @include padding-vertical(50px, 40px);
-  }
+  @include padding-vertical(4rem, 4rem);
 
-  @include media("<tab-s") {
-    @include padding-vertical(40px);
+  @include media("<tab") {
+    @include padding-vertical(4rem, 4rem);
   }
 
   @include media("<mob") {
-    @include padding-vertical(30px);
+    @include padding-vertical(3rem);
   }
 
   .sep-page & {
@@ -1737,6 +1734,7 @@
   background-color: white;
   border: 1px solid #{nth($frame-color, 1)};
   box-shadow: 0 0 0 3px #{nth($frame-color, 2)}, 0 0 0 4px #{nth($frame-color, 3)}, 0 15px 10px -10px #{nth($frame-color, 4)};
+
   &.swiper-container-horizontal {
     margin-bottom: 0;
   }
@@ -1756,14 +1754,30 @@
     box-sizing: border-box;
     overflow: hidden;
   }
+
   a {
     display: block;
     text-decoration: none;
     color: currentColor;
+
+    &::after {
+      content: "";
+      display: block;
+      @include ratio(15, 7);
+    }
   }
+
   img {
+    display: block;
+    max-width: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
     width: 100%;
+    @include object-fit(cover);
   }
+
   .swiper-button-prev {
     left: 30px;
 
@@ -1771,6 +1785,7 @@
       left: 1rem;
     }
   }
+
   .swiper-button-next {
     right: 30px;
 
@@ -2490,10 +2505,11 @@ $catalog-shutter-header-height--mob: 4rem;
 .catalog-shutter__header {
   position: relative;
   height: $catalog-shutter-header-height;
-  //border-bottom: 5px solid $bg-color-dark;
+  border-bottom: 10px solid $base-color;
   background-color: $bg-color-dark;
   box-shadow: 0 2px 10px rgba($bg-color-dark, 0.3);
   z-index: 5;
+  box-sizing: content-box;
 
   @include media('<lap-l') {
     height: $catalog-shutter-header-height--lap;
@@ -2501,10 +2517,12 @@ $catalog-shutter-header-height--mob: 4rem;
 
   @include media('<tab-s') {
     height: $catalog-shutter-header-height--tab;
+    border-bottom-width: 6px;
   }
 
   @include media('<mob') {
     height: $catalog-shutter-header-height--mob;
+    border-bottom-width: 4px;
   }
 }
 
@@ -2561,6 +2579,10 @@ $catalog-shutter-header-height--mob: 4rem;
       padding: 0.5rem 1rem;
     }
 
+    span {
+      border-bottom: 2px dashed currentColor;
+    }
+
     &:hover {
       box-shadow: inset 0 -0.6rem 0 $base-color;
     }
@@ -2569,6 +2591,10 @@ $catalog-shutter-header-height--mob: 4rem;
       box-shadow: inset 0 -#{$catalog-shutter-header-height} 0 $base-color;
       color: #fff;
       cursor: default;
+
+      span {
+        border-bottom: 2px dashed transparent;
+      }
 
       @include media('<lap-l') {
         box-shadow: inset 0 -#{$catalog-shutter-header-height--lap} 0 $base-color;
@@ -2657,7 +2683,7 @@ $catalog-shutter-header-height--mob: 4rem;
   justify-content: center;
   flex-grow: 0;
   flex-shrink: 1;
-  $width: 50%;
+  $width: 33.33%;
   flex-basis: $width;
   max-width: $width;
   min-height: 25%;
@@ -2669,6 +2695,12 @@ $catalog-shutter-header-height--mob: 4rem;
 
   &:not(:hover) {
     background-color: transparent !important  ;
+  }
+
+  @include media('<=desk') {
+    $width: 50%;
+    flex-basis: $width;
+    max-width: $width;
   }
 
   @include media('<lap-l') {
