@@ -1,0 +1,15 @@
+<div class="breadcrumbs layout-text">
+  <ul itemscope itemtype="http://schema.org/BreadcrumbList" class="breadcrumbs__list">
+    @@for (var i = 0; i < items.length; i++) {
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a itemprop="item" href="#" title="Перейти в раздел `+items[i]+`">
+        <span itemprop="name">`+items[i]+`</span>
+        <meta itemprop="position" content="`+i+`" />
+      </a>
+    </li>
+    }
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <span itemprop="name">@@if(context.last){@@last}@@if(!context.last){Название раздела}</span>
+    </li>
+  </ul>
+</div>

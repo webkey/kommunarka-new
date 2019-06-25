@@ -151,6 +151,91 @@
 }
 /* btn-to-top end */
 
+/* breadcrumbs */
+.breadcrumbs {
+  margin-bottom: 2rem;
+  padding: 0 #{nth($grid-space, 2)};
+
+  @include media("<lap-s") {
+    padding: 0 #{nth($grid-space--tab, 2)};
+  }
+
+  @include media("<mob") {
+    padding: 0 #{nth($grid-space--mob, 2)};
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .content-inner & {
+    padding: 0;
+  }
+}
+
+.breadcrumbs__list {
+  cursor: default;
+  overflow: hidden;
+  @include font-normal;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+
+  &, .#{$article-content} & {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      padding: 0 10px 0 0;
+      margin: 0;
+
+      &::before, &:first-child::before {
+        content: none;
+      }
+    }
+  }
+
+  .layout-article & {
+    max-width: none;
+  }
+
+  li {
+    display: inline;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: relative;
+      display: inline-block;
+      vertical-align: baseline;
+      width: 5px;
+      height: 5px;
+      border: solid currentColor;
+      border-width: 1px 1px 0 0;
+      transform: rotate(45deg);
+      margin: (-1px) 0 1px 9px;
+    }
+
+    &:last-child::after {
+      content: none;
+    }
+  }
+
+  a {
+    padding-top: 0.5em;
+    color: $link-color;
+    text-decoration: none;
+    cursor: pointer;
+    $prop: color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* breadcrumbs end */
+
 /* ==================================== */
 /* ============== HEADER ============== */
 /* ==================================== */
@@ -1022,15 +1107,11 @@
 
 .content-inner {
   padding: $grid-space;
-  margin: 0 #{$aside-width} 0 #{$sidebar-width};
+  margin: 0 0 0 #{$sidebar-width};
   min-height: 32rem;
 
   @include media("<lap") {
-    margin: 0 #{$aside-min-width} 0 #{$sidebar-min-width};
-  }
-
-  @include media("<lap-s") {
-    margin-right: $aside-min-width--net;
+    margin: 0 0 0 #{$sidebar-min-width};
   }
 
   @include media("<tab") {
@@ -1058,24 +1139,142 @@
 
 // article nav
 .menu {
+  $menu-inner-space: 1.5rem 3rem;
+  $menu-inner-space--net: 2.5rem 3rem;
+  $menu-arrow-size: 4.2rem;
+  $menu-item-indent: 0.4;
+
   &, & ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    @include font-size(1.4rem, 1.8rem);
-    color: $text-color-light;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
   }
 
   ul {
+    flex-shrink: 1;
+    width: 100%;
+    flex-basis: 100%;
     display: none;
-    padding-top: 1.2rem;
   }
 
   li {
-    margin-top: 1.2rem;
-    padding-left: 2rem;
     cursor: default;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em 0 0;
+    padding-left: nth($menu-inner-space, 2);
 
+    &:first-child {
+      margin-top: 0.5em + $menu-item-indent;
+    }
+
+    &:last-child {
+      margin-bottom: 0em + $menu-item-indent;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color $animation-speed;
+    padding-right: 1rem;
+  }
+
+  li.has-sub {
+    & > a, & > span {
+      max-width: calc(100% - #{$menu-arrow-size});
+    }
+  }
+
+  & > li {
+    $elem: &;
+    border-bottom: 1px solid #{nth($frame-color, 1)};
+    padding: #{nth($menu-inner-space, 1)} 1rem #{nth($menu-inner-space, 1)} #{nth($menu-inner-space, 2)};
+    margin: 0;
+
+    &::before,
+    &:first-child::before {
+      content: none;
+    }
+
+    & > a, & > span {
+      display: block;
+      font-size: 2.2rem;
+      line-height: 2.8rem;
+      color: black;
+    }
+
+    & > ul {
+      & > li {
+        position: relative;
+
+        //&::before {
+        //  $size: 0.6rem;
+        //  content: "";
+        //  display: block;
+        //  position: absolute;
+        //  left: 0;
+        //  top: 0.5em;
+        //  width: $size;
+        //  height: $size;
+        //  background-color: currentColor;
+        //}
+
+        // 3 level
+        li {
+          font-size: 1.6rem;
+          line-height: 2.0rem;
+          position: relative;
+
+          &::before {
+            $size: 0.4rem;
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0.5em;
+            width: $size;
+            height: $size;
+            background-color: currentColor;
+          }
+        }
+      }
+    }
+  }
+
+  // Arrow
+  .menu-arr {
+    flex-shrink: 1;
+    font-size: 2.0rem;
+    line-height: $menu-arrow-size;
+    height: $menu-arrow-size;
+    width: $menu-arrow-size;
+    margin: -1rem 0;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    color: $text-color;
+    transition: color $animation-speed;
+    user-select: none;
+    outline: none;
+
+    .no-touchevents &:hover {
+      color: $link-color;
+    }
+
+    @at-root {
+      li.is-open > .menu-arr {
+        transform: rotate(0.5turn);
+      }
+    }
+  }
+
+  // Current
+  li {
     &.current {
       & > ul {
         display: block;
@@ -1084,69 +1283,11 @@
       & > a, & > span {
         @include font-bold;
       }
-
-      & > span {
-        color: $base-color-light;
-      }
     }
   }
 
-  $articles-nav-first-inner-space: 3rem 4rem;
-  $articles-nav-first-inner-space--net: 2.5rem 3rem;
-
-  & > li {
-    border-top: 1px solid #{nth($frame-color, 1)};
-    padding: 0;
-    margin: 0;
-
-    &:first-child {
-      border-top: none;
-    }
-
-    & > a, & > span {
-      display: block;
-      padding: $articles-nav-first-inner-space;
-      font-size: 1.6rem;
-      line-height: 2.4rem;
-      color: black;
-      @include media("<lap-s") {
-        padding: $articles-nav-first-inner-space--net;
-      }
-    }
-
-    & > ul {
-      padding: 0 nth($articles-nav-first-inner-space, 2) nth($articles-nav-first-inner-space, 1);
-      @include media("<lap-s") {
-        padding: 0 nth($articles-nav-first-inner-space--net, 2) nth($articles-nav-first-inner-space--net, 1);
-      }
-
-      & > li {
-        position: relative;
-        padding-left: 2.4rem;
-        margin-top: 1.3rem;
-
-        &:first-child {
-          margin-top: 0;
-        }
-
-        &::before {
-          content: "";
-          display: block;
-          position: absolute;
-          left: 0;
-          top: 0.5em;
-          width: 1.4rem;
-          height: 0.2rem;
-        }
-      }
-    }
-  }
-
+  // Hover
   a {
-    color: inherit;
-    text-decoration: none;
-    transition: color $animation-speed;
-
     &:hover {
       color: $base-color;
     }

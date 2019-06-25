@@ -1271,7 +1271,7 @@ function initHoverClass() {
       if ($currentItem.has($(panel)).length) {
         e.preventDefault();
 
-        if ($currentHandler.next(panel).is(':visible')) {
+        if ($currentHandler.siblings(panel).is(':visible')) {
           self.closePanel($currentItem);
 
           return;
@@ -1310,7 +1310,7 @@ function initHoverClass() {
 
     $currentItem.addClass(self.modifiers.active);
 
-    $currentHandler.next(panel).slideDown(self._animateSpeed, function () {
+    $currentHandler.siblings(panel).slideDown(self._animateSpeed, function () {
       self.$container.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
     });
   };
@@ -1329,7 +1329,7 @@ function menuAccordionInit() {
       container: menuContainer,
       item: 'li',
       handler: '.menu-arr-js',
-      panel: $('.menu-arr-js').next(),
+      panel: 'ul',
       openClass: 'is-open',
       animateSpeed: 200,
       collapsible: false

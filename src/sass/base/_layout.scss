@@ -53,7 +53,7 @@ body {
 // Выравнивание основных элементов и их максимальная ширина
 .layout-page {
   max-width: $layout-page-max-width;
-  box-sizing: content-box;
+  //box-sizing: content-box;
   @include push-auto;
   @include media("<lap-s") {
     max-width: none;

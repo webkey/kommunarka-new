@@ -319,11 +319,8 @@ $header-btn-width: 4rem;
 
 // Sidebar & Aside
 // ==========================================================================
-$sidebar-min-width: 24rem !default;
-$sidebar-width: 19.3% !default;
-$aside-min-width: 20rem !default;
-$aside-min-width--net: 10rem !default;
-$aside-width: 16.1% !default;
+$sidebar-width: calc(20rem + 10%) !default;
+$sidebar-min-width: 30rem !default;
 
 
 // Footer

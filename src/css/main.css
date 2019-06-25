@@ -511,7 +511,6 @@ body {
 
 .layout-page {
   max-width: 192rem;
-  box-sizing: content-box;
   margin-right: auto;
   margin-left: auto;
 }
@@ -1254,40 +1253,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 /* btn-alt end */
-/* breadcrumbs */
-.breadcrumbs {
-  color: #ccc;
-  margin-bottom: 2.6rem;
-}
-
-.breadcrumbs:last-child {
-  margin-bottom: 0;
-}
-
-.breadcrumbs__list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  cursor: default;
-}
-
-.breadcrumbs__item {
-  display: inline;
-  padding-right: 0.6rem;
-  margin: 0;
-}
-
-.breadcrumbs__item::after {
-  display: inline;
-  content: "•";
-  padding-left: 0.7em;
-}
-
-.breadcrumbs__item:last-child::after {
-  content: none;
-}
-
-/* breadcrumbs end */
 /* helper classes */
 .mark {
   color: #fd0cff;
@@ -1454,6 +1419,94 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 /* btn-to-top end */
+/* breadcrumbs */
+.breadcrumbs {
+  margin-bottom: 2rem;
+  padding: 0 3rem;
+}
+
+@media (max-width: 1279px) {
+  .breadcrumbs {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .breadcrumbs {
+    padding: 0 1rem;
+  }
+}
+
+.breadcrumbs:last-child {
+  margin-bottom: 0;
+}
+
+.content-inner .breadcrumbs {
+  padding: 0;
+}
+
+.breadcrumbs__list {
+  cursor: default;
+  overflow: hidden;
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+}
+
+.breadcrumbs__list, .article-content .breadcrumbs__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.breadcrumbs__list li, .article-content .breadcrumbs__list li {
+  padding: 0 10px 0 0;
+  margin: 0;
+}
+
+.breadcrumbs__list li::before, .breadcrumbs__list li:first-child::before, .article-content .breadcrumbs__list li::before, .article-content .breadcrumbs__list li:first-child::before {
+  content: none;
+}
+
+.layout-article .breadcrumbs__list {
+  max-width: none;
+}
+
+.breadcrumbs__list li {
+  display: inline;
+  position: relative;
+}
+
+.breadcrumbs__list li::after {
+  content: "";
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  width: 5px;
+  height: 5px;
+  border: solid currentColor;
+  border-width: 1px 1px 0 0;
+  -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  margin: -1px 0 1px 9px;
+}
+
+.breadcrumbs__list li:last-child::after {
+  content: none;
+}
+
+.breadcrumbs__list a {
+  padding-top: 0.5em;
+  color: #c4161c;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.breadcrumbs__list a:hover {
+  text-decoration: underline;
+}
+
+/* breadcrumbs end */
 /* ==================================== */
 /* ============== HEADER ============== */
 /* ==================================== */
@@ -2413,7 +2466,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   content: "";
   display: block;
   position: absolute;
-  left: 19.3%;
+  left: calc(20rem + 10%);
   height: 100%;
   width: 0;
   border-right: 1px solid #d4c0b3;
@@ -2421,7 +2474,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 @media (max-width: 1279px) {
   .content-align::before {
-    left: 24rem;
+    left: 30rem;
   }
 }
 
@@ -2433,19 +2486,13 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 .content-inner {
   padding: 2.8rem 3rem;
-  margin: 0 16.1% 0 19.3%;
+  margin: 0 0 0 calc(20rem + 10%);
   min-height: 32rem;
 }
 
 @media (max-width: 1365px) {
   .content-inner {
-    margin: 0 20rem 0 24rem;
-  }
-}
-
-@media (max-width: 1279px) {
-  .content-inner {
-    margin-right: 10rem;
+    margin: 0 0 0 30rem;
   }
 }
 
@@ -2460,14 +2507,14 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   display: inline;
   float: left;
   margin: 0 0 0 -100%;
-  width: 19.3%;
+  width: calc(20rem + 10%);
   border-radius: 1rem;
   z-index: 1;
 }
 
 @media (max-width: 1279px) {
   .sidebar {
-    width: 24rem;
+    width: 30rem;
   }
 }
 
@@ -2481,20 +2528,117 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  color: #ccc;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
 }
 
 .menu ul {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  width: 100%;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   display: none;
-  padding-top: 1.2rem;
 }
 
 .menu li {
-  margin-top: 1.2rem;
-  padding-left: 2rem;
   cursor: default;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  margin: 0.5em 0 0;
+  padding-left: 3rem;
+}
+
+.menu li:first-child {
+  margin-top: 0.9em;
+}
+
+.menu li:last-child {
+  margin-bottom: 0.4em;
+}
+
+.menu a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+  padding-right: 1rem;
+}
+
+.menu li.has-sub > a, .menu li.has-sub > span {
+  max-width: calc(100% - 4.2rem);
+}
+
+.menu > li {
+  border-bottom: 1px solid #d4c0b3;
+  padding: 1.5rem 1rem 1.5rem 3rem;
+  margin: 0;
+}
+
+.menu > li::before, .menu > li:first-child::before {
+  content: none;
+}
+
+.menu > li > a, .menu > li > span {
+  display: block;
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+  color: black;
+}
+
+.menu > li > ul > li {
+  position: relative;
+}
+
+.menu > li > ul > li li {
+  font-size: 1.6rem;
+  line-height: 2.0rem;
+  position: relative;
+}
+
+.menu > li > ul > li li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: currentColor;
+}
+
+.menu .menu-arr {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  font-size: 2.0rem;
+  line-height: 4.2rem;
+  height: 4.2rem;
+  width: 4.2rem;
+  margin: -1rem 0;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+  color: #403b38;
+  transition: color 0.2s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  outline: none;
+}
+
+.no-touchevents .menu .menu-arr:hover {
+  color: #c4161c;
+}
+
+li.is-open > .menu-arr {
+  -ms-transform: rotate(0.5turn);
+      transform: rotate(0.5turn);
 }
 
 .menu li.current > ul {
@@ -2504,70 +2648,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 .menu li.current > a, .menu li.current > span {
   font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
   font-weight: normal;
-}
-
-.menu li.current > span {
-  color: #e7dad2;
-}
-
-.menu > li {
-  border-top: 1px solid #d4c0b3;
-  padding: 0;
-  margin: 0;
-}
-
-.menu > li:first-child {
-  border-top: none;
-}
-
-.menu > li > a, .menu > li > span {
-  display: block;
-  padding: 3rem 4rem;
-  font-size: 1.6rem;
-  line-height: 2.4rem;
-  color: black;
-}
-
-@media (max-width: 1279px) {
-  .menu > li > a, .menu > li > span {
-    padding: 2.5rem 3rem;
-  }
-}
-
-.menu > li > ul {
-  padding: 0 4rem 3rem;
-}
-
-@media (max-width: 1279px) {
-  .menu > li > ul {
-    padding: 0 3rem 2.5rem;
-  }
-}
-
-.menu > li > ul > li {
-  position: relative;
-  padding-left: 2.4rem;
-  margin-top: 1.3rem;
-}
-
-.menu > li > ul > li:first-child {
-  margin-top: 0;
-}
-
-.menu > li > ul > li::before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0.5em;
-  width: 1.4rem;
-  height: 0.2rem;
-}
-
-.menu a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s;
 }
 
 .menu a:hover {
