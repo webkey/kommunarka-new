@@ -591,7 +591,9 @@
       display: block;
     }
   }
-  a {
+
+  a,
+  li > span {
     padding: 10px 30px;
     display: block;
     display: flex;
@@ -600,6 +602,8 @@
     @include font-size(2.4rem, round-float(30 / 24, 2));
     color: $base-color-light;
     text-decoration: none;
+    transition: box-shadow $animation-speed;
+
     @include media("<desk-s") {
       @include padding-horizontal(15px);
     }
@@ -623,23 +627,38 @@
       height: auto;
     }
   }
+
   // hover
   .no-touchevents & {
     a:hover {
-      box-shadow: inset 0 -2px 0 $base-color;
+      box-shadow: inset 0 -4px 0 $base-color;
+
       @include media("<tab") {
         box-shadow: none;
       }
     }
   }
+
   // current
   li.current {
-    a {
+    & > a,
+    & > span {
       color: white;
       background-color: $base-color;
+
       @include media("<tab") {
         background-color: transparent;
         color: $base-color;
+      }
+    }
+
+    & > a {
+      .no-touchevents &:hover {
+        box-shadow: inset 0 -4px 0 $bg-color-dark;
+
+        @include media("<tab") {
+          box-shadow: none;
+        }
       }
     }
   }
@@ -950,10 +969,10 @@
 
 .main {
   position: relative;
-  @include padding-vertical(4rem, 4rem);
+  @include padding-vertical(6rem);
 
   @include media("<tab") {
-    @include padding-vertical(4rem, 4rem);
+    @include padding-vertical(4rem);
   }
 
   @include media("<mob") {
@@ -964,6 +983,176 @@
     padding: 0;
   }
 }
+
+/* page with sidebar */
+.content {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: $bg-color-light;
+  border: 1px solid #{nth($frame-color, 1)};
+  box-shadow: 0 0 0 2px #{nth($frame-color, 2)}, 0 0 0 3px #{nth($frame-color, 3)}, 0 10px 5px -5px #{nth($frame-color, 4)};
+
+  @include clear;
+}
+
+.content-align {
+  float: left;
+  width: 100%;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: $sidebar-width;
+    height: 100%;
+    width: 0;
+    border-right: 1px solid #{nth($frame-color, 1)};
+
+    @include media("<lap-s") {
+      left: $sidebar-min-width;
+    }
+
+    @include media("<tab") {
+      display: none;
+    }
+  }
+}
+
+.content-inner {
+  padding: $grid-space;
+  margin: 0 #{$aside-width} 0 #{$sidebar-width};
+  min-height: 32rem;
+
+  @include media("<lap") {
+    margin: 0 #{$aside-min-width} 0 #{$sidebar-min-width};
+  }
+
+  @include media("<lap-s") {
+    margin-right: $aside-min-width--net;
+  }
+
+  @include media("<tab") {
+    margin: 0;
+  }
+}
+
+.sidebar {
+  position: relative;
+  display: inline;
+  float: left;
+  margin: 0 0 0 -100%;
+  width: $sidebar-width;
+  border-radius: 1rem;
+  z-index: 1;
+
+  @include media("<lap-s") {
+    width: $sidebar-min-width;
+  }
+
+  @include media("<tab") {
+    display: none;
+  }
+}
+
+// article nav
+.menu {
+  &, & ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include font-size(1.4rem, 1.8rem);
+    color: $text-color-light;
+  }
+
+  ul {
+    display: none;
+    padding-top: 1.2rem;
+  }
+
+  li {
+    margin-top: 1.2rem;
+    padding-left: 2rem;
+    cursor: default;
+
+    &.current {
+      & > ul {
+        display: block;
+      }
+
+      & > a, & > span {
+        @include font-bold;
+      }
+
+      & > span {
+        color: $base-color-light;
+      }
+    }
+  }
+
+  $articles-nav-first-inner-space: 3rem 4rem;
+  $articles-nav-first-inner-space--net: 2.5rem 3rem;
+
+  & > li {
+    border-top: 1px solid #{nth($frame-color, 1)};
+    padding: 0;
+    margin: 0;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    & > a, & > span {
+      display: block;
+      padding: $articles-nav-first-inner-space;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      color: black;
+      @include media("<lap-s") {
+        padding: $articles-nav-first-inner-space--net;
+      }
+    }
+
+    & > ul {
+      padding: 0 nth($articles-nav-first-inner-space, 2) nth($articles-nav-first-inner-space, 1);
+      @include media("<lap-s") {
+        padding: 0 nth($articles-nav-first-inner-space--net, 2) nth($articles-nav-first-inner-space--net, 1);
+      }
+
+      & > li {
+        position: relative;
+        padding-left: 2.4rem;
+        margin-top: 1.3rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0.5em;
+          width: 1.4rem;
+          height: 0.2rem;
+        }
+      }
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color $animation-speed;
+
+    &:hover {
+      color: $base-color;
+    }
+  }
+}
+/* page with sidebar end */
 
 /* products */
 .products {
@@ -1149,26 +1338,32 @@
 }
 
 .info-list {
-  &, .user-content & {
+  &, .#{$article-content} & {
     margin: 0 auto;
     padding: 0;
+
     li {
       padding-left: 0;
       margin-bottom: 10px;
+
       &:last-child {
         margin-bottom: 0;
       }
+
       &::before {
         content: none;
       }
     }
   }
+
   & {
     max-width: 220px;
   }
+
   li {
     position: relative;
     overflow: hidden;
+
     &::after {
       content: "";
       display: block;
@@ -1181,6 +1376,7 @@
       background: url(../../img/dot.png);
       opacity: 0.6;
     }
+
     & > div {
       max-width: 50%;
       position: relative;
@@ -1189,10 +1385,12 @@
       background-color: $base-color;
       @include padding-horizontal(10px);
       z-index: 1;
+
       &:first-child {
         padding-left: 0;
         float: left;
       }
+
       &:last-child {
         padding-right: 0;
         float: right;
@@ -1801,10 +1999,9 @@
   $element: &;
   // =========
   display: block;
-  border: 1px solid $border-color-light;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: #faf8f2;
+  background-color: $bg-color-light;
   border: 1px solid #{nth($frame-color, 1)};
   box-shadow: 0 0 0 2px #{nth($frame-color, 2)}, 0 0 0 3px #{nth($frame-color, 3)}, 0 10px 5px -5px #{nth($frame-color, 4)};
 
@@ -2679,7 +2876,7 @@ $catalog-shutter-header-height--mob: 4rem;
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-grow: 0;
   flex-shrink: 1;
@@ -2708,7 +2905,7 @@ $catalog-shutter-header-height--mob: 4rem;
   }
 
   @include media('<net') {
-    align-items: flex-start;
+    //align-items: flex-start;
     justify-content: flex-start;
     min-height: 0;
   }
@@ -2765,18 +2962,18 @@ $catalog-shutter-header-height--mob: 4rem;
   position: relative;
   width: 42rem;
   max-width: 100%;
-  font-size: 2.8rem;
-  line-height: 3.6rem;
+  //font-size: 2.8rem;
+  //line-height: 3.6rem;
 
-  @include media('<lap-l') {
-    font-size: 2.4rem;
-    line-height: 3.2rem;
-  }
-
-  @include media('<tab-s') {
-    font-size: 1.8rem;
-    line-height: 2.4rem;
-  }
+  //@include media('<lap-l') {
+  //  font-size: 2.4rem;
+  //  line-height: 3.2rem;
+  //}
+  //
+  //@include media('<tab-s') {
+  //  font-size: 1.8rem;
+  //  line-height: 2.4rem;
+  //}
 
   a {
     color: currentColor;
@@ -2818,7 +3015,7 @@ $catalog-shutter-header-height--mob: 4rem;
   }
 
   & > li > ul {
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 
   & > li > ul li {

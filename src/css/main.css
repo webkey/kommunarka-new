@@ -10,6 +10,27 @@
 }
 
 @font-face {
+  font-family: "AkzidenzGroteskPro Cond Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/akzidenz-grotesk-pro/cond-bold/AkzidenzGroteskPro-BoldCn.eot?") format("eot"), url("../fonts/akzidenz-grotesk-pro/cond-bold/AkzidenzGroteskPro-BoldCn.woff") format("woff"), url("../fonts/akzidenz-grotesk-pro/cond-bold/AkzidenzGroteskPro-BoldCn.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AkzidenzGroteskPro Cond Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/akzidenz-grotesk-pro/cond-bold-it/AkzidenzGroteskPro-BoldIt.eot?") format("eot"), url("../fonts/akzidenz-grotesk-pro/cond-bold-it/AkzidenzGroteskPro-BoldIt.woff") format("woff"), url("../fonts/akzidenz-grotesk-pro/cond-bold-it/AkzidenzGroteskPro-BoldIt.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AkzidenzGroteskPro Cond Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/akzidenz-grotesk-pro/cond-it/AkzidenzGroteskPro-CnIt.eot?") format("eot"), url("../fonts/akzidenz-grotesk-pro/cond-it/AkzidenzGroteskPro-CnIt.woff") format("woff"), url("../fonts/akzidenz-grotesk-pro/cond-it/AkzidenzGroteskPro-CnIt.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "AkzidenzGroteskPro Light Cond";
   font-style: normal;
   font-weight: normal;
@@ -447,10 +468,18 @@ html.css-scroll-fixed:not(.open-only-mob) {
 body {
   min-width: 32rem;
   font-family: "AkzidenzGroteskPro Cond", sans-serif;
-  font-size: 1.8rem;
-  line-height: 2.4rem;
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+  letter-spacing: 0.02em;
   color: #403b38;
   background: #d4c0b3 url(../img/bg-img.png) center;
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
 }
 
 /* === LAYOUT === */
@@ -499,7 +528,7 @@ body {
 }
 
 .layout-text {
-  max-width: 96rem;
+  max-width: 86rem;
   box-sizing: content-box;
   margin-right: auto;
   margin-left: auto;
@@ -518,7 +547,7 @@ body {
   display: flex;
   -ms-flex-direction: column;
       flex-direction: column;
-  padding-top: 4rem;
+  padding-top: 6rem;
 }
 
 @media (max-width: 991px) {
@@ -563,6 +592,7 @@ body.sep-page::before {
 .footer {
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  margin-top: auto;
 }
 
 /* ==================================== */
@@ -575,10 +605,11 @@ body *::selection {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin: 0 0 2.4rem;
+  margin: 0 0 3.6rem;
   padding: 0;
   font-family: "AkzidenzGroteskPro Medium Cond", sans-serif;
   font-weight: normal;
+  letter-spacing: normal;
   color: #403b38;
 }
 
@@ -602,80 +633,116 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover,
 h1, .h1 {
   font-weight: normal;
   font-size: 7.2rem;
-  line-height: 10rem;
+  line-height: 7.6rem;
+  margin-bottom: 0.7em;
 }
 
 @media (max-width: 991px) {
   h1, .h1 {
     font-size: 3.6rem;
-    line-height: 4.2rem;
+    line-height: 3.8rem;
   }
 }
 
 @media (max-width: 639px) {
   h1, .h1 {
     font-size: 3rem;
-    line-height: 4.2rem;
+    line-height: 3.2rem;
   }
 }
 
 h2, .h2 {
-  font-size: 3.6rem;
-  line-height: 4.8rem;
+  font-size: 4.6rem;
+  line-height: 5.4rem;
 }
 
 @media (max-width: 991px) {
   h2, .h2 {
     font-size: 2.8rem;
-    line-height: 3.7rem;
+    line-height: 3.3rem;
   }
 }
 
 @media (max-width: 639px) {
   h2, .h2 {
     font-size: 2.4rem;
-    line-height: 3.2rem;
+    line-height: 2.8rem;
   }
 }
 
 h3, .h3 {
-  font-size: 2.4rem;
-  line-height: 3rem;
+  font-size: 3.6rem;
+  line-height: 4.2rem;
 }
 
 @media (max-width: 991px) {
   h3, .h3 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     line-height: 2.8rem;
   }
 }
 
 @media (max-width: 639px) {
   h3, .h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 2.3rem;
   }
 }
 
 h4, .h4 {
-  font-size: 1.8rem;
-  line-height: 2.4rem;
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+}
+
+@media (max-width: 639px) {
+  h4, .h4 {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
 }
 
 h5, .h5 {
-  font-size: 1.8rem;
-  line-height: 2.4rem;
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 639px) {
+  h5, .h5 {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+  }
 }
 
 h6, .h6 {
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
   font-size: 1.8rem;
-  line-height: 2.4rem;
+  line-height: 2.3rem;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
+}
+
+@media (max-width: 639px) {
+  h6, .h6 {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
 }
 
 p {
   padding: 0;
-  margin: 0 0 2.4rem;
+  margin: 0 0 2.6rem;
+}
+
+@media (max-width: 991px) {
+  p {
+    margin-bottom: 2.4rem;
+  }
 }
 
 p:last-child {
@@ -687,8 +754,8 @@ hr {
   height: 0;
   border: none;
   background: none;
-  border-bottom: 1px solid #d3d3d3;
-  margin-bottom: 2.4rem;
+  border-bottom: 1px solid #403b38;
+  margin-bottom: 2.6rem;
 }
 
 a {
@@ -721,17 +788,17 @@ table img {
 }
 
 b, strong, th {
-  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
   font-weight: normal;
 }
 
 i, em {
-  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-family: "AkzidenzGroteskPro Cond Italic", sans-serif;
   font-style: normal;
 }
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em {
-  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-family: "AkzidenzGroteskPro Cond Bold Italic", sans-serif;
   font-style: normal;
   font-weight: normal;
 }
@@ -740,8 +807,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   font-family: "AkzidenzGroteskPro Cond", sans-serif;
   font-size: 2.2rem;
   line-height: 3rem;
-  text-align: center;
-  max-width: 96rem;
+  max-width: 86rem;
   margin: 0 auto 5rem;
 }
 
@@ -767,6 +833,339 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   margin-bottom: 0;
 }
 
+/* article elements */
+.article-content p + h2,
+.article-content ul + h2,
+.article-content ol + h2,
+.article-content hr + h2,
+.article-content table + h2,
+.article-content .table-auto + h2 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + h3,
+.article-content ul + h3,
+.article-content ol + h3,
+.article-content hr + h3,
+.article-content table + h3,
+.article-content .table-auto + h3 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + h4,
+.article-content ul + h4,
+.article-content ol + h4,
+.article-content hr + h4,
+.article-content table + h4,
+.article-content .table-auto + h4 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + h5,
+.article-content ul + h5,
+.article-content ol + h5,
+.article-content hr + h5,
+.article-content table + h5,
+.article-content .table-auto + h5 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + h6,
+.article-content ul + h6,
+.article-content ol + h6,
+.article-content hr + h6,
+.article-content table + h6,
+.article-content .table-auto + h6 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + .h2,
+.article-content ul + .h2,
+.article-content ol + .h2,
+.article-content hr + .h2,
+.article-content table + .h2,
+.article-content .table-auto + .h2 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + .h3,
+.article-content ul + .h3,
+.article-content ol + .h3,
+.article-content hr + .h3,
+.article-content table + .h3,
+.article-content .table-auto + .h3 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + .h4,
+.article-content ul + .h4,
+.article-content ol + .h4,
+.article-content hr + .h4,
+.article-content table + .h4,
+.article-content .table-auto + .h4 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + .h5,
+.article-content ul + .h5,
+.article-content ol + .h5,
+.article-content hr + .h5,
+.article-content table + .h5,
+.article-content .table-auto + .h5 {
+  margin-top: 6.2rem;
+}
+
+.article-content p + .h6,
+.article-content ul + .h6,
+.article-content ol + .h6,
+.article-content hr + .h6,
+.article-content table + .h6,
+.article-content .table-auto + .h6 {
+  margin-top: 6.2rem;
+}
+
+.article-content figure {
+  display: block;
+  padding: 0;
+  margin: 5.3rem 0 5rem;
+}
+
+.article-content figure img {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 1.7rem;
+}
+
+.article-content figcaption {
+  display: block;
+  padding: 0;
+  margin: 0;
+  color: #ccc;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+}
+
+.article-content blockquote {
+  display: block;
+  margin: 0 0 2.6rem;
+  padding: 0;
+  background-color: white;
+}
+
+.article-content blockquote q {
+  display: block;
+  margin: 0;
+  padding: 0 0 10px;
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-size: 2.8rem;
+  line-height: 2.8rem;
+  color: #403b38;
+  text-align: center;
+}
+
+.article-content blockquote q::before, .article-content blockquote q::after {
+  content: "";
+  display: block;
+  position: relative;
+  font-size: 4rem;
+  line-height: 1;
+  text-align: left;
+}
+
+.article-content blockquote q::before {
+  content: "«";
+  padding-left: 17%;
+  padding-bottom: 10px;
+}
+
+.article-content blockquote q::after {
+  content: "»";
+  text-align: right;
+  padding-right: 18.5%;
+  padding-top: 8px;
+}
+
+.article-content blockquote cite {
+  text-align: right;
+  display: block;
+  margin-left: auto;
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+  color: #ccc;
+}
+
+.article-content ul, .article-content ol {
+  margin: 0 0 2.6rem;
+  padding: 0;
+  list-style: none;
+}
+
+.article-content ul:last-child, .article-content ol:last-child {
+  margin-bottom: 0;
+}
+
+.article-content ul li, .article-content ol li {
+  padding-left: 3rem;
+  margin: 0 0 1rem;
+  position: relative;
+}
+
+.article-content ul > li::before {
+  content: "";
+  display: block;
+  float: left;
+  width: 0;
+  height: 0;
+  margin: 0.4em 0 -0.5em -3rem;
+  border: solid transparent;
+  border-width: 5px 0 5px 9px;
+  border-left-color: #c4161c;
+}
+
+.article-content ol {
+  counter-reset: section;
+}
+
+.article-content ol > li {
+  counter-increment: section;
+  height: 1%;
+  overflow: hidden;
+}
+
+.article-content ol > li::before {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+  color: #c4161c;
+  content: counter(section);
+  padding: 0 4px 0 0;
+  min-width: 3rem;
+  margin-left: -3rem;
+}
+
+.article-content ul ul, .article-content ul ol, .article-content ol ul, .article-content ol ol {
+  margin: 1.3rem 0;
+}
+
+.article-content > h1, .article-content > .h1, .article-content .entry-text {
+  max-width: 86rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.article-content > p, .article-content > ul, .article-content > ol,
+.article-content > h2, .article-content > h3, .article-content > h4, .article-content > h5, .article-content > h6,
+.article-content > .h2, .article-content > .h3, .article-content > .h4, .article-content > .h5, .article-content > .h6,
+.article-content > hr, .article-content > mark, .article-content > blockquote, .article-content > figure,
+.article-content > .layout-text {
+  max-width: 86rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.article-content > .layout-flood {
+  max-width: 86rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.article-content > img,
+.article-content > .layout-text img,
+.article-content > .layout-flood img {
+  display: block;
+  text-align: center;
+  margin: 3rem auto 4rem;
+}
+
+@media (max-width: 991px) {
+  .article-content > img,
+  .article-content > .layout-text img,
+  .article-content > .layout-flood img {
+    margin-top: 2.5rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .article-content > img,
+  .article-content > .layout-text img,
+  .article-content > .layout-flood img {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.article-content > img[align="left"], .article-content > img .imgl,
+.article-content > .layout-text img[align="left"],
+.article-content > .layout-text img .imgl,
+.article-content > .layout-flood img[align="left"],
+.article-content > .layout-flood img .imgl {
+  float: left;
+  text-align: left;
+  max-width: 45%;
+  margin-right: 3rem;
+}
+
+@media (max-width: 991px) {
+  .article-content > img[align="left"], .article-content > img .imgl,
+  .article-content > .layout-text img[align="left"],
+  .article-content > .layout-text img .imgl,
+  .article-content > .layout-flood img[align="left"],
+  .article-content > .layout-flood img .imgl {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .article-content > img[align="left"], .article-content > img .imgl,
+  .article-content > .layout-text img[align="left"],
+  .article-content > .layout-text img .imgl,
+  .article-content > .layout-flood img[align="left"],
+  .article-content > .layout-flood img .imgl {
+    float: none;
+    text-align: left;
+    max-width: none;
+    margin-right: auto;
+  }
+}
+
+.article-content > img[align="right"], .article-content > img .imgr,
+.article-content > .layout-text img[align="right"],
+.article-content > .layout-text img .imgr,
+.article-content > .layout-flood img[align="right"],
+.article-content > .layout-flood img .imgr {
+  float: right;
+  text-align: right;
+  max-width: 45%;
+  margin-left: 3rem;
+}
+
+@media (max-width: 991px) {
+  .article-content > img[align="right"], .article-content > img .imgr,
+  .article-content > .layout-text img[align="right"],
+  .article-content > .layout-text img .imgr,
+  .article-content > .layout-flood img[align="right"],
+  .article-content > .layout-flood img .imgr {
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .article-content > img[align="right"], .article-content > img .imgr,
+  .article-content > .layout-text img[align="right"],
+  .article-content > .layout-text img .imgr,
+  .article-content > .layout-flood img[align="right"],
+  .article-content > .layout-flood img .imgr {
+    float: none;
+    text-align: left;
+    max-width: none;
+    margin-left: auto;
+  }
+}
+
+/* article elements end */
 /* ==================================== */
 /* ============ COMPONENTS ============ */
 /* ==================================== */
@@ -858,7 +1257,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 /* breadcrumbs */
 .breadcrumbs {
   color: #ccc;
-  margin-bottom: 2.4rem;
+  margin-bottom: 2.6rem;
 }
 
 .breadcrumbs:last-child {
@@ -1544,7 +1943,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   }
 }
 
-.nav__list a {
+.nav__list a,
+.nav__list li > span {
   padding: 10px 30px;
   display: block;
   display: -ms-flexbox;
@@ -1556,23 +1956,27 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   line-height: 1.25;
   color: #e7dad2;
   text-decoration: none;
+  transition: box-shadow 0.2s;
 }
 
 @media (max-width: 1599px) {
-  .nav__list a {
+  .nav__list a,
+  .nav__list li > span {
     padding-right: 15px;
     padding-left: 15px;
   }
 }
 
 @media (max-width: 1365px) {
-  .nav__list a {
+  .nav__list a,
+  .nav__list li > span {
     font-size: 2rem;
   }
 }
 
 @media (max-width: 1279px) {
-  .nav__list a {
+  .nav__list a,
+  .nav__list li > span {
     padding-right: 8px;
     padding-left: 8px;
     font-size: 1.8rem;
@@ -1580,7 +1984,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 @media (max-width: 991px) {
-  .nav__list a {
+  .nav__list a,
+  .nav__list li > span {
     color: #403b38;
     font-family: "AkzidenzGroteskPro Medium Cond", sans-serif;
     font-weight: normal;
@@ -1595,7 +2000,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 .no-touchevents .nav__list a:hover {
-  box-shadow: inset 0 -2px 0 #c4161c;
+  box-shadow: inset 0 -4px 0 #c4161c;
 }
 
 @media (max-width: 991px) {
@@ -1604,15 +2009,27 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   }
 }
 
-.nav__list li.current a {
+.nav__list li.current > a,
+.nav__list li.current > span {
   color: white;
   background-color: #c4161c;
 }
 
 @media (max-width: 991px) {
-  .nav__list li.current a {
+  .nav__list li.current > a,
+  .nav__list li.current > span {
     background-color: transparent;
     color: #c4161c;
+  }
+}
+
+.no-touchevents .nav__list li.current > a:hover {
+  box-shadow: inset 0 -4px 0 #403b38;
+}
+
+@media (max-width: 991px) {
+  .no-touchevents .nav__list li.current > a:hover {
+    box-shadow: none;
   }
 }
 
@@ -1948,8 +2365,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 /* ==================================== */
 .main {
   position: relative;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
 @media (max-width: 991px) {
@@ -1970,6 +2387,194 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   padding: 0;
 }
 
+/* page with sidebar */
+.content {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #f9eee7;
+  border: 1px solid #d4c0b3;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #d4c0b3, 0 10px 5px -5px #a98975;
+}
+
+.content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.content-align {
+  float: left;
+  width: 100%;
+}
+
+.content-align::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 19.3%;
+  height: 100%;
+  width: 0;
+  border-right: 1px solid #d4c0b3;
+}
+
+@media (max-width: 1279px) {
+  .content-align::before {
+    left: 24rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .content-align::before {
+    display: none;
+  }
+}
+
+.content-inner {
+  padding: 2.8rem 3rem;
+  margin: 0 16.1% 0 19.3%;
+  min-height: 32rem;
+}
+
+@media (max-width: 1365px) {
+  .content-inner {
+    margin: 0 20rem 0 24rem;
+  }
+}
+
+@media (max-width: 1279px) {
+  .content-inner {
+    margin-right: 10rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .content-inner {
+    margin: 0;
+  }
+}
+
+.sidebar {
+  position: relative;
+  display: inline;
+  float: left;
+  margin: 0 0 0 -100%;
+  width: 19.3%;
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+@media (max-width: 1279px) {
+  .sidebar {
+    width: 24rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.menu, .menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: #ccc;
+}
+
+.menu ul {
+  display: none;
+  padding-top: 1.2rem;
+}
+
+.menu li {
+  margin-top: 1.2rem;
+  padding-left: 2rem;
+  cursor: default;
+}
+
+.menu li.current > ul {
+  display: block;
+}
+
+.menu li.current > a, .menu li.current > span {
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+}
+
+.menu li.current > span {
+  color: #e7dad2;
+}
+
+.menu > li {
+  border-top: 1px solid #d4c0b3;
+  padding: 0;
+  margin: 0;
+}
+
+.menu > li:first-child {
+  border-top: none;
+}
+
+.menu > li > a, .menu > li > span {
+  display: block;
+  padding: 3rem 4rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: black;
+}
+
+@media (max-width: 1279px) {
+  .menu > li > a, .menu > li > span {
+    padding: 2.5rem 3rem;
+  }
+}
+
+.menu > li > ul {
+  padding: 0 4rem 3rem;
+}
+
+@media (max-width: 1279px) {
+  .menu > li > ul {
+    padding: 0 3rem 2.5rem;
+  }
+}
+
+.menu > li > ul > li {
+  position: relative;
+  padding-left: 2.4rem;
+  margin-top: 1.3rem;
+}
+
+.menu > li > ul > li:first-child {
+  margin-top: 0;
+}
+
+.menu > li > ul > li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 1.4rem;
+  height: 0.2rem;
+}
+
+.menu a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: #c4161c;
+}
+
+/* page with sidebar end */
 /* products */
 .products {
   position: relative;
@@ -2199,21 +2804,21 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   }
 }
 
-.info-list, .user-content .info-list {
+.info-list, .article-content .info-list {
   margin: 0 auto;
   padding: 0;
 }
 
-.info-list li, .user-content .info-list li {
+.info-list li, .article-content .info-list li {
   padding-left: 0;
   margin-bottom: 10px;
 }
 
-.info-list li:last-child, .user-content .info-list li:last-child {
+.info-list li:last-child, .article-content .info-list li:last-child {
   margin-bottom: 0;
 }
 
-.info-list li::before, .user-content .info-list li::before {
+.info-list li::before, .article-content .info-list li::before {
   content: none;
 }
 
@@ -2853,8 +3458,8 @@ tr:last-child .prod-descr table td {
   box-sizing: border-box;
   border-radius: 10px;
   background-color: white;
-  border: 1px solid #e9cd78;
-  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #cea21d, 0 15px 10px -10px #ab7222;
+  border: 1px solid #d4c0b3;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #d4c0b3, 0 15px 10px -10px #a98975;
 }
 
 .promo-slider.swiper-container-horizontal {
@@ -2925,12 +3530,11 @@ tr:last-child .prod-descr table td {
 /* m-catalog-element */
 .m-catalog-elem {
   display: block;
-  border: 1px solid #ddcba9;
   padding: 2rem;
   border-radius: 1rem;
-  background-color: #faf8f2;
-  border: 1px solid #e9cd78;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #cea21d, 0 10px 5px -5px #ab7222;
+  background-color: #f9eee7;
+  border: 1px solid #d4c0b3;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #d4c0b3, 0 10px 5px -5px #a98975;
 }
 
 @media (max-width: 639px) {
@@ -3118,7 +3722,7 @@ a.m-catalog-elem:hover {
 
 .footerNews .shortNews .date {
   color: #e9101b;
-  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-family: "AkzidenzGroteskPro Cond Italic", sans-serif;
   font-style: normal;
   font-size: 13px;
   line-height: 18px;
@@ -3161,8 +3765,8 @@ a.m-catalog-elem:hover {
 @media (max-width: 991px) {
   .p-news {
     background: #fff;
-    border: 1px solid #e9cd78;
-    box-shadow: 0 0 0 3px #fff, 0 0 0 4px #cea21d, 0 15px 10px -10px #ab7222;
+    border: 1px solid #d4c0b3;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px #d4c0b3, 0 15px 10px -10px #a98975;
     border-radius: 1rem;
     padding: 2.8rem 3rem;
   }
@@ -3349,7 +3953,7 @@ a:hover .p-news__text {
   color: #eddfbc;
   text-decoration: none;
   text-align: center;
-  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-family: "AkzidenzGroteskPro Cond Italic", sans-serif;
   font-style: normal;
   font-size: 13px;
   line-height: 18px;
@@ -3539,8 +4143,8 @@ a:hover .p-news__text {
   width: 40px;
   height: 40px;
   background-color: #fff;
-  border: 1px solid #e9cd78;
-  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #cea21d, 0 10px 5px -5px #ab7222;
+  border: 1px solid #d4c0b3;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #d4c0b3, 0 10px 5px -5px #a98975;
 }
 
 @media (max-width: 479px) {
@@ -3626,8 +4230,8 @@ a:hover .p-news__text {
   text-decoration: none;
   color: inherit;
   background-color: #fff;
-  border: 1px solid #e9cd78;
-  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #cea21d, 0 15px 10px -10px #ab7222;
+  border: 1px solid #d4c0b3;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #d4c0b3, 0 15px 10px -10px #a98975;
   border-radius: 0.8rem;
   box-sizing: border-box;
 }
@@ -3903,8 +4507,8 @@ a:hover .p-news__text {
   overflow: hidden;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
-      align-items: center;
+  -ms-flex-align: start;
+      align-items: flex-start;
   -ms-flex-pack: center;
       justify-content: center;
   -ms-flex-positive: 0;
@@ -3942,8 +4546,6 @@ a:hover .p-news__text {
 
 @media (max-width: 1199px) {
   .catalog-nav__item {
-    -ms-flex-align: start;
-        align-items: flex-start;
     -ms-flex-pack: start;
         justify-content: flex-start;
     min-height: 0;
@@ -4000,22 +4602,6 @@ a:hover .p-news__text {
   position: relative;
   width: 42rem;
   max-width: 100%;
-  font-size: 2.8rem;
-  line-height: 3.6rem;
-}
-
-@media (max-width: 1439px) {
-  .catalog-nav__list {
-    font-size: 2.4rem;
-    line-height: 3.2rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .catalog-nav__list {
-    font-size: 1.8rem;
-    line-height: 2.4rem;
-  }
 }
 
 .catalog-nav__list a {
@@ -4064,7 +4650,7 @@ a:hover .p-news__text {
 }
 
 .catalog-nav__list > li > ul {
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .catalog-nav__list > li > ul li {

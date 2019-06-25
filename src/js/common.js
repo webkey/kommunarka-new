@@ -1319,21 +1319,20 @@ function initHoverClass() {
 }(jQuery));
 
 /**
- * !Navigation accordion initial
+ * !Menu accordion
  * */
-function navAccordionInit() {
-  var navMenu = '.nav__list-js';
+function menuAccordionInit() {
+  var menuContainer = '.menu-js';
 
-  if ($(navMenu).length) {
+  if ($(menuContainer).length) {
     new MultiAccordion({
-      container: navMenu,
+      container: menuContainer,
       item: 'li',
-      handler: '.nav-handler-js',
-      handlerWrap: '.nav__tab-js',
-      panel: '.nav__drop-js',
+      handler: '.menu-arr-js',
+      panel: $('.menu-arr-js').next(),
       openClass: 'is-open',
       animateSpeed: 200,
-      collapsible: true
+      collapsible: false
     });
   }
 }
@@ -1388,6 +1387,6 @@ $(document).ready(function () {
   catalogNavTabs();
   parallaxInit();
   initHoverClass();
-  navAccordionInit();
+  menuAccordionInit();
   slidersInit();
 });

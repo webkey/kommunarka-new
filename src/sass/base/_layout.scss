@@ -7,20 +7,28 @@ html {
   // блокировка скролла
   &.css-scroll-fixed:not(.open-only-mob) {
     @include scroll-blocked;
-}
+  }
+
   &.shutter-only-mob.open-only-mob {
     @include media("<tab") {
       @include scroll-blocked;
+    }
   }
-}
 }
 
 body {
   min-width: $layout-page-min-width;
   @include font-normal;
-  @include font-size($font-size, $line-height);
+  font-size: $font-size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
   color: $text-color;
   background: $bg-color url(../../img/bg-img.png) center;
+
+  @include media('<tab-s') {
+    font-size: $font-size--mob;
+    line-height: $line-height--mob;
+  }
 }
 
 /* === LAYOUT === */
@@ -30,15 +38,15 @@ body {
   @include padding-horizontal(nth($layout-page-space, 2));
   @include media("<lap-s") {
     @include padding-horizontal(nth($layout-page-space--md, 2));
-}
+  }
 
   @include media("<tab") {
     @include padding-horizontal(nth($layout-page-space--sm, 2));
-}
+  }
 
   @include media("<mob") {
     @include padding-horizontal(nth($layout-page-space--mob, 2));
-}
+  }
 }
 
 // Выравнивание сайта и его максимальная ширина
@@ -49,14 +57,14 @@ body {
   @include push-auto;
   @include media("<lap-s") {
     max-width: none;
-}
+  }
 }
 
 // Отступы по бокам текстовых элементов
 @if nth($layout-text-space, 2) != 0 {
   .layout-text-spaces {
     @include padding-horizontal(nth($layout-text-space, 2));
-}
+  }
 }
 
 // Выравнивание текстовых элементов и их максимальная ширина
@@ -79,15 +87,15 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: 4rem;
+  padding-top: 6rem;
   @include media("<tab") {
     padding-top: 0;
-}
+  }
 
   &.sep-page {
     @include media(">desk") {
       background-attachment: fixed;
-  }
+    }
 
     &::before {
       content: "";
@@ -100,9 +108,9 @@ body {
       background-color: $bg-color;
       @include media(">=tab") {
         display: block;
+      }
     }
   }
-}
 }
 
 .header {
@@ -115,4 +123,5 @@ body {
 
 .footer {
   flex-shrink: 0;
+  margin-top: auto
 }

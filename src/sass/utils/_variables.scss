@@ -25,9 +25,9 @@ $breakpoints: (
 
 
 $font-norm: "AkzidenzGroteskPro Cond", sans-serif !default;
-//$font-norm: 'AkzidenzGroteskPro Cond Bold', sans-serif !default
-//$font-norm: 'AkzidenzGroteskPro Cond Bold Italic', sans-serif !default
-//$font-norm: 'AkzidenzGroteskPro Cond Italic', sans-serif !default
+$font-bold: 'AkzidenzGroteskPro Cond Bold', sans-serif !default
+$font-bold-italic: 'AkzidenzGroteskPro Cond Bold Italic', sans-serif !default
+$font-italic: 'AkzidenzGroteskPro Cond Italic', sans-serif !default
 $font-light: "AkzidenzGroteskPro Light Cond", sans-serif !default;
 $font-medium: "AkzidenzGroteskPro Medium Cond", sans-serif !default;
 
@@ -37,17 +37,17 @@ $font-medium: "AkzidenzGroteskPro Medium Cond", sans-serif !default;
 }
 
 @mixin font-bold {
-  font-family: $font-norm;
+  font-family: $font-bold;
   font-weight: normal;
 }
 
 @mixin font-italic {
-  font-family: $font-norm;
+  font-family: $font-italic;
   font-style: normal;
 }
 
 @mixin font-bold-italic {
-  font-family: $font-norm;
+  font-family: $font-bold-italic;
   font-style: normal;
   font-weight: normal;
 }
@@ -66,21 +66,26 @@ $font-medium: "AkzidenzGroteskPro Medium Cond", sans-serif !default;
 // Base
 // ==========================================================================
 
-$font-size: 1.8rem !default;
-$line-height: 2.4rem !default;
-$letter-spacing: normal !default;
+$font-size: 2.2rem !default;
+$line-height: 2.8rem !default;
+$letter-spacing: 0.02em !default;
+// ----------------------------------------------------
+// --- mob ---
+$font-size--mob: 2.0rem !default;
+$line-height--mob: 2.6rem !default;
+$letter-spacing--mob: 0.02em !default;
 
 // Heading h1
 $font-size-h1: 7.2rem !default;
-$line-height-h1: 10rem !default;
+$line-height-h1: 7.6rem !default;
 $line-height-h1-kef: $line-height-h1 / $font-size-h1;
 // ----------------------------------------------------
 $font-size-h1--tab: 3.6rem !default;
-$line-height-h1--tab: 4.2rem !default;
+$line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) !default;
 // ----------------------------------------------------
 $font-size-h1--mob: 3.0rem !default;
 $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
-// ----------------------------------------------------
+
 @mixin font-h1() {
   font-size: $font-size-h1;
   line-height: $line-height-h1;
@@ -90,7 +95,6 @@ $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !
     line-height: $line-height-h1--tab;
   }
 
-
   @include media("<mob") {
     font-size: $font-size-h1--mob;
     line-height: $line-height-h1--mob;
@@ -99,8 +103,8 @@ $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !
 
 
 // Heading h2
-$font-size-h2: 3.6rem !default;
-$line-height-h2: 4.8rem !default;
+$font-size-h2: 4.6rem !default;
+$line-height-h2: 5.4rem !default;
 $line-height-h2-kef: $line-height-h2 / $font-size-h2;
 // ----------------------------------------------------
 $font-size-h2--tab: 2.8rem !default;
@@ -108,7 +112,7 @@ $line-height-h2--tab: round-float($font-size-h2--tab * $line-height-h2-kef, 1) !
 // ----------------------------------------------------
 $font-size-h2--mob: 2.4rem !default;
 $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
-// ----------------------------------------------------
+
 @mixin font-h2() {
   font-size: $font-size-h2;
 
@@ -119,7 +123,6 @@ $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !
     line-height: $line-height-h2--tab;
   }
 
-
   @include media("<mob") {
     font-size: $font-size-h2--mob;
     line-height: $line-height-h2--mob;
@@ -128,17 +131,16 @@ $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !
 
 
 // Heading h3
-$font-size-h3: 2.4rem !default;
-$line-height-h3: 3.0rem !default;
+$font-size-h3: 3.6rem !default;
+$line-height-h3: 4.2rem !default;
 $line-height-h3-kef: $line-height-h3 / $font-size-h3;
 // ----------------------------------------------------
-$font-size-h3--tab: 2.2rem !default;
+$font-size-h3--tab: 2.4rem !default;
 $line-height-h3--tab: round-float($font-size-h3--tab * $line-height-h3-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
-$font-size-h3--mob: 1.8rem !default;
+$font-size-h3--mob: 2.0rem !default;
 $line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
 
-// ----------------------------------------------------
 @mixin font-h3() {
   font-size: $font-size-h3;
 
@@ -149,7 +151,6 @@ $line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !
     line-height: $line-height-h3--tab;
   }
 
-
   @include media("<mob") {
     font-size: $font-size-h3--mob;
     line-height: $line-height-h3--mob;
@@ -159,19 +160,65 @@ $line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !
 // Heading h4
 $font-size-h4: $font-size !default;
 $line-height-h4: $line-height !default;
+// ----------------------------------------------------
+$font-size-h4--mob: $font-size--mob !default;
+$line-height-h4--mob: $line-height--mob !default;
+
+@mixin font-h4() {
+  font-size: $font-size-h4;
+  line-height: $line-height-h4;
+
+  @include media("<mob") {
+    font-size: $font-size-h4--mob;
+    line-height: $line-height-h4--mob;
+  }
+}
 
 // Heading h5
-$font-size-h5: $font-size !default;
-$line-height-h5: $line-height !default;
+$line-height-h5-kef: $line-height / $font-size;
+// ----------------------------------------------------
+$font-size-h5: $font-size - 0.2 !default;
+$line-height-h5: round-float($font-size-h5 * $line-height-h5-kef, 1) !default;
+// ----------------------------------------------------
+$font-size-h5--mob: $font-size--mob - 0.2 !default;
+$line-height-h5--mob: round-float($font-size-h5--mob * $line-height-h5-kef, 1) !default;
+
+@mixin font-h5() {
+  font-size: $font-size-h5;
+  line-height: $line-height-h5;
+
+  @include media("<mob") {
+    font-size: $font-size-h5--mob;
+    line-height: $line-height-h5--mob;
+  }
+}
 
 // Heading h6
-$font-size-h6: $font-size !default;
-$line-height-h6: $line-height !default;
+$line-height-h6-kef: $line-height / $font-size;
+// ----------------------------------------------------
+$font-size-h6: $font-size - 0.4 !default;
+$line-height-h6: round-float($font-size-h6 * $line-height-h6-kef, 1) !default;
+// ----------------------------------------------------
+$font-size-h6--mob: $font-size--mob - 0.4 !default;
+$line-height-h6--mob: round-float($font-size-h6--mob * $line-height-h6-kef, 1) !default;
+
+@mixin font-h6() {
+  font-size: $font-size-h6;
+  line-height: $line-height-h6;
+
+  @include media("<mob") {
+    font-size: $font-size-h6--mob;
+    line-height: $line-height-h6--mob;
+  }
+}
 
 // Spaces
-$bottom-space: $line-height !default;
+$bottom-space: $line-height - 0.2 !default;
 $bottom-space--large: $line-height * 3 !default;
 $bottom-space--small: round-float($line-height*0.75, 1) !default;
+// ----------------------------------------------------
+// --- mob ---
+$bottom-space--mob: $line-height--mob - 0.2 !default;
 
 
 // Colors
@@ -184,6 +231,7 @@ $base-color-light: #e7dad2 !default;
 // ----------------------------------------------------
 $bg-color: #d4c0b3 !default;
 $bg-color-alt: #f3f3f3 !default;
+$bg-color-light: #f9eee7 !default;
 $bg-color-dark: #403b38 !default;
 // ----------------------------------------------------
 $text-color: #403b38 !default;
@@ -197,12 +245,13 @@ $title-color-alt: #ad813d !default;
 $link-color: #c4161c !default;
 $focus-color: #0080ff !default;
 // ----------------------------------------------------
-$border-color: #d3d3d3 !default;
+$border-color: $bg-color-dark !default;
 $border-color-light: #ddcba9 !default;
 // ----------------------------------------------------
 $mark-color: #fd0cff !default;
 // ----------------------------------------------------
-$frame-color: #e9cd78, #fff, #cea21d, #ab7222 !default;
+//$frame-color: #e9cd78, #fff, #cea21d, #ab7222 !default;
+$frame-color: #d4c0b3, #fff, #d4c0b3, #a98975 !default;
 // ----------------------------------------------------
 $success-color: #28a745 !default;
 $error-color: #dc3545 !default;
@@ -219,7 +268,7 @@ $dark-color: #343a40 !default;
 //
 // @example css - Вывод CSS
 // .article-content
-$article-style-class: article-content !default;
+$article-content: article-content !default;
 $typography-style-class: typography !default;
 
 // Layout
@@ -237,7 +286,8 @@ $layout-page-space--sm: 0 3rem !default;
 $layout-page-space--mob: 0 2rem !default;
 
 // Максимальная ширина текстового блока
-$layout-text-width: 96rem !default;
+//$layout-text-width: 96rem !default;
+$layout-text-width: 86rem !default;
 // Отступы у текствого блока
 $layout-text-space: 5rem 6rem !default;
 $layout-text-space--md: 2.5rem 3rem !default;
@@ -265,6 +315,15 @@ $logo-short-size: 3.7rem 13.9rem;
 $logo-short-size--mob: 2.7rem 10rem;
 // ----------------------------------------------------
 $header-btn-width: 4rem;
+
+
+// Sidebar & Aside
+// ==========================================================================
+$sidebar-min-width: 24rem !default;
+$sidebar-width: 19.3% !default;
+$aside-min-width: 20rem !default;
+$aside-min-width--net: 10rem !default;
+$aside-width: 16.1% !default;
 
 
 // Footer
