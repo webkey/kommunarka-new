@@ -232,7 +232,8 @@ $base-color-light: #e7dad2 !default;
 // ----------------------------------------------------
 $bg-color: #d4c0b3 !default;
 $bg-color-alt: #f3f3f3 !default;
-$bg-color-light: #f9eee7 !default;
+//$bg-color-light: #f9eee7 !default;
+$bg-color-light: #f8f4ea !default;
 $bg-color-dark: #403b38 !default;
 // ----------------------------------------------------
 $text-color: #403b38 !default;
@@ -247,7 +248,8 @@ $link-color: #c4161c !default;
 $focus-color: #0080ff !default;
 // ----------------------------------------------------
 $border-color: $bg-color-dark !default;
-$border-color-light: #ddcba9 !default;
+//$border-color-light: #ddcba9 !default;
+$border-color-light: #f4e5bb !default;
 // ----------------------------------------------------
 $mark-color: #fd0cff !default;
 // ----------------------------------------------------
@@ -278,9 +280,11 @@ $typography-style-class: typography !default;
 // Минимальная ширина сайта
 $layout-page-min-width: 32rem !default;
 // Максимальная ширина сайта
-$layout-page-max-width: 192rem !default;
+//$layout-page-max-width: 192rem !default;
+$layout-page-max-width: 172rem !default;
 // Отступы для всего сайта
-$layout-page-space: 0 15rem !default;
+//$layout-page-space: 0 15rem !default;
+$layout-page-space: 0 5rem !default;
 //$layout-page-space--md: 0 10rem !default;
 $layout-page-space--md: 0 4rem !default;;
 $layout-page-space--sm: 0 3rem !default;

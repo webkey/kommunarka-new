@@ -99,7 +99,7 @@
   $btn-tt-bg-color: $text-color;
   //==============
   position: fixed;
-  right: 0;
+  right: 2rem;
   top: 50%;
   width: nth($layout-page-space, 2);
   @include font-light;
@@ -1245,17 +1245,17 @@
           line-height: 2.0rem;
           position: relative;
 
-          &::before {
-            $size: 0.4rem;
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 0.5em;
-            width: $size;
-            height: $size;
-            background-color: currentColor;
-          }
+          //&::before {
+          //  $size: 0.4rem;
+          //  content: "";
+          //  display: block;
+          //  position: absolute;
+          //  left: 0;
+          //  top: 0.5em;
+          //  width: $size;
+          //  height: $size;
+          //  background-color: currentColor;
+          //}
         }
       }
     }
@@ -1263,9 +1263,12 @@
 
   // Arrow
   .menu-arr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 1;
-    font-size: 2.0rem;
-    line-height: $menu-arrow-size;
+    font-size: 0;
+    line-height: 0;
     height: $menu-arrow-size;
     width: $menu-arrow-size;
     margin: -1rem 0;
@@ -1277,8 +1280,28 @@
     user-select: none;
     outline: none;
 
+    &::before {
+      content: "";
+      position: absolute;
+      @include triangle(bottom, white, 6px, 1.2);
+      margin-top: 1px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      $size: 2.4rem;
+      height: $size;
+      width: $size;
+      border-radius: $size;
+      background-color: $base-color;
+      @include linear-gradient(to bottom, $base-color 0%, lighten($base-color, 10%) 100%)
+    }
+
     .no-touchevents &:hover {
-      color: $link-color;
+      &::after {
+        @include linear-gradient(to bottom, lighten($base-color, 10%) 0%, $base-color 100%)
+      }
     }
 
     @at-root {
@@ -3273,24 +3296,40 @@ $catalog-shutter-header-height--mob: 4rem;
 /* catalogue */
 .catalogue {
   .content & {
-    margin: 0 -6px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 0 -1rem 4rem;
+    max-width: none;
 
-    * {
-      margin: 0;
+    &:last-child {
+      margin-bottom: 0;
     }
 
     li {
-      display: inline-block;
-      vertical-align: top;
-      width: 225px;
-      margin: 0 3px 30px 6px;
+      flex-grow: 0;
+      flex-shrink: 1;
+      $width: 20%;
+      flex-basis: $width;
+      max-width: $width;
+      margin: 0;
+      padding: 0 1rem 3rem;
       position: relative;
-      padding: 0;
       background: none;
+
+      @include media('<mob') {
+
+      }
+
+      .item {
+        height: 100%;
+      }
     }
   }
 
-  &, .#{$article-content} &, .#{$typography-style-class} & {
+  &,
+  .#{$article-content} &,
+  .#{$typography-style-class} & {
     li {
       &::before {
         content: none;
@@ -3299,35 +3338,33 @@ $catalog-shutter-header-height--mob: 4rem;
   }
 
   li.active {
-    background: url("../../i/catalogue-item-active.png") repeat-y -225px 0;
-    margin: 0 3px 21px 6px;
+    //background: url("../../i/catalogue-item-active.png") repeat-y -225px 0;
     z-index: 2;
   }
 
   .item {
-    padding: 0 10px;
+    position: relative;
+    background-color: #fff;
   }
 
   li.active .item {
-    background: url("../../i/catalogue-item-active.png") no-repeat 0 0;
-    padding-top: 1px;
+    box-shadow: 0 5px 15px #{nth($frame-color, 4)};
   }
 
   .image {
-    width: 203px;
-    height: 179px;
-    border: 1px solid #f1ead6;
-    text-align: center;
-    line-height: 179px;
     overflow: hidden;
     margin: 0;
+    //width: 203px;
+    //height: 179px;
+    $height: 18rem;
+    height: $height;
+    line-height: $height;
+    text-align: center;
+    border-bottom: 1px solid $bg-color-light;
   }
 
   li.active .image {
-    border: 0;
-    border-bottom: 1px solid #e9cc78;
-    padding: 0 1px;
-    background: url("../../i/catalogue-image.gif") repeat 0 0;
+    //background: url("../../i/catalogue-image.gif") repeat 0 0;
   }
 
   .image img {
@@ -3337,69 +3374,132 @@ $catalog-shutter-header-height--mob: 4rem;
   }
 
   .info {
-    background: url("../../i/catalogue-info.png") no-repeat 0 100%;
-    padding: 6px 33px 12px 27px;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.02em;
+    color: $text-color-alt;
+    background-color: #fff;
+    //background: url("../../i/catalogue-info.png") no-repeat 0 100%;
+    padding: 1.2rem;
     text-align: center;
-    font: italic 11px Arial;
-    color: #946534;
+    @include font-medium;
+    //color: #946534;
     position: relative;
   }
 
   li.active .info {
-    background: url("../../i/catalogue-info.png") no-repeat 100% 100%;
-    padding: 6px 34px 21px 28px;
-    margin: 0 -1px;
+    //background: url("../../i/catalogue-info.png") no-repeat 100% 100%;
+    //padding: 6px 34px 21px 28px;
+    //margin: 0 -1px;
   }
 
   .info .moreBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     top: 7px;
     right: 9px;
     overflow: hidden;
-    text-indent: -1000px;
-    width: 20px;
-    height: 20px;
-    background: url("../../i/more-button.png") no-repeat 0 0;
+    //text-indent: -1000px;
+    font-size: 0;
+    line-height: 0;
+    $size: 2rem;
+    height: $size;
+    width: $size;
+    border-radius: $size;
+    //background: url("../../i/more-button.png") no-repeat 0 0;
     display: none;
-  }
 
-  .info .moreBtn:hover {
-    background-position: 0 100%;
+    &::before {
+      content: "";
+      position: absolute;
+      @include triangle(right, white, 4px, 1.5);
+      margin-left: 1px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      $size: 2.4rem;
+      height: $size;
+      width: $size;
+      border-radius: $size;
+      background-color: $base-color;
+      @include linear-gradient(to bottom, $base-color 0%, lighten($base-color, 10%) 100%)
+    }
+
+    &:hover {
+      //background-position: 0 100%;
+      &::after {
+        @include linear-gradient(to bottom, lighten($base-color, 10%) 0%, $base-color 100%)
+      }
+    }
   }
 
   li.active .info .moreBtn {
-    display: block;
+    //display: block;
+    display: flex;
   }
 
-  .info h3,
-  .info .heading {
-    font: bold 15px Cambria, "Times New Roman";
-    margin: 0 0 2px;
-  }
+  .info {
+    h3,
+    .heading {
+      @include font-normal;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin: 0;
 
-  .info h3 a,
-  .info .heading a {
-    text-decoration: none;
-  }
+      a {
+        color: $link-color;
+        text-decoration: none;
+        padding-top: 0.3em;
 
-  .info h3 a:hover,
-  .info .heading a:hover {
-    text-decoration: underline;
-  }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
 
-  .info p {
-    margin: 0;
+    p {
+      margin: 1rem 0 0;
+      @include font-italic;
+
+      &:empty {
+        display: none;
+      }
+    }
   }
 
   .description {
     position: absolute;
     left: 0;
-    width: 225px;
-    background: url("../../i/catalogue-item-active.png") no-repeat 100% 100%;
-    padding: 0 0 24px;
+    width: 100%;
+    //background: url("../../i/catalogue-item-active.png") no-repeat 100% 100%;
+    //padding: 0 0 2.4rem;
     color: #fff;
-    font: 13px/15px Cambria, "CambriaRegularWebfont", "Times New Roman";
+    background-color: #fff;
+    //font: 13px/15px Cambria, "CambriaRegularWebfont", "Times New Roman";
+    font-size: 1.6rem;
+    line-height: 2.4rem;
     display: none;
+    padding-top: 10px;
+
+    p {
+      margin: 0 0 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .label {
+      display: block;
+      @include font-bold;
+      margin-bottom: 1rem;
+    }
   }
 
   li.active .description {
@@ -3407,53 +3507,60 @@ $catalog-shutter-header-height--mob: 4rem;
   }
 
   .descriptionIn {
-    padding: 5px 25px 0;
-    background: url("../../i/catalogue-item-active.png") repeat-y -450px 0;
+    position: relative;
+    padding: 1.2rem;
+    background-color: $base-color;
+    //background: url("../../i/catalogue-item-active.png") repeat-y -450px 0;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 100%;
+      height: 8px;
+      width: 100%;
+      background-image: url(../../i/wave.svg);
+      background-repeat: repeat-x;
+    }
   }
 
-  .description p {
-    margin: 0;
-    padding: 0 0 10px;
-  }
+  .novelty,
+  .postnoe,
+  .halal{
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    $size: 5.5rem;
+    @include size($size);
+    text-indent: -1000px;
+    margin: -1rem;
 
-  .description .label {
-    font-weight: bold;
+    & ~ .novelty,
+    & ~ .postnoe,
+    & ~ .halal {
+      top: 60px;
+
+      & ~ .novelty,
+      & ~ .postnoe,
+      & ~ .halal {
+        top: 120px;
+      }
+    }
   }
 
   .novelty {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    display: block;
-    overflow: hidden;
-    text-indent: -1000px;
     background: url("../../i/novelty-small.png") no-repeat 0 0;
-    top: 0px;
-    right: 0;
   }
 
   .postnoe {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    display: block;
-    overflow: hidden;
-    text-indent: -1000px;
     background: url("../../i/postnoe-small.png") no-repeat 0 0;
-    top: 60px;
-    right: 0;
   }
 
   .halal {
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    display: block;
-    overflow: hidden;
-    text-indent: -1000px;
     background: url("../../i/halal-small.png") no-repeat 0 0;
-    top: 120px;
-    right: 0;
   }
 }
 

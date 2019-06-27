@@ -1369,9 +1369,10 @@ function slidersInit() {
 /**
  * Cotalogue. Additional info
  */
-function catalogueAddInfo() {
+function catalogueShowInfo() {
   // Каталог. Вызов доп. информации
-  $('.catalogue .item').hover(function(){
+  // $('.catalogue .item').on('click', function(){
+  $('.catalogue .item').hover( function(){
     $(this).parents('li').siblings('li.active').removeClass('active');
     $(this).parents('li').toggleClass('active');
     return false;
@@ -1401,5 +1402,5 @@ $(document).ready(function () {
   initHoverClass();
   menuAccordionInit();
   slidersInit();
-  catalogueAddInfo();
+  catalogueShowInfo();
 });
