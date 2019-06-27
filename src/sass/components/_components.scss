@@ -922,6 +922,18 @@
 /* ==================================== */
 .footer {
   position: relative;
+  background-color: $bg-color-dark;
+  color: $text-color-light;
+
+  @include media('<tab') {
+    font-size: 2.0rem;
+    line-height: 2.6rem;
+  }
+
+  @include media('<tab') {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
 }
 
 .footer__holder {
@@ -1106,7 +1118,6 @@
 }
 
 .content-inner {
-  padding: $grid-space;
   margin: 0 0 0 #{$sidebar-width};
   min-height: 32rem;
 
@@ -1199,6 +1210,10 @@
     &::before,
     &:first-child::before {
       content: none;
+    }
+
+    &:first-child {
+      margin-top: 0;
     }
 
     & > a, & > span {
@@ -1315,6 +1330,7 @@
   margin-top: -3rem;
   text-align: left;
   @include clear-spacing;
+
   @include media("<tab-s") {
     justify-content: flex-start;
   }
@@ -1566,7 +1582,6 @@
   width: 50%;
   height: 100%;
   display: inline-block;
-  @include font-medium;
 }
 
 .prod-image {
@@ -1592,27 +1607,34 @@
     top: 0;
     background: url(../../img/bg-img.png) repeat 0 34px;
   }
+
   .no-csspositionsticky & {
     top: auto;
   }
 }
 
-.prod-wrap, .image-wrap {
-  padding: 75px 160px;
-  @include media("<desk") {
-    @include padding-horizontal(100px);
-  }
+.prod-wrap,
+.image-wrap {
+  padding: 7.5rem 10rem;
 
   @include media("<desk-s") {
-    @include padding-horizontal(80px);
+    $padding: 6rem;
+    padding-left: $padding;
+    padding-right: $padding;
   }
 
   @include media("<lap-s") {
-    @include padding-horizontal(40px);
+    $padding: nth($layout-page-space--md, 2);
+    padding-left: $padding;
+    padding-right: $padding;
   }
 
   @include media("<tab") {
-    padding: 50px 0 40px;
+    padding: 5rem 0 4rem;
+  }
+
+  @include media("<mob") {
+    padding: 3rem 0 2rem;
   }
 }
 
@@ -1624,6 +1646,7 @@
   padding-right: 0;
   padding-left: 0;
   min-height: calc(100vh - #{$header-height});
+
   figure {
     margin: 0;
     padding: 0;
@@ -1663,7 +1686,7 @@
   width: 120px;
   top: 50%;
   text-decoration: none;
-  color: currentColor;
+  color: $base-color;
   z-index: 10;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1674,22 +1697,29 @@
     property: $prop;
     duration: $animation-speed;
   };
+
   @include media("<lap-s") {
     width: 100px;
   }
 
   @include media("<tab") {
-    @include size(90px);
+    @include size(9rem);
     opacity: 1;
   }
 
   @include media("<mob-s") {
-    @include size(60px, 100px);
+    $size: 4.8rem;
+    @include size($size);
+    background-color: #fff;
+    border-radius: $size;
+    margin-left: nth($layout-page-space--mob, 2) - 1;
+    margin-right: nth($layout-page-space--mob, 2) - 1;
   }
 
   img {
     position: relative;
   }
+
   svg {
     display: block;
     @include size(30px);
@@ -1704,7 +1734,8 @@
     transition: {
       property: $prop;
       duration: $animation-speed;
-    };
+    }
+
     @include media("<desk-s") {
       @include margin-horizontal(20px);
     }
@@ -1715,6 +1746,7 @@
       @include margin-horizontal(-15px);
     }
   }
+
   path {
     fill: currentColor;
   }
@@ -1723,6 +1755,7 @@
 .prod-prev {
   left: 0;
   transform: translate(-50%, -50%);
+
   @include media("<tab") {
     transform: translate(0, -50%);
   }
@@ -1730,6 +1763,7 @@
   svg {
     left: 100%;
     transform: rotate(0.25turn);
+
     @include media("<tab") {
       left: 50%;
     }
@@ -1739,6 +1773,7 @@
 .prod-next {
   right: 0;
   transform: translate(50%, -50%);
+
   @include media("<tab") {
     transform: translate(0, -50%);
   }
@@ -1746,6 +1781,7 @@
   svg {
     right: 100%;
     transform: rotate(-0.25turn);
+
     @include media("<tab") {
       right: 50%;
     }
@@ -1779,104 +1815,123 @@
 
 // products awards
 .prod-icons {
-  padding-bottom: 40px;
+  margin-bottom: 4rem;
+
+  @include media('<mob') {
+    margin-bottom: 2rem;
+  }
+
   img {
     display: inline-block;
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
 .prod-descr {
-  h2 {
-    margin-bottom: 4rem;
-    font-size: 6rem;
-    line-height: round-float(72 / 60, 2);
-    @include media("<lap") {
-      font-size: 4.2rem;
-    }
-
-    @include media("<tab") {
-      margin-bottom: 3rem;
-      font-size: 3.6rem;
-    }
-  }
-  p {
-    @include font-normal;
-    font-size: 2.2rem;
-    line-height: round-float(30 / 24, 2);
-    @include media("<tab") {
-      font-size: 2rem;
-    }
-  }
-  h3 {
-    font-size: 3.6rem;
-    line-height: round-float(40 / 36, 2);
-    @include media("<tab") {
-      font-size: 2.4rem;
-    }
-  }
   table {
-    //display: block
     width: 100%;
-    margin-bottom: 3rem;
-    font-size: 2.2rem;
-    line-height: round-float(30 / 24, 2);
-    @include font-normal;
-    @include media("<tab") {
-      font-size: 2rem;
+    border: none;
+
+    @include media('<mob-s') {
+      display: block;
     }
 
-    &:last-child {
-      margin-bottom: 0;
+    tbody {
+      @include media('<mob-s') {
+        display: block;
+      }
     }
-    //tbody
-    // display: block
+
     tr {
-      //display: block
-      //position: relative
-      //overflow: hidden
-      //margin-bottom: 20px
-      //z-index: 1
+      @include media('<mob-s') {
+        display: block;
+        padding: 0.5rem 0;
+        border: solid $border-color-light;
+        border-width: 1px 0 0;
+
+        &:first-child {
+          border-top: 0;
+        }
+      }
+
       &:last-child {
         margin-bottom: 0;
       }
     }
-    //&::before
-    // content: ""
-    // display: block
-    // position: absolute
-    // left: 5px
-    // right: 5px
-    // bottom: 7px
-    // height: 1px
-    // background: url(../../img/dot.png)
-    // z-index: -1
-    // filter: invert(1)
-    // opacity: 0.4
+
     td {
-      $th-right-width: 200px;
-      //display: block
-      //padding-bottom: 20px
-      //background-color: $bg-color
-      padding-bottom: 20px;
       vertical-align: bottom;
-      tr:last-child & {
-        padding-bottom: 0;
+      border: solid $border-color-light;
+      border-width: 1px 0 0;
+
+      @include media('<mob-s') {
+        padding: 0;
+        display: block;
+        border: none;
       }
+
       &:first-child {
-        //float: left
-        padding-right: 13px;
+        padding-left: 0;
         text-align: left;
+
+        @include media('<mob-s') {
+          display: inline;
+          &::after {
+            content: ":";
+            display: inline;
+          }
+        }
       }
-      //max-width: calc(100% - #{$th-right-width})
+
       &:last-child {
-        //float: right
         text-align: right;
-        padding-left: 13px;
-        min-width: $th-right-width;
+        padding-right: 0;
+        min-width: 16rem;
+        margin-top: 0.5rem;
+
+        @include media('<mob-s') {
+          @include font-bold;
+          text-align: left;
+          min-width: 0;
+        }
       }
     }
+
+    tr:first-child {
+      td {
+        border-width: 0;
+      }
+    }
+  }
+}
+
+.prod-descr-content {
+  background-color: $bg-color-light;
+  margin-bottom: 3rem;
+  max-width: 64rem;
+
+  @include media("<tab") {
+    border-radius: 1rem;
+    padding: $grid-space;
+    max-width: none;
+  }
+
+  @include media("<tab-s") {
+    padding: $grid-space--tab;
+  }
+
+  @include media("<mob") {
+    padding: $grid-space--mob;
+    margin-bottom: 2rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -1925,9 +1980,11 @@
   .prod-descr-image {
     display: block;
   }
+
   .prod-image {
     display: none;
   }
+
   .prod-descr {
     width: 100%;
   }
@@ -2919,6 +2976,10 @@ $catalog-shutter-header-height--mob: 4rem;
 
     span {
       border-bottom: 2px dashed currentColor;
+
+      @include media('<mob-s') {
+        border-width: 1px;
+      }
     }
 
     &:hover {
@@ -3026,13 +3087,17 @@ $catalog-shutter-header-height--mob: 4rem;
   max-width: $width;
   min-height: 25%;
   padding: 5rem 4rem;
-  background-color: #fff;
+  background-color: $bg-color-light;
   background-repeat: no-repeat;
   background-position: -1000% -1000%;
   transition: background-color 0.8s ease-in-out;
 
-  &:not(:hover) {
-    background-color: transparent !important  ;
+  html:not(.no-touchevents) & {
+    box-shadow: 0 0 0 1px #ff666c;
+  }
+
+  .no-touchevents &:not(:hover){
+    background-color: $bg-color-light !important;
   }
 
   @include media('<=desk') {
@@ -3046,8 +3111,6 @@ $catalog-shutter-header-height--mob: 4rem;
   }
 
   @include media('<net') {
-    //align-items: flex-start;
-    justify-content: flex-start;
     min-height: 0;
   }
 
@@ -3057,6 +3120,16 @@ $catalog-shutter-header-height--mob: 4rem;
 
   @include media('<mob') {
     padding: 2rem 1rem;
+  }
+
+  @include media('<mob-s') {
+    $width: 100%;
+    flex-basis: $width;
+    max-width: $width;
+  }
+
+  .catalog-nav:first-child & {
+    box-shadow: none;
   }
 
   &::before {
@@ -3083,9 +3156,17 @@ $catalog-shutter-header-height--mob: 4rem;
       duration: 0.8s;
       timing-function: ease-in-out;
     };
+    
+    @include media('<mob-s') {
+      left: auto;
+      right: 2rem;
+      top: 0;
+      $size: 7rem;
+      @include size($size);
+    }
   }
 
-  &:hover {
+  &:hover, html:not(.no-touchevents) & {
     background-color: $base-color;
     transition-duration: 0.4s;
 
@@ -3095,6 +3176,13 @@ $catalog-shutter-header-height--mob: 4rem;
       $scale: 1.2, 1.2;
       transform: translate($translate) scale($scale);
       transform: translate3d($translate, 0) scale3d($scale, 1);
+
+      @include media('<mob-s') {
+        $translate: 0, 0;
+        $scale: 1, 1;
+        transform: translate($translate) scale($scale);
+        transform: translate3d($translate, 0) scale3d($scale, 1);
+      }
     }
   }
 }
@@ -3103,18 +3191,6 @@ $catalog-shutter-header-height--mob: 4rem;
   position: relative;
   width: 42rem;
   max-width: 100%;
-  //font-size: 2.8rem;
-  //line-height: 3.6rem;
-
-  //@include media('<lap-l') {
-  //  font-size: 2.4rem;
-  //  line-height: 3.2rem;
-  //}
-  //
-  //@include media('<tab-s') {
-  //  font-size: 1.8rem;
-  //  line-height: 2.4rem;
-  //}
 
   a {
     color: currentColor;
@@ -3126,7 +3202,8 @@ $catalog-shutter-header-height--mob: 4rem;
       color: $link-color;
     }
 
-    .catalog-nav__item:hover &{
+    .catalog-nav__item:hover &,
+    html:not(.no-touchevents) & {
       color: #fff;
 
       &:hover {
@@ -3157,10 +3234,16 @@ $catalog-shutter-header-height--mob: 4rem;
 
   & > li > ul {
     margin-top: 2rem;
-  }
 
-  & > li > ul li {
-    margin-top: 1rem;
+    li {
+      margin-top: 1rem;
+    }
+
+    a {
+      @include media('<mob') {
+        color: lighten($text-color, 25%);
+      }
+    }
   }
 }
 
@@ -3186,3 +3269,192 @@ $catalog-shutter-header-height--mob: 4rem;
 }
 
 /* catalog shutter end */
+
+/* catalogue */
+.catalogue {
+  .content & {
+    margin: 0 -6px;
+
+    * {
+      margin: 0;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+      width: 225px;
+      margin: 0 3px 30px 6px;
+      position: relative;
+      padding: 0;
+      background: none;
+    }
+  }
+
+  &, .#{$article-content} &, .#{$typography-style-class} & {
+    li {
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  li.active {
+    background: url("../../i/catalogue-item-active.png") repeat-y -225px 0;
+    margin: 0 3px 21px 6px;
+    z-index: 2;
+  }
+
+  .item {
+    padding: 0 10px;
+  }
+
+  li.active .item {
+    background: url("../../i/catalogue-item-active.png") no-repeat 0 0;
+    padding-top: 1px;
+  }
+
+  .image {
+    width: 203px;
+    height: 179px;
+    border: 1px solid #f1ead6;
+    text-align: center;
+    line-height: 179px;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  li.active .image {
+    border: 0;
+    border-bottom: 1px solid #e9cc78;
+    padding: 0 1px;
+    background: url("../../i/catalogue-image.gif") repeat 0 0;
+  }
+
+  .image img {
+    vertical-align: middle;
+    display: inline;
+    zoom: 1;
+  }
+
+  .info {
+    background: url("../../i/catalogue-info.png") no-repeat 0 100%;
+    padding: 6px 33px 12px 27px;
+    text-align: center;
+    font: italic 11px Arial;
+    color: #946534;
+    position: relative;
+  }
+
+  li.active .info {
+    background: url("../../i/catalogue-info.png") no-repeat 100% 100%;
+    padding: 6px 34px 21px 28px;
+    margin: 0 -1px;
+  }
+
+  .info .moreBtn {
+    position: absolute;
+    top: 7px;
+    right: 9px;
+    overflow: hidden;
+    text-indent: -1000px;
+    width: 20px;
+    height: 20px;
+    background: url("../../i/more-button.png") no-repeat 0 0;
+    display: none;
+  }
+
+  .info .moreBtn:hover {
+    background-position: 0 100%;
+  }
+
+  li.active .info .moreBtn {
+    display: block;
+  }
+
+  .info h3,
+  .info .heading {
+    font: bold 15px Cambria, "Times New Roman";
+    margin: 0 0 2px;
+  }
+
+  .info h3 a,
+  .info .heading a {
+    text-decoration: none;
+  }
+
+  .info h3 a:hover,
+  .info .heading a:hover {
+    text-decoration: underline;
+  }
+
+  .info p {
+    margin: 0;
+  }
+
+  .description {
+    position: absolute;
+    left: 0;
+    width: 225px;
+    background: url("../../i/catalogue-item-active.png") no-repeat 100% 100%;
+    padding: 0 0 24px;
+    color: #fff;
+    font: 13px/15px Cambria, "CambriaRegularWebfont", "Times New Roman";
+    display: none;
+  }
+
+  li.active .description {
+    display: block;
+  }
+
+  .descriptionIn {
+    padding: 5px 25px 0;
+    background: url("../../i/catalogue-item-active.png") repeat-y -450px 0;
+  }
+
+  .description p {
+    margin: 0;
+    padding: 0 0 10px;
+  }
+
+  .description .label {
+    font-weight: bold;
+  }
+
+  .novelty {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    display: block;
+    overflow: hidden;
+    text-indent: -1000px;
+    background: url("../../i/novelty-small.png") no-repeat 0 0;
+    top: 0px;
+    right: 0;
+  }
+
+  .postnoe {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    display: block;
+    overflow: hidden;
+    text-indent: -1000px;
+    background: url("../../i/postnoe-small.png") no-repeat 0 0;
+    top: 60px;
+    right: 0;
+  }
+
+  .halal {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    display: block;
+    overflow: hidden;
+    text-indent: -1000px;
+    background: url("../../i/halal-small.png") no-repeat 0 0;
+    top: 120px;
+    right: 0;
+  }
+}
+
+/* catalogue end */

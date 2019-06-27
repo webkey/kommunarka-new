@@ -4,6 +4,7 @@
 		"setClasses"
 	],
 	"feature-detects": [
-		"test/hiddenscroll"
+		"test/hiddenscroll",
+		"test/css/positionsticky"
 	]
 }

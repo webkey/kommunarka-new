@@ -24,10 +24,36 @@ body {
   letter-spacing: $letter-spacing;
   color: $text-color;
   background: $bg-color url(../../img/bg-img.png) center;
+  position: relative;
+  padding-top: 6rem;
 
-  @include media('<tab-s') {
+  @include media("<tab") {
+    padding-top: 0;
+  }
+
+  @include media('<mob') {
     font-size: $font-size--mob;
     line-height: $line-height--mob;
+  }
+
+  &.sep-page {
+    @include media(">desk") {
+      background-attachment: fixed;
+    }
+
+    &::before {
+      content: "";
+      display: none;
+      width: 50%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      background-color: $bg-color-light;
+      @include media(">=tab") {
+        display: block;
+      }
+    }
   }
 }
 
@@ -35,17 +61,26 @@ body {
 // Отступы по бокам страницы
 // Отступы по бокам основных элементов на странице
 .layout-page-spaces {
-  @include padding-horizontal(nth($layout-page-space, 2));
+  $padding: nth($layout-page-space, 2);
+  padding-left: $padding;
+  padding-right: $padding;
+
   @include media("<lap-s") {
-    @include padding-horizontal(nth($layout-page-space--md, 2));
+    $padding: nth($layout-page-space--md, 2);
+    padding-left: $padding;
+    padding-right: $padding;
   }
 
   @include media("<tab") {
-    @include padding-horizontal(nth($layout-page-space--sm, 2));
+    $padding: nth($layout-page-space--sm, 2);
+    padding-left: $padding;
+    padding-right: $padding;
   }
 
   @include media("<mob") {
-    @include padding-horizontal(nth($layout-page-space--mob, 2));
+    $padding: nth($layout-page-space--mob, 2);
+    padding-left: $padding;
+    padding-right: $padding;
   }
 }
 
@@ -53,7 +88,6 @@ body {
 // Выравнивание основных элементов и их максимальная ширина
 .layout-page {
   max-width: $layout-page-max-width;
-  //box-sizing: content-box;
   @include push-auto;
   @include media("<lap-s") {
     max-width: none;
@@ -87,30 +121,6 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: 6rem;
-  @include media("<tab") {
-    padding-top: 0;
-  }
-
-  &.sep-page {
-    @include media(">desk") {
-      background-attachment: fixed;
-    }
-
-    &::before {
-      content: "";
-      display: none;
-      width: 50%;
-      height: 100%;
-      position: fixed;
-      left: 0;
-      top: 0;
-      background-color: $bg-color;
-      @include media(">=tab") {
-        display: block;
-      }
-    }
-  }
 }
 
 .header {

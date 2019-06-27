@@ -75,16 +75,17 @@ $font-size--mob: 2.0rem !default;
 $line-height--mob: 2.6rem !default;
 $letter-spacing--mob: 0.02em !default;
 
+
 // Heading h1
-$font-size-h1: 7.2rem !default;
-$line-height-h1: 7.6rem !default;
+$font-size-h1: 6.4rem !default;
+$line-height-h1: 6.6rem !default;
 $line-height-h1-kef: $line-height-h1 / $font-size-h1;
 // ----------------------------------------------------
-$font-size-h1--tab: 3.6rem !default;
-$line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) !default;
+$font-size-h1--tab: 4.8rem !default;
+$line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) + 0.2 !default;
 // ----------------------------------------------------
-$font-size-h1--mob: 3.0rem !default;
-$line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
+$font-size-h1--mob: 3.8rem !default;
+$line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) + 0.3 !default; // Использовать рассчетное значение, если нет в дизайне
 
 @mixin font-h1() {
   font-size: $font-size-h1;
@@ -107,11 +108,11 @@ $font-size-h2: 4.6rem !default;
 $line-height-h2: 5.4rem !default;
 $line-height-h2-kef: $line-height-h2 / $font-size-h2;
 // ----------------------------------------------------
-$font-size-h2--tab: 2.8rem !default;
-$line-height-h2--tab: round-float($font-size-h2--tab * $line-height-h2-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
+$font-size-h2--tab: 3.6rem !default;
+$line-height-h2--tab: round-float($font-size-h2--tab * $line-height-h2-kef, 1) + 0.2 !default; // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
-$font-size-h2--mob: 2.4rem !default;
-$line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
+$font-size-h2--mob: 2.8rem !default;
+$line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) + 0.4 !default; // Использовать рассчетное значение, если нет в дизайне
 
 @mixin font-h2() {
   font-size: $font-size-h2;
@@ -126,6 +127,7 @@ $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !
   @include media("<mob") {
     font-size: $font-size-h2--mob;
     line-height: $line-height-h2--mob;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -135,15 +137,14 @@ $font-size-h3: 3.6rem !default;
 $line-height-h3: 4.2rem !default;
 $line-height-h3-kef: $line-height-h3 / $font-size-h3;
 // ----------------------------------------------------
-$font-size-h3--tab: 2.4rem !default;
-$line-height-h3--tab: round-float($font-size-h3--tab * $line-height-h3-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
+$font-size-h3--tab: 2.8rem !default;
+$line-height-h3--tab: round-float($font-size-h3--tab * $line-height-h3-kef, 1) + 0.2 !default; // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
-$font-size-h3--mob: 2.0rem !default;
-$line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !default; // Использовать рассчетное значение, если нет в дизайне
+$font-size-h3--mob: 2.4rem !default;
+$line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) + 0.3 !default; // Использовать рассчетное значение, если нет в дизайне
 
 @mixin font-h3() {
   font-size: $font-size-h3;
-
   line-height: $line-height-h3;
 
   @include media("<tab") {
@@ -154,6 +155,7 @@ $line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !
   @include media("<mob") {
     font-size: $font-size-h3--mob;
     line-height: $line-height-h3--mob;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -175,10 +177,10 @@ $line-height-h4--mob: $line-height--mob !default;
 }
 
 // Heading h5
-$line-height-h5-kef: $line-height / $font-size;
 // ----------------------------------------------------
 $font-size-h5: $font-size - 0.2 !default;
-$line-height-h5: round-float($font-size-h5 * $line-height-h5-kef, 1) !default;
+$line-height-h5: $line-height - 0.1 !default;
+$line-height-h5-kef: $line-height-h5 / $font-size-h5;
 // ----------------------------------------------------
 $font-size-h5--mob: $font-size--mob - 0.2 !default;
 $line-height-h5--mob: round-float($font-size-h5--mob * $line-height-h5-kef, 1) !default;
@@ -194,10 +196,9 @@ $line-height-h5--mob: round-float($font-size-h5--mob * $line-height-h5-kef, 1) !
 }
 
 // Heading h6
-$line-height-h6-kef: $line-height / $font-size;
-// ----------------------------------------------------
 $font-size-h6: $font-size - 0.4 !default;
-$line-height-h6: round-float($font-size-h6 * $line-height-h6-kef, 1) !default;
+$line-height-h6: $line-height - 0.2 !default;
+$line-height-h6-kef: $line-height-h6 / $font-size-h6;
 // ----------------------------------------------------
 $font-size-h6--mob: $font-size--mob - 0.4 !default;
 $line-height-h6--mob: round-float($font-size-h6--mob * $line-height-h6-kef, 1) !default;
@@ -300,7 +301,7 @@ $layout-flood-width: 100rem !default;
 // Внутренние отступы
 $grid-space: 2.8rem 3rem !default;
 $grid-space--tab: 1.8rem 2rem !default;
-$grid-space--mob: 1.2rem 1rem !default;
+$grid-space--mob: 1.2rem 1.5rem !default;
 
 
 // отступы в дефолтных списках

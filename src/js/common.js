@@ -1367,6 +1367,18 @@ function slidersInit() {
 }
 
 /**
+ * Cotalogue. Additional info
+ */
+function catalogueAddInfo() {
+  // Каталог. Вызов доп. информации
+  $('.catalogue .item').hover(function(){
+    $(this).parents('li').siblings('li.active').removeClass('active');
+    $(this).parents('li').toggleClass('active');
+    return false;
+  });
+}
+
+/**
  * =========== !ready document, load/resize window ===========
  */
 
@@ -1389,4 +1401,5 @@ $(document).ready(function () {
   initHoverClass();
   menuAccordionInit();
   slidersInit();
+  catalogueAddInfo();
 });
