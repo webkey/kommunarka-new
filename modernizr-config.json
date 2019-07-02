@@ -1,10 +1,10 @@
 {
-	"minify": true,
-	"options": [
-		"setClasses"
-	],
-	"feature-detects": [
-		"test/hiddenscroll",
-		"test/css/positionsticky"
-	]
+  "minify": true,
+  "options": [
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/hiddenscroll",
+    "test/css/positionsticky"
+  ]
 }

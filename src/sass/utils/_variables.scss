@@ -66,8 +66,10 @@ $font-medium: "AkzidenzGroteskPro Medium Cond", sans-serif !default;
 // Base
 // ==========================================================================
 
-$font-size: 2.2rem !default;
-$line-height: 2.8rem !default;
+//$font-size: 2.2rem !default;
+//$line-height: 2.8rem !default;
+$font-size: 2.0rem !default;
+$line-height: 2.6rem !default;
 $letter-spacing: 0.02em !default;
 // ----------------------------------------------------
 // --- mob ---
@@ -116,7 +118,6 @@ $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) +
 
 @mixin font-h2() {
   font-size: $font-size-h2;
-
   line-height: $line-height-h2;
 
   @include media("<tab") {
@@ -254,7 +255,8 @@ $border-color-light: #f4e5bb !default;
 $mark-color: #fd0cff !default;
 // ----------------------------------------------------
 //$frame-color: #e9cd78, #fff, #cea21d, #ab7222 !default;
-$frame-color: #d4c0b3, #fff, #d4c0b3, #a98975 !default;
+//$frame-color: #d4c0b3, #fff, #d4c0b3, #a98975 !default;
+$frame-color: #d4c0b3, #fff, #d4c0b3, rgba(78, 43, 21, 0.6) !default;
 // ----------------------------------------------------
 $success-color: #28a745 !default;
 $error-color: #dc3545 !default;
@@ -330,7 +332,7 @@ $sidebar-min-width: 30rem !default;
 
 // Footer
 // ==========================================================================
-$footer-grid-space: 3rem 0 !default;
+$footer-grid-space: 2rem 0 !default;
 
 
 // =========Buttons=========

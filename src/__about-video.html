@@ -1,0 +1,110 @@
+@@include('_tpl_layout_head.html', {
+"title": "О компании",
+"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "currentItem": "О компании" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main" role="main">
+  <div class="layout-page layout-page-spaces">
+    <div class="content">
+      <div class="content-align">
+        <section class="content-inner article-content">
+          @@include('_tpl_breadcrumbs.html', {
+          "items": ["Главная", "О компании"],
+          "last": "Видеоролики"
+          })
+
+          <h1>Видеоролики</h1>
+
+          <div id="items" class="layout-text">
+            <div class="videoBlock">
+              <div class="video">
+                <object width="420" height="315">
+                  <param name="movie" value="http://www.youtube.com/v/TeVfJEcZGZM?version=3&amp;hl=ru_RU"></param>
+                  <param name="allowFullScreen" value="true"></param>
+                  <param name="allowscriptaccess" value="always"></param>
+                  <param name="wmode" value="opaque"></param>
+                  <embed src="http://www.youtube.com/v/TeVfJEcZGZM?version=3&amp;hl=ru_RU" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="420" height="315" wmode="opaque"></embed>
+                </object>
+              </div>
+              <div class="info">
+                <h3>"Коммунарка" нежное суфле</h3>
+                <p>Рекламный ролик нежного суфле СОАО "Коммунарка"</p>
+              </div>
+            </div>
+            <div class="videoBlock">
+              <div class="video">
+                <object width="420" height="315">
+                  <param name="movie" value="http://www.youtube.com/v/fxr-IemKYXU?version=3&amp;hl=ru_RU"></param>
+                  <param name="allowFullScreen" value="true"></param>
+                  <param name="allowscriptaccess" value="always"></param>
+                  <param name="wmode" value="opaque"></param>
+                  <embed src="http://www.youtube.com/v/fxr-IemKYXU?version=3&amp;hl=ru_RU" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="420" height="315" wmode="opaque"></embed>
+                </object>
+              </div>
+              <div class="info">
+                <h3>Шоколад</h3>
+                <p>Рекламный ролик шоколада 90 г. СОАО "Коммунарка"</p>
+              </div>
+            </div>
+            <div class="videoBlock">
+              <div class="video">
+                <object width="420" height="315">
+                  <param name="movie" value="http://www.youtube.com/v/AxkcAbIzEe8?version=3&amp;hl=ru_RU"></param>
+                  <param name="allowFullScreen" value="true"></param>
+                  <param name="allowscriptaccess" value="always"></param>
+                  <param name="wmode" value="opaque"></param>
+                  <embed src="http://www.youtube.com/v/AxkcAbIzEe8?version=3&amp;hl=ru_RU" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="420" height="315" wmode="opaque"></embed>
+                </object>
+              </div>
+              <div class="info">
+                <h3>Остаемся настоящими</h3>
+                <p>Рекламный ролик для СОАО "Коммунарка".</p>
+              </div>
+            </div>
+            <div class="videoBlock">
+              <div class="video">
+                <object width="420" height="315">
+                  <param name="movie" value="http://www.youtube.com/v/okzRZMjzpUw?version=3&amp;hl=ru_RU"></param>
+                  <param name="allowFullScreen" value="true"></param>
+                  <param name="allowscriptaccess" value="always"></param>
+                  <param name="wmode" value="opaque"></param>
+                  <embed src="http://www.youtube.com/v/okzRZMjzpUw?version=3&amp;hl=ru_RU" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="420" height="315" wmode="opaque"></embed>
+                </object>
+              </div>
+              <div class="info">
+                <h3>Настоящий шоколад</h3>
+                <p>Имиджевый ролик для бренда "Коммунарка"
+
+                  Brand: "Коммунарка" Agency: OneFunPartizan
+
+                  Режиссер: Андрей Гнёт Оператор: Алексей Хорошко Продюсер: Алексей Сатолин
+
+                  Partizan Production team</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar__holder">
+          @@include("_tpl_menu-about.html", {"currentItem": "Видеоролики"})
+        </div>
+      </aside>
+    </div>
+
+    @@include('_tpl_scene.html')
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html', {"toTop": "true"})
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

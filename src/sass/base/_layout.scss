@@ -55,6 +55,62 @@ body {
       }
     }
   }
+
+  &.home-page {
+    $height: 84.3rem;
+    $ratio: calc(47% + 26.5rem);
+    $ratio-mob: calc(47% + 21.7rem);
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: $height;
+      background-color: #690707;
+      @include linear-gradient(to bottom, #bb0a07 0%, #ea5238 50%, #9c0b01 100%);
+
+      @include media('<tab') {
+        height: auto;
+        padding-top: $ratio;
+      }
+
+      @include media('<mob') {
+        height: auto;
+        padding-top: $ratio-mob;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      //top: 83.8rem;
+      top: 0;
+      width: 100%;
+      //height: 1rem;
+      height: $height;
+      padding-bottom: 0.5rem;
+      box-sizing: content-box;
+      background-image: url(../../i/wave-main.svg);
+      background-repeat: repeat-x;
+      background-position: 50% 100%;
+      z-index: -1;
+
+      @include media('<tab') {
+        height: auto;
+        padding-top: $ratio;
+      }
+
+      @include media('<mob') {
+        height: auto;
+        padding-top: $ratio-mob;
+      }
+    }
+  }
 }
 
 /* === LAYOUT === */

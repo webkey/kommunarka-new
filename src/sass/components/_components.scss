@@ -62,6 +62,10 @@
   }
 }
 
+[style*="font-family: Arial"] {
+  font-family: $font-norm !important;
+}
+
 /* ==================================== */
 /* ======= NON CONTENT ELEMENTS ======= */
 /* ==================================== */
@@ -261,16 +265,21 @@
   min-width: 320px;
   background-color: #403b38;
   z-index: inherit;
+
   .header-is-top & {
     position: fixed;
     left: 0;
     top: 0;
   }
-  .shutter-after-open & {
-    //@include media("<tab") {
-    //  background-color: $base-color-light;
-    //}
+
+  // Special for a home page
+  .home-page & {
+    background-color: $base-color-light;
   }
+
+  //.shutter-after-open & {
+  //
+  //}
 }
 
 .header__holder {
@@ -389,6 +398,11 @@
   box-shadow: inset 0 0 0 $base-color;
   transition: box-shadow $animation-speed;
 
+  // Special for a home page
+  .home-page & {
+    color: $text-color;
+  }
+
   &::after {
     opacity: 0;
     content: "";
@@ -400,8 +414,13 @@
     height: $size;
     width: $size;
     margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)};
-    background: url(../../img/icon-cross-light.svg) no-repeat center;
+    background: url(../../i/icon-cross-light.svg) no-repeat center;
     background-size: 2.4rem;
+
+    // Special for a home page
+    .home-page & {
+      background-image: url(../../i/icon-cross.svg);
+    }
   }
 
   svg {
@@ -554,6 +573,11 @@
     .no-touchevents &:hover {
       box-shadow: inset 0 -0.2rem 0 $base-color;
     }
+
+    // Special for a home page
+    .home-page & {
+      color: $text-color;
+    }
   }
 
   & > span {
@@ -578,6 +602,11 @@
   cursor: pointer;
   box-shadow: inset 0 0 0 $base-color;
   transition: box-shadow $animation-speed;
+
+  // Special for a home page
+  .home-page & {
+    color: $text-color;
+  }
 
   svg {
     $size: 2.4rem;
@@ -711,6 +740,16 @@
       justify-content: center;
       height: auto;
     }
+
+    @include media("<tab") {
+      font-size: 2.8rem;
+      padding: 5px 20px;
+    }
+
+    // Special for a home page
+    .home-page & {
+      color: $text-color;
+    }
   }
 
   // hover
@@ -793,6 +832,7 @@
     property: background-color;
     duration: $animation-speed;
   };
+
   @include media("<tab") {
     display: block;
   }
@@ -801,6 +841,11 @@
     // убрать подсветку при клике на тачскринах
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  // Special for a home page
+  .home-page & {
+    color: $text-color;
   }
 
   & > span {
@@ -823,6 +868,11 @@
       delay: 0s;
       timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
     };
+
+    // Special for a home page
+    .home-page & {
+      background-color: $text-color;
+    }
   }
 
   // бутерброд
@@ -925,7 +975,7 @@
   background-color: $bg-color-dark;
   color: $text-color-light;
 
-  @include media('<tab') {
+  @include media('<lap-s') {
     font-size: 2.0rem;
     line-height: 2.6rem;
   }
@@ -934,14 +984,25 @@
     font-size: 1.8rem;
     line-height: 2.4rem;
   }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    margin-bottom: -5px;
+    background: url(../../i/wave-footer.svg) repeat-x;
+  }
 }
 
 .footer__holder {
   overflow: hidden;
   cursor: default;
   padding: $footer-grid-space;
-  border: solid #5a534f;
-  border-width: 1px 0 0;
+  //border: solid #5a534f;
+  //border-width: 1px 0 0;
 }
 
 /* footer bottom */
@@ -960,15 +1021,24 @@
 }
 
 .footer-bottom__col {
-  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 1;
+  $width: 33.33%;
+  flex-basis: $width;
+  max-width: $width;
   @include padding-horizontal(round(nth($grid-space, 2) / 2));
   margin-bottom: #{round(nth($grid-space, 1) / 2)};
   // для браузеров не поддерживающих display: flex
   display: inline-block;
   vertical-align: top;
-  width: calc(33.33%);
+  width: $width;
+  text-align: center;
+
   @include media("<mob") {
-    min-width: 100%;
+    $width: 100%;
+    flex-basis: $width;
+    max-width: $width;
+    width: $width;
   }
 
   &:first-child {
@@ -976,11 +1046,13 @@
       text-align: left;
     }
   }
+
   &:last-child {
     @include media(">=mob") {
       text-align: right;
     }
   }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -994,10 +1066,13 @@
 
 /* developer */
 .developer {
-  display: inline-block;
+  display: block;
   min-height: 25px;
+  margin-bottom: 1rem;
+
   a {
     text-decoration: none;
+
     .no-touchevents &:hover {
       text-decoration: none;
     }
@@ -1060,6 +1135,55 @@
 
 /* developer end */
 
+/* seo */
+.seo {
+  display: block;
+  min-height: 25px;
+
+  a {
+    text-decoration: none;
+
+    .no-touchevents &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.seo__label {
+  @include media("<mob") {
+    display: block;
+  }
+
+  i {
+    @include media("<mob") {
+      display: none;
+    }
+  }
+}
+
+.seo__logo {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 10.8rem;
+  margin-top: 7px;
+  text-align: left;
+  font-size: 0;
+  line-height: 0;
+  background-image: url(../../i/logo-goodrank.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &::before {
+    content: "";
+    display: block;
+    @include ratio(263, 32)
+  }
+}
+
+/* developer end */
+
 /* ==================================== */
 /* ============== MAIN ================ */
 /* ==================================== */
@@ -1087,7 +1211,8 @@
   position: relative;
   width: 100%;
   border-radius: 1rem;
-  background-color: $bg-color-light;
+  //background-color: $bg-color-light;
+  background-color: white;
   border: 1px solid #{nth($frame-color, 1)};
   box-shadow: 0 0 0 2px #{nth($frame-color, 2)}, 0 0 0 3px #{nth($frame-color, 3)}, 0 10px 5px -5px #{nth($frame-color, 4)};
 
@@ -2138,6 +2263,11 @@
 /* promo slider */
 .main-slider {
   margin-bottom: 4rem;
+
+  @include media('<mob') {
+    margin-bottom: 3rem;
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -2217,43 +2347,78 @@
 
 /* m-catalog-element */
 .m-catalog-elem {
-  $element: &;
-  // =========
   display: block;
-  padding: 2rem;
+  position: relative;
+  overflow: hidden; // Образать фоновое изображение
+  //padding: 2rem;
+  padding-top: 8rem;
   border-radius: 1rem;
-  background-color: $bg-color-light;
+  border-radius: 50% / 20px;
   border: 1px solid #{nth($frame-color, 1)};
   box-shadow: 0 0 0 2px #{nth($frame-color, 2)}, 0 0 0 3px #{nth($frame-color, 3)}, 0 10px 5px -5px #{nth($frame-color, 4)};
 
+  // Сетка на фоне
+  //background: linear-gradient(45deg, #ebe2d0 4%, transparent 0, transparent 96%, #ebe2d0 0),
+  //linear-gradient(135deg, transparent 45%, #ebe2d0 0, #ebe2d0 55%, transparent 0),
+  //linear-gradient(45deg, transparent 45%, #ebe2d0 0, #ebe2d0 55%, transparent 0),
+  //linear-gradient(135deg, transparent 37%, #fff 0, #fff 63%, transparent 0),
+  //linear-gradient(45deg, transparent 37%, #fff 0, #fff 63%, transparent 0)
+  //#ebe2d0;
+  //background-size: 6px 6px;
+  background-color: $bg-color-light;
+
   @include media('<mob') {
-    padding: 1.2rem 1rem;
-  }
-
-  @at-root {
-    a#{$element} {
-      text-decoration: none;
-      color: $title-color;
-
-      &:hover {
-        color: $base-color;
-      }
-    }
+    padding-top: 6rem;
   }
 }
 
 .m-catalog-elem__figure {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 12rem;
-  width: 12rem;
-  max-width: 100%;
-  margin: 0 auto 1rem;
+  //opacity: 0.5;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+  //height: 10rem;
+  //width: 12rem;
+  height: 8rem;
+  width: 100%;
+  //max-width: 100%;
+  //margin: 0 auto 1rem;
+  background-color: $base-color;
+  background-repeat: no-repeat;
+  background-position: -1000px -1000px;
 
-  @include media('<mob-s') {
-    height: 10rem;
-    width: 10rem;
+  @include media('<mob') {
+    height: 6rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -30%;
+    top: -30%;
+    height: 160%;
+    width: 160%;
+    background-image: inherit;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.6;
+    $translate: 0, 0;
+    $scale: 1, 1;
+    transform: translate($translate) scale($scale);
+    transform: translate3d($translate, 0) scale3d($scale, 1);
+    $prop: transform, opacity;
+    will-change: $prop;
+    transition: {
+      property: $prop;
+      duration: 0.65s;
+      timing-function: ease-in-out;
+    };
   }
 
   img {
@@ -2264,15 +2429,59 @@
   }
 }
 
+.m-catalog-elem__content {
+  position: relative;
+  padding: 2rem 2rem 2.6rem;
+
+  @include media('<mob') {
+    padding: 1rem 1rem 1.8rem;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 100%;
+    margin: -0.5rem 0;
+    height: 1rem;
+    background: url(../../i/wave-light-turn.svg) repeat-x 50% 0;
+  }
+}
+
 .m-catalog-elem__title {
   display: block;
+  position: relative;
   margin-bottom: 1rem;
+  @include font-normal;
+  font-weight: normal;
+  font-size: 2.8rem;
+  line-height: 3.2rem;
   text-align: center;
-  font-size: 2.2rem;
-  line-height: 2.2rem;
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+// Hover
+a.m-catalog-elem {
+  text-decoration: none;
+  color: $title-color;
+
+  .no-touchevents &:hover {
+    color: $base-color;
+
+    .m-catalog-elem__figure {
+      &::before {
+        opacity: 0.85;
+        $translate: 0, 0;
+        $scale: 1.2, 1.2;
+        transform: translate($translate) scale($scale);
+        transform: translate3d($translate, 0) scale3d($scale, 1);
+      }
+    }
   }
 }
 /* m-catalog-element end */
@@ -2283,6 +2492,33 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+.m-catalog__title {
+  $color: $title-color;
+  text-align: center;
+  color: $color;
+  text-shadow: 1px 1px 0 #{$bg-color}, 2px 2px 0 #{tint($color, 50%)};
+  font-size: $font-size-h2;
+  line-height: $line-height-h2;
+  letter-spacing: 0.05em;
+
+  @include media("<tab") {
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+  }
+
+  @include media("<mob") {
+    font-size: $font-size-h2--tab;
+    line-height: $line-height-h2--tab;
+    letter-spacing: 0.05em;
+  }
+
+  // Special for a home page
+  .home-page & {
+    color: $base-color-light;
+    text-shadow: 1px 1px 0 #{$base-color}, 2px 2px 0 rgba($base-color-light, 0.65);
   }
 }
 
@@ -2305,7 +2541,7 @@
   max-width: $width;
   padding: 0 1rem 2rem;
 
-  @include media('<mob') {
+  @include media('<tab-s') {
     $width: 50%;
     flex-basis: $width;
     max-width: $width;
@@ -2420,19 +2656,75 @@
 
 /* previews news */
 .p-news {
-  margin: 0 auto 3rem;
   position: relative;
   min-height: 25.9rem;
   width: 97.7rem;
   max-width: 100%;
+  margin: 0 auto 3rem;
   padding: 2rem 4rem 5rem;
-  background: url("../../i/footer-news.png") no-repeat 0 0;
-  background-size: 100% 100%;
+  //background: url("../../i/footer-news.png") no-repeat 0 0;
+  //background-size: 100% 100%;
+  //background: $bg-color-light;
+
+  //background:
+  //    linear-gradient(45deg, #ebe2d0 12%, transparent 0, transparent 88%, #ebe2d0 0),
+  //    linear-gradient(135deg, transparent 37%, #ebe2d0 0, #ebe2d0 63%, transparent 0),
+  //    linear-gradient(45deg, transparent 37%, #ebe2d0 0, #ebe2d0 63%, transparent 0)
+  //    #fff;
+  //background-size: 6px 6px;
+
+  //background:
+  //    linear-gradient(45deg, #ebe2d0 10%, transparent 0, transparent 90%, #ebe2d0 0),
+  //    linear-gradient(135deg, transparent 41%, #ebe2d0 0, #ebe2d0 59%, transparent 0),
+  //    linear-gradient(45deg, transparent 41%, #ebe2d0 0, #ebe2d0 59%, transparent 0)
+  //    #fff;
+  //background-size: 6px 6px;
+
+  // Сетка на фоне
+  background: linear-gradient(45deg, #ebe2d0 4%, transparent 0, transparent 96%, #ebe2d0 0),
+      linear-gradient(135deg, transparent 45%, #ebe2d0 0, #ebe2d0 55%, transparent 0),
+      linear-gradient(45deg, transparent 45%, #ebe2d0 0, #ebe2d0 55%, transparent 0),
+      linear-gradient(135deg, transparent 37%, #fff 0, #fff 63%, transparent 0),
+      linear-gradient(45deg, transparent 37%, #fff 0, #fff 63%, transparent 0)
+      #ebe2d0 ;
+  background-size: 6px 6px;
+
+  // Окантовка с тенью
+  border-radius: 50% / 40px;
+  border: 1px solid #{nth($frame-color, 1)};
+  box-shadow: 0 0 0 3px #{nth($frame-color, 2)}, 0 0 0 4px #{nth($frame-color, 3)}, 0 15px 10px -10px #{nth($frame-color, 4)};
+
+  // Нижняя и верхняя петельки
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    height: 10px;
+    width: 14px;
+    margin: -4px -7px;
+  }
+
+  // Верхняя петелька
+  &::before {
+    top: 0;
+    background-color: $bg-color;
+    border: solid #{nth($frame-color, 2)};
+    border-width: 0 4px 4px;
+    box-shadow: 0 1px 0 #{nth($frame-color, 1)};
+    border-radius: 2px 2px 10px 10px;
+  }
+
+  // Нижняя петелька
+  &::after {
+    bottom: 0;
+    background-color: #{nth($frame-color, 4)};
+    border: solid #{nth($frame-color, 2)};
+    border-width: 4px 4px 0;
+    box-shadow: 0 -1px 0 #{nth($frame-color, 1)};
+    border-radius: 10px 10px 2px 2px;
+  }
 
   @include media("<tab") {
-    background: #fff;
-    border: 1px solid #{nth($frame-color, 1)};
-    box-shadow: 0 0 0 3px #{nth($frame-color, 2)}, 0 0 0 4px #{nth($frame-color, 3)}, 0 15px 10px -10px #{nth($frame-color, 4)};
     border-radius: 1rem;
     padding: $grid-space;
   }
@@ -2444,6 +2736,7 @@
   @include media("<mob") {
     padding: $grid-space--mob;
   }
+
 }
 
 .p-news__title {
@@ -2451,6 +2744,19 @@
   color: $title-color-alt;
   letter-spacing: 0.05em;
   text-shadow: 1px 1px 0 #fff, 2px 2px 0 #{tint($title-color-alt, 50%)};
+  font-size: $font-size-h2;
+  line-height: $line-height-h2;
+
+  @include media("<tab") {
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+  }
+
+  @include media("<mob") {
+    font-size: $font-size-h2--tab;
+    line-height: $line-height-h2--tab;
+    letter-spacing: 0.05em;
+  }
 }
 
 $p-news-space: 2rem 2rem;
@@ -3040,7 +3346,7 @@ $catalog-shutter-header-height--mob: 4rem;
   width: $catalog-shutter-header-height;
   font-size: 0;
   line-height: 0;
-  background: url(../../img/icon-cross-light.svg) no-repeat center;
+  background: url(../../i/icon-cross-light.svg) no-repeat center;
   background-size: 60%;
   box-shadow: inset 0 0 0 $base-color;
   transition: box-shadow $animation-speed;
@@ -3293,43 +3599,138 @@ $catalog-shutter-header-height--mob: 4rem;
 
 /* catalog shutter end */
 
-/* catalogue */
-.catalogue {
-  .content & {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    margin: 0 -1rem 4rem;
-    max-width: none;
+/* stickers */
+.catalogue,
+.similar-slider {
+  .novelty,
+  .postnoe,
+  .halal {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    $size: 5.5rem;
+    @include size($size);
+    text-indent: -1000px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 
-    &:last-child {
-      margin-bottom: 0;
+    @include media('<mob-s') {
+      @include size(4.8rem);
     }
 
-    li {
-      flex-grow: 0;
-      flex-shrink: 1;
-      $width: 20%;
-      flex-basis: $width;
-      max-width: $width;
-      margin: 0;
-      padding: 0 1rem 3rem;
-      position: relative;
-      background: none;
+    & ~ .novelty,
+    & ~ .postnoe,
+    & ~ .halal {
+      top: 6rem;
 
-      @include media('<mob') {
-
+      @include media('<mob-s') {
+        top: 5rem;
       }
 
-      .item {
-        height: 100%;
+      & ~ .novelty,
+      & ~ .postnoe,
+      & ~ .halal {
+        top: 12rem;
+
+        @include media('<mob-s') {
+          top: 10rem;
+        }
       }
     }
   }
 
-  &,
-  .#{$article-content} &,
-  .#{$typography-style-class} & {
+  .novelty {
+    background-image: url("../../i/novelty-small.png");
+  }
+
+  .postnoe {
+    background-image: url("../../i/postnoe-small.png");
+  }
+
+  .halal {
+    background-image: url("../../i/halal-small.png");
+  }
+}
+/* stickers end */
+
+/* catalogue */
+.content .catalogue {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin: 0 -1rem 4rem;
+  max-width: none;
+
+  @include media('<mob-s') {
+    margin: 0 -0.6rem 3rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  li {
+    flex-grow: 0;
+    flex-shrink: 1;
+    $width: 20%;
+    flex-basis: $width;
+    max-width: $width;
+    margin: 0;
+    padding: 0 1rem 3rem;
+    position: relative;
+    background: none;
+
+    @include media('<desk-s') {
+      $width: 25%;
+      flex-basis: $width;
+      max-width: $width;
+    }
+
+    @include media('<lap-l') {
+      $width: 33.33%;
+      flex-basis: $width;
+      max-width: $width;
+    }
+
+    @include media('<net') {
+      $width: 50%;
+      flex-basis: $width;
+      max-width: $width;
+    }
+
+    @include media('<tab') {
+      $width: 33.33%;
+      flex-basis: $width;
+      max-width: $width;
+    }
+
+    @include media('<tab-s') {
+      $width: 50%;
+      flex-basis: $width;
+      max-width: $width;
+    }
+
+    @include media('<mob-s') {
+      padding: 0 0.6rem 2.5rem;
+    }
+
+    @include media('<mob-xxs') {
+      $width: 100%;
+      flex-basis: $width;
+      max-width: $width;
+    }
+
+    .item {
+      height: 100%;
+    }
+  }
+}
+
+.catalogue {
+  &, .#{$article-content} &, .#{$typography-style-class} & {
     li {
       &::before {
         content: none;
@@ -3344,7 +3745,8 @@ $catalog-shutter-header-height--mob: 4rem;
 
   .item {
     position: relative;
-    background-color: #fff;
+    //background-color: #fff;
+    background-color: $bg-color-light;
 
     &::before {
       content: "";
@@ -3355,7 +3757,8 @@ $catalog-shutter-header-height--mob: 4rem;
       width: 100%;
       height: 10px;
       margin-top: -5px;
-      background-image: url(../../i/wave-white.svg);
+      //background-image: url(../../i/wave-white.svg);
+      background-image: url(../../i/wave-light.svg);
       background-repeat: repeat-x;
       background-position: 0 100%;
     }
@@ -3370,21 +3773,41 @@ $catalog-shutter-header-height--mob: 4rem;
     margin: 0;
     //width: 203px;
     //height: 179px;
-    $height: 18rem;
-    height: $height;
-    line-height: $height;
+    //$height: 18rem;
+    height: 18rem;
     text-align: center;
-    border-bottom: 1px solid $bg-color-light;
+    //border-bottom: 1px solid $bg-color-light;
+    border: 1px solid $bg-color-light;
+    background-color: #fff;
+
+    @include media('<mob-s') {
+      height: 12rem;
+    }
   }
 
   li.active .image {
     //background: url("../../i/catalogue-image.gif") repeat 0 0;
   }
 
+  .image a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+    height: 100%;
+    text-decoration: none;
+    color: currentColor;
+  }
+
   .image img {
-    vertical-align: middle;
-    display: inline;
+    //vertical-align: middle;
+    //display: inline;
+    flex-shrink: 1;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
     zoom: 1;
+    margin: auto;
   }
 
   .info {
@@ -3392,13 +3815,18 @@ $catalog-shutter-header-height--mob: 4rem;
     line-height: 2.4rem;
     letter-spacing: 0.02em;
     color: $text-color-alt;
-    background-color: #fff;
+    //background-color: #fff;
+    background-color: $bg-color-light;
     //background: url("../../i/catalogue-info.png") no-repeat 0 100%;
     padding: 1.2rem;
     text-align: center;
     @include font-medium;
     //color: #946534;
     position: relative;
+
+    @include media('<mob-s') {
+      line-height: 2rem;
+    }
   }
 
   li.active .info {
@@ -3451,7 +3879,7 @@ $catalog-shutter-header-height--mob: 4rem;
     }
   }
 
-  li.active .info .moreBtn {
+  .no-touchevents & li.active .info .moreBtn {
     //display: block;
     display: flex;
   }
@@ -3463,11 +3891,17 @@ $catalog-shutter-header-height--mob: 4rem;
       font-size: 1.6rem;
       line-height: 2.4rem;
       letter-spacing: 0.02em;
+      color: $link-color;
       text-transform: uppercase;
       margin: 0;
 
+      @include media('<mob-s') {
+        font-size: 1.4rem;
+        line-height: 2rem;
+      }
+
       a {
-        color: $link-color;
+        color: currentColor;
         text-decoration: none;
         padding-top: 0.3em;
 
@@ -3480,6 +3914,10 @@ $catalog-shutter-header-height--mob: 4rem;
     p {
       margin: 1rem 0 0;
       @include font-italic;
+
+      @include media('<mob-s') {
+        margin-top: 0.5rem;
+      }
 
       &:empty {
         display: none;
@@ -3494,7 +3932,8 @@ $catalog-shutter-header-height--mob: 4rem;
     //background: url("../../i/catalogue-item-active.png") no-repeat 100% 100%;
     //padding: 0 0 2.4rem;
     color: #fff;
-    background-color: #fff;
+    //background-color: #fff;
+    background-color: $bg-color-light;
     //font: 13px/15px Cambria, "CambriaRegularWebfont", "Times New Roman";
     font-size: 1.6rem;
     line-height: 2.4rem;
@@ -3516,7 +3955,7 @@ $catalog-shutter-header-height--mob: 4rem;
     }
   }
 
-  li.active .description {
+  .no-touchevents & li.active .description {
     display: block;
   }
 
@@ -3541,41 +3980,396 @@ $catalog-shutter-header-height--mob: 4rem;
 
   .novelty,
   .postnoe,
-  .halal{
-    display: block;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    right: 0;
-    $size: 5.5rem;
-    @include size($size);
-    text-indent: -1000px;
+  .halal {
     margin: -1rem;
+  }
+}
+/* catalogue end */
 
-    & ~ .novelty,
-    & ~ .postnoe,
-    & ~ .halal {
-      top: 60px;
+/* product */
+.product {
+  max-width: $layout-text-width;
+  box-sizing: content-box;
+  @include push-auto;
+  margin-bottom: 4rem;
+  @include clear;
+
+  @include media('<mob') {
+    margin-bottom: 3rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .info {
+    float: left;
+    width: 50%;
+
+    @include media('<tab-s') {
+      float: none;
+      width: auto;
+    }
+  }
+
+  .image {
+    position: relative;
+    float: right;
+    width: 50%;
+
+    @include media('<tab-s') {
+      float: none;
+      width: auto;
+    }
+
+    .novelty,
+    .postnoe,
+    .halal {
+      display: block;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      $size: 8.5rem;
+      @include size($size);
+      text-indent: -1000px;
+      margin: -1rem;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+
+      @include media('<mob-s') {
+        @include size(5rem);
+      }
 
       & ~ .novelty,
       & ~ .postnoe,
       & ~ .halal {
-        top: 120px;
+        top: 9rem;
+
+        @include media('<mob-s') {
+          top: 6rem;
+        }
+
+        & ~ .novelty,
+        & ~ .postnoe,
+        & ~ .halal {
+          top: 18rem;
+
+          @include media('<mob-s') {
+            top: 12rem;
+          }
+        }
       }
     }
+
+    .novelty {
+      background-image: url("../../i/novelty.png");
+    }
+
+    .postnoe {
+      background-image: url("../../i/postnoe.png");
+    }
+
+    .halal {
+      background-image: url("../../i/halal.png");
+    }
+
+    img {
+      display: block;
+      margin: 0;
+      max-width: 100%;
+    }
+  }
+}
+/* product end */
+
+/* similar */
+.similar-products {
+  position: relative;
+  padding: 0 5.6rem;
+  margin-bottom: 4rem;
+
+  @include media('<mob') {
+    margin-bottom: 2rem;
+    padding: 0 3.2rem;
   }
 
-  .novelty {
-    background: url("../../i/novelty-small.png") no-repeat 0 0;
+  &:last-child {
+    margin-bottom: 0;
   }
 
-  .postnoe {
-    background: url("../../i/postnoe-small.png") no-repeat 0 0;
+  .swiper-button-prev {
+    left: 0;
   }
 
-  .halal {
-    background: url("../../i/halal-small.png") no-repeat 0 0;
+  .swiper-button-next {
+    right: 0;
   }
 }
 
-/* catalogue end */
+.similar-slider {
+  margin-bottom: 3rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .swiper-wrapper {
+    padding-bottom: 1rem;
+  }
+
+  .swiper-slide {
+    position: relative;
+    //background-color: #fff;
+    background-color: $bg-color-light;
+    padding: 1.2rem;
+    @include font-medium;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.02em;
+    color: $text-color-alt;
+    text-align: center;
+
+    @include media('<mob-s') {
+      line-height: 2rem;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 100%;
+      height: 10px;
+      margin-top: -5px;
+      background-image: url(../../i/wave-light.svg);
+      background-repeat: repeat-x;
+      background-position: 0 100%;
+    }
+
+    .image {
+      overflow: hidden;
+      margin: -1.2rem -1.2rem 1.2rem;
+      //width: 203px;
+      //height: 179px;
+      //$height: 18rem;
+      height: 18rem;
+      text-align: center;
+      background-color: #fff;
+      border: 1px solid $bg-color-light;
+
+      @include media('<mob-s') {
+        height: 12rem;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.2rem;
+        height: 100%;
+        text-decoration: none;
+        color: currentColor;
+      }
+
+      img {
+        //vertical-align: middle;
+        //display: inline;
+        flex-shrink: 1;
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        zoom: 1;
+        margin: auto;
+      }
+    }
+
+    h3,
+    .heading {
+      @include font-normal;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: $base-color;
+      margin: 0;
+
+      @include media('<mob-s') {
+        font-size: 1.4rem;
+        line-height: 2rem;
+      }
+
+      a {
+        color: currentColor;
+        text-decoration: none;
+        padding-top: 0.3em;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    p {
+      margin: 1rem 0 0;
+      @include font-italic;
+
+      @include media('<mob-s') {
+        margin-top: 0.5rem;
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    .novelty,
+    .postnoe,
+    .halal {
+      margin: 1rem;
+    }
+  }
+}
+/* similar end */
+
+/* years */
+.years {
+  position: relative;
+  padding: 0 5.6rem;
+  margin-bottom: 4rem;
+
+  @include media('<mob') {
+    margin-bottom: 2rem;
+    padding: 0 3.2rem;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .swiper-button-prev {
+    left: 0;
+  }
+
+  .swiper-button-next {
+    right: 0;
+  }
+}
+
+.years-slider {
+  margin-bottom: 3rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .swiper-wrapper {
+    padding-bottom: 1rem;
+  }
+
+  .swiper-slide {
+    position: relative;
+    padding: 0 1.2rem;
+    text-align: center;
+
+    .year {
+      display: block;
+      position: relative;
+      @include font-bold;
+      font-size: 2.2rem;
+      line-height: 2.8rem;
+      color: $base-color;
+      padding: 0 0 4rem;
+      margin: 0 0 1rem;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        height: 3rem;
+        width: 0;
+        border-left: 1px solid $title-color-alt;
+      }
+    }
+
+    .image {
+      display: block;
+      overflow: hidden;
+      height: 14rem;
+      text-align: center;
+      margin: 0 auto;
+
+      @include media('<mob-s') {
+        height: 12rem;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.2rem;
+        height: 100%;
+        text-decoration: none;
+        color: currentColor;
+      }
+
+      img {
+        flex-shrink: 1;
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        zoom: 1;
+        margin: auto;
+      }
+    }
+
+    h3,
+    .heading {
+      @include font-normal;
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: $base-color;
+      margin: 0;
+
+      @include media('<mob-s') {
+        font-size: 1.4rem;
+        line-height: 2rem;
+      }
+
+      a {
+        color: currentColor;
+        text-decoration: none;
+        padding-top: 0.3em;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    p {
+      margin: 1rem 0 0;
+      @include font-italic;
+
+      @include media('<mob-s') {
+        margin-top: 0.5rem;
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    .novelty,
+    .postnoe,
+    .halal {
+      margin: 1rem;
+    }
+  }
+}
+/* years end */

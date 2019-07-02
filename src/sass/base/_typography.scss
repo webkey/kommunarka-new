@@ -23,9 +23,9 @@ h1, h2, h3, h4, h5, h6,
     margin-bottom: 2.8rem;
   }
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+  //&:last-child {
+  //  margin-bottom: 0;
+  //}
 
   a {
     text-decoration: none;
@@ -78,9 +78,9 @@ p {
     margin-bottom: $bottom-space--mob;
   }
 
-  &:last-child {
-    margin-bottom: 0;
-  }
+  //&:last-child {
+  //  margin-bottom: 0;
+  //}
 }
 
 hr {
@@ -131,7 +131,7 @@ i, em {
 }
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em {
-  @include font-bold-italic;
+  @include font-bold;
 }
 
 .enter {
@@ -282,48 +282,72 @@ table {
     line-height: 2.2rem;
   }
 
-  // blockquote
-  blockquote {
+  //blockquote
+  blockquote, .quote {
     display: block;
-    margin: 0 0 $bottom-space;
-    padding: 0;
-    background-color: white;
+    position: relative;
+    padding: 2.5rem 5rem;
+    margin: 2rem 0 4rem;
+    text-align: center;
+    //height: auto !important; // Перебить инлайновые стили
+    //width: auto !important; // Перебить инлайновые стили
 
-    q {
-      display: block;
-      margin: 0;
-      padding: 0 0 10px;
-      @include font-normal;
-      @include font-size(round-float($font-size * 1.25, 1), $line-height);
-      color: $text-color;
-      text-align: center;
+    // Сетка на фоне
+    background: linear-gradient(45deg, #fff 4%, transparent 0, transparent 96%, #fff 0),
+    linear-gradient(135deg, transparent 45%, #fff 0, #fff 55%, transparent 0),
+    linear-gradient(45deg, transparent 45%, #fff 0, #fff 55%, transparent 0),
+    linear-gradient(135deg, transparent 37%, #ebe2d0 0, #ebe2d0 63%, transparent 0),
+    linear-gradient(45deg, transparent 37%, #ebe2d0 0, #ebe2d0 63%, transparent 0)
+    #fff ;
+    background-size: 6px 6px;
 
-      &::before, &::after {
-        @include pseudo($pos: relative);
-        @include font-size(4rem, 1);
-        text-align: left;
-      }
+    // Окантовка с тенью
+    border-radius: 50% / 20px;
+    border: 1px solid #{nth($frame-color, 1)};
+    box-shadow: 0 0 0 3px #{nth($frame-color, 2)}, 0 0 0 4px #{nth($frame-color, 3)}, 0 15px 10px -10px #{nth($frame-color, 4)};
 
-      &::before {
-        content: "«";
-        padding-left: 17%;
-        padding-bottom: 10px;
-      }
-
-      &::after {
-        content: "»";
-        text-align: right;
-        padding-right: 18.5%;
-        padding-top: 8px;
-      }
+    // Нижняя и верхняя петельки
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      height: 10px;
+      width: 14px;
+      margin: -4px -7px;
     }
 
-    cite {
-      text-align: right;
-      display: block;
-      margin-left: auto;
-      @include font-size($font-size, $line-height);
-      color: $text-color-light;
+    // Верхняя петелька
+    &::before {
+      top: 0;
+      background-color: $bg-color;
+      border: solid #{nth($frame-color, 2)};
+      border-width: 0 4px 4px;
+      box-shadow: 0 1px 0 #{nth($frame-color, 1)};
+      border-radius: 2px 2px 10px 10px;
+    }
+
+    // Нижняя петелька
+    &::after {
+      bottom: 0;
+      background-color: #{nth($frame-color, 4)};
+      border: solid #{nth($frame-color, 2)};
+      border-width: 4px 4px 0;
+      box-shadow: 0 -1px 0 #{nth($frame-color, 1)};
+      border-radius: 10px 10px 2px 2px;
+    }
+
+    @include media("<tab") {
+      border-radius: 1rem;
+      padding: $grid-space;
+    }
+
+    @include media("<tab-s") {
+      padding: $grid-space--tab;
+    }
+
+    @include media("<mob") {
+      padding: $grid-space--mob;
+      margin-bottom: 2rem;
     }
   }
 
@@ -335,9 +359,9 @@ table {
     padding: 0;
     list-style: none;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+    //&:last-child {
+    //  margin-bottom: 0;
+    //}
 
     li {
       padding-left: $list-space;
@@ -456,16 +480,25 @@ table {
     padding: $grid-space--mob;
   }
 
-  & > h1, & > .h1, .entry-text {
-    max-width: $layout-text-width;
-    @include push-auto;
+  & > span[style*="font-family"] {
+    display: block; // Костыль, чтобы перебить инлайновые стили
   }
 
   & > p, & > ul, & > ol,
+  & > h1, & > .h1,
   & > h2, & > h3, & > h4, & > h5, & > h6,
   & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
   & > hr, & > mark, & > blockquote, & > figure,
-  & > .layout-text {
+  & > .layout-text,
+  & > .entry-text,
+  & > .quote,
+  & > span[style*="font-family"],
+  & > span[style*="FONT-FAMILY"],
+  & > em[style*="font-family"],
+  & > em[style*="FONT-FAMILY"],
+  & > div[style*="font-family"],
+  & > div[style*="FONT-FAMILY"],
+  & > .wrap {
     max-width: $layout-text-width;
     @include push-auto;
   }
@@ -473,6 +506,124 @@ table {
   & > .layout-flood {
     max-width: $layout-text-width;
     @include push-auto;
+  }
+
+  // wrap
+  .wrap {
+    margin-bottom: 3rem;
+    @include clear;
+
+    // blockquote
+    blockquote {
+      overflow: hidden;
+      color: #a97b39;
+      background: #fcfbfa;
+      border: none;
+      border-top: 1px dotted #ddcba9;
+      border-bottom: 1px dotted #ddcba9;
+      @include font-italic;
+      box-shadow: none;
+      padding: 2.5rem 2.0rem;
+      margin: 0 0 2rem;
+      text-align: left;
+      border-radius: 0;
+
+      &::before, &::after {
+        content: none;
+      }
+    }
+
+    // leftColumn
+    .leftColumn {
+      float: left;
+      width: 50%;
+      padding-right: 2rem;
+
+      @include media('<tab-s') {
+        float: none;
+        width: auto;
+        padding-right: 0;
+      }
+    }
+
+    // rightColumn
+    .rightColumn {
+      float: right;
+      width: 50%;
+      padding-left: 2rem;
+
+      @include media('<tab-s') {
+        float: none;
+        width: auto;
+        padding-left: 0;
+      }
+    }
+
+    // historyContent
+    .historyContent {
+      float: right;
+      width: calc(100% - 24rem - 2rem);
+      padding: 0.4rem 0 0;
+      margin: 0 0 2rem;
+
+      strong em,
+      em strong {
+        @include font-bold;
+      }
+    }
+
+    // historicDate
+    .historicDate {
+      float: left;
+      font-size: 2.4rem;
+      line-height: 2.8rem;
+      text-align: right;
+      width: 24rem;
+      margin: 0 2rem 2rem 0;
+
+      strong {
+        @include font-bold;
+
+        span {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+
+  // imagebox
+  .imagebox {
+    margin: 0 2rem 2rem 0;
+    float: left;
+
+    .imageWrap {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 0 2px #e9cd78;
+
+      img {
+        display: block;
+      }
+
+      .mask {
+        display: none;
+      }
+    }
+  }
+
+  // notice
+  .notice {
+    float: left;
+    width: 220px;
+    padding: 0 40px 0 0;
+    margin: 0 0 20px;
+    color: #e9101b;
+    text-align: center;
+    font: 16px/20px Cambria, "CambriaRegularWebfont", "Times New Roman";
+    background: url(../../i/notice.gif) repeat-y 100% 0;
   }
 }
 
