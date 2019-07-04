@@ -484,8 +484,8 @@ body {
 
 @media (max-width: 639px) {
   body {
-    font-size: 2rem;
-    line-height: 2.6rem;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
   }
 }
 
@@ -693,6 +693,7 @@ h1, .h1 {
   font-size: 6.4rem;
   line-height: 6.6rem;
   margin-bottom: 0.7em;
+  text-shadow: 1px 1px 0 white, 2px 2px 0 #403b38;
 }
 
 @media (max-width: 991px) {
@@ -758,8 +759,8 @@ h4, .h4 {
 
 @media (max-width: 639px) {
   h4, .h4 {
-    font-size: 2rem;
-    line-height: 2.6rem;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
   }
 }
 
@@ -773,8 +774,8 @@ h5, .h5 {
 
 @media (max-width: 639px) {
   h5, .h5 {
-    font-size: 1.8rem;
-    line-height: 2.5rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
   }
 }
 
@@ -789,8 +790,8 @@ h6, .h6 {
 
 @media (max-width: 639px) {
   h6, .h6 {
-    font-size: 1.6rem;
-    line-height: 2.4rem;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
   }
 }
 
@@ -801,7 +802,7 @@ p {
 
 @media (max-width: 639px) {
   p {
-    margin-bottom: 2.4rem;
+    margin-bottom: 1.8rem;
   }
 }
 
@@ -882,7 +883,7 @@ table {
 
 @media (max-width: 639px) {
   table {
-    margin-bottom: 2.4rem;
+    margin-bottom: 1.8rem;
   }
 }
 
@@ -900,8 +901,8 @@ table td, table th {
 
 @media (max-width: 639px) {
   table td, table th {
-    font-size: 2rem;
-    line-height: 2.6rem;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
   }
 }
 
@@ -1323,14 +1324,16 @@ table td, table th {
 .typography .quote {
   display: block;
   position: relative;
-  padding: 2.5rem 5rem;
-  margin: 2rem 0 4rem;
+  padding: 3.6rem 4.2rem;
+  margin: 4rem 0;
   text-align: center;
+  font-size: 1.2em;
+  line-height: 1.3;
   background: linear-gradient(45deg, #fff 4%, transparent 0, transparent 96%, #fff 0), linear-gradient(135deg, transparent 45%, #fff 0, #fff 55%, transparent 0), linear-gradient(45deg, transparent 45%, #fff 0, #fff 55%, transparent 0), linear-gradient(135deg, transparent 37%, #ebe2d0 0, #ebe2d0 63%, transparent 0), linear-gradient(45deg, transparent 37%, #ebe2d0 0, #ebe2d0 63%, transparent 0) #fff;
   background-size: 6px 6px;
   border-radius: 50% / 20px;
   border: 1px solid #d4c0b3;
-  box-shadow: 0 0 0 3px #fff, 0 0 0 4px #d4c0b3, 0 15px 10px -10px rgba(78, 43, 21, 0.6);
+  box-shadow: 0 3px 0 #fff, 0 42px 20px -45px rgba(78, 43, 21, 0.6);
 }
 
 .article-content blockquote::before, .article-content blockquote::after, .article-content .quote::before, .article-content .quote::after,
@@ -1350,18 +1353,19 @@ table td, table th {
 .typography blockquote::before,
 .typography .quote::before {
   top: 0;
-  background-color: #d4c0b3;
-  border: solid #fff;
-  border-width: 0 4px 4px;
-  box-shadow: 0 1px 0 #d4c0b3;
+  height: 8px;
+  background-color: white;
+  border: solid #d4c0b3;
+  border-width: 0 1px 1px;
   border-radius: 2px 2px 10px 10px;
+  margin-top: -1px;
 }
 
 .article-content blockquote::after, .article-content .quote::after,
 .typography blockquote::after,
 .typography .quote::after {
   bottom: 0;
-  background-color: rgba(78, 43, 21, 0.6);
+  background-color: #e0dad7;
   border: solid #fff;
   border-width: 4px 4px 0;
   box-shadow: 0 -1px 0 #d4c0b3;
@@ -1373,15 +1377,6 @@ table td, table th {
   .typography blockquote,
   .typography .quote {
     border-radius: 1rem;
-    padding: 2.8rem 3rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .article-content blockquote, .article-content .quote,
-  .typography blockquote,
-  .typography .quote {
-    padding: 1.8rem 2rem;
   }
 }
 
@@ -1389,8 +1384,11 @@ table td, table th {
   .article-content blockquote, .article-content .quote,
   .typography blockquote,
   .typography .quote {
-    padding: 1.2rem 1.5rem;
-    margin-bottom: 2rem;
+    padding: 2.4rem 1.5rem;
+    margin: 2.6rem 0;
+    font-size: 1.1em;
+    line-height: 1.2;
+    box-shadow: 0 3px 0 #fff, 0 28px 20px -30px rgba(78, 43, 21, 0.6);
   }
 }
 
@@ -1402,12 +1400,28 @@ table td, table th {
   list-style: none;
 }
 
+@media (max-width: 639px) {
+  .article-content ul, .article-content ol,
+  .typography ul,
+  .typography ol {
+    margin-bottom: 1.8rem;
+  }
+}
+
 .article-content ul li, .article-content ol li,
 .typography ul li,
 .typography ol li {
-  padding-left: 3rem;
-  margin: 0 0 1rem;
+  padding-left: 2.5rem;
+  margin: 0 0 2.4rem;
   position: relative;
+}
+
+@media (max-width: 639px) {
+  .article-content ul li, .article-content ol li,
+  .typography ul li,
+  .typography ol li {
+    margin: 0 0 1.8rem;
+  }
 }
 
 .article-content ul > li::before,
@@ -1417,10 +1431,18 @@ table td, table th {
   float: left;
   width: 0;
   height: 0;
-  margin: 0.4em 0 -0.5em -3rem;
-  border: solid transparent;
-  border-width: 5px 0 5px 9px;
-  border-left-color: #c4161c;
+  margin: 0.6em 0 -0.6em -2.5rem;
+  height: 6px;
+  width: 6px;
+  border-radius: 6px;
+  background-color: currentColor;
+}
+
+.article-content ul > li li::before,
+.typography ul > li li::before {
+  height: 2px;
+  width: 10px;
+  margin: 0.7em 0 -0.7em -2.5rem;
 }
 
 .article-content ol,
@@ -1445,16 +1467,38 @@ table td, table th {
   color: #c4161c;
   content: counter(section);
   padding: 0 4px 0 0;
-  min-width: 3rem;
-  margin-left: -3rem;
+  min-width: 2.5rem;
+  margin-left: -2.5rem;
 }
 
-.article-content ul ul, .article-content ul ol, .article-content ol ul, .article-content ol ol,
+.article-content ul ul, .article-content ul ol, .article-content ul ul li, .article-content ul ol li, .article-content ul p, .article-content ol ul, .article-content ol ol, .article-content ol ul li, .article-content ol ol li, .article-content ol p,
 .typography ul ul,
 .typography ul ol,
+.typography ul ul li,
+.typography ul ol li,
+.typography ul p,
 .typography ol ul,
-.typography ol ol {
-  margin: 1.2rem 0;
+.typography ol ol,
+.typography ol ul li,
+.typography ol ol li,
+.typography ol p {
+  margin: 0 0 1.2rem;
+}
+
+@media (max-width: 639px) {
+  .article-content ul ul, .article-content ul ol, .article-content ul ul li, .article-content ul ol li, .article-content ul p, .article-content ol ul, .article-content ol ol, .article-content ol ul li, .article-content ol ol li, .article-content ol p,
+  .typography ul ul,
+  .typography ul ol,
+  .typography ul ul li,
+  .typography ul ol li,
+  .typography ul p,
+  .typography ol ul,
+  .typography ol ol,
+  .typography ol ul li,
+  .typography ol ol li,
+  .typography ol p {
+    margin: 0 0 0.9rem;
+  }
 }
 
 .article-content > img,
@@ -1468,18 +1512,6 @@ table td, table th {
   margin: 3rem auto 4rem;
 }
 
-@media (max-width: 991px) {
-  .article-content > img,
-  .article-content > .layout-text img,
-  .article-content > .layout-flood img,
-  .typography > img,
-  .typography > .layout-text img,
-  .typography > .layout-flood img {
-    margin-top: 2.5rem;
-    margin-bottom: 3rem;
-  }
-}
-
 @media (max-width: 639px) {
   .article-content > img,
   .article-content > .layout-text img,
@@ -1487,8 +1519,7 @@ table td, table th {
   .typography > img,
   .typography > .layout-text img,
   .typography > .layout-flood img {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
+    margin: 2rem auto 2.6rem;
   }
 }
 
@@ -1643,7 +1674,7 @@ table td, table th {
 }
 
 .article-content .wrap {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .article-content .wrap::after {
@@ -1652,24 +1683,82 @@ table td, table th {
   clear: both;
 }
 
-.article-content .wrap blockquote {
+@media (max-width: 639px) {
+  .article-content .wrap {
+    margin-bottom: 2.6rem;
+  }
+}
+
+.article-content .wrap > p:last-child, .article-content .wrap > ul:last-child, .article-content .wrap > ol:last-child {
+  margin-bottom: 0;
+}
+
+.article-content .wrap .imagebox {
+  float: left;
+  width: 24rem;
+  padding-right: 3rem;
+}
+
+@media (max-width: 639px) {
+  .article-content .wrap .imagebox {
+    float: none;
+    width: auto;
+    margin: 0 0 2rem;
+    padding-right: 0;
+  }
+}
+
+.article-content .wrap .imagebox .imageWrap {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
   overflow: hidden;
-  color: #a97b39;
-  background: #fcfbfa;
-  border: none;
-  border-top: 1px dotted #ddcba9;
-  border-bottom: 1px dotted #ddcba9;
-  font-family: "AkzidenzGroteskPro Cond Italic", sans-serif;
-  font-style: normal;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px #e9cd78;
+}
+
+@media (max-width: 479px) {
+  .article-content .wrap .imagebox .imageWrap {
+    display: block;
+  }
+}
+
+.article-content .wrap .imagebox .imageWrap img {
+  display: block;
+  max-width: none;
+  width: 100%;
+}
+
+.article-content .wrap .imagebox .imageWrap .mask {
+  display: none;
+}
+
+.article-content .wrap blockquote, .article-content .wrap .quote {
+  overflow: hidden;
+  border: solid #d4c0b3;
+  border-width: 1px 0;
   box-shadow: none;
-  padding: 2.5rem 2.0rem;
+  padding: 2.8rem 3rem;
   margin: 0 0 2rem;
+  font-size: inherit;
+  line-height: inherit;
   text-align: left;
   border-radius: 0;
 }
 
-.article-content .wrap blockquote::before, .article-content .wrap blockquote::after {
+.article-content .wrap blockquote:last-child, .article-content .wrap .quote:last-child {
+  margin-bottom: 0;
+}
+
+.article-content .wrap blockquote::before, .article-content .wrap blockquote::after, .article-content .wrap .quote::before, .article-content .wrap .quote::after {
   content: none;
+}
+
+@media (max-width: 639px) {
+  .article-content .wrap blockquote, .article-content .wrap .quote {
+    padding: 1.2rem 1.5rem;
+  }
 }
 
 .article-content .wrap .leftColumn {
@@ -1683,7 +1772,18 @@ table td, table th {
     float: none;
     width: auto;
     padding-right: 0;
+    margin: 0 0 2.4rem;
   }
+}
+
+@media (max-width: 639px) {
+  .article-content .wrap .leftColumn {
+    margin: 0 0 1.8rem;
+  }
+}
+
+.article-content .wrap .leftColumn p:last-child {
+  margin-bottom: 0;
 }
 
 .article-content .wrap .rightColumn {
@@ -1700,26 +1800,28 @@ table td, table th {
   }
 }
 
-.article-content .wrap .historyContent {
-  float: right;
-  width: calc(100% - 24rem - 2rem);
-  padding: 0.4rem 0 0;
-  margin: 0 0 2rem;
-}
-
-.article-content .wrap .historyContent strong em,
-.article-content .wrap .historyContent em strong {
-  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
-  font-weight: normal;
+.article-content .wrap .rightColumn p:last-child {
+  margin-bottom: 0;
 }
 
 .article-content .wrap .historicDate {
   float: left;
-  font-size: 2.4rem;
-  line-height: 2.8rem;
+  font-size: 3.2rem;
+  line-height: 3.6rem;
   text-align: right;
   width: 24rem;
-  margin: 0 2rem 2rem 0;
+  padding-right: 3rem;
+}
+
+@media (max-width: 639px) {
+  .article-content .wrap .historicDate {
+    float: none;
+    width: auto;
+    font-size: 2.8rem;
+    line-height: 3.2rem;
+    text-align: left;
+    margin: 0 0 0.3em;
+  }
 }
 
 .article-content .wrap .historicDate strong {
@@ -1731,36 +1833,48 @@ table td, table th {
   font-size: 1.8rem;
 }
 
-.article-content .imagebox {
-  margin: 0 2rem 2rem 0;
+.article-content .wrap .historyContent {
+  float: right;
+  width: calc(100% - 24rem);
+  padding: 1.0rem 0 0;
+}
+
+@media (max-width: 639px) {
+  .article-content .wrap .historyContent {
+    float: none;
+    width: auto;
+    padding: 0;
+  }
+}
+
+.article-content .wrap .historyContent p:last-child {
+  margin-bottom: 0;
+}
+
+.article-content .wrap .historyContent strong em,
+.article-content .wrap .historyContent em strong {
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+}
+
+.article-content .wrap .notice {
   float: left;
-}
-
-.article-content .imagebox .imageWrap {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 0 2px #e9cd78;
-}
-
-.article-content .imagebox .imageWrap img {
-  display: block;
-}
-
-.article-content .imagebox .imageWrap .mask {
-  display: none;
-}
-
-.article-content .notice {
-  float: left;
-  width: 22rem;
-  padding: 0 4rem 0 0;
-  margin: 0 2rem 2rem;
+  width: 24rem;
+  padding: 0 3rem 0 0;
+  margin: 0 3rem 2.4rem 0;
   color: #c4161c;
   text-align: center;
   background: url(../i/notice.gif) repeat-y 100% 0;
+}
+
+@media (max-width: 639px) {
+  .article-content .wrap .notice {
+    float: none;
+    width: auto;
+    padding: 0 1.5rem;
+    margin: 0 0 1.8rem;
+    background: none;
+  }
 }
 
 /* article elements end */
@@ -1854,7 +1968,7 @@ table td, table th {
 /* btn-alt end */
 /* helper classes */
 .mark {
-  color: #fd0cff;
+  color: #c4161c;
 }
 
 .align-center {
@@ -2621,13 +2735,13 @@ table td, table th {
 
 .nav__list a,
 .nav__list li > span {
-  padding: 10px 30px;
   display: block;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
       align-items: center;
   height: 5rem;
+  padding: 1rem 1.5rem;
   font-size: 2.4rem;
   line-height: 1.25;
   color: #e7dad2;
@@ -2638,8 +2752,7 @@ table td, table th {
 @media (max-width: 1599px) {
   .nav__list a,
   .nav__list li > span {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 1rem 1.5rem;
   }
 }
 
@@ -2647,15 +2760,22 @@ table td, table th {
   .nav__list a,
   .nav__list li > span {
     font-size: 2rem;
+    padding: 1rem 1.2rem;
   }
 }
 
 @media (max-width: 1279px) {
   .nav__list a,
   .nav__list li > span {
-    padding-right: 8px;
-    padding-left: 8px;
+    padding: 1rem 1rem;
     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .nav__list a,
+  .nav__list li > span {
+    padding: 1rem 0.4rem;
   }
 }
 
@@ -2667,7 +2787,7 @@ table td, table th {
     font-weight: normal;
     font-size: 3.6rem;
     line-height: 1.33;
-    padding: 9px 20px;
+    padding: 1rem 2rem;
     text-align: center;
     -ms-flex-pack: center;
         justify-content: center;
@@ -2679,7 +2799,7 @@ table td, table th {
   .nav__list a,
   .nav__list li > span {
     font-size: 2.8rem;
-    padding: 5px 20px;
+    padding: 0.5rem 2rem;
   }
 }
 
@@ -3481,6 +3601,7 @@ li.is-open > .menu-arr {
 @media (max-width: 639px) {
   .products__item {
     width: calc(100% / 3);
+    margin-top: 2.6rem;
   }
 }
 
@@ -3996,7 +4117,7 @@ li.is-open > .menu-arr {
 
 @media (max-width: 639px) {
   .prod-icons {
-    margin-bottom: 2rem;
+    margin-bottom: 2.6rem;
   }
 }
 
@@ -4326,7 +4447,7 @@ li.is-open > .menu-arr {
 
 @media (max-width: 639px) {
   .main-slider {
-    margin-bottom: 3rem;
+    margin-bottom: 2.6rem;
   }
 }
 
@@ -5959,7 +6080,7 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
 
 @media (max-width: 479px) {
   .content .catalogue {
-    margin: 0 -0.6rem 3rem;
+    margin: 0 -0.6rem 2.6rem;
   }
 }
 
@@ -6299,7 +6420,7 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
 
 @media (max-width: 639px) {
   .product {
-    margin-bottom: 3rem;
+    margin-bottom: 2.6rem;
   }
 }
 
@@ -6474,7 +6595,7 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
 
 @media (max-width: 639px) {
   .similar-products {
-    margin-bottom: 2rem;
+    margin-bottom: 2.6rem;
     padding: 0 3.2rem;
   }
 }
@@ -6637,7 +6758,7 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
 
 @media (max-width: 639px) {
   .years {
-    margin-bottom: 2rem;
+    margin-bottom: 2.6rem;
     padding: 0 3.2rem;
   }
 }
@@ -6655,20 +6776,21 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
 }
 
 .years-slider {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 639px) {
+  .years-slider {
+    margin-bottom: 2.6rem;
+  }
 }
 
 .years-slider:last-child {
   margin-bottom: 0;
 }
 
-.years-slider .swiper-wrapper {
-  padding-bottom: 1rem;
-}
-
 .years-slider .swiper-slide {
   position: relative;
-  padding: 0 1.2rem;
   text-align: center;
 }
 
@@ -6677,11 +6799,17 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
   position: relative;
   font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
   font-weight: normal;
-  font-size: 2.2rem;
+  font-size: 2.6rem;
   line-height: 2.8rem;
   color: #c4161c;
   padding: 0 0 4rem;
   margin: 0 0 1rem;
+}
+
+@media (max-width: 479px) {
+  .years-slider .swiper-slide .year {
+    padding: 0;
+  }
 }
 
 .years-slider .swiper-slide .year::after {
@@ -6692,6 +6820,12 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
   height: 3rem;
   width: 0;
   border-left: 1px solid #ad813d;
+}
+
+@media (max-width: 479px) {
+  .years-slider .swiper-slide .year::after {
+    content: none;
+  }
 }
 
 .years-slider .swiper-slide .image {
@@ -6715,7 +6849,6 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
       align-items: center;
   -ms-flex-pack: center;
       justify-content: center;
-  padding: 1.2rem;
   height: 100%;
   text-decoration: none;
   color: currentColor;
@@ -6731,7 +6864,8 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
   margin: auto;
 }
 
-.years-slider .swiper-slide h3,
+.years-slider .swiper-slide h3, .years-slider .swiper-slide h4,
+.years-slider .swiper-slide .h3, .years-slider .swiper-slide .h4,
 .years-slider .swiper-slide .heading {
   font-family: "AkzidenzGroteskPro Cond", sans-serif;
   font-size: 1.6rem;
@@ -6743,21 +6877,24 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
 }
 
 @media (max-width: 479px) {
-  .years-slider .swiper-slide h3,
+  .years-slider .swiper-slide h3, .years-slider .swiper-slide h4,
+  .years-slider .swiper-slide .h3, .years-slider .swiper-slide .h4,
   .years-slider .swiper-slide .heading {
     font-size: 1.4rem;
     line-height: 2rem;
   }
 }
 
-.years-slider .swiper-slide h3 a,
+.years-slider .swiper-slide h3 a, .years-slider .swiper-slide h4 a,
+.years-slider .swiper-slide .h3 a, .years-slider .swiper-slide .h4 a,
 .years-slider .swiper-slide .heading a {
   color: currentColor;
   text-decoration: none;
   padding-top: 0.3em;
 }
 
-.years-slider .swiper-slide h3 a:hover,
+.years-slider .swiper-slide h3 a:hover, .years-slider .swiper-slide h4 a:hover,
+.years-slider .swiper-slide .h3 a:hover, .years-slider .swiper-slide .h4 a:hover,
 .years-slider .swiper-slide .heading a:hover {
   text-decoration: underline;
 }

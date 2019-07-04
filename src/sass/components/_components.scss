@@ -1495,11 +1495,12 @@
   vertical-align: top;
   min-width: 320px;
   width: calc(100% / 5);
-  margin-top: 4rem;
+  margin-top: $section-space;
   color: inherit;
   text-decoration: inherit;
   letter-spacing: normal;
   font-size: 1.6rem;
+  
   @include media("<1920px") {
     width: calc(100% / 4);
   }
@@ -1523,6 +1524,7 @@
 
   @include media("<mob") {
     width: calc(100% / 3);
+    margin-top: $section-space--mob;
   }
 
   @include media("<mob-s") {
@@ -1968,10 +1970,10 @@
 
 // products awards
 .prod-icons {
-  margin-bottom: 4rem;
+  margin-bottom: $section-space;
 
   @include media('<mob') {
-    margin-bottom: 2rem;
+    margin-bottom: $section-space--mob;
   }
 
   img {
@@ -2267,10 +2269,10 @@
 
 /* promo slider */
 .main-slider {
-  margin-bottom: 4rem;
+  margin-bottom: $section-space;
 
   @include media('<mob') {
-    margin-bottom: 3rem;
+    margin-bottom: $section-space--mob;
   }
 
   &:last-child {
@@ -3666,11 +3668,11 @@ $catalog-shutter-header-height--mob: 4rem;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  margin: 0 -1rem 4rem;
+  margin: 0 -1rem $section-space;
   max-width: none;
 
   @include media('<mob-s') {
-    margin: 0 -0.6rem 3rem;
+    margin: 0 -0.6rem $section-space--mob;
   }
 
   &:last-child {
@@ -3996,11 +3998,11 @@ $catalog-shutter-header-height--mob: 4rem;
   max-width: $layout-text-width;
   box-sizing: content-box;
   @include push-auto;
-  margin-bottom: 4rem;
+  margin-bottom: $section-space;
   @include clear;
 
   @include media('<mob') {
-    margin-bottom: 3rem;
+    margin-bottom: $section-space--mob;
   }
 
   &:last-child {
@@ -4093,10 +4095,10 @@ $catalog-shutter-header-height--mob: 4rem;
 .similar-products {
   position: relative;
   padding: 0 5.6rem;
-  margin-bottom: 4rem;
+  margin-bottom: $section-space;
 
   @include media('<mob') {
-    margin-bottom: 2rem;
+    margin-bottom: $section-space--mob;
     padding: 0 3.2rem;
   }
 
@@ -4243,10 +4245,10 @@ $catalog-shutter-header-height--mob: 4rem;
 .years {
   position: relative;
   padding: 0 5.6rem;
-  margin-bottom: 4rem;
+  margin-bottom: $section-space;
 
   @include media('<mob') {
-    margin-bottom: 2rem;
+    margin-bottom: $section-space--mob;
     padding: 0 3.2rem;
   }
 
@@ -4264,30 +4266,38 @@ $catalog-shutter-header-height--mob: 4rem;
 }
 
 .years-slider {
-  margin-bottom: 3rem;
+  margin-bottom: $section-space;
+
+  @include media('<mob') {
+    margin-bottom: $section-space--mob;
+  }
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  .swiper-wrapper {
-    padding-bottom: 1rem;
-  }
+  //.swiper-wrapper {
+  //  padding-bottom: 1rem;
+  //}
 
   .swiper-slide {
     position: relative;
-    padding: 0 1.2rem;
+    //padding: 0 1.2rem;
     text-align: center;
 
     .year {
       display: block;
       position: relative;
       @include font-bold;
-      font-size: 2.2rem;
+      font-size: 2.6rem;
       line-height: 2.8rem;
       color: $base-color;
       padding: 0 0 4rem;
       margin: 0 0 1rem;
+
+      @include media('<mob-s') {
+        padding: 0;
+      }
 
       &::after {
         content: "";
@@ -4297,6 +4307,10 @@ $catalog-shutter-header-height--mob: 4rem;
         height: 3rem;
         width: 0;
         border-left: 1px solid $title-color-alt;
+
+        @include media('<mob-s') {
+          content: none;
+        }
       }
     }
 
@@ -4315,7 +4329,7 @@ $catalog-shutter-header-height--mob: 4rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1.2rem;
+        //padding: 1.2rem;
         height: 100%;
         text-decoration: none;
         color: currentColor;
@@ -4331,7 +4345,8 @@ $catalog-shutter-header-height--mob: 4rem;
       }
     }
 
-    h3,
+    h3, h4,
+    .h3, .h4,
     .heading {
       @include font-normal;
       font-size: 1.6rem;

@@ -1435,6 +1435,10 @@ function slidersInit() {
           },
           767: {
             slidesPerView: 2
+          },
+          639: {
+            slidesPerView: 2,
+            spaceBetween: 10
           }
         }
       })
