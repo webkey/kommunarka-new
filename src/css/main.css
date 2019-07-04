@@ -1755,12 +1755,11 @@ table td, table th {
 
 .article-content .notice {
   float: left;
-  width: 220px;
-  padding: 0 40px 0 0;
-  margin: 0 0 20px;
-  color: #e9101b;
+  width: 22rem;
+  padding: 0 4rem 0 0;
+  margin: 0 2rem 2rem;
+  color: #c4161c;
   text-align: center;
-  font: 16px/20px Cambria, "CambriaRegularWebfont", "Times New Roman";
   background: url(../i/notice.gif) repeat-y 100% 0;
 }
 
