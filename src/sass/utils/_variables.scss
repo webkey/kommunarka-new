@@ -218,8 +218,8 @@ $line-height-h6--mob: round-float($font-size-h6--mob * $line-height-h6-kef, 1) !
 $bottom-space: $line-height - 0.2 !default;
 $bottom-space--large: $line-height * 3 !default;
 $bottom-space--small: round-float($line-height*0.75, 1) !default;
-$section-space: 4rem;
-$section-space--mob: 2.6rem;
+$bottom-section: 4rem;
+$bottom-section--mob: 2.6rem;
 // ----------------------------------------------------
 // --- mob ---
 $bottom-space--mob: $line-height--mob - 0.6 !default;

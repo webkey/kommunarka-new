@@ -1,0 +1,212 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+/* article content */
+.#{$article-content} {
+  padding: $grid-space;
+
+  @include media("<tab-s") {
+    padding: $grid-space--tab;
+  }
+
+  @include media("<mob") {
+    padding: $grid-space--mob;
+  }
+
+  & > p, & > ul, & > ol,
+  & > h1, & > .h1,
+  & > h2, & > h3, & > h4, & > h5, & > h6,
+  & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
+  & > hr, & > mark, & > blockquote, & > figure,
+  & > .layout-text,
+  & > .entry-text,
+  & > .quote,
+  & > .nopr,
+  & > .shortNews,
+  & > .wrap {
+    max-width: $layout-text-width;
+    @include push-auto;
+  }
+
+  & > .layout-flood {
+    max-width: $layout-text-width;
+    @include push-auto;
+  }
+
+  // wrap
+  .wrap {
+    $visual-width: 24rem;
+    //--------------------
+
+    margin-bottom: $bottom-section;
+    @include clear;
+
+    @include media('<mob') {
+      margin-bottom: $bottom-section--mob;
+    }
+
+    & > p, & > ul, & > ol {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // imagebox
+    .imagebox {
+      float: left;
+      width: $visual-width;
+      padding-right: nth($grid-space, 2);
+      margin: 0;
+
+      @include media('<mob') {
+        float: none;
+        width: auto;
+        margin-bottom: $bottom-space--mob;
+        padding-right: 0;
+      }
+    }
+
+    // blockquote
+    blockquote, .quote {
+      overflow: hidden;
+      border: solid #{nth($frame-color, 1)};
+      border-width: 1px 0;
+      box-shadow: none;
+      padding: $grid-space;
+      margin: 0 0 2rem;
+      font-size: inherit;
+      line-height: inherit;
+      text-align: left;
+      border-radius: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &::before, &::after {
+        content: none;
+      }
+
+      @include media('<mob') {
+        padding: $grid-space--mob;
+      }
+    }
+
+    // leftColumn
+    .leftColumn {
+      float: left;
+      width: 50%;
+      padding-right: 2rem;
+
+      @include media('<tab-s') {
+        float: none;
+        width: auto;
+        padding-right: 0;
+        margin: 0 0 $bottom-space;
+      }
+
+      @include media('<mob') {
+        margin: 0 0 $bottom-space--mob;
+      }
+
+      p {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    // rightColumn
+    .rightColumn {
+      float: right;
+      width: 50%;
+      padding-left: 2rem;
+
+      @include media('<tab-s') {
+        float: none;
+        width: auto;
+        padding-left: 0;
+      }
+
+      p {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    // historicDate
+    .historicDate {
+      float: left;
+      font-size: 3.2rem;
+      line-height: 3.6rem;
+      text-align: right;
+      width: $visual-width;
+      padding-right: #{nth($grid-space, 2)};
+
+      @include media('<mob') {
+        float: none;
+        width: auto;
+        font-size: 2.8rem;
+        line-height: 3.2rem;
+        text-align: left;
+        margin: 0 0 0.3em;
+      }
+
+      strong {
+        @include font-bold;
+
+        span {
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    // historyContent
+    .historyContent {
+      float: right;
+      width: calc(100% - #{$visual-width});
+      padding: 1.0rem 0 0;
+
+      @include media('<mob') {
+        float: none;
+        width: auto;
+        padding: 0;
+      }
+
+      p {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      strong em,
+      em strong {
+        @include font-bold;
+      }
+    }
+
+    // notice
+    .notice {
+      float: left;
+      width: $visual-width;
+      padding: 0 #{nth($grid-space, 2)} 0 0;
+      margin: 0 #{nth($grid-space, 2)} #{$bottom-space} 0;
+      color: $base-color;
+      text-align: center;
+      background: url(../../i/notice.gif) repeat-y 100% 0;
+
+      @include media('<mob') {
+        float: none;
+        width: auto;
+        padding: 0 #{nth($grid-space--mob, 2)};
+        margin: 0 0 #{$bottom-space--mob};
+        background: none;
+      }
+    }
+
+  }
+}
+
+/* article content end */
