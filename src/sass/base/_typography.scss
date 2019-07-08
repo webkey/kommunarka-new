@@ -43,8 +43,8 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1 {
   font-weight: normal;
   margin-bottom: 0.7em;
-  color: $title-color-alt;
-  text-shadow: 1px 1px 0 white, 2px 2px 0 currentColor;
+  color: $title-color;
+  text-shadow: 1px 1px 0 $bg-color, 2px 2px 0 currentColor;
   @include font-h1;
   // Add cross line
   position: relative;
@@ -54,25 +54,30 @@ h1, .h1 {
   $line-space: 0.2em;
   $line-weight: 0.06em;
 
-  &::after {
-    position: absolute;
-    bottom: 0.35em;
-    left: 0;
-    content: "";
-    z-index: -1;
-    background: currentColor;
-    height: $line-weight;
-    width: 100%;
-    box-shadow: 1px 1px 0 white, 2px 2px 0 currentColor;
-  }
+  .content & {
+    color: $title-color-alt;
+    text-shadow: 1px 1px 0 white, 2px 2px 0 currentColor;
 
-  & > span {
-    background-color: #fff;
-    //background-color второй строки перекрывает хвосты (букв "р", "у", "д" и т.д.) первого ряда
-    //http://joxi.ru/Dr89BYGFoyXQbm
-    //Вместо background-color используем box-shadow
-    box-shadow: inset 0 -0.6em 0 #fff;
-    padding: 0 #{$line-space} 0 0;
+    &::after {
+      position: absolute;
+      bottom: 0.35em;
+      left: 0;
+      content: "";
+      z-index: -1;
+      background: currentColor;
+      height: $line-weight;
+      width: 100%;
+      box-shadow: 1px 1px 0 white, 2px 2px 0 currentColor;
+    }
+
+    & > span {
+      //background-color: #fff;
+      //background-color второй строки перекрывает хвосты (букв "р", "у", "д" и т.д.) первого ряда
+      //http://joxi.ru/Dr89BYGFoyXQbm
+      //Вместо background-color используем box-shadow
+      box-shadow: inset 0 -0.6em 0 #fff;
+      padding: 0 #{$line-space} 0 0;
+    }
   }
 }
 
@@ -175,6 +180,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
   margin: 0 auto 5rem;
 
   @include media("<mob") {
+    @include font-size(2.0rem, 2.8rem);
     margin-bottom: 3rem;
   }
 }

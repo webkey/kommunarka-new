@@ -326,6 +326,20 @@ $logo-short-size--mob: 2.7rem 10rem;
 $header-btn-width: 4rem;
 
 
+// Navigation
+// ==========================================================================
+$nav-width: 320px !default
+$nav-space: 20px 30px !default
+$nav-space--mob: 12px 15px !default
+$nav-arrow-size: 60px !default
+$nav-text-color: $text-color !default
+$nav-bg-color: #333 !default
+$nav-bg-color-s: #333 !default
+$nav-bg-color-ss: #333 !default
+$nav-bg-color-sss: #333 !default
+$nav-bg-color-ssss: #333 !default
+
+
 // Sidebar & Aside
 // ==========================================================================
 $sidebar-width: calc(20rem + 10%) !default;

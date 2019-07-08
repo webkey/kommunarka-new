@@ -691,8 +691,8 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover,
 h1, .h1 {
   font-weight: normal;
   margin-bottom: 0.7em;
-  color: #ad813d;
-  text-shadow: 1px 1px 0 white, 2px 2px 0 currentColor;
+  color: #403b38;
+  text-shadow: 1px 1px 0 #d4c0b3, 2px 2px 0 currentColor;
   font-size: 6.4rem;
   line-height: 6.6rem;
   position: relative;
@@ -714,7 +714,12 @@ h1, .h1 {
   }
 }
 
-h1::after, .h1::after {
+.content h1, .content .h1 {
+  color: #ad813d;
+  text-shadow: 1px 1px 0 white, 2px 2px 0 currentColor;
+}
+
+.content h1::after, .content .h1::after {
   position: absolute;
   bottom: 0.35em;
   left: 0;
@@ -726,8 +731,7 @@ h1::after, .h1::after {
   box-shadow: 1px 1px 0 white, 2px 2px 0 currentColor;
 }
 
-h1 > span, .h1 > span {
-  background-color: #fff;
+.content h1 > span, .content .h1 > span {
   box-shadow: inset 0 -0.6em 0 #fff;
   padding: 0 0.2em 0 0;
 }
@@ -891,6 +895,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 @media (max-width: 639px) {
   .enter {
+    font-size: 2rem;
+    line-height: 2.8rem;
     margin-bottom: 3rem;
   }
 }
@@ -1961,6 +1967,10 @@ table td, table th {
   }
 }
 
+.sep-page .breadcrumbs {
+  padding: 0;
+}
+
 .breadcrumbs:last-child {
   margin-bottom: 0;
 }
@@ -2514,6 +2524,10 @@ table td, table th {
   }
 }
 
+.nav__list {
+  cursor: default;
+}
+
 .nav__list::after {
   content: "";
   display: table;
@@ -2529,123 +2543,277 @@ table td, table th {
   }
 }
 
+.nav__list, .nav__list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+}
+
 .nav__list li {
-  float: left;
+  position: relative;
 }
 
 @media (max-width: 991px) {
   .nav__list li {
-    float: none;
-    display: block;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    margin: 0.5em 0 0;
+    padding: 0 0 0 3rem;
   }
+  .nav__list li:first-child {
+    margin-top: 0.9em;
+  }
+  .nav__list li:last-child {
+    margin-bottom: 0.4em;
+  }
+}
+
+.nav__list a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 .nav__list a,
 .nav__list li > span {
   display: block;
+  padding-right: 1rem;
+}
+
+@media (min-width: 992px) {
+  .nav__list a,
+  .nav__list li > span {
+    padding: 0.5em 3rem;
+  }
+}
+
+.nav__list li.has-sub > a,
+.nav__list li.has-sub > span {
+  max-width: calc(100% - 4.2rem);
+}
+
+@media (min-width: 992px) {
+  .nav__list li.has-sub > a,
+  .nav__list li.has-sub > span {
+    max-width: none;
+  }
+}
+
+.nav__list ul {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  width: 100%;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  text-align: left;
+  display: none;
+  will-change: opacity;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+@media (min-width: 992px) {
+  .nav__list ul {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 28rem;
+    padding: 0.5rem 0;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav__list ul ul {
+    left: 100%;
+    top: -0.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav__list ul li {
+    border-top: 1px solid #f8f4ea;
+  }
+  .nav__list ul li:first-child {
+    border-top: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav__list li.hover > ul,
+  .no-js .nav__list li:hover > ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.nav__list .nav__angle {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
       align-items: center;
-  height: 5rem;
-  padding: 1rem 1.5rem;
-  font-size: 2.4rem;
-  line-height: 1.25;
-  color: #e7dad2;
-  text-decoration: none;
-  transition: box-shadow 0.2s;
-}
-
-@media (max-width: 1599px) {
-  .nav__list a,
-  .nav__list li > span {
-    padding: 1rem 1.5rem;
-  }
-}
-
-@media (max-width: 1365px) {
-  .nav__list a,
-  .nav__list li > span {
-    font-size: 2rem;
-    padding: 1rem 1.2rem;
-  }
-}
-
-@media (max-width: 1279px) {
-  .nav__list a,
-  .nav__list li > span {
-    padding: 1rem 1rem;
-    font-size: 1.8rem;
-  }
-}
-
-@media (max-width: 1199px) {
-  .nav__list a,
-  .nav__list li > span {
-    padding: 1rem 0.4rem;
-  }
-}
-
-@media (max-width: 991px) {
-  .nav__list a,
-  .nav__list li > span {
-    color: #403b38;
-    font-family: "AkzidenzGroteskPro Medium Cond", sans-serif;
-    font-weight: normal;
-    font-size: 3.6rem;
-    line-height: 1.33;
-    padding: 1rem 2rem;
-    text-align: center;
-    -ms-flex-pack: center;
-        justify-content: center;
-    height: auto;
-  }
-}
-
-@media (max-width: 991px) {
-  .nav__list a,
-  .nav__list li > span {
-    font-size: 2.8rem;
-    padding: 0.5rem 2rem;
-  }
-}
-
-.home-page .nav__list a, .home-page
-.nav__list li > span {
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  font-size: 0;
+  line-height: 0;
+  height: 4.2rem;
+  width: 4.2rem;
+  margin: -1rem 0;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
   color: #403b38;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  outline: none;
 }
 
-.no-touchevents .nav__list a:hover {
-  box-shadow: inset 0 -4px 0 #c4161c;
-}
-
-@media (max-width: 991px) {
-  .no-touchevents .nav__list a:hover {
-    box-shadow: none;
+@media (min-width: 992px) {
+  .nav__list .nav__angle {
+    display: none;
   }
 }
 
-.nav__list li.current > a,
-.nav__list li.current > span {
-  color: white;
+.nav__list .nav__angle::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 2;
+  border-top: 7px solid white;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  margin-top: 1px;
+}
+
+.nav__list .nav__angle::after {
+  content: "";
+  position: absolute;
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 2.4rem;
   background-color: #c4161c;
+  background: #c4161c;
+  background: linear-gradient(to bottom, #c4161c 0%, #e7262d 100%);
 }
 
-@media (max-width: 991px) {
-  .nav__list li.current > a,
-  .nav__list li.current > span {
-    background-color: transparent;
-    color: #c4161c;
+.no-touchevents .nav__list .nav__angle:hover::after {
+  background: #e7262d;
+  background: linear-gradient(to bottom, #e7262d 0%, #c4161c 100%);
+}
+
+li.is-open > .nav__angle {
+  -ms-transform: rotate(0.5turn);
+      transform: rotate(0.5turn);
+}
+
+.nav__list li.current > ul {
+  display: block;
+}
+
+.nav__list li.current > a, .nav__list li.current > span {
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+}
+
+.nav__list li.hover > a {
+  color: #c4161c;
+}
+
+@media (min-width: 992px) {
+  .nav__list > li {
+    float: left;
+    padding: 0;
+    margin: 0;
+  }
+  .nav__list > li:first-child, .nav__list > li:last-child {
+    margin: 0;
+    padding: 0;
   }
 }
 
-.no-touchevents .nav__list li.current > a:hover {
-  box-shadow: inset 0 -4px 0 #403b38;
+@media (min-width: 992px) {
+  .nav__list > li > a,
+  .nav__list > li > span {
+    display: block;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    height: 5rem;
+    padding: 1rem 0.4rem;
+    font-size: 1.8rem;
+    line-height: 1.25;
+    color: #e7dad2;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+  .home-page .nav__list > li > a, .home-page
+  .nav__list > li > span {
+    color: #403b38;
+  }
 }
 
-@media (max-width: 991px) {
-  .no-touchevents .nav__list li.current > a:hover {
-    box-shadow: none;
+@media (min-width: 1200px) {
+  .nav__list > li > a,
+  .nav__list > li > span {
+    padding: 1rem 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .nav__list > li > a,
+  .nav__list > li > span {
+    padding: 1rem 1.2rem;
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1366px) {
+  .nav__list > li > a,
+  .nav__list > li > span {
+    padding: 1rem 1.5rem;
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav__list > li.hover > a {
+    color: #e7dad2;
+    box-shadow: inset 0 -4px 0 #c4161c;
+  }
+  .home-page .nav__list > li.hover > a {
+    color: #403b38;
+  }
+}
+
+@media (min-width: 992px) {
+  .nav__list > li.current > a,
+  .nav__list > li.current > span {
+    font-family: "AkzidenzGroteskPro Cond", sans-serif;
+    color: white;
+    background-color: #c4161c;
+  }
+  .nav__list > li.current.hover {
+    box-shadow: inset 0 -4px 0 #403b38;
   }
 }
 

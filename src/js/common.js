@@ -36,8 +36,8 @@ $(window).on('debouncedresize', function () {
  * !device detected
  * */
 var DESKTOP = device.desktop();
-var MOBILE = device.mobile();
-var TABLET = device.tablet();
+// var MOBILE = device.mobile();
+// var TABLET = device.tablet();
 
 /**
  *  Add placeholder for old browsers
@@ -1087,9 +1087,11 @@ $(function () {
         item = self.options.item,
         $container = self.$container;
 
+
     if (!DESKTOP) {
 
-      $container.on('click', ''+item+'', function (e) {
+      $container.on('touchend', ''+item+'', function (e) {
+        
         var $currentAnchor = $(this);
         var currentItem = $currentAnchor.closest($item);
 
@@ -1098,21 +1100,11 @@ $(function () {
         e.stopPropagation();
 
         if (currentItem.hasClass(_hover)){
-          // self.$html.removeClass('css-scroll-fixed');
-
-          // if($('.main-sections-js').length) {
-          // 	$.fn.fullpage.setAllowScrolling(true); // unblocked fullpage scroll
-          // }
 
           currentItem.removeClass(_hover).find('.'+_hover+'').removeClass(_hover);
 
           return;
         }
-
-        // self.$html.addClass('css-scroll-fixed');
-        // if($('.main-sections-js').length) {
-        // 	$.fn.fullpage.setAllowScrolling(false); // blocked fullpage scroll
-        // }
 
         $('.'+_hover+'').not($currentAnchor.parents('.'+_hover+''))
             .removeClass(_hover)
@@ -1141,10 +1133,6 @@ $(function () {
         }
 
         currentItem.prop('hoverIntent', setTimeout(function () {
-          // self.$html.addClass('css-scroll-fixed');
-          // if($('.main-sections-js').length) {
-          // 	$.fn.fullpage.setAllowScrolling(false); // blocked fullpage scroll
-          // }
 
           currentItem.addClass(_hover);
           currentItem.next().addClass(_hoverNext);
@@ -1161,10 +1149,6 @@ $(function () {
         }
 
         currentItem.prop('hoverTimeout', setTimeout(function () {
-          // self.$html.removeClass('css-scroll-fixed');
-          // if($('.main-sections-js').length) {
-          // 	$.fn.fullpage.setAllowScrolling(true); // unblocked fullpage scroll
-          // }
 
           currentItem.removeClass(_hover);
           currentItem.next().removeClass(_hoverNext);
@@ -1186,12 +1170,13 @@ $(function () {
 }(jQuery));
 
 /**
- * !Toggle "hover" class by hover on the item of the list
+ * !Toggle "hover" class
  * */
 function initHoverClass() {
   if ($('.nav__list-js').length) {
     new HoverClass({
-      container: '.nav__list-js', drop: '.nav__drop-js'
+      container: '.nav__list-js',
+      drop: 'ul'
     });
   }
 }
@@ -1322,6 +1307,22 @@ function initHoverClass() {
  * !Menu accordion
  * */
 function menuAccordionInit() {
+  // Main navigation
+  var nav = '.nav__list-js';
+
+  if ($(nav).length) {
+    new MultiAccordion({
+      container: nav,
+      item: 'li',
+      handler: '.nav__angle-js',
+      panel: 'ul',
+      openClass: 'is-open',
+      animateSpeed: 250,
+      collapsible: true
+    });
+  }
+
+  // Sidebar menu
   var menuContainer = '.menu-js';
 
   if ($(menuContainer).length) {
@@ -1468,8 +1469,9 @@ $(document).ready(function () {
   if (!("ontouchstart" in document.documentElement)) {
     document.documentElement.className += " no-touchevents";
   } else {
-    document.documentElement.className += " touch";
+    document.documentElement.className += " touchevents";
   }
+
   placeholderInit();
   printShow();
   objectFitImages(); // object-fit-images initial

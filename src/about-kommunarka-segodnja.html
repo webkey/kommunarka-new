@@ -54,9 +54,38 @@
           <!--navigation-->
           <div class="nav-wrap shutter--nav-js">
             <nav class="nav">
-              <ul class="nav__list">
-                <li class="current">
-                  <a href="about-istorija-fabriki.html"><span>О компании</span></a>
+              <ul class="nav__list nav__list-js">
+                <li class="has-sub current hover">
+                  <a href="about-istorija-fabriki.html">О компании</a>
+                  <em class="nav__angle nav__angle-js">&#9660;</em>
+                  <!--submenu-->
+                  <ul>
+                    <li>
+                      <a href="#">О компании 1</a>
+                    </li>
+                    <li class="has-sub current hover">
+                      <a href="#">О компании 2</a>
+                      <em class="nav__angle nav__angle-js">&#9660;</em>
+                      <!--submenu-->
+                      <ul>
+                        <li>
+                          <a href="#">О компании 2.1</a>
+                        </li>
+                        <li class="current">
+                          <!--<a href="#"><span>О компании 2.2</span></a>-->
+                          <span>О компании 2.2</span>
+                        </li>
+                        <li>
+                          <a href="#">О компании 2.3</a>
+                        </li>
+                      </ul>
+                      <!--submenu end-->
+                    </li>
+                    <li>
+                      <a href="#">О компании 3</a>
+                    </li>
+                  </ul>
+                  <!--submenu end-->
                 </li>
                 <li class="">
                   <a href="products.html" class="catalog-opener-js"><span>Продукция</span></a>
