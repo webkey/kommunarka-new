@@ -69,8 +69,9 @@ body {
       top: 0;
       width: 100%;
       height: $height;
-      background: #690707 url(../../i/main-bg.jpg) no-repeat 50%;
+      background: #644435 url(../../i/main-bg.jpg) no-repeat 50%;
       background-size: cover;
+      opacity: 0.6;
       //@include linear-gradient(to bottom, #bb0a07 0%, #ea5238 50%, #9c0b01 100%);
 
       @include media('<tab') {
@@ -83,8 +84,22 @@ body {
         padding-top: $ratio-mob;
       }
     }
-
+    
     &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: $height;
+      background: #644435;
+      background: radial-gradient(ellipse at center, #d08d74 1%, #d08d74 12%, #644435 47%, #644435 100%);
+      //opacity: 0.2;
+      z-index: -1;
+    }
+
+    /*&::after {
       //content: "";
       display: block;
       position: absolute;
@@ -110,7 +125,7 @@ body {
         height: auto;
         padding-top: $ratio-mob;
       }
-    }
+    }*/
   }
 }
 
