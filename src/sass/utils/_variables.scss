@@ -250,15 +250,14 @@ $title-color-alt: #ad813d !default;
 $link-color: #c4161c !default;
 $focus-color: #0080ff !default;
 // ----------------------------------------------------
+$frame-color: #d4c0b3, #fff, #d4c0b3, rgba(78, 43, 21, 0.6) !default;
+// ----------------------------------------------------
 $border-color: $bg-color-dark !default;
 //$border-color-light: #ddcba9 !default;
 $border-color-light: #f4e5bb !default;
+$border-color-separate: #{nth($frame-color, 1)} !default;
 // ----------------------------------------------------
 $mark-color: #c4161c !default;
-// ----------------------------------------------------
-//$frame-color: #e9cd78, #fff, #cea21d, #ab7222 !default;
-//$frame-color: #d4c0b3, #fff, #d4c0b3, #a98975 !default;
-$frame-color: #d4c0b3, #fff, #d4c0b3, rgba(78, 43, 21, 0.6) !default;
 // ----------------------------------------------------
 $success-color: #28a745 !default;
 $error-color: #dc3545 !default;

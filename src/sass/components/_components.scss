@@ -85,9 +85,11 @@
     duration: $animation-speed;
     timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
   };
+
   &.active {
     visibility: visible;
     opacity: 0.35;
+
     // скрывать на десктопе, если shutter-only-mob
     .shutter-only-mob & {
       @include media(">=tab") {
@@ -470,11 +472,11 @@
   transform: translate($translate);
   transform: translate3d($translate, 0);
 
-  @include media('<mob-s') {
+  @include media("<mob-s") {
     width: 27rem;
   }
 
-  @include media('<mob-xs') {
+  @include media("<mob-xs") {
     width: 23rem;
   }
 
@@ -633,6 +635,7 @@
 /* ==================================== */
 /* navigation */
 .nav-wrap, .nav-footer {
+
   &::before {
     position: absolute;
     content: "";
@@ -640,8 +643,9 @@
     top: 0;
     left: 20px;
     right: 20px;
-    border: solid #cfb9aa;
+    border: solid $border-color-separate;
     border-width: 0;
+
     @include media("<tab") {
       display: block;
     }
@@ -650,17 +654,18 @@
 
 .nav-wrap {
   display: inline-block;
-  // для ие
   vertical-align: top;
-  // для ие
+
   @include media("<tab") {
-    display: flex;
-    flex-direction: column;
+    //display: flex;
+    //flex-direction: column;
     position: fixed;
+    display: block;
     left: 0;
     bottom: 0;
     width: 100%;
     height: calc(100% - #{$header-height});
+    padding: 0 0 5rem;
     background-color: $base-color-light;
     opacity: 0;
     visibility: hidden;
@@ -685,11 +690,21 @@
 .nav {
   position: relative;
   width: 100%;
+
   @include media("<tab") {
-    display: flex;
     flex: 1 1;
-    justify-content: center;
-    align-items: center;
+    padding: 0 #{nth($layout-page-space--sm, 2)};
+    height: 100%;
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @include media("<mob") {
+    padding: 0 #{nth($layout-page-space--mob, 2)};
   }
 }
 
@@ -699,16 +714,9 @@
   $nav-item-space: 0.5em 0;
   $nav-item-indent: 0.4;
 
-  @include clear;
+  text-align: left;
   cursor: default;
-
-  // Для девайсов навигацию трансформировать в "бутерброд"
-  @include media("<tab") {
-    width: 100%;
-    max-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
+  @include clear;
 
   // Все ul
   &, & ul {
@@ -719,13 +727,22 @@
     line-height: 2.4rem;
   }
 
+  // Для девайсов навигацию трансформировать в "бутерброд"
+  @include media("<tab") {
+    //width: 100%;
+    max-width: 100%;
+    width: 42rem;
+    margin: 0 auto;
+    padding: 4rem 0;
+  }
+
   // Все li,
   // кроме li первого уровня (для них стили ниже)
   li {
     position: relative;
 
     // Для планшетных разрешений и ниже
-    @include media('<tab') {
+    @include media("<tab") {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -759,7 +776,7 @@
 
     // Для разрешений выше планшетных
     // добавить внутренние отступы на ссылки
-    @include media('>=tab') {
+    @include media(">=tab") {
       padding: #{nth($nav-item-space, 1)} #{nth($nav-inner-space, 2)};
     }
   }
@@ -774,7 +791,7 @@
       // Для разрешений выше планшетных
       // Для пунктов со стрелками,
       // убрать ограничение максимальной ширины для "a"
-      @include media('>=tab') {
+      @include media(">=tab") {
         max-width: none;
       }
     }
@@ -785,7 +802,6 @@
     flex-shrink: 1;
     width: 100%;
     flex-basis: 100%;
-    text-align: left;
     display: none;
 
     // transition
@@ -828,6 +844,13 @@
         }
       }
     }
+
+    a,
+    li > span {
+      @include media(">=tab") {
+        padding-right: $nav-arrow-size;
+      }
+    }
   }
 
   // Показать подменю
@@ -864,10 +887,6 @@
     user-select: none;
     outline: none;
 
-    @include media('>=tab') {
-      display: none;
-    }
-
     &::before {
       content: "";
       position: absolute;
@@ -897,6 +916,16 @@
         transform: rotate(0.5turn);
       }
     }
+
+    // Для разрешений выше планшетных
+    @include media(">=tab") {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -#{round-float($nav-arrow-size / 2, 1)};
+      transform: rotate(-0.25turn);
+      pointer-events: none;
+    }
   }
 
   // Пункт для текущей страницы
@@ -923,13 +952,14 @@
     }
   }
 
-  // li первого уровня
+  // li ПЕРВОГО уровня
+  // -----------------
   & > li {
     // Для разрешений выше планшетных
-    @include media('>=tab') {
+    @include media(">=tab") {
       float: left;
-      padding: 0;
       margin: 0;
+      padding: 0;
 
       &:first-child,
       &:last-child {
@@ -938,12 +968,27 @@
       }
     }
 
+    @include media("<tab") {
+      padding: 0.5em 0 0.6em;
+      border-top: 1px solid $border-color-separate;
+      margin: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+      border-top: none;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     // Все "a" и "span" первого уровня
     // "a" заменять на "span" в пункте текущей страницы
     & > a,
     & > span {
       // Для разрешений выше планшетных
-      @include media('>=tab') {
+      @include media(">=tab") {
         display: block;
         display: flex;
         align-items: center;
@@ -974,13 +1019,27 @@
         padding: 1rem 1.5rem;
         font-size: 2.4rem;
       }
+
+      // Для планшетных разрешений и нижу
+      @include media("<tab") {
+        font-size: 2.8rem;
+        line-height: 3.6rem;
+      }
+    }
+
+    // Стрелка для разворачивания подменю
+    & > .nav__angle {
+      // Для разрешений выше планшетных
+      @include media(">=tab") {
+        display: none;
+      }
     }
 
     // Hover
-    // Для разрешений выше планшетных
-    @include media('>=tab') {
-      // Класс .hover добавляется скриптом
-      &.hover > a {
+    // Класс .hover добавляется скриптом
+    &.hover > a {
+      // Для разрешений выше планшетных
+      @include media(">=tab") {
         color: $base-color-light;
         box-shadow: inset 0 -4px 0 $base-color;
 
@@ -994,8 +1053,8 @@
     // Пункт для текущей страницы
     // Current
     // Для разрешений выше планшетных
-    @include media('>=tab') {
-      &.current {
+    &.current {
+      @include media(">=tab") {
         & > a,
         & > span {
           @include font-normal;
@@ -1020,9 +1079,10 @@
   display: none;
 
   @include media("<tab") {
-    display: flex;
+    //display: flex;
+    display: block;
     width: 100%;
-    min-height: $header-height;
+    height: $header-height;
   }
 
   &::before {
@@ -1182,14 +1242,6 @@
         transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0);
       }
     }
-
-    //.no-touchevents &:hover {
-    //  box-shadow: none;
-    //
-    //  &::before, &::after {
-    //    background-color: $base-color;
-    //  }
-    //}
   }
 }
 
@@ -1203,12 +1255,12 @@
   background-color: $bg-color-dark;
   color: $text-color-light;
 
-  @include media('<lap-s') {
+  @include media("<lap-s") {
     font-size: 2.0rem;
     line-height: 2.6rem;
   }
 
-  @include media('<tab') {
+  @include media("<tab") {
     font-size: 1.8rem;
     line-height: 2.4rem;
   }
@@ -2211,7 +2263,7 @@
 .prod-icons {
   margin-bottom: $bottom-section;
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
   }
 
@@ -2231,18 +2283,18 @@
     width: 100%;
     border: none;
 
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       display: block;
     }
 
     tbody {
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         display: block;
       }
     }
 
     tr {
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         display: block;
         padding: 0.5rem 0;
         border: solid $border-color-light;
@@ -2263,7 +2315,7 @@
       border: solid $border-color-light;
       border-width: 1px 0 0;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         padding: 0;
         display: block;
         border: none;
@@ -2273,7 +2325,7 @@
         padding-left: 0;
         text-align: left;
 
-        @include media('<mob-s') {
+        @include media("<mob-s") {
           display: inline;
           &::after {
             content: ":";
@@ -2288,7 +2340,7 @@
         min-width: 16rem;
         margin-top: 0.5rem;
 
-        @include media('<mob-s') {
+        @include media("<mob-s") {
           @include font-bold;
           text-align: left;
           min-width: 0;
@@ -2458,7 +2510,7 @@
   cursor: pointer;
   outline: none;
 
-  @include media('<mob') {
+  @include media("<mob") {
     height: 2.4rem;
     width: 2.4rem;
     margin: -1.2rem 0 0;
@@ -2478,7 +2530,7 @@
     background-position: 0 -68px;
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     left: 1rem;
 
     &:hover {
@@ -2495,7 +2547,7 @@
     background-position: -68px -68px;
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     right: 1rem;
     background-position: -34px 0;
 
@@ -2510,7 +2562,7 @@
 .main-slider {
   margin-bottom: $bottom-section;
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
   }
 
@@ -2576,7 +2628,7 @@
   .swiper-button-prev {
     left: 30px;
 
-    @include media('<mob') {
+    @include media("<mob") {
       left: 1rem;
     }
   }
@@ -2584,7 +2636,7 @@
   .swiper-button-next {
     right: 30px;
 
-    @include media('<mob') {
+    @include media("<mob") {
       right: 1rem;
     }
   }
@@ -2613,7 +2665,7 @@
   //background-size: 6px 6px;
   background-color: $bg-color-light;
 
-  @include media('<mob') {
+  @include media("<mob") {
     padding-top: 6rem;
   }
 }
@@ -2637,22 +2689,26 @@
   background-repeat: no-repeat;
   background-position: -1000px -1000px;
 
-  @include media('<mob') {
+  @include media("<mob") {
     height: 6rem;
   }
 
   &::before {
     content: "";
     position: absolute;
-    left: -30%;
-    top: -30%;
-    height: 160%;
-    width: 160%;
+    //left: -30%;
+    //top: -30%;
+    //height: 160%;
+    //width: 160%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
     background-image: inherit;
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     opacity: 0.6;
     $translate: 0, 0;
     $scale: 1, 1;
@@ -2679,7 +2735,7 @@
   position: relative;
   padding: 2rem 2rem 2.6rem;
 
-  @include media('<mob') {
+  @include media("<mob") {
     padding: 1rem 1rem 1.8rem;
   }
 
@@ -2764,7 +2820,8 @@ a.m-catalog-elem {
   // Special for a home page
   .home-page & {
     color: $base-color-light;
-    text-shadow: 1px 1px 0 #{$base-color}, 2px 2px 0 rgba($base-color-light, 0.65);
+    //text-shadow: 1px 1px 0 #{$base-color}, 2px 2px 0 rgba($base-color-light, 0.65);
+    text-shadow: 1px 1px 0 #370d01, 2px 2px 0 rgba($base-color-light, 0.65);
   }
 }
 
@@ -2787,13 +2844,13 @@ a.m-catalog-elem {
   max-width: $width;
   padding: 0 1rem 2rem;
 
-  @include media('<tab-s') {
+  @include media("<tab-s") {
     $width: 50%;
     flex-basis: $width;
     max-width: $width;
   }
 
-  @include media('<mob-s') {
+  @include media("<mob-s") {
     $width: 100%;
     flex-basis: $width;
     max-width: $width;
@@ -3021,13 +3078,13 @@ $p-news-horizontal-space: round-float(nth($p-news-space, 2) / 2, 1);
   max-width: $width;
   padding: 0 #{$p-news-horizontal-space} #{nth($p-news-space, 1)};
 
-  @include media('<tab-s') {
+  @include media("<tab-s") {
     $width: 50%;
     flex-basis: $width;
     max-width: $width;
   }
 
-  @include media('<mob-s') {
+  @include media("<mob-s") {
     $width: 100%;
     flex-basis: $width;
     max-width: $width;
@@ -3340,7 +3397,7 @@ $p-news-horizontal-space: round-float(nth($p-news-space, 2) / 2, 1);
     border: 1px solid #{nth($frame-color, 1)};
     box-shadow: 0 0 0 2px #{nth($frame-color, 2)}, 0 0 0 3px #{nth($frame-color, 3)}, 0 10px 5px -5px #{nth($frame-color, 4)};
 
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       float: none;
       margin: 0 0 1rem;
     }
@@ -3378,7 +3435,7 @@ $p-news-horizontal-space: round-float(nth($p-news-space, 2) / 2, 1);
   margin: 0 auto 2rem;
   padding: 3px;
 
-  @include media('<tab') {
+  @include media("<tab") {
     width: auto;
   }
 
@@ -3403,11 +3460,11 @@ $p-news-horizontal-space: round-float(nth($p-news-space, 2) / 2, 1);
   line-height: 2.4rem;
   letter-spacing: normal;
 
-  @include media('<mob') {
+  @include media("<mob") {
     width: 50%;
   }
 
-  @include media('<mob-s') {
+  @include media("<mob-s") {
     width: 100%;
   }
 
@@ -3481,16 +3538,16 @@ $catalog-shutter-header-height--mob: 4rem;
   z-index: 5;
   box-sizing: content-box;
 
-  @include media('<lap-l') {
+  @include media("<lap-l") {
     height: $catalog-shutter-header-height--lap;
   }
 
-  @include media('<tab-s') {
+  @include media("<tab-s") {
     height: $catalog-shutter-header-height--tab;
     border-bottom-width: 6px;
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     height: $catalog-shutter-header-height--mob;
     border-bottom-width: 4px;
   }
@@ -3501,15 +3558,15 @@ $catalog-shutter-header-height--mob: 4rem;
   height: 100%;
   padding-right: $catalog-shutter-header-height;
 
-  @include media('<lap-l') {
+  @include media("<lap-l") {
     padding-right: $catalog-shutter-header-height--lap;
   }
 
-  @include media('<tab-s') {
+  @include media("<tab-s") {
     padding-right: $catalog-shutter-header-height--tab;
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     padding-right: $catalog-shutter-header-height--mob;
   }
 
@@ -3531,19 +3588,19 @@ $catalog-shutter-header-height--mob: 4rem;
     box-shadow: inset 0 0 0 $base-color;
     transition: box-shadow $animation-speed, color $animation-speed;
 
-    @include media('<lap-l') {
+    @include media("<lap-l") {
       font-size: 4.2rem;
       line-height: 5.0rem;
       padding: 1rem 2.5rem;
     }
 
-    @include media('<tab-s') {
+    @include media("<tab-s") {
       font-size: 3.2rem;
       line-height: 3.2rem;
       padding: 0.5rem 2rem;
     }
 
-    @include media('<mob') {
+    @include media("<mob") {
       font-size: 2.0rem;
       line-height: 2.0rem;
       padding: 0.5rem 1rem;
@@ -3552,7 +3609,7 @@ $catalog-shutter-header-height--mob: 4rem;
     span {
       border-bottom: 2px dashed currentColor;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         border-width: 1px;
       }
     }
@@ -3570,15 +3627,15 @@ $catalog-shutter-header-height--mob: 4rem;
         border-bottom: 2px dashed transparent;
       }
 
-      @include media('<lap-l') {
+      @include media("<lap-l") {
         box-shadow: inset 0 -#{$catalog-shutter-header-height--lap} 0 $base-color;
       }
 
-      @include media('<tab-s') {
+      @include media("<tab-s") {
         box-shadow: inset 0 -#{$catalog-shutter-header-height--tab} 0 $base-color;
       }
 
-      @include media('<mob') {
+      @include media("<mob") {
         box-shadow: inset 0 -#{$catalog-shutter-header-height--mob} 0 $base-color;
       }
     }
@@ -3597,15 +3654,15 @@ $catalog-shutter-header-height--mob: 4rem;
   box-shadow: inset 0 0 0 $base-color;
   transition: box-shadow $animation-speed;
 
-  @include media('<lap-l') {
+  @include media("<lap-l") {
     width: $catalog-shutter-header-height--lap;
   }
 
-  @include media('<tab-s') {
+  @include media("<tab-s") {
     width: $catalog-shutter-header-height--tab;
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     width: $catalog-shutter-header-height--mob;
   }
 
@@ -3626,15 +3683,15 @@ $catalog-shutter-header-height--mob: 4rem;
   overflow: hidden;
   height: calc(100% - #{$catalog-shutter-header-height});
 
-  @include media('<lap-l') {
+  @include media("<lap-l") {
     height: calc(100% - #{$catalog-shutter-header-height--lap});
   }
 
-  @include media('<tab-s') {
+  @include media("<tab-s") {
     height: calc(100% - #{$catalog-shutter-header-height--tab});
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     height: calc(100% - #{$catalog-shutter-header-height--mob});
   }
 }
@@ -3647,6 +3704,7 @@ $catalog-shutter-header-height--mob: 4rem;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .catalog-nav__item {
@@ -3675,29 +3733,29 @@ $catalog-shutter-header-height--mob: 4rem;
     background-color: $bg-color-light !important;
   }
 
-  @include media('<=desk') {
+  @include media("<=desk") {
     $width: 50%;
     flex-basis: $width;
     max-width: $width;
   }
 
-  @include media('<lap-l') {
+  @include media("<lap-l") {
     padding: 3rem 2.5rem;
   }
 
-  @include media('<net') {
+  @include media("<net") {
     min-height: 0;
   }
 
-  @include media('<tab-s') {
+  @include media("<tab-s") {
     padding: 2.5rem 2rem;
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     padding: 2rem 1rem;
   }
 
-  @include media('<mob-s') {
+  @include media("<mob-s") {
     $width: 100%;
     flex-basis: $width;
     max-width: $width;
@@ -3732,7 +3790,7 @@ $catalog-shutter-header-height--mob: 4rem;
       timing-function: ease-in-out;
     };
     
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       left: auto;
       right: 2rem;
       top: 0;
@@ -3752,7 +3810,7 @@ $catalog-shutter-header-height--mob: 4rem;
       transform: translate($translate) scale($scale);
       transform: translate3d($translate, 0) scale3d($scale, 1);
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         $translate: 0, 0;
         $scale: 1, 1;
         transform: translate($translate) scale($scale);
@@ -3791,17 +3849,17 @@ $catalog-shutter-header-height--mob: 4rem;
     font-size: 4.8rem;
     line-height: 5.6rem;
 
-    @include media('<lap-l') {
+    @include media("<lap-l") {
       font-size: 4.2rem;
       line-height: 5.0rem;
     }
 
-    @include media('<lap-l') {
+    @include media("<lap-l") {
       font-size: 3.2rem;
       line-height: 3.2rem;
     }
 
-    @include media('<mob') {
+    @include media("<mob") {
       font-size: 2.4rem;
       line-height: 2.4rem;
     }
@@ -3815,7 +3873,7 @@ $catalog-shutter-header-height--mob: 4rem;
     }
 
     a {
-      @include media('<mob') {
+      @include media("<mob") {
         color: lighten($text-color, 25%);
       }
     }
@@ -3863,7 +3921,7 @@ $catalog-shutter-header-height--mob: 4rem;
     background-position: center;
     background-size: contain;
 
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       @include size(4.8rem);
     }
 
@@ -3872,7 +3930,7 @@ $catalog-shutter-header-height--mob: 4rem;
     & ~ .halal {
       top: 6rem;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         top: 5rem;
       }
 
@@ -3881,7 +3939,7 @@ $catalog-shutter-header-height--mob: 4rem;
       & ~ .halal {
         top: 12rem;
 
-        @include media('<mob-s') {
+        @include media("<mob-s") {
           top: 10rem;
         }
       }
@@ -3910,7 +3968,7 @@ $catalog-shutter-header-height--mob: 4rem;
   margin: 0 -1rem $bottom-section;
   max-width: none;
 
-  @include media('<mob-s') {
+  @include media("<mob-s") {
     margin: 0 -0.6rem $bottom-section--mob;
   }
 
@@ -3929,41 +3987,41 @@ $catalog-shutter-header-height--mob: 4rem;
     position: relative;
     background: none;
 
-    @include media('<desk-s') {
+    @include media("<desk-s") {
       $width: 25%;
       flex-basis: $width;
       max-width: $width;
     }
 
-    @include media('<lap-l') {
+    @include media("<lap-l") {
       $width: 33.33%;
       flex-basis: $width;
       max-width: $width;
     }
 
-    @include media('<net') {
+    @include media("<net") {
       $width: 50%;
       flex-basis: $width;
       max-width: $width;
     }
 
-    @include media('<tab') {
+    @include media("<tab") {
       $width: 33.33%;
       flex-basis: $width;
       max-width: $width;
     }
 
-    @include media('<tab-s') {
+    @include media("<tab-s") {
       $width: 50%;
       flex-basis: $width;
       max-width: $width;
     }
 
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       padding: 0 0.6rem 2.5rem;
     }
 
-    @include media('<mob-xxs') {
+    @include media("<mob-xxs") {
       $width: 100%;
       flex-basis: $width;
       max-width: $width;
@@ -4026,7 +4084,7 @@ $catalog-shutter-header-height--mob: 4rem;
     border: 1px solid $bg-color-light;
     background-color: #fff;
 
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       height: 12rem;
     }
   }
@@ -4070,7 +4128,7 @@ $catalog-shutter-header-height--mob: 4rem;
     //color: #946534;
     position: relative;
 
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       line-height: 2rem;
     }
   }
@@ -4141,7 +4199,7 @@ $catalog-shutter-header-height--mob: 4rem;
       text-transform: uppercase;
       margin: 0;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         font-size: 1.4rem;
         line-height: 2rem;
       }
@@ -4161,7 +4219,7 @@ $catalog-shutter-header-height--mob: 4rem;
       margin: 1rem 0 0;
       @include font-italic;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         margin-top: 0.5rem;
       }
 
@@ -4240,7 +4298,7 @@ $catalog-shutter-header-height--mob: 4rem;
   margin-bottom: $bottom-section;
   @include clear;
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
   }
 
@@ -4252,7 +4310,7 @@ $catalog-shutter-header-height--mob: 4rem;
     float: left;
     width: 50%;
 
-    @include media('<tab-s') {
+    @include media("<tab-s") {
       float: none;
       width: auto;
     }
@@ -4263,7 +4321,7 @@ $catalog-shutter-header-height--mob: 4rem;
     float: right;
     width: 50%;
 
-    @include media('<tab-s') {
+    @include media("<tab-s") {
       float: none;
       width: auto;
     }
@@ -4284,7 +4342,7 @@ $catalog-shutter-header-height--mob: 4rem;
       background-position: center;
       background-size: contain;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         @include size(5rem);
       }
 
@@ -4293,7 +4351,7 @@ $catalog-shutter-header-height--mob: 4rem;
       & ~ .halal {
         top: 9rem;
 
-        @include media('<mob-s') {
+        @include media("<mob-s") {
           top: 6rem;
         }
 
@@ -4302,7 +4360,7 @@ $catalog-shutter-header-height--mob: 4rem;
         & ~ .halal {
           top: 18rem;
 
-          @include media('<mob-s') {
+          @include media("<mob-s") {
             top: 12rem;
           }
         }
@@ -4336,7 +4394,7 @@ $catalog-shutter-header-height--mob: 4rem;
   padding: 0 5.6rem;
   margin-bottom: $bottom-section;
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
     padding: 0 3.2rem;
   }
@@ -4377,7 +4435,7 @@ $catalog-shutter-header-height--mob: 4rem;
     color: $text-color-alt;
     text-align: center;
 
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       line-height: 2rem;
     }
 
@@ -4406,7 +4464,7 @@ $catalog-shutter-header-height--mob: 4rem;
       background-color: #fff;
       border: 1px solid $bg-color-light;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         height: 12rem;
       }
 
@@ -4442,7 +4500,7 @@ $catalog-shutter-header-height--mob: 4rem;
       color: $base-color;
       margin: 0;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         font-size: 1.4rem;
         line-height: 2rem;
       }
@@ -4462,7 +4520,7 @@ $catalog-shutter-header-height--mob: 4rem;
       margin: 1rem 0 0;
       @include font-italic;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         margin-top: 0.5rem;
       }
 
@@ -4486,7 +4544,7 @@ $catalog-shutter-header-height--mob: 4rem;
   padding: 0 5.6rem;
   margin-bottom: $bottom-section;
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
     padding: 0 3.2rem;
   }
@@ -4507,7 +4565,7 @@ $catalog-shutter-header-height--mob: 4rem;
 .years-slider {
   margin-bottom: $bottom-section;
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
   }
 
@@ -4534,7 +4592,7 @@ $catalog-shutter-header-height--mob: 4rem;
       padding: 0 0 4rem;
       margin: 0 0 1rem;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         padding: 0;
       }
 
@@ -4547,7 +4605,7 @@ $catalog-shutter-header-height--mob: 4rem;
         width: 0;
         border-left: 1px solid $title-color-alt;
 
-        @include media('<mob-s') {
+        @include media("<mob-s") {
           content: none;
         }
       }
@@ -4560,7 +4618,7 @@ $catalog-shutter-header-height--mob: 4rem;
       text-align: center;
       margin: 0 auto;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         height: 12rem;
       }
 
@@ -4595,7 +4653,7 @@ $catalog-shutter-header-height--mob: 4rem;
       color: $base-color;
       margin: 0;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         font-size: 1.4rem;
         line-height: 2rem;
       }
@@ -4615,7 +4673,7 @@ $catalog-shutter-header-height--mob: 4rem;
       margin: 1rem 0 0;
       @include font-italic;
 
-      @include media('<mob-s') {
+      @include media("<mob-s") {
         margin-top: 0.5rem;
       }
 
@@ -4637,7 +4695,7 @@ $catalog-shutter-header-height--mob: 4rem;
 .imagebox {
   margin-bottom: $bottom-space;
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
   }
 
@@ -4645,7 +4703,7 @@ $catalog-shutter-header-height--mob: 4rem;
     margin-bottom: 0;
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     float: none;
     width: auto;
     margin: 0 0 2rem;
@@ -4661,7 +4719,7 @@ $catalog-shutter-header-height--mob: 4rem;
     border-radius: 10px;
     box-shadow: 0 0 0 2px #e9cd78;
 
-    @include media('<mob-s') {
+    @include media("<mob-s") {
       display: block;
     }
 
@@ -4685,7 +4743,7 @@ $catalog-shutter-header-height--mob: 4rem;
 .videoBlock {
   margin-bottom: $bottom-section;
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
   }
 
@@ -4718,7 +4776,7 @@ $catalog-shutter-header-height--mob: 4rem;
 .nopr {
   margin-bottom: #{$bottom-section};
 
-  @include media('<mob') {
+  @include media("<mob") {
     margin-bottom: $bottom-section--mob;
   }
 
@@ -4739,7 +4797,7 @@ $catalog-shutter-header-height--mob: 4rem;
     margin: 0 -0.5rem #{$bottom-space};
     padding: 0;
 
-    @include media('<mob') {
+    @include media("<mob") {
       margin: 0 0 #{$bottom-space--mob};
     }
 
@@ -4806,16 +4864,16 @@ $catalog-shutter-header-height--mob: 4rem;
   position: relative;
   @include clear;
 
-  @include media('<lap-s') {
+  @include media("<lap-s") {
     padding-left: #{nth($grid-space--tab, 2) + $data-width--sm};
   }
 
-  @include media('<mob') {
+  @include media("<mob") {
     padding-top: #{$bottom-space--mob - 0.5};
     padding-bottom: $bottom-space--mob;
   }
 
-  @include media('<mob-s') {
+  @include media("<mob-s") {
     padding-left: 0;
   }
 
@@ -4838,7 +4896,7 @@ $catalog-shutter-header-height--mob: 4rem;
     text-align: center;
     z-index: 2;
 
-    @include media('<lap-s') {
+    @include media("<lap-s") {
       width: $data-width--sm;
     }
 
@@ -4872,14 +4930,14 @@ $catalog-shutter-header-height--mob: 4rem;
     margin: 0;
     text-align: center;
 
-    @include media('<net', '>=tab') {
+    @include media("<net", ">=tab") {
       float: none;
       margin-bottom: 1.5rem;
       padding-right: 0;
       text-align: left;
     }
 
-    @include media('<tab-s') {
+    @include media("<tab-s") {
       float: none;
       width: auto;
       margin-bottom: 1.5rem;
