@@ -55,8 +55,37 @@
               <li class="@@if(currentItem === 'Поставщикам'){current}">
                 <a href="http://www.kommunarka.by/news/"><span>Поставщикам</span></a>
               </li>
-              <li class="@@if(currentItem === 'Магазины'){current}">
+              <li class="has-sub@@if(currentItem === 'Магазины'){current}">
                 <a href="http://www.kommunarka.by/pokupateljam/special/"><span>Магазины</span></a>
+                <em class="nav__angle nav__angle-js">&#9660;</em>
+                <!--submenu-->
+                <ul>
+                  <li>
+                    <a href="#">Магазины 1</a>
+                  </li>
+                  <li class="has-sub current">
+                    <a href="#">Магазины 2</a>
+                    <em class="nav__angle nav__angle-js">&#9660;</em>
+                    <!--submenu-->
+                    <ul>
+                      <li>
+                        <a href="#">Магазины 2.1</a>
+                      </li>
+                      <li class="current">
+                        <!--<a href="#"><span>О компании 2.2</span></a>-->
+                        <span>Магазиныи 2.2</span>
+                      </li>
+                      <li>
+                        <a href="#">Магазины 2.3</a>
+                      </li>
+                    </ul>
+                    <!--submenu end-->
+                  </li>
+                  <li>
+                    <a href="#">Магазины 3</a>
+                  </li>
+                </ul>
+                <!--submenu end-->
               </li>
               <li class="@@if(currentItem === 'Вакансии'){current}">
                 <a href="http://www.kommunarka.by/pokupateljam/special/"><span>Вакансии</span></a>
@@ -64,8 +93,37 @@
               <li class="@@if(currentItem === 'Франчайзинг'){current}">
                 <a href="http://www.kommunarka.by/pokupateljam/special/"><span>Франчайзинг</span></a>
               </li>
-              <li class="@@if(currentItem === 'Контакты'){current}">
+              <li class="has-sub@@if(currentItem === 'Контакты'){current}">
                 <a href="contacts-nashi-kontakty.html"><span>Контакты</span></a>
+                <em class="nav__angle nav__angle-js">&#9660;</em>
+                <!--submenu-->
+                <ul>
+                  <li>
+                    <a href="#">Контакты 1</a>
+                  </li>
+                  <li class="has-sub current">
+                    <a href="#">Контакты 2</a>
+                    <em class="nav__angle nav__angle-js">&#9660;</em>
+                    <!--submenu-->
+                    <ul>
+                      <li>
+                        <a href="#">Контакты 2.1</a>
+                      </li>
+                      <li class="current">
+                        <!--<a href="#"><span>О компании 2.2</span></a>-->
+                        <span>Контактыи 2.2</span>
+                      </li>
+                      <li>
+                        <a href="#">Контакты 2.3</a>
+                      </li>
+                    </ul>
+                    <!--submenu end-->
+                  </li>
+                  <li>
+                    <a href="#">Контакты 3</a>
+                  </li>
+                </ul>
+                <!--submenu end-->
               </li>
             </ul>
           </nav>
