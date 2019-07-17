@@ -1625,6 +1625,11 @@
     margin: 0.5em 0 0;
     padding-left: nth($menu-inner-space, 2);
 
+    &.menu-subtitle {
+      margin-top: 1em;
+      @include font-bold;
+    }
+
     &:first-child {
       margin-top: 0.5em + $menu-item-indent;
     }

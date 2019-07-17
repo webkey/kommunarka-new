@@ -1,0 +1,25 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+/* form elements */
+label {
+  display: inline-block;
+  vertical-align: top;
+
+  @include font-size($font-size, $line-height);
+
+  color: $text-color-light;
+  margin-bottom: 0.5em;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent !important;
+
+  mark {
+    background: none;
+    color: $error-color;
+  }
+}
+
+@import "checkboxes";
+
+/* form elements end */
