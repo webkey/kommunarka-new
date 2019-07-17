@@ -2782,7 +2782,6 @@ label mark {
       flex-basis: 100%;
   display: none;
   will-change: opacity;
-  transition: opacity 0.2s, visibility 0.2s;
 }
 
 @media (min-width: 992px) {

@@ -1067,7 +1067,7 @@ $(function () {
 
       // Задержка перед добавлением/удалением класса
       // По умолчанию 50ms
-      // Можно указать отдельно для добавления и удалени класса
+      // Можно указать отдельно для добавления и удаления класса
       // timeout: {
       //   add: 50,
       //   remove: 500
@@ -1137,6 +1137,9 @@ $(function () {
     var item = arguments[0] || self.$item;
     var $item = $(item);
 
+    // console.log("$item.prop('isWaiting'): ", $item.prop('isWaiting'));
+    // if ($item.prop('isWaiting')) return;
+
     console.log("Hover REM: ", $item);
 
     $item.removeClass(self.options.modifiers.hover);
@@ -1180,9 +1183,15 @@ $(function () {
       // ================================
       if (self.options.onlyHasDrop && !$curItem.has(self.$drop).length) return;
 
+      // $item.prop('isWaiting', false);
+      $item.removeClass('hc_is-waiting');
+
       // События на ВВОД курсора
       // =======================
       if (event.handleObj.origType === "mouseenter") {
+
+        // $curItem.prop('isWaiting', true);
+        $curItem.addClass('hc_is-waiting');
 
         // Перед добавлением класса
         // очистить очередь удаления класса,
@@ -1193,7 +1202,7 @@ $(function () {
           $curItem.prop('hoverTimeout', clearTimeout(hoverTimeoutAddFn));
         }
 
-        // console.log('Mouseenter to: ', $curItem);
+        console.log('Mouseenter to: ', $curItem);
 
         if ($curItem.prop('isActive')) return;
 
@@ -1228,7 +1237,7 @@ $(function () {
 
       if (event.handleObj.origType === "mouseleave") {
 
-        // console.log('Mouseleave from: ', $curItem);
+        console.log('Mouseleave from: ', $curItem);
 
         // Перед удалением класса
         // очистить очередь добавления класса,
@@ -1249,7 +1258,7 @@ $(function () {
 
           // Удалить все классы hover
           // ========================
-          self.removeClasses(self.$item.not($curParentItems));
+          self.removeClasses(self.$item.not($curParentItems).not('.hc_is-waiting'));
 
           // С текущего пункта
           // удалить флаг активного состояния
@@ -1372,10 +1381,7 @@ function initHoverClass() {
       // condition: function () {
       //   return window.innerWidth > 1400;
       // }
-      timeout: {
-        add: 50,
-        remove: 200
-      }
+      timeout: {add: 0, remove: 100}
     });
   }
 }
