@@ -67,8 +67,52 @@
               <li class="@@if(currentItem === 'Услуги'){current}">
                 <a href="http://www.kommunarka.by/o-shokolade/"><span>Услуги</span></a>
               </li>
-              <li class="@@if(currentItem === 'Поставщикам'){current}">
+              <li class="has-sub l1@@if(currentItem === 'Поставщикам'){current}">
                 <a href="http://www.kommunarka.by/news/"><span>Поставщикам</span></a>
+                <em class="nav__angle nav__angle-js">&#9660;</em>
+                <!--submenu-->
+                <ul>
+                  <li>
+                    <a href="#">Поставщикам 1</a>
+                  </li>
+                  <li class="has-sub l2">
+                    <a href="#">Поставщикам 2</a>
+                    <em class="nav__angle nav__angle-js">&#9660;</em>
+                    <!--submenu-->
+                    <ul>
+                      <li>
+                        <a href="#">Поставщикам 2.1</a>
+                      </li>
+                      <li class="has-sub l3">
+                        <a href="#"><span>Поставщикам 2.2</span></a>
+                        <!--<span>Поставщикам 2.2</span>-->
+                        <em class="nav__angle nav__angle-js">&#9660;</em>
+                        <!--submenu-->
+                        <ul>
+                          <li>
+                            <a href="#">Поставщикам 3.1</a>
+                          </li>
+                          <li class="current">
+                            <!--<a href="#"><span>Поставщикам 3.2</span></a>-->
+                            <span>Поставщикам 3.2</span>
+                          </li>
+                          <li>
+                            <a href="#">Поставщикам 3.3</a>
+                          </li>
+                        </ul>
+                        <!--submenu end-->
+                      </li>
+                      <li>
+                        <a href="#">Поставщикам 2.3</a>
+                      </li>
+                    </ul>
+                    <!--submenu end-->
+                  </li>
+                  <li>
+                    <a href="#">Поставщикам 3</a>
+                  </li>
+                </ul>
+                <!--submenu end-->
               </li>
               <li class="has-sub@@if(currentItem === 'Магазины'){current}">
                 <a href="http://www.kommunarka.by/pokupateljam/special/"><span>Магазины</span></a>

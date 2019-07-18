@@ -2782,6 +2782,7 @@ label mark {
       flex-basis: 100%;
   display: none;
   will-change: opacity;
+  transition: opacity 0.2s, visibility 0.2s;
 }
 
 @media (min-width: 992px) {
@@ -2796,6 +2797,7 @@ label mark {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
   }
 }
 
@@ -2828,6 +2830,7 @@ label mark {
     display: block;
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 }
 

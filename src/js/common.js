@@ -1085,6 +1085,12 @@ $(function () {
       // }
       condition: true,
 
+      // Удалять классы по клику вне пунктов
+      removeOutsideClick: false,
+
+      // Удалять классы по клику на клавишу Esc
+      removeEscClick: false,
+
       // Добавляемые классы
       modifiers: {
         hover: 'hover',
@@ -1100,18 +1106,21 @@ $(function () {
     self.$container = $container;
     self.$item = $(options.item, $container);
     self.$drop = $(options.drop, $container);
+    self._classIsAdded = false;
 
+    self.removeByClickOutside();
     self.toggleClassHover();
     self.clearHoverClassOnResize();
-
+    self.removeByClickEsc();
   };
 
+  var $html = $('html');
+
   HoverClass.prototype.clearHoverClassOnResize = function () {
-    if (!DESKTOP) {
-      $(window).on('debouncedresize', function () {
-        self.removeClassHover();
-      });
-    }
+    var self = this;
+    $(window).on('resize', function () {
+      self.removeClasses(self.$item.filter('.' + self.options.modifiers.hover));
+    });
   };
 
   HoverClass.prototype.addClasses = function () {
@@ -1122,13 +1131,17 @@ $(function () {
       var $item = $(item);
 
       console.log("Hover ADD: ", $item);
-
-      $item.addClass(self.options.modifiers.hover);
+      $item
+          .addClass(self.options.modifiers.hover)
+          // Установить флаг активного состояния
+          .prop('isActive', true);
 
       if (self.options.siblings) {
         $item.next().addClass(self.options.modifiers.hoverNext);
         $item.prev().addClass(self.options.modifiers.hoverPrev);
       }
+
+      self._classIsAdded = true;
     }
   };
 
@@ -1137,17 +1150,76 @@ $(function () {
     var item = arguments[0] || self.$item;
     var $item = $(item);
 
-    // console.log("$item.prop('isWaiting'): ", $item.prop('isWaiting'));
-    // if ($item.prop('isWaiting')) return;
+    if ($item.length) {
+      console.log("Hover REM: ", $item);
 
-    console.log("Hover REM: ", $item);
+      $item
+          .removeClass(self.options.modifiers.hover)
+          // Удалить флаг активного состояния
+          .prop('isActive', false);
 
-    $item.removeClass(self.options.modifiers.hover);
+      if (self.options.siblings) {
+        $item.next().removeClass(self.options.modifiers.hoverNext);
+        $item.prev().removeClass(self.options.modifiers.hoverPrev);
+      }
 
-    if (self.options.siblings) {
-      $item.next().removeClass(self.options.modifiers.hoverNext);
-      $item.prev().removeClass(self.options.modifiers.hoverPrev);
+      self._classIsAdded = false;
     }
+  };
+
+  HoverClass.prototype.deepClean = function () {
+    var self = this;
+    var item = arguments[0] || self.$item;
+    var $item = $(item).filter('.' + self.options.modifiers.hover);
+    var arg1 = arguments[1];
+
+    // Перебрать все элементы
+    // ======================
+    $.each($item, function () {
+      var $curItem = $(this);
+      console.log("$curItem: ", $curItem);
+      // 1) Очистить задержку удаления классов
+      // 2) Удалить классы на активных пунктах
+      $curItem.prop('hoverTimeout', clearTimeout($curItem.prop('hoverTimeout')));
+      self.removeClasses($curItem);
+
+      // Чтобы провести очиску и в дочерних элементах,
+      // нужно передать на вход функции вторым аргументом true
+      if (arg1) {
+        // Пробежать по всем детям активных соседей
+        //=========================================
+        $.each($curItem.find(self.$item).filter('.' + self.options.modifiers.hover), function () {
+          var $subItemCh = $(this);
+          // Удалить классы на активных детях
+          console.log("$subItemCh: ", $subItemCh);
+          $subItemCh.prop('hoverTimeout', clearTimeout($subItemCh.prop('hoverTimeout')));
+          self.removeClasses($subItemCh);
+        })
+      }
+    });
+  };
+  HoverClass.prototype.removeByClickOutside = function () {
+    var self = this;
+
+    $html.on('click', function (event) {
+
+      if (self._classIsAdded && !self.options.removeOutsideClick) return;
+
+      // if ($(event.target).closest(self.$item.filter('.' + self.options.modifiers.hover)).length) return;
+
+      self.deepClean();
+    });
+  };
+
+  HoverClass.prototype.removeByClickEsc = function () {
+    var self = this;
+
+    $('html').keyup(function (event) {
+      if (self._classIsAdded && self.options.removeEscClick && event.keyCode === 27) {
+        console.log("removeByClickEsc self.$item: ", self.$item);
+        self.deepClean();
+      }
+    });
   };
 
   HoverClass.prototype.toggleClassHover = function () {
@@ -1158,8 +1230,8 @@ $(function () {
         timeoutAdd,
         timeoutRemove;
 
-    // Время задержки добавления классов
-    // =================================
+    // Время задержки добавления/удаления классов
+    // ==========================================
     timeoutAdd = timeoutRemove = self.options.timeout;
 
     if (typeof self.options.timeout === "object") {
@@ -1167,34 +1239,88 @@ $(function () {
       timeoutRemove = self.options.timeout.remove;
     }
 
+    // Обработка событий прикосновения к тачскрину,
+    // а также ввода и вывода курсора
+    // ==============================
     $container.on('touchend mouseenter mouseleave', item, function (e) {
       var $curItem = $(this),
           event = e;
 
-      var condition = (typeof self.options.condition === "function") ? self.options.condition(): self.options.condition;
+      // Родительские пункты текущего пункта
+      // ===================================
+      var $curParentItems = $curItem.parentsUntil(self.options.container, self.options.item);
 
-      // Если параметр condition возвращает false
+      // Если параметр cancel возвращает false
       // то выполнение функции прекратить
       // ================================
+      var condition = (typeof self.options.condition === "function") ? self.options.condition() : self.options.condition;
       if (!condition) return;
 
-      // Если текущий пункт не содержит подменю
+      // Если:
+      // 1) текущий пункт не содержит подменю,
+      // 2) в настройках указанно, что нужно проводить такую проверку,
       // то выполнение функции прекратить
       // ================================
       if (self.options.onlyHasDrop && !$curItem.has(self.$drop).length) return;
 
-      // $item.prop('isWaiting', false);
-      $item.removeClass('hc_is-waiting');
+      // console.log("event.handleObj.origType: ", event.handleObj.origType);
+
+      // События на TOUCHEND
+      //    (для тачскринов)
+      // ===================
+      if (event.handleObj.origType === "touchend") {
+        // console.log('Touchend to: ', $curItem);
+
+        // Если пункт уже АКТИВЕН
+        // =============================
+        if ($curItem.prop('isActive')) {
+          // Прекратить дальнейшее выполнение функции
+          // ========================================
+
+          return;
+        }
+
+        // Если пункт НЕ АКТИВЕН
+        // =====================
+
+        // Удалить все классы hover со всех активных пунктов,
+        // кроме ТЕКУЩЕГО и РОДИТЕЛЬСКИХ
+        // =============================
+        self.removeClasses(self.$item.filter('.' + self.options.modifiers.hover).not($curItem).not($curParentItems));
+
+        // Если текущий пункт не содержит подменю,
+        // то выполнение функции прекратить
+        // !!! Эта проверка проводится в самом конце,
+        //     чтобы можно было удалять активные классы
+        //     при клике на любой пункт, а не только
+        //     содержащий в себе подменю.
+        // ================================
+        if (!$curItem.has(self.$drop).length) return;
+
+        // Добавить классы hover на ТЕКУЩИЙ пункт
+        // ======================================
+        self.addClasses($curItem);
+
+        event.preventDefault();
+
+        return;
+      }
 
       // События на ВВОД курсора
       // =======================
       if (event.handleObj.origType === "mouseenter") {
 
-        // $curItem.prop('isWaiting', true);
-        $curItem.addClass('hc_is-waiting');
+        // Если перевод курсора происходит на соседние пункты,
+        // а не дочерние, то
+        // очищаем задержку удаления классов на активных элементах,
+        // а затем удаляем классы без задержки.
+        //==========================
+        var $curSiblings = $curItem.siblings();
+        self.deepClean($curSiblings, true);
 
         // Перед добавлением класса
-        // очистить очередь удаления класса,
+        // очистить очередь удаления класса
+        // (отменить удаления класса) c текущего пункта,
         // если она запущена
         // =================
         var hoverTimeoutAddFn = $curItem.prop('hoverTimeout');
@@ -1202,33 +1328,25 @@ $(function () {
           $curItem.prop('hoverTimeout', clearTimeout(hoverTimeoutAddFn));
         }
 
-        console.log('Mouseenter to: ', $curItem);
-
+        // Если пункт уже активен,
+        // то повторный ввод курсора в его область
+        // останавливает дальнейшее выполнение функции
         if ($curItem.prop('isActive')) return;
 
-        // event.stopPropagation();
+        console.log('Mouseenter to: ', $curItem);
 
         // Запустить очередь добавления класса,
         // одновременно записав ее в аттрибут "prop"
         // =========================================
         $curItem.prop('hoverIntent', setTimeout(function () {
 
-          // Родительские пункты текущего пункта
-          // ===================================
-          var $curParentItems = $curItem.parentsUntil(self.options.container, self.options.item);
-
-          // Удалить все классы hover со всех пунктов,
+          // Удалить все классы hover со всех активных пунктов,
           // кроме ТЕКУЩЕГО и РОДИТЕЛЬСКИХ
           // =============================
-          self.removeClasses(self.$item.not($curItem).not($curParentItems));
+          self.removeClasses(self.$item.filter('.' + self.options.modifiers.hover).not($curItem).not($curParentItems));
 
-          // Добавить классы hover на ТЕКУЩИЙ и РОДИТЕЛЬСКИЕ пункты
-          self.addClasses($curItem.add($curParentItems));
-
-          // На текущий и родительские пункты
-          // установить флаг активного состояния
-          // ===================================
-          $curItem.add($curParentItems).prop('isActive', true);
+          // Добавить классы hover на ТЕКУЩИЙ пункт
+          self.addClasses($curItem);
 
         }, timeoutAdd || 50));
 
@@ -1240,7 +1358,8 @@ $(function () {
         console.log('Mouseleave from: ', $curItem);
 
         // Перед удалением класса
-        // очистить очередь добавления класса,
+        // очистить очередь добавления класса
+        // (отменить добавление класса) на текущем пункта,
         // если она запущена
         // =================
         var hoverTimeoutRemoveFn = $curItem.prop('hoverIntent');
@@ -1254,114 +1373,13 @@ $(function () {
 
         $curItem.prop('hoverTimeout', setTimeout(function () {
 
-          var $curParentItems = $curItem.parentsUntil(self.options.container, self.options.item);
-
           // Удалить все классы hover
           // ========================
-          self.removeClasses(self.$item.not($curParentItems).not('.hc_is-waiting'));
-
-          // С текущего пункта
-          // удалить флаг активного состояния
-          // ================================
-          $curItem.add($curParentItems).prop('isActive', false);
+          self.removeClasses(self.$item.filter('.' + self.options.modifiers.hover).not($curParentItems));
 
         }, timeoutRemove || 50));
-
-        return;
-      }
-
-      if (2 === 1) {
-        // Удалить все классы hover
-        self.removeClasses();
-
-        // Добавить классы hover на РОДИТЕЛЬСКИЕ пункты
-        self.addClasses($curItem.parentsUntil($container, item));
-
-        // Если указатель мыши выводится из пункта,
-        // то на текущий пункт класс hover не добавлять
-        if (event.handleObj.origType === "mouseleave") {
-          return;
-        }
-
-        // Добавить классы hover на ТЕКУЩИЙ
-        self.addClasses($curItem);
       }
     });
-
-    return false;
-
-    if (!DESKTOP) {
-
-      $container.on('touchend', ''+item+'', function (e) {
-
-        var $currentAnchor = $(this);
-        var currentItem = $currentAnchor.closest($item);
-
-        if (!currentItem.has(self.$drop).length){ return; }
-
-        e.stopPropagation();
-
-        if (currentItem.hasClass(self.options.modifiers.hover)){
-
-          currentItem.removeClass(self.options.modifiers.hover).find('.'+self.options.modifiers.hover+'').removeClass(self.options.modifiers.hover);
-
-          return;
-        }
-
-        $('.'+self.options.modifiers.hover+'').not($currentAnchor.parents('.'+self.options.modifiers.hover+''))
-            .removeClass(self.options.modifiers.hover)
-            .find('.'+self.options.modifiers.hover+'')
-            .removeClass(self.options.modifiers.hover);
-        currentItem.addClass(self.options.modifiers.hover);
-
-        e.preventDefault();
-
-      });
-
-      $container.on('click', ''+self.options.drop+'', function (e) {
-        e.stopPropagation();
-      });
-
-      $(document).on('click', function () {
-        $item.removeClass(self.options.modifiers.hover);
-      });
-
-    } else {
-      $container.on('mouseenter', ''+item+'', function () {
-
-        var currentItem = $(this);
-
-        if (currentItem.prop('hoverTimeout')) {
-          currentItem.prop('hoverTimeout', clearTimeout(currentItem.prop('hoverTimeout')));
-        }
-
-        currentItem.prop('hoverIntent', setTimeout(function () {
-
-          // self.addClasses().call(currentItem);
-
-        }, 50));
-
-      }).on('mouseleave', ''+ item+'', function () {
-
-        var currentItem = $(this);
-
-        if (currentItem.prop('hoverIntent')) {
-          currentItem.prop('hoverIntent', clearTimeout(currentItem.prop('hoverIntent')));
-        }
-
-        currentItem.prop('hoverTimeout', setTimeout(function () {
-
-          // self.removeClass().call(currentItem);
-        }, 50));
-
-      });
-
-    }
-  };
-
-  HoverClass.prototype.removeClassHover = function () {
-    var self = this;
-    self.$item.removeClass(self.options.modifiers.hover );
   };
 
   window.HoverClass = HoverClass;
@@ -1378,10 +1396,10 @@ function initHoverClass() {
       drop: 'ul',
       siblings: false,
       onlyHasDrop: true,
-      // condition: function () {
-      //   return window.innerWidth > 1400;
-      // }
-      timeout: {add: 0, remove: 100}
+      condition: function () {
+        return window.innerWidth > 991; // Если ширина меньше 992 то классы не добавлять
+      },
+      timeout: {add: 50, remove: 2000}
     });
   }
 }

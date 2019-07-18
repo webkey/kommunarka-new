@@ -806,7 +806,7 @@
 
     // transition
     will-change: opacity;
-    //transition: opacity $animation-speed, visibility $animation-speed;
+    transition: opacity $animation-speed, visibility $animation-speed;
 
     // Для разрешений выше планшетных
     @include media(">=tab") {
@@ -821,6 +821,7 @@
 
       opacity: 0;
       visibility: hidden;
+      pointer-events: none; // Работает без анимации
     }
 
     // Позицирование подменю
@@ -864,6 +865,7 @@
       display: block;
       opacity: 1;
       visibility: visible;
+      pointer-events: auto;
     }
   }
 
