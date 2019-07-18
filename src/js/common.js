@@ -1085,11 +1085,11 @@ $(function () {
       // }
       condition: true,
 
-      // Удалять классы по клику вне пунктов
-      removeOutsideClick: false,
+      // Удалять классы по клику вне активного пункта
+      removeOutsideClick: true,
 
       // Удалять классы по клику на клавишу Esc
-      removeEscClick: false,
+      removeEscClick: true,
 
       // Добавляемые классы
       modifiers: {
@@ -1115,13 +1115,6 @@ $(function () {
   };
 
   var $html = $('html');
-
-  HoverClass.prototype.clearHoverClassOnResize = function () {
-    var self = this;
-    $(window).on('resize', function () {
-      self.removeClasses(self.$item.filter('.' + self.options.modifiers.hover));
-    });
-  };
 
   HoverClass.prototype.addClasses = function () {
     var self = this;
@@ -1177,27 +1170,49 @@ $(function () {
     // ======================
     $.each($item, function () {
       var $curItem = $(this);
-      console.log("$curItem: ", $curItem);
+
+      // Проверить, наличие пунктов с удалением с задержкой
+      // или в активном состоянии
+      var itemHT = $curItem.prop('hoverTimeout');
+      if (!itemHT && !$curItem.prop('isActive')) return;
+      console.log("deepClean Item: ", $curItem);
+      console.log("deepClean hoverTimeout Item: ", itemHT);
+
       // 1) Очистить задержку удаления классов
+      $curItem.prop('hoverTimeout', clearTimeout(itemHT));
       // 2) Удалить классы на активных пунктах
-      $curItem.prop('hoverTimeout', clearTimeout($curItem.prop('hoverTimeout')));
       self.removeClasses($curItem);
 
       // Чтобы провести очиску и в дочерних элементах,
       // нужно передать на вход функции вторым аргументом true
       if (arg1) {
-        // Пробежать по всем детям активных соседей
-        //=========================================
+        // Перебрать всей детям активных пунктов
+        // =====================================
         $.each($curItem.find(self.$item).filter('.' + self.options.modifiers.hover), function () {
           var $subItemCh = $(this);
-          // Удалить классы на активных детях
-          console.log("$subItemCh: ", $subItemCh);
-          $subItemCh.prop('hoverTimeout', clearTimeout($subItemCh.prop('hoverTimeout')));
+
+          // Проверить, наличие пунктов с удалением с задержкой
+          // или в активном состоянии
+          var chHT = $subItemCh.prop('hoverTimeout');
+          if (!chHT && !$curItem.prop('isActive')) return;
+          console.log("deepClean Child: ", $subItemCh);
+
+          // 1) Очистить задержку удаления классов
+          $subItemCh.prop('hoverTimeout', clearTimeout(chHT));
+          // 2) Удалить классы на активных пунктах
           self.removeClasses($subItemCh);
         })
       }
     });
   };
+
+  HoverClass.prototype.clearHoverClassOnResize = function () {
+    var self = this;
+    $(window).on('resize', function () {
+      self.removeClasses(self.$item.filter('.' + self.options.modifiers.hover));
+    });
+  };
+
   HoverClass.prototype.removeByClickOutside = function () {
     var self = this;
 
@@ -1216,10 +1231,12 @@ $(function () {
 
     $('html').keyup(function (event) {
       if (self._classIsAdded && self.options.removeEscClick && event.keyCode === 27) {
-        console.log("removeByClickEsc self.$item: ", self.$item);
         self.deepClean();
+        // self.$container.off('touchend mouseenter mouseleave', self.options.item);
       }
     });
+
+    return false;
   };
 
   HoverClass.prototype.toggleClassHover = function () {
@@ -1242,7 +1259,7 @@ $(function () {
     // Обработка событий прикосновения к тачскрину,
     // а также ввода и вывода курсора
     // ==============================
-    $container.on('touchend mouseenter mouseleave', item, function (e) {
+    $container.off('touchend mouseenter mouseleave', item).on('touchend mouseenter mouseleave', item, function (e) {
       var $curItem = $(this),
           event = e;
 
@@ -1311,11 +1328,12 @@ $(function () {
       if (event.handleObj.origType === "mouseenter") {
 
         // Если перевод курсора происходит на соседние пункты,
-        // а не дочерние, то
+        // (а не дочерние), то
         // очищаем задержку удаления классов на активных элементах,
         // а затем удаляем классы без задержки.
         //==========================
         var $curSiblings = $curItem.siblings();
+        console.log("$curSiblings: ", $curSiblings);
         self.deepClean($curSiblings, true);
 
         // Перед добавлением класса
