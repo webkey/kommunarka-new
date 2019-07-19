@@ -1,6 +1,6 @@
 'use strict';
 
-var $WINDOW = $(window), $DOC = $(document), $BODY = $('body');
+// var $WINDOW = $(window), $DOC = $(document), $BODY = $('body');
 
 /**
  * !resize only width
@@ -1144,6 +1144,7 @@ $(function () {
     var $item = $(item);
 
     if ($item.length) {
+
       console.log("Hover REM: ", $item);
 
       $item
@@ -1163,7 +1164,8 @@ $(function () {
   HoverClass.prototype.deepClean = function () {
     var self = this;
     var item = arguments[0] || self.$item;
-    var $item = $(item).filter('.' + self.options.modifiers.hover);
+    // var $item = $(item).filter('.' + self.options.modifiers.hover);
+    var $item = $(item);
     var arg1 = arguments[1];
 
     // Перебрать все элементы
@@ -1175,8 +1177,7 @@ $(function () {
       // или в активном состоянии
       var itemHT = $curItem.prop('hoverTimeout');
       if (!itemHT && !$curItem.prop('isActive')) return;
-      console.log("deepClean Item: ", $curItem);
-      console.log("deepClean hoverTimeout Item: ", itemHT);
+      // console.log("deepClean Item: ", $curItem);
 
       // 1) Очистить задержку удаления классов
       $curItem.prop('hoverTimeout', clearTimeout(itemHT));
@@ -1188,14 +1189,14 @@ $(function () {
       if (arg1) {
         // Перебрать всей детям активных пунктов
         // =====================================
-        $.each($curItem.find(self.$item).filter('.' + self.options.modifiers.hover), function () {
+        $.each($curItem.find(self.$item), function () {
           var $subItemCh = $(this);
 
           // Проверить, наличие пунктов с удалением с задержкой
           // или в активном состоянии
           var chHT = $subItemCh.prop('hoverTimeout');
           if (!chHT && !$curItem.prop('isActive')) return;
-          console.log("deepClean Child: ", $subItemCh);
+          // console.log("deepClean Child: ", $subItemCh);
 
           // 1) Очистить задержку удаления классов
           $subItemCh.prop('hoverTimeout', clearTimeout(chHT));
@@ -1232,7 +1233,6 @@ $(function () {
     $('html').keyup(function (event) {
       if (self._classIsAdded && self.options.removeEscClick && event.keyCode === 27) {
         self.deepClean();
-        // self.$container.off('touchend mouseenter mouseleave', self.options.item);
       }
     });
 
@@ -1333,7 +1333,6 @@ $(function () {
         // а затем удаляем классы без задержки.
         //==========================
         var $curSiblings = $curItem.siblings();
-        console.log("$curSiblings: ", $curSiblings);
         self.deepClean($curSiblings, true);
 
         // Перед добавлением класса
@@ -1351,7 +1350,7 @@ $(function () {
         // останавливает дальнейшее выполнение функции
         if ($curItem.prop('isActive')) return;
 
-        console.log('Mouseenter to: ', $curItem);
+        // console.log('Mouseenter to +=+=+=+=+=+=+: ', $curItem);
 
         // Запустить очередь добавления класса,
         // одновременно записав ее в аттрибут "prop"
@@ -1373,7 +1372,7 @@ $(function () {
 
       if (event.handleObj.origType === "mouseleave") {
 
-        console.log('Mouseleave from: ', $curItem);
+        // console.log('Mouseleave from +=+=+=+=+=+=+: ', $curItem);
 
         // Перед удалением класса
         // очистить очередь добавления класса
@@ -1417,7 +1416,7 @@ function initHoverClass() {
       condition: function () {
         return window.innerWidth > 991; // Если ширина меньше 992 то классы не добавлять
       },
-      timeout: {add: 50, remove: 2000}
+      timeout: {add: 50, remove: 200}
     });
   }
 }
