@@ -57,9 +57,12 @@ body {
   }
 
   &.home-page {
-    $height: 84.3rem;
-    $ratio: calc(47% + 26.5rem);
-    $ratio-mob: calc(47% + 21.7rem);
+    //$height: 84.3rem;
+    $height: 77.5rem;
+    //$ratio: calc(47% + 26.5rem);
+    $ratio: calc(47% + 19rem);
+    //$ratio-mob: calc(47% + 21.7rem);
+    $ratio-mob: calc(47% + 14.9rem);
 
     &::before {
       content: "";
@@ -97,6 +100,16 @@ body {
       background: radial-gradient(ellipse at center, #d08d74 1%, #d08d74 12%, #644435 47%, #644435 100%);
       //opacity: 0.2;
       z-index: -1;
+
+      @include media('<tab') {
+        height: auto;
+        padding-top: $ratio;
+      }
+
+      @include media('<mob') {
+        height: auto;
+        padding-top: $ratio-mob;
+      }
     }
 
     /*&::after {

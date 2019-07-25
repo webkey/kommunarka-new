@@ -1719,7 +1719,7 @@ $(document).ready(function () {
   toggleShutters();
   searchFieldToggle();
   catalogToggle();
-  catalogNavTabs();
+  // catalogNavTabs();
   parallaxInit();
   initHoverClass();
   menuAccordionInit();

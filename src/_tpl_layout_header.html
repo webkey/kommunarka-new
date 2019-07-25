@@ -24,36 +24,6 @@
                   </li>
                   <li class="has-sub l2">
                     <a href="#">О компании 2</a>
-                    <em class="nav__angle nav__angle-js">&#9660;</em>
-                    <!--submenu-->
-                    <ul>
-                      <li>
-                        <a href="#">О компании 2.1</a>
-                      </li>
-                      <li class="has-sub l3">
-                        <a href="#"><span>О компании 2.2</span></a>
-                        <!--<span>О компании 2.2</span>-->
-                        <em class="nav__angle nav__angle-js">&#9660;</em>
-                        <!--submenu-->
-                        <ul>
-                          <li>
-                            <a href="#">О компании 3.1</a>
-                          </li>
-                          <li class="current">
-                            <!--<a href="#"><span>О компании 3.2</span></a>-->
-                            <span>О компании 3.2</span>
-                          </li>
-                          <li>
-                            <a href="#">О компании 3.3</a>
-                          </li>
-                        </ul>
-                        <!--submenu end-->
-                      </li>
-                      <li>
-                        <a href="#">О компании 2.3</a>
-                      </li>
-                    </ul>
-                    <!--submenu end-->
                   </li>
                   <li>
                     <a href="#">О компании 3</a>
@@ -69,82 +39,9 @@
               </li>
               <li class="has-sub l1@@if(currentItem === 'Поставщикам'){current}">
                 <a href="http://www.kommunarka.by/news/"><span>Поставщикам</span></a>
-                <em class="nav__angle nav__angle-js">&#9660;</em>
-                <!--submenu-->
-                <ul>
-                  <li>
-                    <a href="#">Поставщикам 1</a>
-                  </li>
-                  <li class="has-sub l2">
-                    <a href="#">Поставщикам 2</a>
-                    <em class="nav__angle nav__angle-js">&#9660;</em>
-                    <!--submenu-->
-                    <ul>
-                      <li>
-                        <a href="#">Поставщикам 2.1</a>
-                      </li>
-                      <li class="has-sub l3">
-                        <a href="#"><span>Поставщикам 2.2</span></a>
-                        <!--<span>Поставщикам 2.2</span>-->
-                        <em class="nav__angle nav__angle-js">&#9660;</em>
-                        <!--submenu-->
-                        <ul>
-                          <li>
-                            <a href="#">Поставщикам 3.1</a>
-                          </li>
-                          <li class="current">
-                            <!--<a href="#"><span>Поставщикам 3.2</span></a>-->
-                            <span>Поставщикам 3.2</span>
-                          </li>
-                          <li>
-                            <a href="#">Поставщикам 3.3</a>
-                          </li>
-                        </ul>
-                        <!--submenu end-->
-                      </li>
-                      <li>
-                        <a href="#">Поставщикам 2.3</a>
-                      </li>
-                    </ul>
-                    <!--submenu end-->
-                  </li>
-                  <li>
-                    <a href="#">Поставщикам 3</a>
-                  </li>
-                </ul>
-                <!--submenu end-->
               </li>
               <li class="has-sub@@if(currentItem === 'Магазины'){current}">
                 <a href="http://www.kommunarka.by/pokupateljam/special/"><span>Магазины</span></a>
-                <em class="nav__angle nav__angle-js">&#9660;</em>
-                <!--submenu-->
-                <ul>
-                  <li>
-                    <a href="#">Магазины 1</a>
-                  </li>
-                  <li class="has-sub current">
-                    <a href="#">Магазины 2</a>
-                    <em class="nav__angle nav__angle-js">&#9660;</em>
-                    <!--submenu-->
-                    <ul>
-                      <li>
-                        <a href="#">Магазины 2.1</a>
-                      </li>
-                      <li class="current">
-                        <!--<a href="#"><span>О компании 2.2</span></a>-->
-                        <span>Магазиныи 2.2</span>
-                      </li>
-                      <li>
-                        <a href="#">Магазины 2.3</a>
-                      </li>
-                    </ul>
-                    <!--submenu end-->
-                  </li>
-                  <li>
-                    <a href="#">Магазины 3</a>
-                  </li>
-                </ul>
-                <!--submenu end-->
               </li>
               <li class="@@if(currentItem === 'Вакансии'){current}">
                 <a href="http://www.kommunarka.by/pokupateljam/special/"><span>Вакансии</span></a>
@@ -162,21 +59,6 @@
                   </li>
                   <li class="has-sub current">
                     <a href="#">Контакты 2</a>
-                    <em class="nav__angle nav__angle-js">&#9660;</em>
-                    <!--submenu-->
-                    <ul>
-                      <li>
-                        <a href="#">Контакты 2.1</a>
-                      </li>
-                      <li class="current">
-                        <!--<a href="#"><span>О компании 2.2</span></a>-->
-                        <span>Контактыи 2.2</span>
-                      </li>
-                      <li>
-                        <a href="#">Контакты 2.3</a>
-                      </li>
-                    </ul>
-                    <!--submenu end-->
                   </li>
                   <li>
                     <a href="#">Контакты 3</a>
@@ -224,16 +106,16 @@
 
 <a href="#" class="btn-menu btn-nav-js" title="Главное меню"> <span>Главное меню</span> <i>&nbsp;</i> </a>
 
-<div class="catalog-shutter catalog-shutter-js catalog-shutter-prevent-js catalog-nav-tabs-js">
+<div class="catalog-shutter catalog-shutter-js catalog-shutter-prevent-js">
   <div class="catalog-shutter__layout">
     <div class="catalog-shutter__header">
-      <div class="catalog-nav-tabs-thumbs catalog-nav-tabs__thumbs-js">
+      <!--<div class="catalog-nav-tabs-thumbs catalog-nav-tabs__thumbs-js">
         <a href="#catalogByType"><span>По типам</span></a>
         <a href="#catalogBySeries"><span>По сериям</span></a>
-      </div>
+      </div>-->
       <a href="#" class="catalog-shutter-close catalog-shutter-close-js">x</a>
     </div>
-    <div class="catalog-shutter__body catalog-nav-tabs__panels-js">
+    <div class="catalog-shutter__body">
       <!--Group By Type-->
       <div class="catalog-nav" id="catalogByType">
         <div class="catalog-nav__item" style="background-image: url(i/catalog-bg-01-shokolad.png); background-color: #644435;">
@@ -324,7 +206,7 @@
         </div>
       </div>
       <!--Group By Series-->
-      <div class="catalog-nav" id="catalogBySeries">
+      <!--<div class="catalog-nav" id="catalogBySeries">
         <div class="catalog-nav__item" style="background-image: url(i/catalog-2-bg-01-sufle.png);">
           <ul class="catalog-nav__list">
             <li>
@@ -381,7 +263,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </div>
