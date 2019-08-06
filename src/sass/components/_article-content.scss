@@ -3,7 +3,8 @@
 @import "../../libs/include-media/dist/include-media";
 
 /* article content */
-.#{$article-content} {
+.#{$article-content},
+.text-page {
   padding: $grid-space;
 
   @include media("<tab-s") {
@@ -13,7 +14,9 @@
   @include media("<mob") {
     padding: $grid-space--mob;
   }
+}
 
+.#{$article-content} {
   & > p, & > ul, & > ol,
   & > h1, & > .h1,
   & > h2, & > h3, & > h4, & > h5, & > h6,

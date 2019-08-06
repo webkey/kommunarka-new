@@ -1,5 +1,27 @@
 <script src="js/jquery.min.js?rev=@@hash"></script>
 <script src="js/libs.min.js?rev=@@hash"></script>
+@@if(context.hasMap){
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+<script type="text/javascript">
+  ymaps.ready(init);
+  function init(){
+    var coords = [53.8868, 27.5779];
+    var myMap = new ymaps.Map("mapKommunarka", {
+      center: coords,
+      zoom: 13
+    });
+
+    var myPlacemark = new ymaps.GeoObject({
+      geometry: {
+        type: "Point",
+        coordinates: coords
+      }
+    });
+
+    myMap.geoObjects.add(myPlacemark);
+  }
+</script>
+}
 <script src="js/common.js?rev=@@hash"></script>
 </body>
 </html>

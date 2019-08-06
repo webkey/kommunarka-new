@@ -1123,7 +1123,7 @@ $(function () {
     if (item && item.length) {
       var $item = $(item);
 
-      console.log("Hover ADD: ", $item);
+      // console.log("Hover ADD: ", $item);
       $item
           .addClass(self.options.modifiers.hover)
           // Установить флаг активного состояния
@@ -1145,7 +1145,7 @@ $(function () {
 
     if ($item.length) {
 
-      console.log("Hover REM: ", $item);
+      // console.log("Hover REM: ", $item);
 
       $item
           .removeClass(self.options.modifiers.hover)
