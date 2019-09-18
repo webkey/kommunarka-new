@@ -1754,23 +1754,35 @@ function catalogueShowInfo() {
  * !Excursion
  */
 function excursion() {
-  $.datetimepicker.setLocale($('#datetimepicker').data('lang'));
+  var $datetimepicker = $('#datetimepicker');
+  $.datetimepicker.setLocale($datetimepicker.data('lang'));
 
-  $('#datetimepicker').datetimepicker({
+  $datetimepicker.datetimepicker({
     format: 'd.m.Y H:i',
     inline: true,
     lang: 'ru',
     theme: 'custom',
-    allowTimes: ['12:00:00', '16:00:00'],
+    allowTimes: ['10:00:00', '12:00:00'],
     dayOfWeekStart: 1,
     timepickerScrollbar: false,
     scrollMonth: false,
     scrollTime: false,
     scrollInput: false,
     onGenerate:function( ct ){
-      $(this).find('.xdsoft_date.xdsoft_weekend').addClass('xdsoft_disabled');
+      var $cur = $(this);
+
+      $cur.find('.xdsoft_date.xdsoft_weekend').addClass('xdsoft_disabled');
     }
   });
+
+  var dataTitleDate = $datetimepicker.attr('data-title-date');
+  var titleDate = dataTitleDate ? dataTitleDate : 'Date:';
+
+  var $dataTitleTime = $datetimepicker.attr('data-title-time');
+  var titleTime = $dataTitleTime ? $dataTitleTime : 'Time:';
+
+  $datetimepicker.next().find('.xdsoft_datepicker').prepend('<div class="xdsoft_datepicker_title">' +titleDate+ '</div>');
+  $datetimepicker.next().find('.xdsoft_timepicker').prepend('<div class="xdsoft_timepicker_title">' +titleTime+ '</div>');
 }
 
 /**

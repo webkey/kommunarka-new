@@ -371,4 +371,14 @@ $xdsoft_datetimepicker-color_active: #000;
   pointer-events: none;
 }
 
+.excursion-form__subtitle,
+.xdsoft_datepicker_title,
+.xdsoft_timepicker_title {
+  @include font-bold;
+  @include font-h4;
+  color: $title-color-alt;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
 /* datetimepicker theme end */

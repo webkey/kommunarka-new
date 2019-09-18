@@ -2118,6 +2118,12 @@ select.form-def.has-arrow + .select-arrow {
   color: #ced4da !important;
 }
 
+.form-note {
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: #6c757d;
+}
+
 .form-unit {
   position: relative;
   margin-bottom: 3rem;
@@ -9026,6 +9032,27 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
 
 .xdsoft_disabled {
   pointer-events: none;
+}
+
+.excursion-form__subtitle,
+.xdsoft_datepicker_title,
+.xdsoft_timepicker_title {
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 2.6rem;
+  color: #ad813d;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 639px) {
+  .excursion-form__subtitle,
+  .xdsoft_datepicker_title,
+  .xdsoft_timepicker_title {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
 }
 
 /* datetimepicker theme end */
