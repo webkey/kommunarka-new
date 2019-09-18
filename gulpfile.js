@@ -64,7 +64,7 @@ gulp.task('htmlCompilation', function () {
  */
 gulp.task('html:buildAllPages', ['htmlCompilation'], function () {
   var pref = "all-pages";
-  return gulp.src(['!src/typography.html', '!src/forms.html', '!src/layouts.html', '!src/all-pages.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', './src/*.html'])
+  return gulp.src(['!src/typography.html', '!src/layouts.html', '!src/all-pages.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', './src/*.html'])
       .pipe(index({
         // written out before index contents
         'prepend-to-output': () => `<head> <title>All pages</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"><link rel="shortcut icon" href="favicon.ico"><link rel="stylesheet" href="css/main.css"></head><body class="` + pref + `__page"><div class="main"><div class="layout-page layout-page-spaces"><div class="` + pref + `__logo"><a href="index.html"><img src="img/logo.png" alt="image description" /></a></div>`,
@@ -127,9 +127,11 @@ gulp.task('sassCompilation', ['normalize'], function () {
  */
 gulp.task('mergeCssLibs', function () {
   return gulp.src([
-    'src/css/temp/*.css'
+    'src/css/temp/slick.css'
+    , 'src/css/temp/slick-theme.css'
     , 'src/libs/swiper/dist/css/swiper.min.css'
-    // , 'src/libs/select2/dist/css/select2.min.css'
+    , 'src/css/temp/jquery.datetimepicker.min.css'
+    , 'src/libs/select2/dist/css/select2.min.css'
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -162,6 +164,10 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'node_modules/parallax-js/dist/parallax.min.js' // parallax
     , 'src/libs/swiper/dist/js/swiper.min.js' // swiper slider
     , 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
+    , 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
+    , 'src/js/temp/jquery.datetimepicker.full.min.js' // slick slider
+    , 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
+    , 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))
@@ -299,7 +305,7 @@ gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'cop
   gulp.src('src/assets/**/*')
       .pipe(gulp.dest(path.dist + '/assets'));
 
-  gulp.src(['!src/forms.html', '!src/layouts.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', 'src/*.html'])
+  gulp.src(['!src/layouts.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', 'src/*.html'])
       .pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
       .pipe(gulp.dest(path.dist));
 

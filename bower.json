@@ -27,7 +27,8 @@
     "normalize-scss": "normalize.scss#^7.0.1",
     "slick-carousel": "^1.6.0",
     "stickybits": "^3.2.3",
-    "swiper": "^4.5.0"
+    "swiper": "^4.5.0",
+    "jquery-datetime-picker-bygiro": "jquery-datetimepicker#*"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

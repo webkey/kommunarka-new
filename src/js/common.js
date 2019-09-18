@@ -141,6 +141,27 @@ function stickyInit() {
   }
 }
 
+/**
+ * !Initial custom select for cross-browser styling
+ * */
+function customSelect() {
+  var $select = $('select.cselect');
+
+  if ($select.length) {
+    $.each($select, function () {
+      var $thisSelect = $(this);
+      $thisSelect.select2({
+        theme: 'custom',
+        language: 'ru',
+        width: '100%',
+        containerCssClass: 'cselect-head',
+        dropdownCssClass: 'cselect-drop'
+      });
+    })
+
+  }
+}
+
 // ==================================================
 // jquery.switch-class.js
 // Version: 2.0
@@ -1701,6 +1722,58 @@ function catalogueShowInfo() {
 }
 
 /**
+ * !Expand table
+ */
+// function expandTable() {
+//   var $tbl = $('.tbl');
+//   var maxH = 100;
+//
+//   if ($tbl.length) {
+//     $.each($('td', $tbl), function () {
+//       var $curTd = $(this);
+//
+//       $curTd.wrapInner('<div class="td-wrap"></div>');
+//
+//       if ($curTd.find('.td-wrap').height() > maxH) {
+//
+//         $curTd.find('.td-wrap').css('max-height', maxH).append('<span class="td-expand">Show</span>');
+//       }
+//     });
+//
+//     $tbl.on('click', '.td-expand', function (e) {
+//       var $curBtn = $(this);
+//
+//       $curBtn.add($curBtn.closest('.td-wrap')).toggleClass('active', !$curBtn.hasClass('active'));
+//
+//       e.preventDefault();
+//     })
+//   }
+// }
+
+/**
+ * !Excursion
+ */
+function excursion() {
+  $.datetimepicker.setLocale($('#datetimepicker').data('lang'));
+
+  $('#datetimepicker').datetimepicker({
+    format: 'd.m.Y H:i',
+    inline: true,
+    lang: 'ru',
+    theme: 'custom',
+    allowTimes: ['12:00:00', '16:00:00'],
+    dayOfWeekStart: 1,
+    timepickerScrollbar: false,
+    scrollMonth: false,
+    scrollTime: false,
+    scrollInput: false,
+    onGenerate:function( ct ){
+      $(this).find('.xdsoft_date.xdsoft_weekend').addClass('xdsoft_disabled');
+    }
+  });
+}
+
+/**
  * =========== !ready document, load/resize window ===========
  */
 
@@ -1716,6 +1789,7 @@ $(document).ready(function () {
   printShow();
   objectFitImages(); // object-fit-images initial
   // stickyInit();
+  customSelect();
   toggleShutters();
   searchFieldToggle();
   catalogToggle();
@@ -1725,4 +1799,5 @@ $(document).ready(function () {
   menuAccordionInit();
   slidersInit();
   catalogueShowInfo();
+  excursion();
 });

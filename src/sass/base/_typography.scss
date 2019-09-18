@@ -201,7 +201,9 @@ table {
   }
 
   td, th {
-    @include font-size($font-size, $line-height);
+    font-size: 1.8rem;
+    line-height: 2rem;
+    letter-spacing: 0.02em;
     color: inherit;
     padding: 8px 15px;
     border-color: $text-color;
@@ -233,10 +235,13 @@ table {
 .tbl {
   border: none;
 
+  $bg-color: #f1e8e2;
+
   td, th {
     color: $text-color;
-    background-color: $bg-color;
-    border: 0 solid $base-color;
+    background-color: white;
+    border: 1px solid $bg-color;
+    vertical-align: top;
 
     &:first-child, &:first-child {
       border-left-width: 1px;
@@ -245,38 +250,47 @@ table {
     &:last-child, &:last-child {
       border-right-width: 1px;
     }
-  }
 
-  tr:last-child {
-    td {
-      border-bottom-width: 0;
+    ul > li::before {
+      margin-top: 0.45em;
     }
   }
 
-  td {
-    border-top-width: 1px;
-  }
+  tbody tr:nth-child(odd) td {
+    background: $bg-color;
+    border-right-color: white;
 
-  tbody tr:first-child td {
-    border-top-width: 0;
-  }
-
-  tbody tr:nth-child(even) td {
-    background: $base-color;
-    color: $bg-color;
+    &:last-child {
+      border-right-color: $bg-color;
+    }
   }
 
   th, thead td {
     @include font-bold;
-    font-size: 1.6rem;
     text-align: left;
   }
 
   th, thead td, tfoot td {
-    background: $base-color;
-    color: $bg-color;
-    border-color: $base-color;
+    background: $bg-color;
+    border-color: $bg-color;
     border-top-width: 0;
+  }
+
+  td {
+    .td-wrap {
+      overflow: hidden;
+      position: relative;
+
+      .td-expand {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 4rem;
+        width: 100%;
+        text-align: center;
+        @include linear-gradient(to top, white 0%, rgba(white, 0) 100%);
+      }
+    }
   }
 }
 

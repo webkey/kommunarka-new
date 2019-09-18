@@ -959,8 +959,9 @@ table:last-child {
 }
 
 table td, table th {
-  font-size: 2rem;
-  line-height: 2.6rem;
+  font-size: 1.8rem;
+  line-height: 2rem;
+  letter-spacing: 0.02em;
   color: inherit;
   padding: 8px 15px;
   border-color: #403b38;
@@ -997,8 +998,9 @@ table td, table th {
 
 .tbl td, .tbl th {
   color: #403b38;
-  background-color: #d4c0b3;
-  border: 0 solid #c4161c;
+  background-color: white;
+  border: 1px solid #f1e8e2;
+  vertical-align: top;
 }
 
 .tbl td:first-child, .tbl td:first-child, .tbl th:first-child, .tbl th:first-child {
@@ -1009,35 +1011,45 @@ table td, table th {
   border-right-width: 1px;
 }
 
-.tbl tr:last-child td {
-  border-bottom-width: 0;
+.tbl td ul > li::before, .tbl th ul > li::before {
+  margin-top: 0.45em;
 }
 
-.tbl td {
-  border-top-width: 1px;
+.tbl tbody tr:nth-child(odd) td {
+  background: #f1e8e2;
+  border-right-color: white;
 }
 
-.tbl tbody tr:first-child td {
-  border-top-width: 0;
-}
-
-.tbl tbody tr:nth-child(even) td {
-  background: #c4161c;
-  color: #d4c0b3;
+.tbl tbody tr:nth-child(odd) td:last-child {
+  border-right-color: #f1e8e2;
 }
 
 .tbl th, .tbl thead td {
   font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
   font-weight: normal;
-  font-size: 1.6rem;
   text-align: left;
 }
 
 .tbl th, .tbl thead td, .tbl tfoot td {
-  background: #c4161c;
-  color: #d4c0b3;
-  border-color: #c4161c;
+  background: #f1e8e2;
+  border-color: #f1e8e2;
   border-top-width: 0;
+}
+
+.tbl td .td-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.tbl td .td-wrap .td-expand {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4rem;
+  width: 100%;
+  text-align: center;
+  background: white;
+  background: linear-gradient(to top, white 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 /* table end */
@@ -1739,12 +1751,13 @@ table td, table th {
   vertical-align: top;
   position: relative;
   margin: 0;
-  padding: 1.4rem 2.8rem;
+  padding: 1.1rem 2.2rem;
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
   color: white;
-  text-transform: uppercase;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
+  border-radius: 4px;
   border: 0.2rem solid transparent;
   background-color: #c4161c;
   box-shadow: none;
@@ -1753,16 +1766,17 @@ table td, table th {
       -ms-user-select: none;
           user-select: none;
   -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
 .btn-def, .btn-def > span {
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  letter-spacing: 0.2em;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.04em;
 }
 
 .no-touchevents .btn-def:hover {
-  background-color: #3be9e3;
+  background-color: #e7262d;
 }
 
 .btn-def:disabled, .btn-def.disabled, .btn-def[data-disabled] {
@@ -1822,10 +1836,10 @@ table td, table th {
 label {
   display: inline-block;
   vertical-align: top;
+  margin-bottom: 0.5em;
   font-size: 2rem;
   line-height: 2.6rem;
-  color: #ccc;
-  margin-bottom: 0.5em;
+  color: inherit;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -1836,6 +1850,381 @@ label {
 label mark {
   background: none;
   color: #dc3545;
+}
+
+.form-def {
+  display: block;
+  position: relative;
+  height: 4.8rem;
+  width: 100%;
+  padding: 1.1rem 1.8rem 1.1rem 1.8rem;
+  background-color: #fff;
+  box-shadow: none;
+  border: 1px solid #d8d4d2;
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.025em;
+  color: #403b38;
+  margin: 0 0 3rem;
+  transition: color 0.2s, border 0.2s;
+}
+
+@media (max-width: 639px) {
+  .form-def {
+    height: 4.2rem;
+    padding: 1rem 1.4rem 1rem 1.4rem;
+    border-radius: 5px;
+    border-width: 1px;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    margin: 0 0 2.5rem;
+  }
+}
+
+.form-def, input.form-def {
+  border-radius: 5px;
+}
+
+.form-def:last-child {
+  margin-bottom: 0;
+}
+
+textarea.form-def {
+  min-height: 9.6rem;
+  height: 9.6rem;
+  resize: vertical;
+}
+
+@media (max-width: 639px) {
+  textarea.form-def {
+    min-height: 8rem;
+    height: 8rem;
+  }
+}
+
+select.form-def {
+  display: block;
+  position: relative;
+  height: 4.8rem;
+  width: 100%;
+  padding: 1.1rem 4rem 1.1rem 1.4rem;
+  background: #fff;
+  border: 1px solid #d8d4d2;
+  border-radius: 5px;
+  box-shadow: none;
+  text-indent: 0;
+  outline: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.025em;
+  color: #403b38;
+}
+
+@media (max-width: 639px) {
+  select.form-def {
+    height: 4.2rem;
+    padding: 1rem 4rem 1rem 1rem;
+    border: 1px solid #d8d4d2;
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}
+
+select.form-def.has-arrow {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+select.form-def.has-arrow::-ms-expand {
+  display: none;
+}
+
+select.form-def.has-arrow + .select-arrow {
+  float: right;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  position: relative;
+  height: 4.8rem;
+  width: 4rem;
+  margin-top: -7.8rem;
+  font-size: 0;
+  line-height: inherit;
+}
+
+@media (max-width: 639px) {
+  select.form-def.has-arrow + .select-arrow {
+    height: 4.2rem;
+    width: 4rem;
+    margin-top: -6.7rem;
+  }
+}
+
+.form-def::-webkit-input-placeholder {
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.form-def:-moz-placeholder {
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.form-def::-moz-placeholder {
+  opacity: 1;
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.form-def:-ms-input-placeholder {
+  opacity: 1;
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.form-def.placeholder {
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.form-def:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.form-def:focus:-moz-placeholder {
+  opacity: 0;
+}
+
+.form-def:focus::-moz-placeholder {
+  opacity: 0;
+}
+
+.form-def:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.form-def.placeholder:focus {
+  opacity: 0;
+}
+
+.form-def:hover {
+  border-color: #a8a09c;
+}
+
+.form-def:focus, .form-def.focused {
+  border-color: #a8a09c;
+}
+
+.form-def.filled {
+  color: slateblue;
+  border-color: slateblue;
+}
+
+.form-def.success {
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.form-def.success::-webkit-input-placeholder {
+  color: #28a745;
+}
+
+.form-def.success:-moz-placeholder {
+  color: #28a745;
+}
+
+.form-def.success::-moz-placeholder {
+  opacity: 1;
+  color: #28a745;
+}
+
+.form-def.success:-ms-input-placeholder {
+  opacity: 1;
+  color: #28a745;
+}
+
+.form-def.success.placeholder {
+  color: #28a745;
+}
+
+.form-def.error {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.form-def.error::-webkit-input-placeholder {
+  color: #dc3545;
+}
+
+.form-def.error:-moz-placeholder {
+  color: #dc3545;
+}
+
+.form-def.error::-moz-placeholder {
+  opacity: 1;
+  color: #dc3545;
+}
+
+.form-def.error:-ms-input-placeholder {
+  opacity: 1;
+  color: #dc3545;
+}
+
+.form-def.error.placeholder {
+  color: #dc3545;
+}
+
+.form-def[disabled] {
+  cursor: default !important;
+  color: #ced4da !important;
+  background-color: #e9ecef !important;
+  border-color: #ced4da !important;
+  box-shadow: none !important;
+}
+
+.form-def[disabled]::-webkit-input-placeholder {
+  color: #ced4da !important;
+}
+
+.form-def[disabled]:-moz-placeholder {
+  color: #ced4da !important;
+}
+
+.form-def[disabled]::-moz-placeholder {
+  opacity: 1;
+  color: #ced4da !important;
+}
+
+.form-def[disabled]:-ms-input-placeholder {
+  opacity: 1;
+  color: #ced4da !important;
+}
+
+.form-def[disabled].placeholder {
+  color: #ced4da !important;
+}
+
+.form-unit {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 639px) {
+  .form-unit {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.form-unit .form-def, .form-unit .form-radiocheck, .form-unit .select2 {
+  margin-bottom: 0;
+}
+
+.form-unit .error-feedback,
+.form-unit .success-feedback {
+  margin-top: 0;
+  margin-bottom: -2.2rem;
+}
+
+.form-unit select.form-def.has-arrow + .select-arrow {
+  margin-top: -4.8rem;
+}
+
+@media (max-width: 639px) {
+  .form-unit select.form-def.has-arrow + .select-arrow {
+    margin-top: -4.2rem;
+  }
+}
+
+.form-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-align: end;
+      align-items: flex-end;
+  margin: 0 -2rem 3rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 639px) {
+  .form-group {
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.form-group__item,
+.form-group__item_full-width {
+  position: relative;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: calc(100% / 2 - 4rem);
+  max-width: calc(100% / 2 - 4rem);
+  margin: 0 2rem;
+}
+
+@media (max-width: 639px) {
+  .form-group__item,
+  .form-group__item_full-width {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin-bottom: 3rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.form-group__item .form-def, .form-group__item .form-radiocheck, .form-group__item .select2,
+.form-group__item_full-width .form-def,
+.form-group__item_full-width .form-radiocheck,
+.form-group__item_full-width .select2 {
+  margin-bottom: 0;
+}
+
+.form-group__item .error-feedback,
+.form-group__item .success-feedback,
+.form-group__item_full-width .error-feedback,
+.form-group__item_full-width .success-feedback {
+  margin-top: 0;
+  margin-bottom: -2.2rem;
+}
+
+.form-group__item select.form-def.has-arrow + .select-arrow,
+.form-group__item_full-width select.form-def.has-arrow + .select-arrow {
+  margin-top: -4.8rem;
+}
+
+@media (max-width: 639px) {
+  .form-group__item select.form-def.has-arrow + .select-arrow,
+  .form-group__item_full-width select.form-def.has-arrow + .select-arrow {
+    margin-top: -4.2rem;
+  }
+}
+
+.form-group__item_full-width {
+  width: calc(100% - 4rem);
+  max-width: calc(100% - 4rem);
 }
 
 .form-radiocheck {
@@ -1898,7 +2287,7 @@ label mark {
 .form-radiocheck > span::before {
   left: 0;
   top: 50%;
-  border: 1px solid #c4161c;
+  border: 1px solid #d8d8d8;
   width: 18px;
   height: 18px;
   margin: -9px 0;
@@ -1965,6 +2354,474 @@ label mark {
   -ms-transform: scale(1, 1);
       transform: scale(1, 1);
   transform: scale3d(1, 1, 1);
+}
+
+.cselect {
+  opacity: 0;
+}
+
+.no-js .cselect {
+  opacity: 1;
+}
+
+.select2-container--custom {
+  margin: 0 0 3rem;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom {
+    margin: 0 0 2.5rem;
+  }
+}
+
+.select2-container--custom:last-child {
+  margin-bottom: 0;
+}
+
+.select2-container--custom .select2-selection {
+  display: block;
+  position: relative;
+  height: 4.8rem;
+  width: 100%;
+  padding: 1.1rem 4rem 1.1rem 1.4rem;
+  background: #fff;
+  border: 1px solid #d8d4d2;
+  border-radius: 5px;
+  box-shadow: none;
+  text-indent: 0;
+  outline: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.025em;
+  color: #403b38;
+  transition: border 0.2s;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom .select2-selection {
+    height: 4.2rem;
+    padding: 1rem 4rem 1rem 1rem;
+    border: 1px solid #d8d4d2;
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}
+
+.select2-container--custom .select2-selection .select2-selection__rendered {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.select2-container--custom .select2-selection .select2-selection__placeholder {
+  color: #c0bab7;
+}
+
+.select2-container--custom .select2-selection .select2-selection__clear {
+  cursor: pointer;
+  float: right;
+  font-weight: normal;
+}
+
+.select2-container--custom .select2-selection__arrow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4rem;
+  height: auto;
+  background: none;
+  z-index: 5;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom .select2-selection__arrow {
+    width: 4rem;
+  }
+}
+
+.select2-container--custom .select2-selection__arrow b {
+  border: none;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.select2-container--custom .select2-selection__arrow b::before, .select2-container--custom .select2-selection__arrow b::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  width: 8px;
+  height: 2px;
+  background-color: #403b38;
+  margin-top: -1px;
+  z-index: 1;
+}
+
+.select2-container--custom .select2-selection__arrow b::before {
+  -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+}
+
+.select2-container--custom .select2-selection__arrow b::after {
+  -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+  right: 17px;
+}
+
+.select2-container--custom .select2-selection--multiple {
+  height: auto;
+  min-height: 4.8rem;
+  padding: 0.7rem 1.4rem 0.7rem;
+  cursor: text;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom .select2-selection--multiple {
+    min-height: 4.2rem;
+    padding: 0.6rem 1rem 0.6rem;
+  }
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__rendered {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__rendered li {
+  list-style: none;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__placeholder {
+  float: left;
+  margin: 0.3rem 0;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__clear {
+  cursor: pointer;
+  float: right;
+  font-weight: normal;
+  margin-top: 0.3rem;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__choice {
+  float: left;
+  padding: 0 0.5rem;
+  background-color: #e4e4e4;
+  border: 1px solid #d8d4d2;
+  border-radius: 5px;
+  cursor: default;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 24rem;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom .select2-selection--multiple .select2-selection__choice {
+    border-radius: 5px;
+    max-width: 50%;
+  }
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__choice,
+.select2-container--custom .select2-selection--multiple .select2-search--inline {
+  margin: 0.3rem 0.4rem 0.3rem 0;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-search--inline {
+  float: left;
+  border: solid transparent;
+  border-width: 1px 0;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-search--inline .select2-search__field {
+  display: block;
+  margin-top: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: 0;
+  box-shadow: none;
+  -webkit-appearance: textfield;
+  transition: border 0.2s;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-search--inline .select2-search__field::-webkit-input-placeholder {
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-search--inline .select2-search__field:-moz-placeholder {
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-search--inline .select2-search__field::-moz-placeholder {
+  opacity: 1;
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-search--inline .select2-search__field:-ms-input-placeholder {
+  opacity: 1;
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-search--inline .select2-search__field.placeholder {
+  color: #c0bab7;
+  transition: 0.2s opacity;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__choice__remove {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 2px;
+  color: #999;
+  font-weight: normal;
+}
+
+.select2-container--custom .select2-selection--multiple .select2-selection__choice__remove:hover {
+  color: #333;
+}
+
+.select2-container--custom.select2-container--disabled .select2-selection__choice {
+  pointer-events: none;
+  cursor: default !important;
+  color: #ced4da !important;
+  background-color: #e9ecef !important;
+  border-color: #ced4da !important;
+  box-shadow: none !important;
+}
+
+.select2-container--custom .select2-selection:hover {
+  border-color: #a8a09c;
+}
+
+.select2-container--custom.select2-container--focus .select2-selection, .select2-container--custom.select2-container--open .select2-selection {
+  border-color: #a8a09c;
+}
+
+.select2-container--custom.select2-container--open.select2-container--above .select2-selection {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.select2-container--custom.select2-container--open.select2-container--below .select2-selection {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.select2-container--custom.select2-container--open .select2-selection__arrow b::before {
+  -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+}
+
+.select2-container--custom.select2-container--open .select2-selection__arrow b::after {
+  -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+}
+
+.select2-container--custom.select2-container--disabled .select2-selection {
+  cursor: default !important;
+  color: #ced4da !important;
+  background-color: #e9ecef !important;
+  border-color: #ced4da !important;
+  box-shadow: none !important;
+}
+
+.select2-container--custom.select2-container--disabled .select2-selection__choice__remove,
+.select2-container--custom.select2-container--disabled .select2-selection__clear {
+  display: none;
+}
+
+.select2-container--custom.select2-container--disabled .select2-selection__arrow b::before, .select2-container--custom.select2-container--disabled .select2-selection__arrow b::after {
+  background-color: #ced4da;
+}
+
+.select2-container--custom .select2-dropdown {
+  overflow: hidden;
+  border: 1px solid #a8a09c;
+  border-radius: 5px;
+  background-color: #fff;
+  z-index: 5;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom .select2-dropdown {
+    border-width: 1px;
+    border-radius: 5px;
+  }
+}
+
+.select2-container--custom.select2-container--open .select2-dropdown--above {
+  border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.select2-container--custom.select2-container--open .select2-dropdown--below {
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.select2-container--custom .select2-search--dropdown {
+  padding: 0.5rem;
+}
+
+.select2-container--custom .select2-search--dropdown .select2-search__field {
+  padding: 0.5rem;
+  border: 1px solid #d8d4d2;
+}
+
+.select2-container--custom .select2-search--dropdown .select2-search__field:focus {
+  border-color: #a8a09c;
+}
+
+.select2-container--custom .select2-results > .select2-results__options {
+  max-height: 20rem;
+  overflow-y: auto;
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.025em;
+  color: #403b38;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom .select2-results > .select2-results__options {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}
+
+.select2-container--custom .select2-results__option {
+  padding: 0.5rem 1.4rem;
+}
+
+@media (max-width: 639px) {
+  .select2-container--custom .select2-results__option {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.select2-container--custom .select2-results__option[role=group] {
+  padding: 0;
+}
+
+.select2-container--custom .select2-results__option[aria-disabled=true] {
+  background-color: #e9ecef;
+  color: #ced4da;
+}
+
+.select2-container--custom .select2-results__option[aria-selected=true] {
+  background-color: #ddd;
+}
+
+.select2-container--custom .select2-results__option--highlighted[aria-selected] {
+  background-color: #d4c0b3;
+  color: white;
+}
+
+.select2-container--custom .select2-results__group {
+  cursor: default;
+  display: block;
+  padding: 0.5rem;
+}
+
+.captcha {
+  position: relative;
+}
+
+.captcha input {
+  text-align: center;
+  width: 18rem;
+}
+
+.captcha-ctrl {
+  margin-bottom: 2.4rem;
+}
+
+.captcha-ctrl .captcha-ctrl__img {
+  width: 180px;
+  max-width: 50%;
+}
+
+.captcha-ctrl .captcha-ctrl__refresh a {
+  color: #403b38;
+  text-decoration: none;
+}
+
+.captcha-ctrl .captcha-ctrl__refresh a span {
+  border-bottom: 1px dotted currentColor;
+}
+
+.captcha-ctrl .captcha-ctrl__refresh a:hover span {
+  border-bottom-color: transparent;
+}
+
+.error-feedback, .success-feedback {
+  float: left;
+  position: relative;
+  width: 100%;
+  margin-top: -3rem;
+  padding: 0.3rem 0;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  letter-spacing: normal;
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .error-feedback, .success-feedback {
+    margin-top: -2.5rem;
+  }
+}
+
+.error-feedback {
+  color: #dc3545;
+}
+
+form .error + .error-feedback,
+form .error + .select2 + .error-feedback,
+form .error + .select-arrow + .error-feedback,
+form .success + .success-feedback + .error-feedback,
+form .success + .select2 + .success-feedback + .error-feedback,
+form .success + .select-arrow + .success-feedback + .error-feedback {
+  display: block;
+}
+
+.success-feedback {
+  color: #28a745;
+}
+
+form .success + .success-feedback,
+form .success + .select2 + .success-feedback,
+form .success + .select-arrow + .success-feedback,
+form .success + .error-feedback + .success-feedback,
+form .success + .select2 + .error-feedback + .success-feedback,
+form .success + .select-arrow + .error-feedback + .success-feedback {
+  display: block;
 }
 
 /* form elements end */
@@ -7823,5 +8680,354 @@ html:not(.no-touchevents) .catalog-nav__list a:hover {
 }
 
 /* article content end */
+/* datetimepicker theme */
+.xdsoft_datetimepicker.xdsoft_custom {
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2.4rem;
+  box-shadow: 0 5px 15px -5px rgba(255, 255, 255, 0.5);
+  background: white;
+  border-bottom: 1px solid #d4c0b3;
+  border-left: 1px solid #d4c0b3;
+  border-right: 1px solid #d4c0b3;
+  border-top: 1px solid #d4c0b3;
+  border-radius: 5px;
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-size: inherit;
+  line-height: inherit;
+  color: #403b38;
+}
+
+@media (max-width: 767px) {
+  .xdsoft_datetimepicker.xdsoft_custom {
+    display: block;
+  }
+}
+
+@media (max-width: 639px) {
+  .xdsoft_datetimepicker.xdsoft_custom {
+    padding: 0;
+    border: none;
+  }
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_next,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_prev,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_today_button {
+  transition: opacity 0.2s;
+  opacity: 0.75;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_next:hover,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_prev:hover,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_today_button:hover {
+  opacity: 1;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box {
+  border: none;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box .xdsoft_time_variant {
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box > div > div {
+  border: 1px solid #d4c0b3;
+  padding: 0.25em 1em;
+  margin-bottom: 2rem;
+  height: auto;
+  font-size: inherit;
+  line-height: inherit;
+  color: #403b38;
+  background: white;
+  transition: border-color 0.2s, color 0.2s, opacity 0.2s, background-color 0.2s;
+}
+
+@media (max-width: 767px) {
+  .xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box > div > div {
+    margin: 0 1rem 0 0;
+  }
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box > div > div:last-child {
+  margin: 0;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_datepicker {
+  -ms-flex: 0 1 calc(100% - 24rem);
+      flex: 0 1 calc(100% - 24rem);
+  max-width: calc(100% - 24rem);
+  float: none;
+  width: auto;
+  margin: 0;
+  padding-right: 1rem;
+}
+
+@media (max-width: 767px) {
+  .xdsoft_datetimepicker.xdsoft_custom .xdsoft_datepicker {
+    max-width: none;
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker {
+  -ms-flex: 0 1 24rem;
+      flex: 0 1 24rem;
+  max-width: 24rem;
+  float: none;
+  width: auto;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+@media (max-width: 767px) {
+  .xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker {
+    max-width: none;
+    padding-left: 0;
+  }
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_prev,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_next {
+  display: none;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_today_button {
+  width: 2.8rem;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_datepicker.active + .xdsoft_timepicker {
+  margin: 0;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_label {
+  font-family: "AkzidenzGroteskPro Cond", sans-serif;
+  font-weight: normal;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0.2rem 2rem 0.2rem 1.1rem;
+  border: 1px solid #d4c0b3;
+  border-radius: 2px;
+  background-color: white;
+  transition: color 0.2s, background-color 0.2s;
+  text-align: left;
+  margin-left: 1rem;
+  box-sizing: border-box;
+  z-index: 15;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_label > i {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  opacity: 1;
+  height: 10px;
+  width: 10px;
+  margin: -5px 0 0;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 8px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzQxNjFjIiBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+);
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_label > .xdsoft_select {
+  width: calc(100% + 2px);
+  right: -1px;
+  border: 1px solid #d4c0b3;
+  background: white;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_label > .xdsoft_select > div > .xdsoft_option {
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_label > .xdsoft_select > div > .xdsoft_option:hover {
+  color: #000;
+  background: #d4c0b3;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_label > .xdsoft_select > div > .xdsoft_option.xdsoft_current {
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+  background: #c4161c;
+  box-shadow: #c4161c 0 1px 3px 0 inset;
+  color: white;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_label:hover {
+  background-color: #d4c0b3;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_label:hover > span {
+  text-decoration: none;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_month {
+  width: 12rem;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_year {
+  width: 8rem;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_monthpicker {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  margin-bottom: 1.5rem;
+  padding: 0 2.9rem;
+  min-height: 2.4rem;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_monthpicker .xdsoft_prev,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_monthpicker .xdsoft_next {
+  position: absolute;
+  top: 50%;
+  height: 2.4rem;
+  width: 2.4rem;
+  margin: -1.2rem 0 0;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 20px;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_monthpicker .xdsoft_prev {
+  left: 0;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzQxNjFjIiBkPSJNMTYuNjcgMGwyLjgzIDIuODI5LTkuMzM5IDkuMTc1IDkuMzM5IDkuMTY3LTIuODMgMi44MjktMTIuMTctMTEuOTk2eiIvPjwvc3ZnPg==);
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_monthpicker .xdsoft_next {
+  right: 0;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzQxNjFjIiBkPSJNNSAzbDMuMDU3LTMgMTEuOTQzIDEyLTExLjk0MyAxMi0zLjA1Ny0zIDktOXoiLz48L3N2Zz4=);
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_today_button {
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 18px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzQxNjFjIiBkPSJNMjEgMTN2MTBoLTZ2LTZoLTZ2NmgtNnYtMTBoLTNsMTItMTIgMTIgMTJoLTN6bS0xLTUuOTA3di01LjA5M2gtM3YyLjA5M2wzIDN6Ii8+PC9zdmc+);
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td, .xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar th {
+  background: white;
+  border: 1px solid #d4c0b3;
+  font-size: inherit;
+  line-height: inherit;
+  height: auto;
+  padding: 0.25em;
+  color: #403b38;
+  text-align: center;
+  transition: color 0.2s, opacity 0.2s, border-color 0.2s, background-color 0.2s;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td > div, .xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar th > div {
+  padding: 0;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar th {
+  background: #d4c0b3;
+  border-left-color: white;
+  border-right-color: white;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar th:first-child {
+  border-left-color: #d4c0b3;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar th:last-child {
+  border-right-color: #d4c0b3;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_today {
+  color: #c4161c;
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_highlighted_default {
+  background: #ffe9d2;
+  box-shadow: #ffb871 0 1px 4px 0 inset;
+  color: #000;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_highlighted_mint {
+  background: #c1ffc9;
+  box-shadow: #00dd1c 0 1px 4px 0 inset;
+  color: #000;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td:hover,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box > div > div:hover {
+  color: #000 !important;
+  background: #d4c0b3 !important;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_default,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_current,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box > div > div.xdsoft_current {
+  color: white;
+  font-family: "AkzidenzGroteskPro Cond Bold", sans-serif;
+  font-weight: normal;
+  background: #c4161c;
+  border-color: #c4161c;
+  box-shadow: none;
+  cursor: default;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_default:hover,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_current:hover,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box > div > div.xdsoft_current:hover {
+  color: white !important;
+  background: #c4161c !important;
+  border-color: #c4161c;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_default.xdsoft_disabled,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar td.xdsoft_current.xdsoft_disabled,
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_timepicker .xdsoft_time_box > div > div.xdsoft_current.xdsoft_disabled {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+  color: #403b38;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_calendar th {
+  color: #403b38;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_copyright {
+  color: #d4c0b3 !important;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_copyright a {
+  color: #111 !important;
+}
+
+.xdsoft_datetimepicker.xdsoft_custom .xdsoft_copyright a:hover {
+  color: #555 !important;
+}
+
+.xdsoft_custom .xdsoft_time_box {
+  border: 1px solid #d4c0b3;
+}
+
+.xdsoft_custom .xdsoft_scrollbar > .xdsoft_scroller {
+  background: #d4c0b3 !important;
+}
+
+.xdsoft_disabled {
+  pointer-events: none;
+}
+
+/* datetimepicker theme end */
 
 /*# sourceMappingURL=main.css.map */

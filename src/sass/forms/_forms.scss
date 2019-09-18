@@ -3,23 +3,13 @@
 @import "../../libs/include-media/dist/include-media";
 
 /* form elements */
-label {
-  display: inline-block;
-  vertical-align: top;
-
-  @include font-size($font-size, $line-height);
-
-  color: $text-color-light;
-  margin-bottom: 0.5em;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent !important;
-
-  mark {
-    background: none;
-    color: $error-color;
-  }
-}
-
+@import "forms-def";
+@import "forms-unit";
+@import "forms-group";
 @import "checkboxes";
+//@import "forms-radiocheck";
+@import "forms-select2";
+@import "forms-captcha";
+@import "forms-validation";
 
 /* form elements end */

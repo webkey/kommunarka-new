@@ -1,0 +1,374 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+/* datetimepicker theme */
+// Variables
+$xdsoft_datetimepicker-space: 0 2rem;
+
+$xdsoft_datetimepicker-time-width: 24rem;
+
+$xdsoft_datetimepicker-bg: white;
+$xdsoft_datetimepicker-color: $text-color;
+$xdsoft_datetimepicker-bd--1: $border-color-separate;
+$xdsoft_datetimepicker-bd--2: $border-color-separate;
+
+$xdsoft_datetimepicker-heading-bg: $bg-color;
+$xdsoft_datetimepicker-heading-color: $title-color;
+
+$xdsoft_datetimepicker-note-color: #111;
+$xdsoft_datetimepicker-note-color_hover: #555;
+
+$xdsoft_datetimepicker-date-bg: white;
+$xdsoft_datetimepicker-date-color: $text-color;
+
+$xdsoft_datetimepicker-bg_current: $base-color;
+$xdsoft_datetimepicker-color_current: white;
+$xdsoft_datetimepicker-shadow_current: $base-color;
+
+$xdsoft_datetimepicker-bg_active: $bg-color;
+$xdsoft_datetimepicker-color_active: #000;
+
+// ----------------------------------------------------
+
+.xdsoft_datetimepicker.xdsoft_custom {
+  display: flex;
+  padding: 2.4rem;
+  box-shadow: 0 5px 15px -5px rgba(white, 0.5);
+  background: $xdsoft_datetimepicker-bg;
+  border-bottom: 1px solid $xdsoft_datetimepicker-bd--2;
+  border-left: 1px solid $xdsoft_datetimepicker-bd--1;
+  border-right: 1px solid $xdsoft_datetimepicker-bd--1;
+  border-top: 1px solid $xdsoft_datetimepicker-bd--1;
+  border-radius: 5px;
+  @include font-normal;
+  font-size: inherit;
+  line-height: inherit;
+  color: $xdsoft_datetimepicker-color;
+
+  @include media('<tab-s') {
+    display: block;
+  }
+
+  @include media('<mob') {
+    padding: 0;
+    border: none;
+  }
+
+ .xdsoft_next,
+ .xdsoft_prev,
+ .xdsoft_today_button {
+   transition: opacity $animation-speed;
+   opacity: 0.75;
+
+   &:hover {
+     opacity: 1;
+   }
+  }
+
+  .xdsoft_timepicker .xdsoft_time_box {
+    //border-bottom: 1px solid $xdsoft_datetimepicker-bd--2;
+    border: none;
+    height: auto;
+
+    .xdsoft_time_variant {
+      @include media('<tab-s') {
+        display: flex;
+      }
+    }
+
+    & > div > div {
+      //border-top: 1px solid $xdsoft_datetimepicker-bd--2;
+      border: 1px solid $xdsoft_datetimepicker-bd--1;
+      padding: 0.25em 1em;
+      margin-bottom: 2rem;
+      height: auto;
+      font-size: inherit;
+      line-height: inherit;
+      color: $xdsoft_datetimepicker-date-color;
+      background: $xdsoft_datetimepicker-date-bg;
+      transition: border-color $animation-speed, color $animation-speed, opacity $animation-speed, background-color $animation-speed;
+
+      @include media('<tab-s') {
+        margin: 0 1rem 0 0;
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .xdsoft_datepicker {
+    $width: calc(100% - #{$xdsoft_datetimepicker-time-width});
+
+    flex: 0 1 $width;
+    max-width: $width;
+
+    float: none;
+    width: auto;
+    margin: 0;
+    padding-right: round-float(nth($xdsoft_datetimepicker-space, 2) / 2, 1);
+
+    @include media('<tab-s') {
+      max-width: none;
+      padding-right: 0;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .xdsoft_timepicker {
+    $width: #{$xdsoft_datetimepicker-time-width};
+
+    flex: 0 1 $width;
+    max-width: $width;
+
+    float: none;
+    width: auto;
+    margin: 0;
+    padding-left: round-float(nth($xdsoft_datetimepicker-space, 2) / 2, 1);
+
+    @include media('<tab-s') {
+      max-width: none;
+      padding-left: 0;
+    }
+
+    .xdsoft_prev,
+    .xdsoft_next {
+      display: none;
+    }
+  }
+
+  .xdsoft_today_button {
+    width: 2.8rem;
+  }
+
+  .xdsoft_datepicker.active + .xdsoft_timepicker {
+    margin: 0;
+  }
+
+  .xdsoft_label {
+    @include font-normal;
+    font-weight: normal;
+    font-size: inherit;
+    line-height: inherit;
+    padding: 0.2rem 2rem 0.2rem 1.1rem;
+    border: 1px solid $xdsoft_datetimepicker-bd--1;
+    border-radius: 2px;
+    background-color: $xdsoft_datetimepicker-bg;
+    transition: color $animation-speed, background-color $animation-speed;
+    text-align: left;
+    margin-left: 1rem;
+    box-sizing: border-box;
+    z-index: 15;
+
+    & > i {
+      position: absolute;
+      top: 50%;
+      right: 5px;
+      opacity: 1;
+      $size: 10px;
+      height: $size;
+      width: $size;
+      margin: -#{round($size/2)} 0 0;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: 8px;
+      //background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+);
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzQxNjFjIiBkPSJNMCA3LjMzbDIuODI5LTIuODMgOS4xNzUgOS4zMzkgOS4xNjctOS4zMzkgMi44MjkgMi44My0xMS45OTYgMTIuMTd6Ii8+PC9zdmc+);
+    }
+
+    & > .xdsoft_select {
+      width: calc(100% + 2px);
+      right: -1px;
+      border: 1px solid $xdsoft_datetimepicker-bd--1;
+      background: $xdsoft_datetimepicker-bg;
+
+      & > div > .xdsoft_option {
+        transition: color $animation-speed, background-color $animation-speed;
+
+        &:hover {
+          color: $xdsoft_datetimepicker-color_active;
+          background: $xdsoft_datetimepicker-bg_active;
+        }
+
+        &.xdsoft_current {
+          @include font-bold;
+          background: $xdsoft_datetimepicker-bg_current;
+          box-shadow: $xdsoft_datetimepicker-shadow_current 0 1px 3px 0 inset;
+          color: $xdsoft_datetimepicker-color_current;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $xdsoft_datetimepicker-bg_active;
+
+      & > span {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .xdsoft_month {
+    width: 12rem;
+  }
+
+  .xdsoft_year {
+    width: 8rem;
+  }
+
+  .xdsoft_monthpicker {
+    $size: 2.4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    padding: 0 #{$size + 0.5};
+    min-height: $size;
+
+    .xdsoft_prev,
+    .xdsoft_next {
+      position: absolute;
+      top: 50%;
+      height: $size;
+      width: $size;
+      margin: -#{round-float($size / 2, 1)} 0 0;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: 20px;
+    }
+
+    .xdsoft_prev {
+      left: 0;
+      //background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTYuNjcgMGwyLjgzIDIuODI5LTkuMzM5IDkuMTc1IDkuMzM5IDkuMTY3LTIuODMgMi44MjktMTIuMTctMTEuOTk2eiIvPjwvc3ZnPg==);
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzQxNjFjIiBkPSJNMTYuNjcgMGwyLjgzIDIuODI5LTkuMzM5IDkuMTc1IDkuMzM5IDkuMTY3LTIuODMgMi44MjktMTIuMTctMTEuOTk2eiIvPjwvc3ZnPg==);
+    }
+
+    .xdsoft_next {
+      right: 0;
+      //background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNSAzbDMuMDU3LTMgMTEuOTQzIDEyLTExLjk0MyAxMi0zLjA1Ny0zIDktOXoiLz48L3N2Zz4=);
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzQxNjFjIiBkPSJNNSAzbDMuMDU3LTMgMTEuOTQzIDEyLTExLjk0MyAxMi0zLjA1Ny0zIDktOXoiLz48L3N2Zz4=);
+    }
+  }
+
+  .xdsoft_today_button {
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 18px;
+    //background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjEgMTN2MTBoLTZ2LTZoLTZ2NmgtNnYtMTBoLTNsMTItMTIgMTIgMTJoLTN6bS0xLTUuOTA3di01LjA5M2gtM3YyLjA5M2wzIDN6Ii8+PC9zdmc+);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzQxNjFjIiBkPSJNMjEgMTN2MTBoLTZ2LTZoLTZ2NmgtNnYtMTBoLTNsMTItMTIgMTIgMTJoLTN6bS0xLTUuOTA3di01LjA5M2gtM3YyLjA5M2wzIDN6Ii8+PC9zdmc+);
+  }
+
+  .xdsoft_calendar {
+    td, th {
+      background: $xdsoft_datetimepicker-date-bg;
+      border: 1px solid $xdsoft_datetimepicker-bd--2;
+      font-size: inherit;
+      line-height: inherit;
+      height: auto;
+      padding: 0.25em;
+      color: $xdsoft_datetimepicker-date-color;
+      text-align: center;
+      transition: color $animation-speed, opacity $animation-speed, border-color $animation-speed, background-color $animation-speed;
+
+      & > div {
+        padding: 0;
+      }
+    }
+
+    th {
+      background: $xdsoft_datetimepicker-heading-bg;
+      border-left-color: white;
+      border-right-color: white;
+
+      &:first-child {
+        border-left-color: $xdsoft_datetimepicker-bd--1;
+      }
+
+      &:last-child {
+        border-right-color: $xdsoft_datetimepicker-bd--1;
+      }
+    }
+
+    td.xdsoft_today {
+      color: $xdsoft_datetimepicker-bg_current;
+      @include font-bold;
+    }
+
+    td.xdsoft_highlighted_default {
+      background: #ffe9d2;
+      box-shadow: #ffb871 0 1px 4px 0 inset;
+      color: #000;
+    }
+
+    td.xdsoft_highlighted_mint {
+      background: #c1ffc9;
+      box-shadow: #00dd1c 0 1px 4px 0 inset;
+      color: #000;
+    }
+  }
+
+  .xdsoft_calendar td:hover,
+  .xdsoft_timepicker .xdsoft_time_box > div > div:hover {
+    color: $xdsoft_datetimepicker-color_active !important;
+    background: $xdsoft_datetimepicker-bg_active !important;
+  }
+
+  .xdsoft_calendar td.xdsoft_default,
+  .xdsoft_calendar td.xdsoft_current,
+  .xdsoft_timepicker .xdsoft_time_box > div > div.xdsoft_current {
+    color: $xdsoft_datetimepicker-color_current;
+    @include font-bold;
+    background: $xdsoft_datetimepicker-bg_current;
+    border-color: $xdsoft_datetimepicker-bg_current;
+    box-shadow: none;
+    cursor: default;
+
+    &:hover {
+      color: $xdsoft_datetimepicker-color_current !important;
+      background: $xdsoft_datetimepicker-bg_current !important;
+      border-color: $xdsoft_datetimepicker-bg_current;
+    }
+
+    &.xdsoft_disabled {
+      background-color: $form-bg-color--disabled;
+      border-color: $form-border-color--disabled;
+      color: $xdsoft_datetimepicker-color;
+    }
+  }
+
+  .xdsoft_calendar th {
+    color: $xdsoft_datetimepicker-heading-color;
+  }
+
+  .xdsoft_copyright {
+    color: $xdsoft_datetimepicker-bd--1 !important;
+
+    a {
+      color: $xdsoft_datetimepicker-note-color !important;
+
+      &:hover {
+        color: $xdsoft_datetimepicker-note-color_hover !important
+      }
+    }
+  }
+}
+
+.xdsoft_custom {
+  .xdsoft_time_box {
+    border: 1px solid $xdsoft_datetimepicker-bd--1;
+  }
+
+  .xdsoft_scrollbar > .xdsoft_scroller {
+    background: $xdsoft_datetimepicker-bd--1 !important;
+  }
+}
+
+.xdsoft_disabled {
+  pointer-events: none;
+}
+
+/* datetimepicker theme end */

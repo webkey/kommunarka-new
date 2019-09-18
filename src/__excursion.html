@@ -1,0 +1,110 @@
+@@include('_tpl_layout_head.html', {
+"title": "Экскурсии - Кондитерская фабрика «Коммунарка»",
+"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "currentItem": "Услуги" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main" role="main">
+  <div class="layout-page layout-page-spaces">
+    <div class="content">
+      <div class="content-align">
+        <section class="content-inner article-content">
+          @@include('_tpl_breadcrumbs.html', {
+          "items": ["Главная", "Услуги"],
+          "last": "Экскурсии по фабрике"
+          })
+
+          <h1><span>Экскурсии по фабрике</span></h1>
+
+          <p>Кондитерская фабрика «Коммунарка» организовывает <b>ЭКСКУРСИИ</b> на производство и приглашает всех школьников познакомиться с процессом изготовления кондитерских изделий. Посещение кондитерского производства – завораживающее, увлекательное путешествие, которое никого не оставит равнодушным.</p>
+          <h3>Экскурсии проводятся для учащихся 3 -11 классов</h3>
+          <p>Количество детей в группе:</p>
+          <ul>
+            <li><b>Для туристических компаний</b> (заключивших с нами договор о сотрудничестве) максимальная численность группы экскурсантов составляет <b>40 человек</b> (без учета сопровождающих)</li>
+            <li><b>Для физических лиц</b> (организованных групп учащихся школьников) максимальная численность экскурсантов составляет <b>30 человек</b> (без учета сопровождающих)</li>
+          </ul>
+          <h3>Чтобы записаться к нам на экскурсию, заполните форму</h3>
+          <div class="excursion-form layout-text">
+            <form action="#" method="post">
+              <div class="form-unit">
+                <input id="datetimepicker" type="text" data-lang = "ru">
+              </div>
+
+              <div class="form-group">
+                <div class="form-group__item">
+                  @@include("includes/tpl/_tpl_forms_input.html", {
+                  "label": "ФИО",
+                  "id": "excursionFormFIO",
+                  "placeholder": "Фамилия Имя Отчество"
+                  })
+                  @@include("includes/tpl/_tpl_forms_valid.html")
+                </div>
+                <div class="form-group__item">
+                  @@include("includes/tpl/_tpl_forms_input.html", {
+                  "label": "Численность экскурии",
+                  "id": "excursionFormLength",
+                  "placeholder": "1"
+                  })
+                  @@include("includes/tpl/_tpl_forms_valid.html")
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-group__item">
+                  @@include("includes/tpl/_tpl_forms_input.html", {
+                  "label": "Минимальный возраст",
+                  "id": "excursionFormMinAge",
+                  "placeholder": "12"
+                  })
+                  @@include("includes/tpl/_tpl_forms_valid.html")
+                </div>
+                <div class="form-group__item">
+                  @@include("includes/tpl/_tpl_forms_input.html", {
+                  "label": "Контактный телефон",
+                  "id": "excursionFormPhone",
+                  "placeholder": "+37529ХХХХХХХ"
+                  })
+                  @@include("includes/tpl/_tpl_forms_valid.html")
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-group__item">
+                  @@include("includes/tpl/_tpl_forms_input.html", {
+                  "label": "E-mail",
+                  "id": "excursionFormEmail",
+                  "placeholder": "example@gmail.com"
+                  })
+                  @@include("includes/tpl/_tpl_forms_valid.html")
+                </div>
+              </div>
+
+              <div class="form-unit">
+                <button class="btn-def">Отправить</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar__holder">
+          @@include("_tpl_menu-services.html", {"currentItem": "Экскурсии"})
+        </div>
+      </aside>
+    </div>
+
+    @@include('_tpl_scene.html')
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html', {"toTop": "true"})
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

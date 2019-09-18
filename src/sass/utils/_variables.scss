@@ -233,6 +233,9 @@ $base-color: #c4161c !default;
 $base-color-alt: #e9cd78 !default;
 $base-color-light: #e7dad2 !default;
 // ----------------------------------------------------
+$highlight-color: $base-color !default
+$highlight-color--hover: lighten($base-color, 30%) !default
+// ----------------------------------------------------
 $bg-color: #d4c0b3 !default;
 $bg-color-alt: #f3f3f3 !default;
 //$bg-color-light: #f9eee7 !default;
@@ -354,7 +357,7 @@ $footer-grid-space: 2rem 0 !default;
 // =========Buttons=========
 $btn-height: 5rem !default;
 $btn-bg-color: $base-color !default;
-$btn-bg-hover-color: invert($base-color) !default;
+$btn-bg-hover-color: lighten($btn-bg-color, 10%) !default;
 $btn-text-color: white !default;
 $btn-disabled-color: #ccc !default;
 
@@ -368,92 +371,232 @@ $btn-disabled-color: #ccc !default;
 }
 
 
-// Forms
-// ==========================================================================
+// ====================================================
+// FORM ELEMENTS
+// ====================================================
 
-// Colors of forms
-$form-text-color: $text-color !default;
-$form-placeholder-color: lighten($form-text-color, 65%) !default;
-$form-bg-color: white !default;
-$form-border-color: lighten($form-text-color, 70%) !default;
-// validation
+// Form elements media query
+// ====================================================
+$form-media--mob: '<mob' !default;
+
+
+// Form elements external indents
+// ====================================================
+$form-bottom-space: 3rem !default;
+// ------ mob -----------------------------------------
+$form-bottom-space--mob: 2.5rem !default;
+
+// Form elements vertical space mixin
+// ----------------------------------------------------
+@mixin form-def-space {
+  margin: 0 0 $form-bottom-space;
+}
+
+// ------ mob -----------------------------------------
+@mixin form-def-space--mob {
+  margin: 0 0 $form-bottom-space--mob;
+}
+
+
+// ====================================================
+// INPUT
+// ====================================================
+
+// Form elements colors scheme
+// ====================================================
+$form-def-text-color: $text-color !default;
+$form-def-placeholder-color: lighten($form-def-text-color, 50%) !default;
+$form-def-bg-color: #fff !default;
+$form-def-border-color: lighten($form-def-text-color, 60%) !default;
+// ----------------------------------------------------
+$form-def-border-color--focus: darken($form-def-border-color, 20%) !default;
+// ----------------------------------------------------
 $form-error-color: $error-color !default;
 $form-success-color: $success-color !default;
-// disabled
+// ----------------------------------------------------
 $form-text-color--disabled: #ced4da !default;
 $form-bg-color--disabled: #e9ecef !default;
 $form-border-color--disabled: #ced4da !default;
-// focus
-$form-border-color--focus: darken($form-border-color, 20%) !default;
 
-// Fonts of forms
-$form-font-size: 16px !default;
-$form-line-height: 24px !default;
-$form-input-height: 50px !default;
-$form-letter-spacing: null !default;
 
-// @example Sass - Использование
-// @example css - Вывод CSS
-@mixin inputs-font {
-  //+font-alt
-  font-family: inherit;
-  font-size: $form-font-size;
-  line-height: $form-line-height;
-  @if $form-letter-spacing {
-    letter-spacing: $form-letter-spacing;
-  }
-  color: $form-text-color;
+// Form elements disabled mixin
+// ====================================================
+@mixin forms-disabled {
+  cursor: default !important;
+  color: $form-text-color--disabled !important;
+  background-color: $form-bg-color--disabled !important;
+  border-color: $form-border-color--disabled !important;
+  box-shadow: none !important;
 }
 
-@mixin selects-font {
-  @include inputs-font;
-}
 
-// Layout of forms
-$form-border-width: 1px !default;
-$form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width*2)/2) !default;
-// верхний паддинг округляем в нижнюю сторону
-$form-input-space-vb: ceil(($form-input-height - $form-line-height - $form-border-width*2)/2) !default;
-// нижний паддинг округляем в верхнюю сторону
-$form-input-space-h: 18px !default;
-$form-bottom-space: 3rem !default;
-$form-bottom-space--mob: 3rem !default;
+// Form elements fonts styles
+// ====================================================
+$form-def-font-size: 1.8rem !default;
+$form-def-line-height: 2.4rem !default;
+$form-def-letter-spacing: null !default;
+// ------ mob -----------------------------------------
+$form-def-font-size--mob: 1.6rem !default;
+$form-def-line-height--mob: 2.0rem !default;
+$form-def-letter-spacing--mob: null !default;
 
-// Vertical spaces
-@mixin forms-space {
-  margin: 0 0 $form-bottom-space;
-  @include media("<mob") {
-    margin: 0 0 $form-bottom-space--mob;
-  }
-}
 
-// Checkboxes
-// Radio Buttons
-$checkbox-color: $base-color !default;
+// Form elements layout
+// ====================================================
+$form-def-height: 4.8rem !default;
+$form-def-border-width: 1px !default;
+$form-def-space-v: round-float(($form-def-height - $form-def-line-height) / 2 - px-to-rem($form-def-border-width), 1) !default; // Следить, чтобы разница между высотой и межстрочным интервалом была четной
+$form-def-space-vt: $form-def-space-v !default;
+$form-def-space-vb: $form-def-space-v !default;
+$form-def-space-h: 1.8rem !default;
+$form-def-border-radius: 5px !default;
+// ------ mob -----------------------------------------
+$form-def-height--mob: 4.2rem !default;
+$form-def-border-width--mob: 1px !default;
+$form-def-space-v--mob: round-float(($form-def-height--mob - $form-def-line-height--mob) / 2 - px-to-rem($form-def-border-width--mob), 1) !default; // Следить, чтобы разница между высотой и межстрочным интервалом была четной
+$form-def-space-vt--mob: $form-def-space-v--mob !default;
+$form-def-space-vb--mob: $form-def-space-v--mob !default;
+$form-def-space-h--mob: 1.4rem !default;
+$form-def-border-radius--mob: 5px !default;
 
-// Select
-$select-space-v: 12px !default;
-$multiple-item-space: 3px !default;
 
-// Select custom arrow
-$select-arrow-width: 40px !default;
-$select-arrow-height: $form-input-height !default;
-
-// Style Selection
-@mixin selectSelection() {
-  height: $form-input-height;
+// Input common styles mixin
+// ====================================================
+@mixin input-common {
+  display: block;
+  position: relative;
+  height: $form-def-height;
   width: 100%;
-  padding: $form-input-space-vt $select-arrow-width $form-input-space-vb $form-input-space-h;
-  background: $form-bg-color;
-  border: #{$form-border-width} solid #{$form-border-color};
-  border-radius: 0;
+  padding: $form-def-space-vt $form-def-space-h $form-def-space-vb $form-def-space-h;
+  background-color: $form-def-bg-color;
+  box-shadow: none;
+  @if $form-def-border-width {
+    border: $form-def-border-width solid $form-def-border-color;
+  }
+}
+
+// ------ mob -----------------------------------------
+@mixin input-common--mob {
+  height: $form-def-height--mob;
+  padding: $form-def-space-vt--mob $form-def-space-h--mob $form-def-space-vb--mob $form-def-space-h--mob;
+  border-radius: $form-def-border-radius--mob;
+  @if $form-def-border-width--mob {
+    border-width: $form-def-border-width--mob;
+  }
+}
+
+// Input font styles mixin
+// ====================================================
+@mixin input-font {
+  @include font-normal;
+  font-size: $form-def-font-size;
+  line-height: $form-def-line-height;
+  letter-spacing: 0.025em;
+  color: $form-def-text-color;
+  @if $form-def-letter-spacing {
+    letter-spacing: $form-def-letter-spacing;
+  }
+}
+
+// ------ mob -----------------------------------------
+@mixin input-font--mob {
+  font-size: $form-def-font-size--mob;
+  line-height: $form-def-line-height--mob;
+  @if $form-def-letter-spacing--mob {
+    letter-spacing: $form-def-letter-spacing--mob;
+  }
+}
+
+
+// ====================================================
+// SELECT
+// ====================================================
+
+// По умалчанию стили селекта аналогинчны стилям полей ввода
+
+// Select colors scheme
+// ====================================================
+$select-text-color: $form-def-text-color !default;
+$select-placeholder-color: $form-def-placeholder-color !default;
+$select-bg-color: $form-def-bg-color !default;
+$select-border-color: $form-def-border-color !default;
+// ----------------------------------------------------
+$select-border-color--focus: $form-def-border-color--focus !default;
+
+
+// Select fonts styles
+// ====================================================
+$select-font-size: $form-def-font-size !default;
+$select-line-height: $form-def-line-height !default;
+$select-letter-spacing: $form-def-letter-spacing !default;
+// ------ mob -----------------------------------------
+$select-font-size--mob: $form-def-font-size--mob !default;
+$select-line-height--mob: $form-def-line-height--mob !default;
+$select-letter-spacing--mob: $form-def-letter-spacing--mob !default;
+
+
+// Select layout
+// ====================================================
+$select-height: $form-def-height !default;
+$select-border-width: $form-def-border-width !default;
+$select-space-v: round-float(($select-height - $select-line-height) / 2 - px-to-rem($select-border-width), 1) !default; // Следить, чтобы разница между высотой и межстрочным интервалом была четной
+$select-space-vt: $select-space-v !default;
+$select-space-vb: $select-space-v !default;
+$select-space-h: $form-def-space-h - 0.4 !default;
+$select-border-radius: $form-def-border-radius !default;
+$select-arrow-width: 4.0rem !default;
+// ------ mob -----------------------------------------
+$select-height--mob: $form-def-height--mob !default;
+$select-border-width--mob: $form-def-border-width--mob !default;
+$select-space-v--mob: round-float(($select-height--mob - $select-line-height--mob) / 2 - px-to-rem($select-border-width), 1) !default; // Следить, чтобы разница между высотой и межстрочным интервалом была четной
+$select-space-vt--mob: $select-space-v--mob !default;
+$select-space-vb--mob: $select-space-v--mob !default;
+$select-space-h--mob: $form-def-space-h--mob - 0.4 !default;
+$select-border-radius--mob: $form-def-border-radius--mob !default;
+$select-arrow-width--mob: 4.0rem !default;
+
+
+// Select common styles mixin
+// ====================================================
+@mixin select-common() {
+  display: block;
+  position: relative;
+  height: $select-height;
+  width: 100%;
+  padding: $select-space-vt $select-arrow-width $select-space-vb $select-space-h;
+  background: $select-bg-color;
+  border: #{$select-border-width} solid #{$select-border-color};
+  border-radius: 5px;
   box-shadow: none;
   text-indent: 0;
   outline: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+// ------ mob -----------------------------------------
+@mixin select-common--mob() {
+  height: $select-height--mob;
+  padding: $select-space-vt--mob $select-arrow-width--mob $select-space-vb--mob $select-space-h--mob;
+  border: #{$select-border-width--mob} solid #{$select-border-color};
 }
 
 
-// States
+// Select font styles mixin
+// ====================================================
+@mixin select-font {
+  @include input-font;
+}
+
+// ------ mob -----------------------------------------
+@mixin select-font--mob {
+  @include input-font--mob;
+}
+
+
+// ====================================================
+// FORM STATES
+// ====================================================
 @mixin form-success {
   color: $form-success-color;
   border-color: $form-success-color;
@@ -465,18 +608,17 @@ $select-arrow-height: $form-input-height !default;
 }
 
 @mixin filled {
-  color: blueviolet;
-  border-color: blueviolet;
+  color: slateblue;
+  border-color: slateblue;
 }
 
 @mixin focused {
-  //color: $form-border-focus-color
-  border-color: $form-border-color--focus;
+  border-color: $form-def-border-color--focus;
 }
 
 
 // Form validate feedback
-// ==========================================================================
+// ====================================================
 $validate-feedback-font-size: 1.2rem;
 $validate-feedback-line-height: 1.6rem;
 $validate-feedback-height: 2.2rem;
