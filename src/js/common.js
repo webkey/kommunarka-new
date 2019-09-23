@@ -1706,6 +1706,35 @@ function slidersInit() {
       })
     })
   }
+
+  // Gallery
+  var $gallery = $('.gallery-js');
+
+  if($gallery.length){
+    $gallery.each(function () {
+      var $thisSlider = $(this),
+          $pagination = $thisSlider.find('.swiper-pagination'),
+          $btnPrev = $thisSlider.find('.swiper-button-prev'),
+          $btnNext = $thisSlider.find('.swiper-button-next');
+
+      console.log("$thisSlider: ", $thisSlider);
+
+      new Swiper ($thisSlider, {
+        spaceBetween: 20,
+        loop: true,
+        watchSlidesVisibility: true,
+        pagination: {
+          el: $pagination,
+          type: 'bullets',
+          clickable: true
+        },
+        navigation: {
+          prevEl: $btnPrev,
+          nextEl: $btnNext
+        }
+      });
+    });
+  }
 }
 
 /**
