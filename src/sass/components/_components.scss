@@ -890,6 +890,27 @@
     }
   }
 
+  // Вложенные ul (sub menu) последнего пункта
+  li:last-child {
+    ul {
+      // Для разрешений выше планшетных
+      @include media(">=tab") {
+        left: auto;
+        right: 0;
+      }
+
+      // Позицирование подменю
+      // ВТОРОГО и глубже уровней
+      ul {
+        // Для разрешений выше планшетных
+        @include media(">=tab") {
+          left: auto;
+          right: 100%;
+        }
+      }
+    }
+  }
+
   // Показать подменю
   // Класс .hover добавляется скриптом
   // Если отключены скрипты,
@@ -2508,14 +2529,17 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   pointer-events: none;
+
   .sep-page & {
     position: absolute;
     top: 0;
     z-index: auto;
   }
+
   .touchevents & {
     display: none;
   }
+
   @include media("<tab") {
     display: none;
   }
@@ -2526,22 +2550,67 @@
     height: 100%;
     left: 0;
     top: 0;
+
     img {
       position: absolute;
     }
-    @include media("<tab") {
-      &:nth-child(2) {
-        img {
-          left: auto !important;
-          top: 38vh !important;
-          right: 40px;
+
+    &:nth-child(1) {
+      img {
+        left: -240px;
+        top: 30vh;
+
+        @include media('<lap') {
+          width: 240px;
+          left: -160px;
         }
       }
-      &:nth-child(3) {
-        img {
-          left: auto !important;
-          top: 45vh !important;
-          right: -10px;
+    }
+
+    &:nth-child(2) {
+      img {
+        right: -4.5vw;
+        bottom: 80px;
+        width: 260px;
+
+        @include media('<lap') {
+          width: 200px;
+        }
+
+        @include media('<net') {
+          width: 160px;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      img {
+        right: -4.3vw;
+        bottom: 80px;
+        width: 260px;
+
+        @include media('<lap') {
+          width: 200px;
+        }
+
+        @include media('<net') {
+          width: 160px;
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      img {
+        right: -4.1vw;
+        bottom: 80px;
+        width: 260px;
+
+        @include media('<lap') {
+          width: 200px;
+        }
+
+        @include media('<net') {
+          width: 160px;
         }
       }
     }
@@ -5245,23 +5314,61 @@ $catalog-shutter-header-height--mob: 4rem;
 
 /* gallery */
 .gallery {
+  $space: 4rem;
+  $space--mob: 3rem;
+
   margin: 0 auto $bottom-space;
+  padding-bottom: $space;
+
 
   @include media('<mob') {
     margin-bottom: $bottom-space--mob;
+    padding-bottom: $space--mob;
   }
 
   .swiper-slide {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: relative;
+      display: block;
+      @include ratio(4, 3);
+    }
+  }
+
+  .gallery__figure {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg-color-light;
+
     img {
-      width: 100%;
+      width: auto;
       height: auto;
+      max-width: 100%;
+      max-height: 100%;
       margin: 0;
+
+      @supports (object-fit: contain) {
+        @include object-fit(contain);
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
   .swiper-button-prev,
   .swiper-button-next {
+    top: calc(50% - #{round-float($space / 2, 1)});
+
     @include media('<mob') {
+      top: calc(50% - #{round-float($space--mob / 2, 1)});
       display: none;
     }
   }
