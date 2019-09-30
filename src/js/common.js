@@ -162,6 +162,16 @@ function customSelect() {
   }
 }
 
+
+/**
+ * Sidebar has footer
+ */
+function sidebarHasFooter() {
+  var $sidebar = $('.sidebar');
+  $sidebar.toggleClass('has-footer', !!$sidebar.has('.sidebar__footer').length);
+}
+
+
 // ==================================================
 // jquery.switch-class.js
 // Version: 2.0
@@ -587,6 +597,7 @@ function searchFieldToggle() {
   }
 }
 
+
 /**
  * !Toggle Catalog
  * */
@@ -605,6 +616,70 @@ function catalogToggle() {
     });
   }
 }
+
+
+/**
+ * !Toggle submenu / filters
+ */
+function toggleSubMenu() {
+  var $subMenuOpener = $('.sub-menu-opener-js'),
+      $html = $('html');
+
+  if ($subMenuOpener.length) {
+    $subMenuOpener.switchClass({
+      switchClassTo: $('.sub-menu-js').add('.sub-menu-overlay-js'),
+      preventRemoveClass: 'sub-menu-prevent-js',
+      removeEl: $('.sub-menu-close-js'),
+      cssScrollFixed: true,
+      modifiers: {
+        activeClass: "sub-menu-is-open"
+      },
+      afterAdd: function (e, opener) {
+        $html.addClass('open-only-mob');
+      },
+      afterRemove: function (e, opener) {
+        $html.addClass('open-only-mob');
+      }
+    });
+  }
+}
+
+
+/**
+ * Filters
+ */
+function filters() {
+  var $container = $('.sidebar'),
+      $filters = $(':checkbox', $container),
+      $btnApply = $('.btn-apply-filters-js', $container),
+      $btnReset = $('.btn-reset-filters-js', $container);
+
+  function observeFilters () {
+    $.each($filters, function () {
+      var $curFilter = $(this);
+
+      $btnApply.add($btnReset).prop('disabled', true);
+
+      if ($curFilter.is(':checked')) {
+        $btnApply.add($btnReset).prop('disabled', false);
+        return false;
+      }
+    })
+  }
+
+  $filters.on('change', function () {
+    observeFilters();
+  });
+
+  $filters.trigger('change');
+
+  $btnReset.on('click', function () {
+    $.each($filters, function () {
+      $(this).not(':disabled').prop('checked', false).trigger('change');
+    })
+  })
+}
+
 
 // ==================================================
 // jquery.tabs.js
@@ -1831,9 +1906,12 @@ $(document).ready(function () {
   objectFitImages(); // object-fit-images initial
   // stickyInit();
   customSelect();
+  sidebarHasFooter();
   toggleShutters();
   searchFieldToggle();
   catalogToggle();
+  toggleSubMenu();
+  filters();
   // catalogNavTabs();
   parallaxInit();
   initHoverClass();

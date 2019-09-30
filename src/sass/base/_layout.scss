@@ -9,7 +9,7 @@ html {
     @include scroll-blocked;
   }
 
-  &.shutter-only-mob.open-only-mob {
+  &.css-scroll-fixed.open-only-mob {
     @include media("<tab") {
       @include scroll-blocked;
     }

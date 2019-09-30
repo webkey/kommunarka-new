@@ -49,8 +49,8 @@
 
 /* btn-alt */
 .btn-alt {
-  $btn-font-size: 1.4rem;
-  $btn-line-height: 1.8rem;
+  $btn-font-size: 1.8rem;
+  $btn-line-height: 2.4rem;
   $btn-letter-spacing: 0.2em;
   $btn-border-width: 0.2rem;
   $btn-space-inner-vertical: round-float(($btn-height - $btn-line-height - $btn-border-width * 2) / 2, 1);
@@ -70,10 +70,13 @@
   box-shadow: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  transition: color $animation-speed, border-color $animation-speed, background-color $animation-speed;
+
   &, & > span {
     @include font-size($btn-font-size, $btn-line-height);
     letter-spacing: $btn-letter-spacing;
   }
+
   // Hover
   &:hover {
     .no-touchevents & {
@@ -81,6 +84,7 @@
       background-color: $btn-bg-color;
     }
   }
+
   // Disabled
   &:disabled, &.disabled, &[data-disabled] {
     @include btn-disabled;

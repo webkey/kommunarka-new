@@ -334,6 +334,12 @@
                 </li>
               </ul>
             </div>
+            <div class="layout-text bottom-space">
+              <div class="btns devices-only">
+                <a href="#" class="btn-alt btns__item sub-menu-opener-js" data-target="open-filters"><i class="icon icon-filter"></i><span>Открыть фильтр</span></a>
+                <!--<a href="#" class="btn-alt btns__item sub-menu-opener-js" data-target="open-sections"><i class="icon icon-branch"></i><span>Выбрать раздел</span></a>-->
+              </div>
+            </div>
             <h1><span>Шоколад без сахара</span></h1>
             <div class="layout-text">
               <a href="#" class="dwcat">
@@ -976,7 +982,10 @@
             </div>
           </section>
         </div>
-        <aside class="sidebar">
+        <aside class="sidebar sub-menu-js sub-menu-prevent-js">
+          <div class="sidebar__header">
+            <a href="#" class="btn-close sub-menu-close-js"><i class="icon icon-close"></i><span>Закрыть</span></a>
+          </div>
           <div class="sidebar__holder">
             <ul class="menu menu-js">
               <li class="has-sub current is-open">
@@ -986,7 +995,7 @@
                   <li class="menu-subtitle">Вес:</li>
                   <li>
                     <label class="form-radiocheck">
-                      <input type="checkbox" name="checkbox">
+                      <input type="checkbox" name="checkbox" checked>
                       <span>20г</span>
                     </label>
                   </li>
@@ -1121,7 +1130,12 @@
               </li>
             </ul>
           </div>
+          <div class="sidebar__footer">
+            <input type="submit" class="btn-def btn-apply-filters-js sub-menu-close-js" value="Подобрать" disabled>
+            <input type="reset" class="btn-def btn-reset-filters-js" value="Очистить" disabled>
+          </div>
         </aside>
+        <div class="sub-menu-overlay sub-menu-overlay-js">&nbsp;</div>
       </div>
       <div class="scene">
         <div data-depth="0.1">
