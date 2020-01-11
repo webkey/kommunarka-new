@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp')
+    , plumber = require('gulp-plumber')
     , sass = require('gulp-sass')
     , browserSync = require('browser-sync').create()
     , reload = browserSync.reload
@@ -43,6 +44,7 @@ var path = {
  */
 gulp.task('htmlCompilation', function () {
   return gulp.src(['src/__*.html'])
+      .pipe(plumber())
       .pipe(fileinclude({
         filters: {
           markdown: markdown.parse
