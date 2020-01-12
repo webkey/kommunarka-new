@@ -1,0 +1,16 @@
+@import "../../libs/include-media/dist/include-media";
+@import "src/sass/special-version/vspec-variables";
+@import "../utils/mixins";
+
+.#{$spec-mod} {
+  // reset svg icon color
+  // ------------------------------------------------------------
+  // цвет свг-эелеметов сделать, как у текста родителя
+  polygon,
+  rect,
+  path,
+  circle,
+  .svg-path {
+    fill: currentColor;
+  }
+}

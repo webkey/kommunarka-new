@@ -1,0 +1,147 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+.vspec {
+  /* article content */
+  .#{$article-content},
+  .text-page {
+    padding: 20px;
+
+    @include media("<vspec-lg") {
+      padding: 0;
+    }
+  }
+
+  .#{$article-content} {
+    & > p, & > ul, & > ol,
+    & > h1, & > .h1,
+    & > h2, & > h3, & > h4, & > h5, & > h6,
+    & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
+    & > hr, & > mark, & > blockquote, & > figure,
+    & > .layout-text,
+    & > .entry-text,
+    & > .quote,
+    & > .nopr,
+    & > .shortNews,
+    & > .wrap {
+      max-width: none;
+    }
+
+    & > h1, & > .h1 {
+      &::after {
+        content: none;
+      }
+    }
+
+    & > .layout-flood {
+      max-width: none;
+    }
+
+    & > p, & > ul, & > ol {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // blockquote
+    blockquote, .quote {
+      border: 2px solid currentColor;
+      background: none;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: none;
+      @include spec-bottom-space-item;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // wrap
+    .wrap {
+      @include spec-bottom-space-section;
+      @include clear;
+
+      .imagebox {
+        html:not(.#{$spec-mod--image-on}) & {
+          display: none;
+        }
+      }
+
+      blockquote {
+        border: none;
+      }
+    }
+
+    // historicDate
+    .historicDate {
+      @include spec-font--title;
+
+      strong {
+        font-family: inherit;
+        font-weight: bold;
+        font-style: normal;
+
+        span {
+          font-size: 0.8em;
+          font-weight: normal;
+          font-style: italic;
+        }
+      }
+    }
+
+    // notice
+    .notice {
+      color: currentColor;
+      background: none;
+    }
+  }
+
+  .years-slider {
+
+    .swiper-slide {
+      .year {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+
+        &::after {
+          border-color: currentColor;
+        }
+      }
+
+      .image {
+        html:not(.#{$spec-mod--image-on}) & {
+          display: none;
+        }
+      }
+
+      h3,
+      h4,
+      .h3,
+      .h4,
+      .heading {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        letter-spacing: inherit;
+        font-weight: normal;
+        word-break: break-word;
+
+        a {
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+/* article content end */

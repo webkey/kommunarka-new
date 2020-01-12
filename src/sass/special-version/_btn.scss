@@ -1,0 +1,147 @@
+@import "../../libs/include-media/dist/include-media";
+@import "src/sass/special-version/vspec-variables";
+@import "../utils/mixins";
+
+// mixin
+@mixin btn-nav {
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  height: auto;
+  font: {
+    family: inherit;
+    weight: normal;
+    style: normal;
+  };
+  line-height: 1.2;
+  padding: 0.3em 0.5em 0.3em;
+  cursor: pointer;
+  letter-spacing: inherit;
+  text-transform: none;
+  color: inherit;
+  transition: none;
+  text-decoration: none;
+  border: $spec-border-width solid currentColor;
+  border-radius: $spec-border-radius;
+  @include spec-reset-bg;
+  &::before, &::after {
+    display: none;
+  }
+}
+
+@mixin btn-nav-hover {
+  @include spec-reset-bg-invert;
+}
+
+@mixin btn-nav-current {
+  font-weight: bold;
+  background: none;
+}
+
+.#{$spec-mod} {
+  // buttons default
+  // ---------------------------------------------------------------------------
+  .btn-default,
+  .btn-def,
+  input[type="submit"],
+  input[type="reset"],
+  button,
+  .btn-default-alt,
+  .btn-def-alt,
+  .btn-alt,
+  .nav-opener,
+  .button,
+  .spec-btn-switcher {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    height: auto;
+    font: {
+      family: inherit;
+      weight: normal;
+      style: normal;
+      size: inherit;
+    };
+    line-height: round-float(20px / 18px, 1);
+    text-align: center;
+    letter-spacing: inherit;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    padding: 10px 18px;
+    border: $spec-border-width solid;
+    border-radius: $spec-border-radius;
+    box-shadow: none;
+    cursor: pointer;
+    outline: none;
+    // transition
+    $prop: color, background-color, border-color;
+    will-change: $prop;
+    transition: {
+      property: $prop;
+      duration: $animation-speed;
+      timing-function: ease-in-out;
+    };
+
+    & > span {
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+    }
+
+    @include spec-reset-bg-invert;
+
+    // color, background-color, border-color
+    &::before, &::after {
+      display: none;
+    }
+
+    // HOVER
+    &:hover, &:focus {
+      background: none;
+      border-color: inherit;
+      color: inherit;
+    }
+
+    // DISABLED
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .btn-default-alt,
+  .btn-alt,
+  .btn-def-alt,
+  input[type="reset"] {
+    border: $spec-border-width solid currentColor;
+    color: inherit;
+    @include spec-reset-bg;
+    // HOVER
+    &:hover, &:focus {
+      @include spec-reset-bg-invert;
+    }
+  }
+
+  // buttons navigation
+  // ---------------------------------------------------------------------------
+  // селесктор нужно писать в ряд (без переносов)
+  .addNav > ul > li {
+    font-family: inherit;
+
+    & > a {
+      @include btn-nav;
+
+      &:hover {
+        @include btn-nav-hover;
+      }
+    }
+
+    &.current > a {
+      @include btn-nav-current;
+    }
+
+    &.active > a {
+      @include btn-nav-hover;
+    }
+  }
+}

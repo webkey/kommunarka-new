@@ -1,0 +1,667 @@
+@import "src/sass/utils/functions";
+@import "src/sass/utils/placeholders";
+
+// Medium query
+//$breakpoints: (
+//    "vspec-lg": 992px,
+//    "vspec-md": 768px,
+//    "vspec-sm": 640px,
+//    "vspec-xs": 480px
+//);
+
+$user-content: ".article-content" !default;
+
+// ##########################################################################
+
+
+// Special Classes
+// ==========================================================================
+$spec-mod: "vspec" !default;
+$spec-mod--image-on: "vspec-mod_img_on" !default;
+$spec-mod--image-off: "vspec-mod_img_off" !default;
+$spec-mod--mono: "vspec-mod_mono" !default;
+$spec-mod--sans-serif: "vspec-mod_font-style_sans-serif" !default;
+$spec-mod--serif: "vspec-mod_font-style_serif" !default;
+$spec-mod--monospace: "vspec-mod_font-style_monospace" !default;
+$spec-mod--font-small: "vspec-mod_font-size_sm" !default;
+$spec-mod--font-medium: "vspec-mod_font-size_norm" !default;
+$spec-mod--font-large: "vspec-mod_font-size_lg" !default;
+$spec-mod--line-height-small: "vspec-mod_line-height_sm" !default;
+$spec-mod--line-height-medium: "vspec-mod_line-height_md" !default;
+$spec-mod--line-height-large: "vspec-mod_line-height_lg" !default;
+$spec-mod--spacing-normal: "vspec-mod_spacing_norm" !default;
+$spec-mod--spacing-medium: "vspec-mod_spacing_md" !default;
+$spec-mod--spacing-large: "vspec-mod_spacing_lg" !default;
+$spec-mod--scheme-def: "vspec-mod_scheme-color_def" !default;
+$spec-mod--scheme-wb: "vspec-mod_scheme-color_white" !default;
+$spec-mod--scheme-blue: "vspec-mod_scheme-color_blue" !default;
+$spec-mod--scheme-brown: "vspec-mod_scheme-color_brown" !default;
+$spec-mod--scheme-green: "vspec-mod_scheme-color_green" !default;
+
+// Special Panel
+// ==========================================================================
+//$spec-panel-size: 100% 70px // height width
+$spec-panel-size: 74px 100%;
+$spec-panel-size--sm: 56px 100%;
+$spec-panel-inner-space: 16px;
+$spec-panel-inner-space--sm: 12px;
+$spec-panel__btn-size: 42px;
+$spec-panel__btn-size--sm: 36px;
+$spec-panel__btn-arr-size: 24px;
+$spec-panel__btn-shadow-inside: 0 0 0 2px;
+$spec-panel__btn-shadow-outside: 0 0 0 5px;
+$spec-panel__btn-shadow-hover: inset 0 0 0 3px;
+
+// СПЕЦИАЛЬНАЯ ВЕРСИЯ: НАСТРОЙКИ
+// ==========================================================================
+
+// >>> Color scheme <<<
+// ==========================================================================
+
+// Специальная версия: Цветовая схема - Черным по белому (стандартная)
+// ---------------------------------------------------------------------------
+$spec-text-color: #131313 !default;
+$spec-text-color--scheme-def: $spec-text-color !default;
+$spec-bg-color: white !default;
+$spec-bg-color--scheme-def: $spec-bg-color !default;
+
+// Специальная версия: Цветовая схема - Белым по черному
+// ---------------------------------------------------------------------------
+$spec-text-color--scheme-wb: white !default;
+$spec-bg-color--scheme-wb: #131313 !default;
+
+// Специальная версия: Цветовая схема - Синим по голубому
+// ---------------------------------------------------------------------------
+$spec-text-color--scheme-blue: #004c92 !default;
+$spec-bg-color--scheme-blue: #c8e5ff !default;
+
+// Специальная версия: Цветовая схема - Коричневым по бежевому
+// ---------------------------------------------------------------------------
+$spec-text-color--scheme-brown: #4d4b43 !default;
+$spec-bg-color--scheme-brown: #f7f3d6 !default;
+
+// Специальная версия: Цветовая схема - Зеленым по темно-коричневому
+// ---------------------------------------------------------------------------
+$spec-text-color--scheme-green: #a9e44d !default;
+$spec-bg-color--scheme-green: #3b2716 !default;
+
+// >>> Font Style <<<
+// ==========================================================================
+
+// Специальная версия: Начертание шрифта - Без засечками (serif)
+// ---------------------------------------------------------------------------
+//$spec-sans-serif: Arial, Helvetica, Geneva, "Trebuchet MS", sans-serif !default
+$spec-font-style--sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+// Специальная версия: Начертание шрифта - С засечками (serif)
+// ---------------------------------------------------------------------------
+//$spec-serif: Bookman, serif !default
+$spec-font-style--serif: "Times New Roman", Times, Georgia, serif !default;
+
+// Специальная версия: Начертание шрифта - Моноширинный шрифт (monospace)
+// ---------------------------------------------------------------------------
+$spec-font-style--monospace: Consolas, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace !default;
+
+// >>> Font Size <<<
+// ==========================================================================
+
+// Специальная версия: Размер шрифта - Стандартный базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size: 18px !default;
+$spec-font-size--mob: 16px !default;
+
+@mixin spec-font-size($fz: $spec-font-size, $fz--mob: $spec-font-size--mob) {
+  font-size: $fz;
+  @include media("<vspec-xs") {
+    font-size: $fz--mob;
+  }
+}
+
+// Специальная версия: Размер шрифта - СРЕДНИЙ базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size--medium: $spec-font-size !default;
+$spec-font-size--medium--mob: $spec-font-size--mob !default;
+
+@mixin spec-font-size--medium($fz: $spec-font-size--medium, $fz--mob: $spec-font-size--medium--mob) {
+  @include spec-font-size($fz, $fz--mob);
+}
+
+// Специальная версия: Размер шрифта - УМЕНЬШЕННЫЙ базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size--small: 14px !default;
+$spec-font-size--small--mob: 12px !default;
+
+@mixin spec-font-size--small($fz: $spec-font-size--small, $fz--mob: $spec-font-size--small--mob) {
+  @include spec-font-size($fz, $fz--mob);
+}
+
+// Специальная версия: Размер шрифта - УВЕЛИЧЕННЫЙ базовый шрифт
+// ---------------------------------------------------------------------------
+$spec-font-size--large: 30px !default;
+$spec-font-size--large--mob: 24px !default;
+
+@mixin spec-font-size--large($fz: $spec-font-size--large, $fz--mob: $spec-font-size--large--mob) {
+  @include spec-font-size($fz, $fz--mob);
+}
+
+// >>> Line Height (Line Spacing) <<<
+// ==========================================================================
+
+// Специальная версия: Междустрочный интервал - ОДИНАРНЫЙ (нормальный)
+// ---------------------------------------------------------------------------
+$spec-line-height--small: 1.5 !default;
+$spec-line-height--small--mob: 1.4 !default;
+
+@mixin spec-line-height($lh: $spec-line-height--small, $lh--mob: $spec-line-height--small--mob) {
+  line-height: $lh;
+  @include media("<vspec-xs") {
+    line-height: $lh--mob;
+  }
+}
+
+@mixin spec-line-height--small($lh: $spec-line-height--small, $lh--mob: $spec-line-height--small--mob) {
+  @include spec-line-height($lh, $lh--mob);
+}
+
+// Специальная версия: Междустрочный интервал - ПОЛУТОРНЫЙ
+// ---------------------------------------------------------------------------
+$spec-line-height--medium: 1.5 !default;
+$spec-line-height--medium--mob: 1.8 !default;
+
+@mixin spec-line-height--medium($lh: $spec-line-height--medium, $lh--mob: $spec-line-height--medium--mob) {
+  @include spec-line-height($lh, $lh--mob);
+}
+
+// Специальная версия: Междустрочный интервал - ДВОЙНОЙ
+// ---------------------------------------------------------------------------
+$spec-line-height--large: 2.5 !default;
+$spec-line-height--large--mob: 2.3 !default;
+
+@mixin spec-line-height--large($lh: $spec-line-height--large, $lh--mob: $spec-line-height--large--mob) {
+  @include spec-line-height($lh, $lh--mob);
+}
+
+// >>> Font Size & Line Height <<<
+// >>> Миксины для размера и междустрочного интервала <<<
+// ==========================================================================
+
+// Стандартный базовый шрифт
+// ---------------------------------------------------------------------------
+@mixin spec-font-size--normal {
+  font-size: $spec-font-size;
+}
+
+// Уменьшенный базовый шрифт
+// ---------------------------------------------------------------------------
+@mixin spec-font-size--small {
+  font-size: $spec-font-size--small;
+}
+
+// Увеличенный базовый шрифт
+// ---------------------------------------------------------------------------
+@mixin spec-font-size--large {
+  font-size: $spec-font-size--large;
+}
+
+// >>> Letter Spacing (Kerning) <<<
+// ==========================================================================
+
+// Специальная версия: Межбуквенный интервал - Базовый (нормальный)
+// ---------------------------------------------------------------------------
+$spec-letter-spacing--normal: normal !default;
+
+// Специальная версия: Межбуквенный интервал - Средний
+// ---------------------------------------------------------------------------
+$spec-letter-spacing--medium: 0.2em !default;
+
+// Специальная версия: Межбуквенный интервал - Бальшой
+// ---------------------------------------------------------------------------
+$spec-letter-spacing--large: 0.5em !default;
+
+// >>> Заголовки <<<
+// ==========================================================================
+
+$h-list--norm: (
+    "h1": (2em, 1.5, 1.34em, 0.67em),
+    "h2": (1.5em, 1.7, 1.66em, 0.83em),
+    "h3": (1.17em, 1.9, 2em, 1em),
+    "h4": (1em, 2, 2.66em, 1.33em),
+    "h5": (0.83em, 2.2, 3.34em, 1.67em),
+    "h6": (0.67em, 2.5, 4.66em, 2.33em)
+);
+$h-list--mob: (
+    "h1": (1.6em, 1.7, 1.34em, 0.67em),
+    "h2": (1.3em, 1.83, 1.66em, 0.83em),
+    "h3": (1.17em, 1.9, 2em, 1em),
+    "h4": (1em, 2, 2.66em, 1.33em),
+    "h5": (0.83em, 2.2, 3.34em, 1.67em),
+    "h6": (0.67em, 2.5, 4.66em, 2.33em)
+);
+
+// 'h1':(2em, 1.5, 1.34em, 0.67em)
+// 'h1' - это тип заголовка
+// 2em - это font-size
+// 1.5 - это line-height
+// 1.34em - это margin-top
+// 0.67em - это margin-bottom
+
+// =============================================================================
+// get-property-param
+// =============================================================================
+// Получить из "базы" размер, межстрочный интервал заголовка
+// @param $prop - font-size or line-height
+// @param $size - тип заголовка: h1, h2, h3...
+// @return - возваращает искомое значение
+// @example:
+// $map: ('h1':(2em, 1.5), 'h2':(1.5em, 1.7), 'h3':(1.17em, 1.9), 'h4':(1em, 1), 'h5':(0.83em, 1), 'h6':(0.67em, 2.5))
+// heading-size(fz, h2) => 1.5em
+@function get-property-param($map, $size, $prop) {
+  $map-of-types: ("font-size": 1, "line-height": 2, "margin-top": 3, "margin-bottom": 4);
+  // @steps for example:
+  // @1: map_get($map, 2) => 'h2'
+  // @2: map_get($map-of-types, 'fz') => 1
+  // @3: nth('h2', 1) = 1.5
+  @return nth(map_get($map, $size), map_get($map-of-types, $prop));
+}
+
+// ПОЛУЧИТЬ РАЗМЕРЫ ДЛЯ ДЕСКТОПА
+@function spec-heading($size, $prop) {
+  @return get-property-param($h-list--norm, $size, $prop);
+}
+
+// ПОЛУЧИТЬ РАЗМЕРЫ ДЛЯ ДЕВАЙСОВ
+@function spec-heading--mob($size, $prop) {
+  @return get-property-param($h-list--mob, $size, $prop);
+}
+
+// H1, Заголовок страницы
+// ---------------------------------------------------------------------------
+@mixin spec-font--title {
+  font-size: spec-heading(h1, "font-size");
+  line-height: spec-heading(h1, "line-height");
+
+  @include media("<vspec-lg") {
+    word-wrap: break-word;
+  }
+
+  @include media("<vspec-sm") {
+    font-size: spec-heading--mob(h1, "font-size");
+    line-height: spec-heading--mob(h1, "line-height");
+  }
+}
+
+// H2, Заголовки секций
+// ---------------------------------------------------------------------------
+@mixin spec-font--section {
+  font-size: spec-heading(h2, "font-size");
+  line-height: spec-heading(h2, "line-height");
+
+  @include media("<vspec-lg") {
+    word-wrap: break-word;
+  }
+
+  @include media("<vspec-sm") {
+    font-size: spec-heading--mob(h2, "font-size");
+    line-height: spec-heading--mob(h2, "line-height");
+  }
+}
+
+// H3, Заголовки пунктов
+// ---------------------------------------------------------------------------
+@mixin spec-font--item {
+  font-size: spec-heading(h3, "font-size");
+  line-height: spec-heading(h3, "line-height");
+
+  @include media("<vspec-lg") {
+    word-wrap: break-word;
+  }
+
+  @include media("<vspec-sm") {
+    font-size: spec-heading--mob(h3, "font-size");
+    line-height: spec-heading--mob(h3, "line-height");
+  }
+}
+
+// Мелкий текст: сноски, даты и т.д.
+// ---------------------------------------------------------------------------
+@mixin spec-font--note {
+  font-size: spec-heading(h5, "font-size");
+  line-height: spec-heading(h5, "line-height");
+}
+
+// Отступы
+// ==========================================================================
+
+// Отступы горизонтальные
+// ---------------------------------------------------------------------------
+$spec-space: 1.5em !default;
+$spec-space--sm: 1.25em !default;
+$spec-space--mob: 1em !default;
+$spec-page-space: round-float(40px / $spec-font-size, 2) * 1em round-float(40px / $spec-font-size, 2) * 1em !default;
+$spec-page-space--md: round-float(20px / $spec-font-size, 2) * 1em round-float(20px / $spec-font-size, 2) * 1em !default;
+$spec-page-space--sm: round-float(15px / $spec-font-size, 2) * 1em round-float(15px / $spec-font-size, 2) * 1em !default;
+
+// Максимальная ширина контента
+// ---------------------------------------------------------------------------
+$spec-text-page: 50em !default;
+$spec-text-layout: 44em !default;
+$spec-text-layout--sm: 36em !default;
+$spec-form-layout: 32em !default;
+
+// Отступы вертикальные
+// ---------------------------------------------------------------------------
+$spec-bottom-space: 1em !default;
+$spec-bottom-space--sm: 0.8em !default;
+
+@mixin spec-bottom-space($space: $spec-bottom-space, $space--sm: $spec-bottom-space--sm) {
+  margin-bottom: $space;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+$spec-bottom-space-element: round-float($spec-bottom-space / 2, 1) !default;
+$spec-bottom-space-element--sm: round-float($spec-bottom-space--sm / 2, 1) !default;
+
+@mixin spec-bottom-space-element {
+  @include spec-bottom-space($spec-bottom-space-element, $spec-bottom-space-element--sm);
+}
+
+// ---------------------------------------------------------------------------
+$spec-bottom-space-item: round-float($spec-bottom-space * 1.5, 1) !default;
+$spec-bottom-space-item--sm: round-float($spec-bottom-space--sm * 1.5, 1) !default;
+
+@mixin spec-bottom-space-item {
+  @include spec-bottom-space($spec-bottom-space-item, $spec-bottom-space-item--sm);
+}
+
+// ---------------------------------------------------------------------------
+$spec-bottom-space-section: round-float($spec-bottom-space * 2.2, 1) !default;
+$spec-bottom-space-section--sm: round-float($spec-bottom-space--sm * 2.2, 1) !default;
+
+@mixin spec-bottom-space-section {
+  @include spec-bottom-space($spec-bottom-space-section, $spec-bottom-space-section--sm);
+}
+
+// Reset font style
+@mixin spec-font-reset {
+  font: {
+    family: inherit;
+    weight: inherit;
+    style: inherit;
+    size: inherit;
+  };
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  color: inherit;
+}
+
+// Reset heading font style
+@mixin spec-h-font-reset {
+  font-family: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+// Reset background
+@mixin spec-reset-bg {
+  background-color: $spec-bg-color;
+  color: inherit;
+  .#{$spec-mod--scheme-wb} & {
+    background-color: $spec-bg-color--scheme-wb;
+    color: inherit;
+  }
+  .#{$spec-mod--scheme-blue} & {
+    background-color: $spec-bg-color--scheme-blue;
+    color: inherit;
+  }
+  .#{$spec-mod--scheme-brown} & {
+    background-color: $spec-bg-color--scheme-brown;
+    color: inherit;
+  }
+  .#{$spec-mod--scheme-green} & {
+    background-color: $spec-bg-color--scheme-green;
+    color: inherit;
+  }
+}
+
+// Reset background + invert
+// @example: buttons, table headings, mark elements
+@mixin spec-reset-bg-invert {
+  color: $spec-bg-color;
+  background-color: $spec-text-color;
+  border-color: $spec-text-color;
+  .#{$spec-mod--scheme-wb} & {
+    color: $spec-bg-color--scheme-wb;
+    background-color: $spec-text-color--scheme-wb;
+    border-color: $spec-text-color--scheme-wb;
+  }
+  .#{$spec-mod--scheme-blue} & {
+    color: $spec-bg-color--scheme-blue;
+    background-color: $spec-text-color--scheme-blue;
+    border-color: $spec-text-color--scheme-blue;
+  }
+  .#{$spec-mod--scheme-brown} & {
+    color: $spec-bg-color--scheme-brown;
+    background-color: $spec-text-color--scheme-brown;
+    border-color: $spec-text-color--scheme-brown;
+  }
+  .#{$spec-mod--scheme-green} & {
+    color: $spec-bg-color--scheme-green;
+    background-color: $spec-text-color--scheme-green;
+    border-color: $spec-text-color--scheme-green;
+  }
+}
+
+// Special gradient background
+@mixin spec-bg-gradient($direct: 180deg) {
+  @include linear-gradient($direct, tint($spec-text-color, 1%) 0%, tint($spec-text-color, 10%) 100%);
+  .#{$spec-mod--scheme-wb} & {
+    @include linear-gradient($direct, tint($spec-bg-color--scheme-wb, 50%) 0%, $spec-bg-color--scheme-wb 100%);
+  }
+  .#{$spec-mod--scheme-blue} & {
+    @include linear-gradient($direct, tint($spec-bg-color--scheme-blue, 20%) 0%, $spec-bg-color--scheme-blue 100%);
+  }
+  .#{$spec-mod--scheme-brown} & {
+    @include linear-gradient($direct, tint($spec-bg-color--scheme-brown, 70%) 0%, $spec-bg-color--scheme-brown 100%);
+  }
+  .#{$spec-mod--scheme-green} & {
+    @include linear-gradient($direct, tint($spec-bg-color--scheme-green, 70%) 0%, $spec-bg-color--scheme-green 100%);
+  }
+}
+
+// Reset border color
+@mixin spec-reset-border {
+  //border-width: $spec-border-width
+  border-color: $spec-text-color;
+  .#{$spec-mod--scheme-wb} & {
+    border-color: $spec-text-color--scheme-wb;
+  }
+  .#{$spec-mod--scheme-blue} & {
+    border-color: $spec-text-color--scheme-blue;
+  }
+  .#{$spec-mod--scheme-brown} & {
+    border-color: $spec-text-color--scheme-brown;
+  }
+  .#{$spec-mod--scheme-green} & {
+    border-color: $spec-text-color--scheme-green;
+  }
+}
+
+// Reset all styles
+@mixin spec-reset-full {
+  display: block;
+  float: none;
+  position: static;
+  overflow: visible;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  left: auto;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  padding: 0;
+  margin: 0;
+  font: {
+    family: inherit;
+    weight: inherit;
+    style: inherit;
+    size: inherit;
+  };
+  text-indent: 0;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  text-shadow: none;
+  transform: none;
+  transition: none;
+  border: none;
+  background: none;
+  box-shadow: none;
+  opacity: 1;
+  visibility: visible;
+  box-sizing: border-box;
+  border-radius: 0;
+  perspective: none;
+  vertical-align: baseline;
+  z-index: auto;
+}
+
+// Border
+// ==========================================================================
+$spec-border-width: 2px;
+$spec-border-radius: 6px;
+
+// Список классов-исключений для тегов ul, ol
+// Добавляются к типографическим стилям списков ul, ol, чтобы не применять стили для указанных классов
+// Example: $not-list-classes: ':not(.class1):not(.class2)'
+// Enter: .user-content ul:not(.class1):not(.class1)
+// ==========================================================================
+$not-list-classes: ":not(.reset-list)";
+
+// Button State
+// ==========================================================================
+/// @description: Примесь добавляет на кнопки настроек специальной версии выд для сотояний: :hover, :focus, .active
+@mixin spec-button-states {
+  // marker arrow
+  &::before, &::after {
+    display: none;
+    content: "";
+    position: absolute;
+    //left: 50%
+    left: 3px;
+    //margin: -1px 0 -1px -#{round($spec-panel__btn-arr-size / 2)}
+    margin: 3px 0;
+    pointer-events: none;
+    border-top: 3px solid currentColor;
+    width: calc(100% - 6px);
+  }
+  &::before {
+    bottom: 100%;
+    //+triangle("bottom", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
+
+  }
+  &::after {
+    top: 100%;
+    //+triangle("top", currentColor, round($spec-panel__btn-arr-size / 2), 0.8)
+
+  }
+  // hover, focus
+  &:hover, &:focus {
+    outline: none;
+    box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color, $spec-panel__btn-shadow-outside $spec-text-color;
+
+    .#{$spec-mod--scheme-wb} & {
+      box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-wb, $spec-panel__btn-shadow-outside $spec-text-color--scheme-wb;
+    }
+
+    .#{$spec-mod--scheme-blue} & {
+      box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue;
+    }
+
+    .#{$spec-mod--scheme-brown} & {
+      box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-brown, $spec-panel__btn-shadow-outside $spec-text-color--scheme-brown;
+    }
+
+    .#{$spec-mod--scheme-green} & {
+      box-shadow: $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green;
+    }
+  }
+  // active
+  &.active {
+    &:hover, &:focus {
+      box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color, $spec-panel__btn-shadow-outside $spec-text-color;
+
+      .#{$spec-mod--scheme-wb} & {
+        box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-wb, $spec-panel__btn-shadow-outside $spec-text-color--scheme-wb;
+      }
+
+      .#{$spec-mod--scheme-blue} & {
+        box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-blue, $spec-panel__btn-shadow-outside $spec-text-color--scheme-blue;
+      }
+
+      .#{$spec-mod--scheme-brown} & {
+        box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-brown, $spec-panel__btn-shadow-outside $spec-text-color--scheme-brown;
+      }
+
+      .#{$spec-mod--scheme-green} & {
+        box-shadow: $spec-panel__btn-shadow-hover currentColor, $spec-panel__btn-shadow-inside $spec-bg-color--scheme-green, $spec-panel__btn-shadow-outside $spec-text-color--scheme-green;
+      }
+    }
+  }
+  &.active {
+    &[tabindex="-1"] {
+      cursor: default;
+    }
+
+    // Показывать активное состояние для всех кнопок,
+    // но наведение и фокус не показыать только для кнопок с tabindex="-1"
+    &, &[tabindex="-1"]:hover, &[tabindex="-1"]:focus {
+      box-shadow: $spec-panel__btn-shadow-hover currentColor;
+    }
+
+    &::before, &::after {
+      display: block;
+      @include media("<vspec-xs") {
+        display: none;
+      }
+    }
+  }
+}
+
+// Nav
+$header-height: 80px !default;
+$header-height--md: 60px !default;
+$header-height--sm: 50px !default;
+
+$nav-width: 100% !default;
+$nav-height: 49px;
+$nav-space: 8px 24px !default;
+$nav-space--sm: 8px 15px !default;
+$nav-space--mob: 12px 15px !default;
+$nav-arrow-size: 32px !default;
+$nav-text-color: $spec-text-color !default;
+
+$z-i-nav: 9997 !default;
+$z-i-header: 9998 !default;
+
+// Animation
+// ==========================================================================
+$animation-speed: 0.1s !default;
+$animation-speed-mouseleave: 0.35s !default;

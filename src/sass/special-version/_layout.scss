@@ -1,0 +1,23 @@
+@import "../../libs/include-media/dist/include-media";
+@import "src/sass/special-version/vspec-variables";
+@import "../utils/mixins";
+
+.#{$spec-mod} {
+  .max-wrap, .logo-spec-wrap, .nav-box, .global-wrapper,
+  .header, .main, .footer {
+    box-sizing: border-box;
+    //max-width: calc(#{$spec-text-page} + #{nth($spec-page-space, 2)} * 2);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    //@include padding-horizontal(nth($spec-page-space, 2));
+    //@include media("<vspec-lg") {
+    //  max-width: none;
+    //  @include padding-horizontal(nth($spec-page-space--md, 2));
+    //}
+    //
+    //@include media("<vspec-xs") {
+    //  @include padding-horizontal(nth($spec-page-space--sm, 2));
+    //}
+  }
+}

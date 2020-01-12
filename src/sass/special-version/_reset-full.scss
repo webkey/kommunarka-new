@@ -1,0 +1,20 @@
+@import "../../libs/include-media/dist/include-media";
+@import "src/sass/special-version/vspec-variables";
+@import "../utils/mixins";
+
+.#{$spec-mod} {
+  .#{$article-content},
+  .#{$typography-style-class} {
+    hr, p, blockquote,
+    table, .tbl, .table-auto,
+    figure, figcaption {
+      @include spec-reset-full;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  .reset-full {
+    @include spec-reset-full;
+  }
+}

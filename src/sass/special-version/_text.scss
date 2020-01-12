@@ -1,0 +1,112 @@
+@import "../../libs/include-media/dist/include-media";
+@import "src/sass/special-version/vspec-variables";
+@import "../utils/mixins";
+
+.#{$spec-mod} {
+  // reset text size, line-height, letter-spacing, font-family etc.
+  // ------------------------------------------------------------
+  .#{$article-content},
+  .#{$typography-style-class} {
+    b, strong, th,
+    i, em,
+    i b, i strong,
+    em b, em strong,
+    b i, b em,
+    strong i, strong em {
+      @include spec-font-reset;
+    }
+  }
+
+  .breadcrumbs-list,
+  .datetime time,
+  blockquote q,
+  blockquote > p,
+  blockquote cite,
+  .label-holder,
+  label, .label,
+  input[type="checkbox"] + label,
+  input[type="radio"] + label,
+  .font-reset {
+    @include spec-font-reset;
+  }
+
+  // H1, Заголовок страницы
+  // ---------------------------------------------------------------------------
+  h1, .h1,
+  .font-of-title {
+    margin-top: spec-heading("h1", "margin-top");
+    margin-bottom: spec-heading("h1", "margin-bottom");
+    padding: 0;
+    @include spec-font--title;
+    font-style: normal;
+    font-weight: bold;
+    @include spec-h-font-reset;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // H2, Заголовки секций
+  // ---------------------------------------------------------------------------
+  h2, .h2,
+  .font-of-section {
+    margin-top: spec-heading("h2", "margin-top");
+    margin-bottom: spec-heading("h2", "margin-bottom");
+    padding: 0;
+    @include spec-font--section;
+    font-style: normal;
+    font-weight: bold;
+    @include spec-h-font-reset;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // H3, Заголовки пунктов, Заголовки элементов в списке
+  // ---------------------------------------------------------------------------
+  h3, .h3,
+  .font-of-item {
+    margin-top: spec-heading("h3", "margin-top");
+    margin-bottom: spec-heading("h3", "margin-bottom");
+    padding: 0;
+    @include spec-font--item;
+    font-style: normal;
+    font-weight: bold;
+    @include spec-h-font-reset;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Мелкий текст: сноски, даты и т.д.
+  // ---------------------------------------------------------------------------
+  time,
+  figcaption,
+  .font-of-small-text {
+    padding: 0;
+    margin-bottom: spec-heading("h5", "margin-bottom");
+    @include spec-font--note;
+    font-style: italic;
+    font-weight: normal;
+    @include spec-h-font-reset;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

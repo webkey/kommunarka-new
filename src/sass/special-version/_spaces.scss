@@ -1,0 +1,43 @@
+@import "../../libs/include-media/dist/include-media";
+@import "src/sass/special-version/vspec-variables";
+@import "../utils/mixins";
+
+.#{$spec-mod} {
+  // vertical space - section
+  // Самый большой отступ. Между логическими эелементами. Секциями
+  // ---------------------------------------------------------------------------
+  .nav-box,
+  .header,
+  .main,
+  .spec-bottom-space-section {
+    @include spec-bottom-space-section;
+  }
+
+  // vertical space - item
+  // Отступы между крупными элементами внутри секции
+  // ---------------------------------------------------------------------------
+  table, .tbl, .table-auto,
+  figure,
+  .spec-bottom-space-item {
+    @include spec-bottom-space-item;
+  }
+
+  // vertical space - default
+  // Стандартный отступ между элементами
+  // ---------------------------------------------------------------------------
+  .#{$article-content},
+  .#{$typography-style-class} {
+    hr, p, blockquote,
+    blockquote q,
+    blockquote > p {
+      @include spec-bottom-space;
+    }
+  }
+
+  // vertical space - element
+  // Небольшой отступ
+  // ---------------------------------------------------------------------------
+  .spec-bottom-space-element {
+    @include spec-bottom-space-element;
+  }
+}

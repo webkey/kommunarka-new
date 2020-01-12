@@ -1,0 +1,108 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+// Checkbox and Radiobutton
+$checkbox-size: 1.2em !default;
+$checkbox-check-size: 0.4em 0.8em !default;
+$radio-check-size: 0.4em !default;
+$checkbox-color: currentColor !default;
+
+.form-radiocheck {
+  font-size: inherit;
+  line-height: inherit;
+  color: currentColor;
+
+  // hide default inputs
+  input[type="checkbox"], input[type="radio"] {
+    @include size(1em);
+
+    &:disabled {
+      color: inherit !important;
+      opacity: 0.5;
+
+      & + span {
+        cursor: default !important;
+        color: inherit !important;
+
+        &::before, &::after {
+          border-color: currentColor !important;
+        }
+
+        &::before {
+          background-color: inherit !important;
+        }
+      }
+    }
+  }
+
+  & > span {
+    padding-left: 2em;
+
+    &::before {
+      border: 1px solid $checkbox-color;
+      width: $checkbox-size;
+      height: $checkbox-size;
+      margin: -#{round-float($checkbox-size / 2, 1)} 0;
+    }
+  }
+}
+
+.form-radiocheck {
+  input[type="checkbox"] {
+    & ~ span {
+      &::before {
+        border-radius: 0.2em;
+        border: 2px solid currentColor;
+      }
+
+      &::after {
+        height: nth($checkbox-check-size, 1);
+        width: nth($checkbox-check-size, 2);
+        margin: -#{round-float(nth($checkbox-check-size, 1) / 2, 1) + 0.1} #{round-float(($checkbox-size - nth($checkbox-check-size, 2)) / 2, 1)};
+        border: solid currentColor;
+        border-width: 0 0 2px 2px;
+      }
+    }
+  }
+
+  // hover
+  &:hover {
+    input[type="checkbox"] {
+      & ~ span {
+        &::before {
+          border-color: currentColor;
+        }
+      }
+    }
+  }
+}
+
+.form-radiocheck {
+  input[type="radio"] {
+    & ~ span {
+      &::before {
+        border-radius: round($checkbox-size / 2);
+      }
+
+      &::after {
+        height: $radio-check-size;
+        width: $radio-check-size;
+        margin: -#{round($radio-check-size / 2)} #{round(($checkbox-size - $radio-check-size) / 2)};
+        border: round($radio-check-size / 2) solid currentColor;
+        border-radius: round($radio-check-size / 2);
+      }
+    }
+  }
+
+  // hover
+  &:hover {
+    input[type="radio"] {
+      & ~ span {
+        &::before {
+          border-color: currentColor;
+        }
+      }
+    }
+  }
+}

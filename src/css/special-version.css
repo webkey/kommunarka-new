@@ -1,0 +1,3700 @@
+
+/*=========== SPECIAL VERSION =========== */
+/* normalize */
+/* ============================================================ */
+.vspec--hide-page {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+}
+
+html[class*="vspec"] {
+  background: none;
+}
+
+body.vspec {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: normal;
+  font-style: normal;
+  color: #131313;
+  background: white url(../i/empty.png) no-repeat fixed;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: none;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@media (max-width: 479px) {
+  body.vspec {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 479px) {
+  body.vspec {
+    line-height: 1.8;
+  }
+}
+
+.no-cssfilters .hide-no-cssfilters {
+  display: none !important;
+}
+
+/* special version settings */
+/* ============================================================ */
+.vspec-mod_font-style_sans-serif body.vspec {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.vspec-mod_font-style_serif body.vspec {
+  font-family: "Times New Roman", Times, Georgia, serif;
+}
+
+.vspec-mod_font-style_monospace body.vspec {
+  font-family: Consolas, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
+.vspec-mod_font-size_norm body.vspec {
+  font-size: 18px;
+}
+
+@media (max-width: 479px) {
+  .vspec-mod_font-size_norm body.vspec {
+    font-size: 16px;
+  }
+}
+
+.vspec-mod_font-size_sm body.vspec {
+  font-size: 14px;
+}
+
+.vspec-mod_font-size_lg body.vspec {
+  font-size: 30px;
+}
+
+.vspec-mod_line-height_sm body.vspec {
+  line-height: 1.5;
+}
+
+@media (max-width: 479px) {
+  .vspec-mod_line-height_sm body.vspec {
+    line-height: 1.4;
+  }
+}
+
+.vspec-mod_line-height_md body.vspec {
+  line-height: 1.5;
+}
+
+@media (max-width: 479px) {
+  .vspec-mod_line-height_md body.vspec {
+    line-height: 1.8;
+  }
+}
+
+.vspec-mod_line-height_lg body.vspec {
+  line-height: 2.5;
+}
+
+@media (max-width: 479px) {
+  .vspec-mod_line-height_lg body.vspec {
+    line-height: 2.3;
+  }
+}
+
+.vspec-mod_spacing_md body.vspec {
+  letter-spacing: 0.2em;
+  word-spacing: 0.2em;
+}
+
+.vspec-mod_spacing_lg body.vspec {
+  letter-spacing: 0.5em;
+  word-spacing: 0.5em;
+}
+
+.vspec-mod_scheme-color_white body.vspec {
+  color: white;
+  background-color: #131313;
+}
+
+.vspec-mod_scheme-color_blue body.vspec {
+  color: #004c92;
+  background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown body.vspec {
+  color: #4d4b43;
+  background-color: #f7f3d6;
+}
+
+.vspec-mod_scheme-color_green body.vspec {
+  color: #a9e44d;
+  background-color: #3b2716;
+}
+
+/* special version base styles */
+/* ============================================================ */
+/* special version tools panel */
+/* ============================================================ */
+.spec-panel {
+  display: none;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 4rem;
+  line-height: 1.5;
+  text-align: left;
+  box-sizing: border-box;
+  border: 0 solid currentColor;
+  border-width: 0 2px 2px;
+  z-index: 145;
+  will-change: transform, box-shadow;
+  transition-property: transform, box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+@media (max-width: 991px) {
+  .spec-panel {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .spec-panel {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .spec-panel {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.vspec .spec-panel {
+  display: block;
+}
+
+.spec-panel.settings-is-open {
+  box-shadow: 0 0 0 4px currentColor;
+}
+
+.spec-panel__layout {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  background: #fdfdfd;
+  background: linear-gradient(180deg, #fdfdfd 0%, #e7e7e7 100%);
+}
+
+.vspec-mod_scheme-color_white .spec-panel__layout {
+  background: #898989;
+  background: linear-gradient(180deg, #898989 0%, #131313 100%);
+}
+
+.vspec-mod_scheme-color_blue .spec-panel__layout {
+  background: #f4faff;
+  background: linear-gradient(180deg, #f4faff 0%, #c8e5ff 100%);
+}
+
+.vspec-mod_scheme-color_brown .spec-panel__layout {
+  background: #f9f7e2;
+  background: linear-gradient(180deg, #f9f7e2 0%, #f7f3d6 100%);
+}
+
+.vspec-mod_scheme-color_green .spec-panel__layout {
+  background: #76685c;
+  background: linear-gradient(180deg, #76685c 0%, #3b2716 100%);
+}
+
+.spec-panel__layout:hover,
+.no-js .spec-panel__layout {
+  overflow-x: auto;
+}
+
+.spec-panel__holder {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  box-sizing: border-box;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+.no-flexwrap .spec-panel__holder {
+  display: block;
+  padding-top: 10px;
+}
+
+@media (max-width: 479px) {
+  .spec-panel__holder {
+    padding: 0;
+  }
+}
+
+.spec-panel__layout,
+.spec-panel__holder,
+.spec-panel__item,
+.spec-panel__footer {
+  height: 74px;
+}
+
+@media (max-width: 479px) {
+  .spec-panel__layout,
+  .spec-panel__holder,
+  .spec-panel__item,
+  .spec-panel__footer {
+    height: 56px;
+  }
+}
+
+.spec-panel__item, .spec-panel__footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+  padding: 0 8px;
+}
+
+.no-flexwrap .spec-panel__item, .no-flexwrap .spec-panel__footer {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@media (max-width: 479px) {
+  .spec-panel__item, .spec-panel__footer {
+    padding: 0 6px;
+  }
+}
+
+.spec-panel__footer {
+  margin-left: auto;
+}
+
+.spec-panel__label {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  padding-right: 8px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: normal;
+  word-spacing: normal;
+  word-break: normal;
+}
+
+@media (max-width: 767px) {
+  .spec-panel__label {
+    display: none;
+  }
+}
+
+.spec-panel__btn-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  border-color: currentColor;
+  margin-right: 8px;
+}
+
+.no-flexwrap .spec-panel__btn-group {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@media (max-width: 479px) {
+  .spec-panel__btn-group {
+    margin-right: 6px;
+  }
+}
+
+.spec-panel__btn-group:last-child {
+  margin-right: 0;
+}
+
+.spec-panel__btn {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  text-align: center;
+  width: 42px;
+  height: 42px;
+  margin-right: 8px;
+  padding: 2px 0;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: normal;
+  word-spacing: normal;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+      -ms-user-select: none !important;
+          user-select: none !important;
+}
+
+.no-flexwrap .spec-panel__btn {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.spec-panel__btn, .vspec .spec-panel__btn {
+  text-decoration: none;
+  color: currentColor;
+}
+
+@media (max-width: 479px) {
+  .spec-panel__btn {
+    width: 36px;
+    height: 36px;
+    margin-right: 6px;
+  }
+}
+
+.spec-panel__btn:last-child {
+  margin-right: 0;
+}
+
+.spec-panel__btn > span {
+  display: inline-block;
+  vertical-align: top;
+  display: none;
+  text-align: left;
+  margin-right: 5px;
+}
+
+.spec-panel__btn > svg + span {
+  margin-right: 0;
+  margin-left: 5px;
+}
+
+.spec-panel__btn svg {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+@media (max-width: 479px) {
+  .spec-panel__btn svg {
+    -ms-transform: scale(0.85);
+        transform: scale(0.85);
+  }
+}
+
+.spec-panel__btn path {
+  fill: currentColor;
+}
+
+.spec-panel__btn::before, .spec-panel__btn::after {
+  display: none;
+  content: "";
+  position: absolute;
+  left: 3px;
+  margin: 3px 0;
+  pointer-events: none;
+  border-top: 3px solid currentColor;
+  width: calc(100% - 6px);
+}
+
+.spec-panel__btn::before {
+  bottom: 100%;
+}
+
+.spec-panel__btn::after {
+  top: 100%;
+}
+
+.spec-panel__btn:hover, .spec-panel__btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 5px #131313;
+}
+
+.vspec-mod_scheme-color_white .spec-panel__btn:hover, .vspec-mod_scheme-color_white .spec-panel__btn:focus {
+  box-shadow: 0 0 0 2px #131313, 0 0 0 5px white;
+}
+
+.vspec-mod_scheme-color_blue .spec-panel__btn:hover, .vspec-mod_scheme-color_blue .spec-panel__btn:focus {
+  box-shadow: 0 0 0 2px #c8e5ff, 0 0 0 5px #004c92;
+}
+
+.vspec-mod_scheme-color_brown .spec-panel__btn:hover, .vspec-mod_scheme-color_brown .spec-panel__btn:focus {
+  box-shadow: 0 0 0 2px #f7f3d6, 0 0 0 5px #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .spec-panel__btn:hover, .vspec-mod_scheme-color_green .spec-panel__btn:focus {
+  box-shadow: 0 0 0 2px #3b2716, 0 0 0 5px #a9e44d;
+}
+
+.spec-panel__btn.active:hover, .spec-panel__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px white, 0 0 0 5px #131313;
+}
+
+.vspec-mod_scheme-color_white .spec-panel__btn.active:hover, .vspec-mod_scheme-color_white .spec-panel__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #131313, 0 0 0 5px white;
+}
+
+.vspec-mod_scheme-color_blue .spec-panel__btn.active:hover, .vspec-mod_scheme-color_blue .spec-panel__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #c8e5ff, 0 0 0 5px #004c92;
+}
+
+.vspec-mod_scheme-color_brown .spec-panel__btn.active:hover, .vspec-mod_scheme-color_brown .spec-panel__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #f7f3d6, 0 0 0 5px #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .spec-panel__btn.active:hover, .vspec-mod_scheme-color_green .spec-panel__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #3b2716, 0 0 0 5px #a9e44d;
+}
+
+.spec-panel__btn.active[tabindex="-1"] {
+  cursor: default;
+}
+
+.spec-panel__btn.active, .spec-panel__btn.active[tabindex="-1"]:hover, .spec-panel__btn.active[tabindex="-1"]:focus {
+  box-shadow: inset 0 0 0 3px currentColor;
+}
+
+.spec-panel__btn.active::before, .spec-panel__btn.active::after {
+  display: block;
+}
+
+@media (max-width: 479px) {
+  .spec-panel__btn.active::before, .spec-panel__btn.active::after {
+    display: none;
+  }
+}
+
+.spec-panel__btn_color_def, .vspec .spec-panel__btn_color_def {
+  color: #131313;
+  background-color: white;
+}
+
+.spec-panel__btn_color_white, .vspec .spec-panel__btn_color_white {
+  color: white;
+  background-color: #131313;
+}
+
+.spec-panel__btn_color_blue, .vspec .spec-panel__btn_color_blue {
+  color: #004c92;
+  background-color: #c8e5ff;
+}
+
+.spec-panel__btn_color_brown, .vspec .spec-panel__btn_color_brown {
+  color: #4d4b43;
+  background-color: #f7f3d6;
+}
+
+.spec-panel__btn_color_green, .vspec .spec-panel__btn_color_green {
+  color: #a9e44d;
+  background-color: #3b2716;
+}
+
+.spec-panel__btn_spacing_sm .icon, .spec-panel__btn_spacing_sm .icon::before, .spec-panel__btn_spacing_sm .icon::after, .spec-panel__btn_spacing_md .icon, .spec-panel__btn_spacing_md .icon::before, .spec-panel__btn_spacing_md .icon::after, .spec-panel__btn_spacing_lg .icon, .spec-panel__btn_spacing_lg .icon::before, .spec-panel__btn_spacing_lg .icon::after {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 16px;
+  width: 2px;
+  background-color: currentColor;
+}
+
+.spec-panel__btn_spacing_sm .icon, .spec-panel__btn_spacing_md .icon, .spec-panel__btn_spacing_lg .icon {
+  margin: -8px 0 0 -1px;
+}
+
+@media (max-width: 479px) {
+  .spec-panel__btn_spacing_sm .icon, .spec-panel__btn_spacing_md .icon, .spec-panel__btn_spacing_lg .icon {
+    -ms-transform: scale(0.85);
+        transform: scale(0.85);
+  }
+}
+
+.spec-panel__btn_spacing_sm .icon::before, .spec-panel__btn_spacing_sm .icon::after, .spec-panel__btn_spacing_md .icon::before, .spec-panel__btn_spacing_md .icon::after, .spec-panel__btn_spacing_lg .icon::before, .spec-panel__btn_spacing_lg .icon::after {
+  content: "";
+  margin-top: -8px;
+}
+
+.spec-panel__btn_spacing_sm .icon::before, .spec-panel__btn_spacing_md .icon::before, .spec-panel__btn_spacing_lg .icon::before {
+  margin-left: -6px;
+}
+
+.spec-panel__btn_spacing_sm .icon::after, .spec-panel__btn_spacing_md .icon::after, .spec-panel__btn_spacing_lg .icon::after {
+  margin-left: 4px;
+}
+
+.spec-panel__btn_spacing_md .icon::before {
+  margin-left: -9px;
+}
+
+.spec-panel__btn_spacing_md .icon::after {
+  margin-left: 7px;
+}
+
+.spec-panel__btn_spacing_lg .icon::before {
+  margin-left: -12px;
+}
+
+.spec-panel__btn_spacing_lg .icon::after {
+  margin-left: 10px;
+}
+
+@media (min-width: 992px) {
+  .spec-panel__btn_settings, .spec-panel__btn_search, .spec-panel__btn_switcher {
+    width: auto;
+    padding: 2px 0.5em;
+  }
+  .spec-panel__btn_settings > span, .spec-panel__btn_search > span, .spec-panel__btn_switcher > span {
+    display: inline-block;
+    white-space: nowrap;
+  }
+}
+
+.spec-drop {
+  overflow: hidden;
+  display: none;
+}
+
+.spec-drop__layout {
+  padding: 16px;
+  border-top: 2px solid currentColor;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__layout {
+    padding: 0;
+  }
+}
+
+.spec-drop__title {
+  font-weight: bold;
+  word-wrap: break-word;
+  margin-bottom: 8px;
+  font-size: 2em;
+  line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__title {
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .spec-drop__title {
+    font-size: 1.6em;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 991px) {
+  .spec-drop__title {
+    padding: 7px 12px 8px;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    letter-spacing: 0.08em;
+    word-spacing: normal;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;
+    border: 0 solid currentColor;
+    border-width: 1px 0;
+    background: #fdfdfd;
+    background: linear-gradient(180deg, #fdfdfd 0%, #e7e7e7 100%);
+  }
+  .vspec-mod_scheme-color_white .spec-drop__title {
+    background: #898989;
+    background: linear-gradient(180deg, #898989 0%, #131313 100%);
+  }
+  .vspec-mod_scheme-color_blue .spec-drop__title {
+    background: #f4faff;
+    background: linear-gradient(180deg, #f4faff 0%, #c8e5ff 100%);
+  }
+  .vspec-mod_scheme-color_brown .spec-drop__title {
+    background: #f9f7e2;
+    background: linear-gradient(180deg, #f9f7e2 0%, #f7f3d6 100%);
+  }
+  .vspec-mod_scheme-color_green .spec-drop__title {
+    background: #76685c;
+    background: linear-gradient(180deg, #76685c 0%, #3b2716 100%);
+  }
+}
+
+.spec-drop__item + .spec-drop__title {
+  margin-top: 32px;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__item + .spec-drop__title {
+    margin: 0;
+  }
+}
+
+.spec-drop__item, .spec-drop__footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 8px 0 0;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+.no-flexwrap .spec-drop__item, .no-flexwrap .spec-drop__footer {
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__item, .spec-drop__footer {
+    margin: 0;
+    padding-top: 5px;
+  }
+}
+
+.spec-drop__title + .spec-drop__item, .spec-drop__title + .spec-drop__footer {
+  margin-top: 0;
+}
+
+.spec-drop__footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 2px solid currentColor;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: start;
+        justify-content: flex-start;
+    margin-top: 0;
+    padding: 5px 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .spec-drop__footer .spec-drop__btn-group {
+    margin: 0;
+  }
+}
+
+.spec-drop__label {
+  display: inline-block;
+  vertical-align: top;
+  margin: 8px;
+  margin-left: 0;
+  font-size: 1.17em;
+  line-height: 1.9;
+  word-wrap: break-word;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__label {
+    display: block;
+    width: 100%;
+    padding: 0 12px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 19px;
+    letter-spacing: 0.05em;
+    word-spacing: normal;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.spec-drop__btn-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: stretch;
+      align-items: stretch;
+  margin-right: 8px;
+}
+
+.no-flexwrap .spec-drop__btn-group {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__btn-group {
+    padding: 0 6px;
+    margin: 0;
+  }
+}
+
+.spec-drop__btn-group:last-child {
+  margin-right: 0;
+}
+
+.spec-drop__btn {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+  margin: 8px;
+  margin-left: 0;
+  padding: 8px 0.5em;
+  min-height: 50px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid currentColor;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+      -ms-user-select: none !important;
+          user-select: none !important;
+}
+
+.no-flexwrap .spec-drop__btn {
+  display: inline-block;
+  vertical-align: top;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__btn {
+    font-size: 16px;
+    line-height: 20px;
+    min-height: 0;
+    border-radius: 10px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 479px) {
+  .spec-drop__btn {
+    margin: 5px;
+  }
+}
+
+.spec-drop__btn, .vspec .spec-drop__btn {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.spec-drop__btn span {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.spec-drop__btn svg {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+
+@media (max-width: 991px) {
+  .spec-drop__btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.spec-drop__btn path {
+  fill: currentColor;
+}
+
+.spec-drop__btn .icon {
+  display: none;
+}
+
+.spec-drop__btn::before, .spec-drop__btn::after {
+  display: none;
+  content: "";
+  position: absolute;
+  left: 3px;
+  margin: 3px 0;
+  pointer-events: none;
+  border-top: 3px solid currentColor;
+  width: calc(100% - 6px);
+}
+
+.spec-drop__btn::before {
+  bottom: 100%;
+}
+
+.spec-drop__btn::after {
+  top: 100%;
+}
+
+.spec-drop__btn:hover, .spec-drop__btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px white, 0 0 0 5px #131313;
+}
+
+.vspec-mod_scheme-color_white .spec-drop__btn:hover, .vspec-mod_scheme-color_white .spec-drop__btn:focus {
+  box-shadow: 0 0 0 2px #131313, 0 0 0 5px white;
+}
+
+.vspec-mod_scheme-color_blue .spec-drop__btn:hover, .vspec-mod_scheme-color_blue .spec-drop__btn:focus {
+  box-shadow: 0 0 0 2px #c8e5ff, 0 0 0 5px #004c92;
+}
+
+.vspec-mod_scheme-color_brown .spec-drop__btn:hover, .vspec-mod_scheme-color_brown .spec-drop__btn:focus {
+  box-shadow: 0 0 0 2px #f7f3d6, 0 0 0 5px #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .spec-drop__btn:hover, .vspec-mod_scheme-color_green .spec-drop__btn:focus {
+  box-shadow: 0 0 0 2px #3b2716, 0 0 0 5px #a9e44d;
+}
+
+.spec-drop__btn.active:hover, .spec-drop__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px white, 0 0 0 5px #131313;
+}
+
+.vspec-mod_scheme-color_white .spec-drop__btn.active:hover, .vspec-mod_scheme-color_white .spec-drop__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #131313, 0 0 0 5px white;
+}
+
+.vspec-mod_scheme-color_blue .spec-drop__btn.active:hover, .vspec-mod_scheme-color_blue .spec-drop__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #c8e5ff, 0 0 0 5px #004c92;
+}
+
+.vspec-mod_scheme-color_brown .spec-drop__btn.active:hover, .vspec-mod_scheme-color_brown .spec-drop__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #f7f3d6, 0 0 0 5px #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .spec-drop__btn.active:hover, .vspec-mod_scheme-color_green .spec-drop__btn.active:focus {
+  box-shadow: inset 0 0 0 3px currentColor, 0 0 0 2px #3b2716, 0 0 0 5px #a9e44d;
+}
+
+.spec-drop__btn.active[tabindex="-1"] {
+  cursor: default;
+}
+
+.spec-drop__btn.active, .spec-drop__btn.active[tabindex="-1"]:hover, .spec-drop__btn.active[tabindex="-1"]:focus {
+  box-shadow: inset 0 0 0 3px currentColor;
+}
+
+.spec-drop__btn.active::before, .spec-drop__btn.active::after {
+  display: block;
+}
+
+@media (max-width: 479px) {
+  .spec-drop__btn.active::before, .spec-drop__btn.active::after {
+    display: none;
+  }
+}
+
+.spec-drop__btn_sans-serif {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.spec-drop__btn_serif {
+  font-family: "Times New Roman", Times, Georgia, serif;
+}
+
+.spec-drop__btn_monospace {
+  font-family: Consolas, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace;
+}
+
+.spec-drop__btn_size_sm {
+  font-size: 14px;
+}
+
+.spec-drop__btn_size_md {
+  font-size: 18px;
+}
+
+.spec-drop__btn_size_lg {
+  font-size: 30px;
+}
+
+.spec-drop__btn_spacing_norm {
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+.spec-drop__btn_spacing_md {
+  letter-spacing: 0.2em;
+  word-spacing: 0.2em;
+}
+
+.spec-drop__btn_spacing_lg {
+  letter-spacing: 0.5em;
+  word-spacing: 0.5em;
+}
+
+.spec-drop__btn_color_def, .vspec .spec-drop__btn_color_def {
+  color: #131313;
+  background-color: white;
+}
+
+.spec-drop__btn_color_white, .vspec .spec-drop__btn_color_white {
+  color: white;
+  background-color: #131313;
+}
+
+.spec-drop__btn_color_blue, .vspec .spec-drop__btn_color_blue {
+  color: #004c92;
+  background-color: #c8e5ff;
+}
+
+.spec-drop__btn_color_brown, .vspec .spec-drop__btn_color_brown {
+  color: #4d4b43;
+  background-color: #f7f3d6;
+}
+
+.spec-drop__btn_color_green, .vspec .spec-drop__btn_color_green {
+  color: #a9e44d;
+  background-color: #3b2716;
+}
+
+/* special version reset */
+/* ============================================================ */
+.vspec .article-content hr, .vspec .article-content p, .vspec .article-content blockquote,
+.vspec .article-content table, .vspec .article-content .tbl, .vspec .article-content .table-auto,
+.vspec .article-content figure, .vspec .article-content figcaption,
+.vspec .typography hr,
+.vspec .typography p,
+.vspec .typography blockquote,
+.vspec .typography table,
+.vspec .typography .tbl,
+.vspec .typography .table-auto,
+.vspec .typography figure,
+.vspec .typography figcaption {
+  display: block;
+  float: none;
+  position: static;
+  overflow: visible;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  left: auto;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  text-indent: 0;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  text-shadow: none;
+  -ms-transform: none;
+      transform: none;
+  transition: none;
+  border: none;
+  background: none;
+  box-shadow: none;
+  opacity: 1;
+  visibility: visible;
+  box-sizing: border-box;
+  border-radius: 0;
+  perspective: none;
+  vertical-align: baseline;
+  z-index: auto;
+}
+
+.vspec h1, .vspec h2, .vspec h3, .vspec h4, .vspec h5, .vspec h6,
+.vspec .h1, .vspec .h2, .vspec .h3, .vspec .h4, .vspec .h5, .vspec .h6,
+.vspec .reset-full {
+  display: block;
+  float: none;
+  position: static;
+  overflow: visible;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+  left: auto;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  text-indent: 0;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  text-shadow: none;
+  -ms-transform: none;
+      transform: none;
+  transition: none;
+  border: none;
+  background: none;
+  box-shadow: none;
+  opacity: 1;
+  visibility: visible;
+  box-sizing: border-box;
+  border-radius: 0;
+  perspective: none;
+  vertical-align: baseline;
+  z-index: auto;
+}
+
+.vspec polygon,
+.vspec rect,
+.vspec path,
+.vspec circle,
+.vspec .svg-path {
+  fill: currentColor;
+}
+
+.vspec .article-content b, .vspec .article-content strong, .vspec .article-content th,
+.vspec .article-content i, .vspec .article-content em,
+.vspec .article-content i b, .vspec .article-content i strong,
+.vspec .article-content em b, .vspec .article-content em strong,
+.vspec .article-content b i, .vspec .article-content b em,
+.vspec .article-content strong i, .vspec .article-content strong em,
+.vspec .typography b,
+.vspec .typography strong,
+.vspec .typography th,
+.vspec .typography i,
+.vspec .typography em,
+.vspec .typography i b,
+.vspec .typography i strong,
+.vspec .typography em b,
+.vspec .typography em strong,
+.vspec .typography b i,
+.vspec .typography b em,
+.vspec .typography strong i,
+.vspec .typography strong em {
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  color: inherit;
+}
+
+.vspec .breadcrumbs-list,
+.vspec .datetime time,
+.vspec blockquote q,
+.vspec blockquote > p,
+.vspec blockquote cite,
+.vspec .label-holder,
+.vspec label, .vspec .label,
+.vspec input[type="checkbox"] + label,
+.vspec input[type="radio"] + label,
+.vspec .font-reset {
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  color: inherit;
+}
+
+.vspec h1, .vspec .h1,
+.vspec .font-of-title {
+  margin-top: 1.34em;
+  margin-bottom: 0.67em;
+  padding: 0;
+  font-size: 2em;
+  line-height: 1.5;
+  font-style: normal;
+  font-weight: bold;
+  font-family: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+@media (max-width: 991px) {
+  .vspec h1, .vspec .h1,
+  .vspec .font-of-title {
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec h1, .vspec .h1,
+  .vspec .font-of-title {
+    font-size: 1.6em;
+    line-height: 1.7;
+  }
+}
+
+.vspec h1:first-child, .vspec .h1:first-child,
+.vspec .font-of-title:first-child {
+  margin-top: 0;
+}
+
+.vspec h1:last-child, .vspec .h1:last-child,
+.vspec .font-of-title:last-child {
+  margin-bottom: 0;
+}
+
+.vspec h2, .vspec .h2,
+.vspec .font-of-section {
+  margin-top: 1.66em;
+  margin-bottom: 0.83em;
+  padding: 0;
+  font-size: 1.5em;
+  line-height: 1.7;
+  font-style: normal;
+  font-weight: bold;
+  font-family: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+@media (max-width: 991px) {
+  .vspec h2, .vspec .h2,
+  .vspec .font-of-section {
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec h2, .vspec .h2,
+  .vspec .font-of-section {
+    font-size: 1.3em;
+    line-height: 1.83;
+  }
+}
+
+.vspec h2:first-child, .vspec .h2:first-child,
+.vspec .font-of-section:first-child {
+  margin-top: 0;
+}
+
+.vspec h2:last-child, .vspec .h2:last-child,
+.vspec .font-of-section:last-child {
+  margin-bottom: 0;
+}
+
+.vspec h3, .vspec .h3,
+.vspec .font-of-item {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: 0;
+  font-size: 1.17em;
+  line-height: 1.9;
+  font-style: normal;
+  font-weight: bold;
+  font-family: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+@media (max-width: 991px) {
+  .vspec h3, .vspec .h3,
+  .vspec .font-of-item {
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec h3, .vspec .h3,
+  .vspec .font-of-item {
+    font-size: 1.17em;
+    line-height: 1.9;
+  }
+}
+
+.vspec h3:first-child, .vspec .h3:first-child,
+.vspec .font-of-item:first-child {
+  margin-top: 0;
+}
+
+.vspec h3:last-child, .vspec .h3:last-child,
+.vspec .font-of-item:last-child {
+  margin-bottom: 0;
+}
+
+.vspec time,
+.vspec figcaption,
+.vspec .font-of-small-text {
+  padding: 0;
+  margin-bottom: 1.67em;
+  font-size: 0.83em;
+  line-height: 2.2;
+  font-style: italic;
+  font-weight: normal;
+  font-family: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-transform: inherit;
+  white-space: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+.vspec time:last-child,
+.vspec figcaption:last-child,
+.vspec .font-of-small-text:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .spec-hide {
+  display: none !important;
+}
+
+.vspec .spec-hide-before::before {
+  display: none !important;
+}
+
+.vspec .spec-hide-after::after {
+  display: none !important;
+}
+
+.vspec .nav-box,
+.vspec .header,
+.vspec .main,
+.vspec .spec-bottom-space-section {
+  margin-bottom: 2.2em;
+}
+
+.vspec .nav-box:last-child,
+.vspec .header:last-child,
+.vspec .main:last-child,
+.vspec .spec-bottom-space-section:last-child {
+  margin-bottom: 0;
+}
+
+.vspec table, .vspec .tbl, .vspec .table-auto,
+.vspec figure,
+.vspec .spec-bottom-space-item {
+  margin-bottom: 1.5em;
+}
+
+.vspec table:last-child, .vspec .tbl:last-child, .vspec .table-auto:last-child,
+.vspec figure:last-child,
+.vspec .spec-bottom-space-item:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .article-content hr, .vspec .article-content p, .vspec .article-content blockquote,
+.vspec .article-content blockquote q,
+.vspec .article-content blockquote > p,
+.vspec .typography hr,
+.vspec .typography p,
+.vspec .typography blockquote,
+.vspec .typography blockquote q,
+.vspec .typography blockquote > p {
+  margin-bottom: 1em;
+}
+
+.vspec .article-content hr:last-child, .vspec .article-content p:last-child, .vspec .article-content blockquote:last-child,
+.vspec .article-content blockquote q:last-child,
+.vspec .article-content blockquote > p:last-child,
+.vspec .typography hr:last-child,
+.vspec .typography p:last-child,
+.vspec .typography blockquote:last-child,
+.vspec .typography blockquote q:last-child,
+.vspec .typography blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .spec-bottom-space-element {
+  margin-bottom: 0.5em;
+}
+
+.vspec .spec-bottom-space-element:last-child {
+  margin-bottom: 0;
+}
+
+.vspec-mod_mono .vspec img,
+.vspec-mod_mono .vspec iframe,
+.vspec-mod_mono .vspec .logo,
+.vspec-mod_mono .vspec .novelty,
+.vspec-mod_mono .vspec .postnoe,
+.vspec-mod_mono .vspec .halal,
+.vspec-mod_mono .vspec .grayscale {
+  filter: grayscale(1) contrast(1) invert(0);
+}
+
+.vspec-mod_mono.vspec-mod_scheme-color_green .vspec .novelty,
+.vspec-mod_mono.vspec-mod_scheme-color_green .vspec .postnoe,
+.vspec-mod_mono.vspec-mod_scheme-color_green .vspec .halal,
+.vspec-mod_mono.vspec-mod_scheme-color_green .vspec .logo {
+  filter: grayscale(0) contrast(1) invert(1);
+}
+
+.vspec-mod_mono.vspec-mod_scheme-color_white .vspec .novelty,
+.vspec-mod_mono.vspec-mod_scheme-color_white .vspec .postnoe,
+.vspec-mod_mono.vspec-mod_scheme-color_white .vspec .halal,
+.vspec-mod_mono.vspec-mod_scheme-color_white .vspec .logo {
+  filter: grayscale(1) contrast(1) invert(1);
+}
+
+html:not(.vspec-mod_img_on) .vspec .novelty,
+html:not(.vspec-mod_img_on) .vspec .postnoe,
+html:not(.vspec-mod_img_on) .vspec .halal,
+html:not(.vspec-mod_img_on) .vspec img,
+html:not(.vspec-mod_img_on) .vspec .spec-no-img {
+  display: none !important;
+}
+
+html:not(.vspec-mod_img_on) .vspec .show-always {
+  display: block !important;
+}
+
+html:not(.vspec-mod_img_on) .vspec .captcha-img img,
+html:not(.vspec-mod_img_on) .vspec img[src*="captcha"] {
+  display: inline-block !important;
+  vertical-align: top;
+}
+
+.vspec .max-wrap, .vspec .logo-spec-wrap, .vspec .nav-box, .vspec .global-wrapper,
+.vspec .header, .vspec .main, .vspec .footer {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* special version buttons */
+/* ============================================================ */
+.vspec .btn-default,
+.vspec .btn-def,
+.vspec input[type="submit"],
+.vspec input[type="reset"],
+.vspec button,
+.vspec .btn-default-alt,
+.vspec .btn-def-alt,
+.vspec .btn-alt,
+.vspec .nav-opener,
+.vspec .button,
+.vspec .spec-btn-switcher {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  height: auto;
+  font-family: inherit;
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit;
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  padding: 10px 18px;
+  border: 2px solid;
+  border-radius: 6px;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+  will-change: color, background-color, border-color;
+  transition-property: color, background-color, border-color;
+  transition-duration: 0.1s;
+  transition-timing-function: ease-in-out;
+  color: white;
+  background-color: #131313;
+  border-color: #131313;
+}
+
+.vspec .btn-default > span,
+.vspec .btn-def > span,
+.vspec input[type="submit"] > span,
+.vspec input[type="reset"] > span,
+.vspec button > span,
+.vspec .btn-default-alt > span,
+.vspec .btn-def-alt > span,
+.vspec .btn-alt > span,
+.vspec .nav-opener > span,
+.vspec .button > span,
+.vspec .spec-btn-switcher > span {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.vspec-mod_scheme-color_white .vspec .btn-default, .vspec-mod_scheme-color_white
+.vspec .btn-def, .vspec-mod_scheme-color_white
+.vspec input[type="submit"], .vspec-mod_scheme-color_white
+.vspec input[type="reset"], .vspec-mod_scheme-color_white
+.vspec button, .vspec-mod_scheme-color_white
+.vspec .btn-default-alt, .vspec-mod_scheme-color_white
+.vspec .btn-def-alt, .vspec-mod_scheme-color_white
+.vspec .btn-alt, .vspec-mod_scheme-color_white
+.vspec .nav-opener, .vspec-mod_scheme-color_white
+.vspec .button, .vspec-mod_scheme-color_white
+.vspec .spec-btn-switcher {
+  color: #131313;
+  background-color: white;
+  border-color: white;
+}
+
+.vspec-mod_scheme-color_blue .vspec .btn-default, .vspec-mod_scheme-color_blue
+.vspec .btn-def, .vspec-mod_scheme-color_blue
+.vspec input[type="submit"], .vspec-mod_scheme-color_blue
+.vspec input[type="reset"], .vspec-mod_scheme-color_blue
+.vspec button, .vspec-mod_scheme-color_blue
+.vspec .btn-default-alt, .vspec-mod_scheme-color_blue
+.vspec .btn-def-alt, .vspec-mod_scheme-color_blue
+.vspec .btn-alt, .vspec-mod_scheme-color_blue
+.vspec .nav-opener, .vspec-mod_scheme-color_blue
+.vspec .button, .vspec-mod_scheme-color_blue
+.vspec .spec-btn-switcher {
+  color: #c8e5ff;
+  background-color: #004c92;
+  border-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .btn-default, .vspec-mod_scheme-color_brown
+.vspec .btn-def, .vspec-mod_scheme-color_brown
+.vspec input[type="submit"], .vspec-mod_scheme-color_brown
+.vspec input[type="reset"], .vspec-mod_scheme-color_brown
+.vspec button, .vspec-mod_scheme-color_brown
+.vspec .btn-default-alt, .vspec-mod_scheme-color_brown
+.vspec .btn-def-alt, .vspec-mod_scheme-color_brown
+.vspec .btn-alt, .vspec-mod_scheme-color_brown
+.vspec .nav-opener, .vspec-mod_scheme-color_brown
+.vspec .button, .vspec-mod_scheme-color_brown
+.vspec .spec-btn-switcher {
+  color: #f7f3d6;
+  background-color: #4d4b43;
+  border-color: #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .vspec .btn-default, .vspec-mod_scheme-color_green
+.vspec .btn-def, .vspec-mod_scheme-color_green
+.vspec input[type="submit"], .vspec-mod_scheme-color_green
+.vspec input[type="reset"], .vspec-mod_scheme-color_green
+.vspec button, .vspec-mod_scheme-color_green
+.vspec .btn-default-alt, .vspec-mod_scheme-color_green
+.vspec .btn-def-alt, .vspec-mod_scheme-color_green
+.vspec .btn-alt, .vspec-mod_scheme-color_green
+.vspec .nav-opener, .vspec-mod_scheme-color_green
+.vspec .button, .vspec-mod_scheme-color_green
+.vspec .spec-btn-switcher {
+  color: #3b2716;
+  background-color: #a9e44d;
+  border-color: #a9e44d;
+}
+
+.vspec .btn-default::before, .vspec .btn-default::after,
+.vspec .btn-def::before,
+.vspec .btn-def::after,
+.vspec input[type="submit"]::before,
+.vspec input[type="submit"]::after,
+.vspec input[type="reset"]::before,
+.vspec input[type="reset"]::after,
+.vspec button::before,
+.vspec button::after,
+.vspec .btn-default-alt::before,
+.vspec .btn-default-alt::after,
+.vspec .btn-def-alt::before,
+.vspec .btn-def-alt::after,
+.vspec .btn-alt::before,
+.vspec .btn-alt::after,
+.vspec .nav-opener::before,
+.vspec .nav-opener::after,
+.vspec .button::before,
+.vspec .button::after,
+.vspec .spec-btn-switcher::before,
+.vspec .spec-btn-switcher::after {
+  display: none;
+}
+
+.vspec .btn-default:hover, .vspec .btn-default:focus,
+.vspec .btn-def:hover,
+.vspec .btn-def:focus,
+.vspec input[type="submit"]:hover,
+.vspec input[type="submit"]:focus,
+.vspec input[type="reset"]:hover,
+.vspec input[type="reset"]:focus,
+.vspec button:hover,
+.vspec button:focus,
+.vspec .btn-default-alt:hover,
+.vspec .btn-default-alt:focus,
+.vspec .btn-def-alt:hover,
+.vspec .btn-def-alt:focus,
+.vspec .btn-alt:hover,
+.vspec .btn-alt:focus,
+.vspec .nav-opener:hover,
+.vspec .nav-opener:focus,
+.vspec .button:hover,
+.vspec .button:focus,
+.vspec .spec-btn-switcher:hover,
+.vspec .spec-btn-switcher:focus {
+  background: none;
+  border-color: inherit;
+  color: inherit;
+}
+
+.vspec .btn-default:disabled,
+.vspec .btn-def:disabled,
+.vspec input[type="submit"]:disabled,
+.vspec input[type="reset"]:disabled,
+.vspec button:disabled,
+.vspec .btn-default-alt:disabled,
+.vspec .btn-def-alt:disabled,
+.vspec .btn-alt:disabled,
+.vspec .nav-opener:disabled,
+.vspec .button:disabled,
+.vspec .spec-btn-switcher:disabled {
+  opacity: 0.5;
+}
+
+.vspec .btn-default-alt,
+.vspec .btn-alt,
+.vspec .btn-def-alt,
+.vspec input[type="reset"] {
+  border: 2px solid currentColor;
+  color: inherit;
+  background-color: white;
+  color: inherit;
+}
+
+.vspec-mod_scheme-color_white .vspec .btn-default-alt, .vspec-mod_scheme-color_white
+.vspec .btn-alt, .vspec-mod_scheme-color_white
+.vspec .btn-def-alt, .vspec-mod_scheme-color_white
+.vspec input[type="reset"] {
+  background-color: #131313;
+  color: inherit;
+}
+
+.vspec-mod_scheme-color_blue .vspec .btn-default-alt, .vspec-mod_scheme-color_blue
+.vspec .btn-alt, .vspec-mod_scheme-color_blue
+.vspec .btn-def-alt, .vspec-mod_scheme-color_blue
+.vspec input[type="reset"] {
+  background-color: #c8e5ff;
+  color: inherit;
+}
+
+.vspec-mod_scheme-color_brown .vspec .btn-default-alt, .vspec-mod_scheme-color_brown
+.vspec .btn-alt, .vspec-mod_scheme-color_brown
+.vspec .btn-def-alt, .vspec-mod_scheme-color_brown
+.vspec input[type="reset"] {
+  background-color: #f7f3d6;
+  color: inherit;
+}
+
+.vspec-mod_scheme-color_green .vspec .btn-default-alt, .vspec-mod_scheme-color_green
+.vspec .btn-alt, .vspec-mod_scheme-color_green
+.vspec .btn-def-alt, .vspec-mod_scheme-color_green
+.vspec input[type="reset"] {
+  background-color: #3b2716;
+  color: inherit;
+}
+
+.vspec .btn-default-alt:hover, .vspec .btn-default-alt:focus,
+.vspec .btn-alt:hover,
+.vspec .btn-alt:focus,
+.vspec .btn-def-alt:hover,
+.vspec .btn-def-alt:focus,
+.vspec input[type="reset"]:hover,
+.vspec input[type="reset"]:focus {
+  color: white;
+  background-color: #131313;
+  border-color: #131313;
+}
+
+.vspec-mod_scheme-color_white .vspec .btn-default-alt:hover, .vspec-mod_scheme-color_white .vspec .btn-default-alt:focus, .vspec-mod_scheme-color_white
+.vspec .btn-alt:hover, .vspec-mod_scheme-color_white
+.vspec .btn-alt:focus, .vspec-mod_scheme-color_white
+.vspec .btn-def-alt:hover, .vspec-mod_scheme-color_white
+.vspec .btn-def-alt:focus, .vspec-mod_scheme-color_white
+.vspec input[type="reset"]:hover, .vspec-mod_scheme-color_white
+.vspec input[type="reset"]:focus {
+  color: #131313;
+  background-color: white;
+  border-color: white;
+}
+
+.vspec-mod_scheme-color_blue .vspec .btn-default-alt:hover, .vspec-mod_scheme-color_blue .vspec .btn-default-alt:focus, .vspec-mod_scheme-color_blue
+.vspec .btn-alt:hover, .vspec-mod_scheme-color_blue
+.vspec .btn-alt:focus, .vspec-mod_scheme-color_blue
+.vspec .btn-def-alt:hover, .vspec-mod_scheme-color_blue
+.vspec .btn-def-alt:focus, .vspec-mod_scheme-color_blue
+.vspec input[type="reset"]:hover, .vspec-mod_scheme-color_blue
+.vspec input[type="reset"]:focus {
+  color: #c8e5ff;
+  background-color: #004c92;
+  border-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .btn-default-alt:hover, .vspec-mod_scheme-color_brown .vspec .btn-default-alt:focus, .vspec-mod_scheme-color_brown
+.vspec .btn-alt:hover, .vspec-mod_scheme-color_brown
+.vspec .btn-alt:focus, .vspec-mod_scheme-color_brown
+.vspec .btn-def-alt:hover, .vspec-mod_scheme-color_brown
+.vspec .btn-def-alt:focus, .vspec-mod_scheme-color_brown
+.vspec input[type="reset"]:hover, .vspec-mod_scheme-color_brown
+.vspec input[type="reset"]:focus {
+  color: #f7f3d6;
+  background-color: #4d4b43;
+  border-color: #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .vspec .btn-default-alt:hover, .vspec-mod_scheme-color_green .vspec .btn-default-alt:focus, .vspec-mod_scheme-color_green
+.vspec .btn-alt:hover, .vspec-mod_scheme-color_green
+.vspec .btn-alt:focus, .vspec-mod_scheme-color_green
+.vspec .btn-def-alt:hover, .vspec-mod_scheme-color_green
+.vspec .btn-def-alt:focus, .vspec-mod_scheme-color_green
+.vspec input[type="reset"]:hover, .vspec-mod_scheme-color_green
+.vspec input[type="reset"]:focus {
+  color: #3b2716;
+  background-color: #a9e44d;
+  border-color: #a9e44d;
+}
+
+.vspec .addNav > ul > li {
+  font-family: inherit;
+}
+
+.vspec .addNav > ul > li > a {
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  height: auto;
+  font-family: inherit;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.2;
+  padding: 0.3em 0.5em 0.3em;
+  cursor: pointer;
+  letter-spacing: inherit;
+  text-transform: none;
+  color: inherit;
+  transition: none;
+  text-decoration: none;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  background-color: white;
+  color: inherit;
+}
+
+.vspec-mod_scheme-color_white .vspec .addNav > ul > li > a {
+  background-color: #131313;
+  color: inherit;
+}
+
+.vspec-mod_scheme-color_blue .vspec .addNav > ul > li > a {
+  background-color: #c8e5ff;
+  color: inherit;
+}
+
+.vspec-mod_scheme-color_brown .vspec .addNav > ul > li > a {
+  background-color: #f7f3d6;
+  color: inherit;
+}
+
+.vspec-mod_scheme-color_green .vspec .addNav > ul > li > a {
+  background-color: #3b2716;
+  color: inherit;
+}
+
+.vspec .addNav > ul > li > a::before, .vspec .addNav > ul > li > a::after {
+  display: none;
+}
+
+.vspec .addNav > ul > li > a:hover {
+  color: white;
+  background-color: #131313;
+  border-color: #131313;
+}
+
+.vspec-mod_scheme-color_white .vspec .addNav > ul > li > a:hover {
+  color: #131313;
+  background-color: white;
+  border-color: white;
+}
+
+.vspec-mod_scheme-color_blue .vspec .addNav > ul > li > a:hover {
+  color: #c8e5ff;
+  background-color: #004c92;
+  border-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .addNav > ul > li > a:hover {
+  color: #f7f3d6;
+  background-color: #4d4b43;
+  border-color: #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .vspec .addNav > ul > li > a:hover {
+  color: #3b2716;
+  background-color: #a9e44d;
+  border-color: #a9e44d;
+}
+
+.vspec .addNav > ul > li.current > a {
+  font-weight: bold;
+  background: none;
+}
+
+.vspec .addNav > ul > li.active > a {
+  color: white;
+  background-color: #131313;
+  border-color: #131313;
+}
+
+.vspec-mod_scheme-color_white .vspec .addNav > ul > li.active > a {
+  color: #131313;
+  background-color: white;
+  border-color: white;
+}
+
+.vspec-mod_scheme-color_blue .vspec .addNav > ul > li.active > a {
+  color: #c8e5ff;
+  background-color: #004c92;
+  border-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .addNav > ul > li.active > a {
+  color: #f7f3d6;
+  background-color: #4d4b43;
+  border-color: #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .vspec .addNav > ul > li.active > a {
+  color: #3b2716;
+  background-color: #a9e44d;
+  border-color: #a9e44d;
+}
+
+/* special version typography */
+/* ============================================================ */
+.vspec h4, .vspec .h4 {
+  margin-top: 2.66em;
+  margin-bottom: 1.33em;
+  font-size: 1em;
+  line-height: 2;
+  font-weight: bold;
+}
+
+.vspec h4:first-child, .vspec .h4:first-child {
+  margin-top: 0;
+}
+
+.vspec h4:last-child, .vspec .h4:last-child {
+  margin-bottom: 0;
+}
+
+.vspec h5, .vspec .h5 {
+  margin-top: 3.34em;
+  margin-bottom: 1.67em;
+  font-size: 0.83em;
+  line-height: 2.2;
+  font-weight: bold;
+}
+
+.vspec h5:first-child, .vspec .h5:first-child {
+  margin-top: 0;
+}
+
+.vspec h5:last-child, .vspec .h5:last-child {
+  margin-bottom: 0;
+}
+
+.vspec h6, .vspec .h6 {
+  margin-top: 4.66em;
+  margin-bottom: 2.33em;
+  font-size: 0.67em;
+  line-height: 2.5;
+  font-weight: bold;
+}
+
+.vspec h6:first-child, .vspec .h6:first-child {
+  margin-top: 0;
+}
+
+.vspec h6:last-child, .vspec .h6:last-child {
+  margin-bottom: 0;
+}
+
+.vspec hr {
+  border-top: 2px solid currentColor;
+}
+
+.vspec time {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.vspec .mark {
+  color: white;
+  background-color: #131313;
+  border-color: #131313;
+}
+
+.vspec-mod_scheme-color_white .vspec .mark {
+  color: #131313;
+  background-color: white;
+  border-color: white;
+}
+
+.vspec-mod_scheme-color_blue .vspec .mark {
+  color: #c8e5ff;
+  background-color: #004c92;
+  border-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec .mark {
+  color: #f7f3d6;
+  background-color: #4d4b43;
+  border-color: #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .vspec .mark {
+  color: #3b2716;
+  background-color: #a9e44d;
+  border-color: #a9e44d;
+}
+
+.vspec .nobr {
+  white-space: nowrap;
+}
+
+.vspec .article-content a {
+  color: currentColor;
+  text-decoration: underline;
+  transition: none;
+}
+
+.vspec .article-content a:hover {
+  text-decoration: none;
+}
+
+.vspec .article-content b, .vspec .article-content strong, .vspec .article-content th {
+  font-weight: bold;
+}
+
+.vspec .article-content i, .vspec .article-content em {
+  font-style: italic;
+}
+
+.vspec .article-content i b, .vspec .article-content i strong,
+.vspec .article-content em b, .vspec .article-content em strong,
+.vspec .article-content b i, .vspec .article-content b em,
+.vspec .article-content strong i, .vspec .article-content strong em {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.vspec blockquote {
+  max-width: 90%;
+  padding-left: 2em;
+  background: none;
+  margin: 2.2em 0;
+  border: solid currentColor;
+  border-width: 0 0 0 2px;
+}
+
+@media (max-width: 991px) {
+  .vspec blockquote {
+    padding-left: 1.5em;
+  }
+}
+
+@media (max-width: 479px) {
+  .vspec blockquote {
+    padding-left: 1em;
+  }
+}
+
+.vspec blockquote q {
+  font-size: inherit;
+  line-height: inherit;
+  font-style: italic;
+  border-color: currentColor;
+  padding: 0;
+}
+
+.vspec blockquote q::before, .vspec blockquote q::after {
+  display: none;
+}
+
+.vspec blockquote cite {
+  font-style: italic;
+}
+
+.vspec table, .vspec .tbl {
+  border-collapse: collapse;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  border-color: #131313;
+  border: 1px solid currentColor;
+}
+
+.vspec-mod_scheme-color_white .vspec table, .vspec-mod_scheme-color_white .vspec .tbl {
+  border-color: white;
+}
+
+.vspec-mod_scheme-color_blue .vspec table, .vspec-mod_scheme-color_blue .vspec .tbl {
+  border-color: #004c92;
+}
+
+.vspec-mod_scheme-color_brown .vspec table, .vspec-mod_scheme-color_brown .vspec .tbl {
+  border-color: #4d4b43;
+}
+
+.vspec-mod_scheme-color_green .vspec table, .vspec-mod_scheme-color_green .vspec .tbl {
+  border-color: #a9e44d;
+}
+
+.vspec table:last-child, .vspec .tbl:last-child {
+  margin-bottom: 0;
+}
+
+.vspec table td, .vspec table th, .vspec table thead td, .vspec table tr:first-child td, .vspec .tbl td, .vspec .tbl th, .vspec .tbl thead td, .vspec .tbl tr:first-child td {
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 0.85em;
+  line-height: 1.5;
+  letter-spacing: inherit;
+  color: inherit;
+  text-align: left;
+  text-transform: none;
+  text-decoration: none;
+  white-space: normal;
+  border: 1px solid currentColor;
+  background: none;
+  padding: 0.4em 0.6em;
+  vertical-align: top;
+}
+
+.vspec table td td, .vspec table td th, .vspec table th td, .vspec table th th, .vspec table thead td td, .vspec table thead td th, .vspec table tr:first-child td td, .vspec table tr:first-child td th, .vspec .tbl td td, .vspec .tbl td th, .vspec .tbl th td, .vspec .tbl th th, .vspec .tbl thead td td, .vspec .tbl thead td th, .vspec .tbl tr:first-child td td, .vspec .tbl tr:first-child td th {
+  font-size: inherit;
+}
+
+.vspec table tr:hover, .vspec .tbl tr:hover {
+  background: none;
+}
+
+.vspec table th, .vspec .tbl th {
+  font-weight: bold;
+}
+
+.vspec table caption, .vspec .tbl caption {
+  font-size: 0.83em;
+  line-height: 2.2;
+  color: inherit;
+  font-style: italic;
+}
+
+.vspec .tbl table {
+  margin-bottom: 0;
+}
+
+.vspec .table-auto {
+  position: relative;
+  overflow: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vspec .table-auto table {
+  margin-bottom: 0;
+  width: auto;
+  min-width: 100%;
+}
+
+.vspec label {
+  display: block;
+}
+
+.vspec input[type="text"],
+.vspec input[type="password"],
+.vspec input[type="email"],
+.vspec input[type="search"],
+.vspec textarea {
+  font-family: inherit;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 24px;
+  height: 50px;
+  width: 100%;
+  padding: 11px 10px;
+  letter-spacing: inherit;
+  box-shadow: none;
+  color: inherit;
+  transition: none;
+  background: none;
+  border-radius: 0;
+  border: 2px solid currentColor;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+}
+
+.vspec-mod_font-size_lg .vspec input[type="text"], .vspec-mod_font-size_lg
+.vspec input[type="password"], .vspec-mod_font-size_lg
+.vspec input[type="email"], .vspec-mod_font-size_lg
+.vspec input[type="search"], .vspec-mod_font-size_lg
+.vspec textarea {
+  font-size: 22px;
+}
+
+.vspec input[type="text"].error,
+.vspec input[type="password"].error,
+.vspec input[type="email"].error,
+.vspec input[type="search"].error,
+.vspec textarea.error {
+  border-color: currentColor;
+  box-shadow: none;
+  color: inherit;
+}
+
+.vspec input[type="text"]:focus,
+.vspec input[type="password"]:focus,
+.vspec input[type="email"]:focus,
+.vspec input[type="search"]:focus,
+.vspec textarea:focus {
+  box-shadow: 0 0 0 2px currentColor;
+  border-color: currentColor;
+}
+
+.vspec input[type="text"]::-webkit-input-placeholder, .vspec input[type="password"]::-webkit-input-placeholder, .vspec input[type="email"]::-webkit-input-placeholder, .vspec input[type="search"]::-webkit-input-placeholder, .vspec textarea::-webkit-input-placeholder {
+  color: currentColor;
+  transition: none;
+}
+
+.vspec input[type="text"]:-moz-placeholder, .vspec input[type="password"]:-moz-placeholder, .vspec input[type="email"]:-moz-placeholder, .vspec input[type="search"]:-moz-placeholder, .vspec textarea:-moz-placeholder {
+  color: currentColor;
+  transition: none;
+}
+
+.vspec input[type="text"]::-moz-placeholder, .vspec input[type="password"]::-moz-placeholder, .vspec input[type="email"]::-moz-placeholder, .vspec input[type="search"]::-moz-placeholder, .vspec textarea::-moz-placeholder {
+  opacity: 1;
+  color: currentColor;
+  transition: none;
+}
+
+.vspec input[type="text"]:-ms-input-placeholder, .vspec input[type="password"]:-ms-input-placeholder, .vspec input[type="email"]:-ms-input-placeholder, .vspec input[type="search"]:-ms-input-placeholder, .vspec textarea:-ms-input-placeholder {
+  opacity: 1;
+  color: currentColor;
+  transition: none;
+}
+
+.vspec input[type="text"].placeholder, .vspec input[type="password"].placeholder, .vspec input[type="email"].placeholder, .vspec input[type="search"].placeholder, .vspec textarea.placeholder {
+  color: currentColor;
+  transition: none;
+}
+
+.vspec textarea {
+  resize: vertical;
+  min-height: 142px;
+  height: 142px;
+}
+
+.vspec select {
+  font-size: inherit;
+  padding: 0.5em;
+  height: auto;
+  width: 100%;
+  border: 2px solid currentColor;
+}
+
+.vspec input[type="checkbox"], .vspec input[type="radio"] {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.3em;
+}
+
+.vspec input[type="checkbox"] + label, .vspec input[type="radio"] + label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.vspec input[type="checkbox"] + label > span, .vspec input[type="radio"] + label > span {
+  padding: 0;
+  z-index: auto;
+  display: inline;
+  vertical-align: baseline;
+}
+
+.vspec input[type="checkbox"] + label > span::before, .vspec input[type="checkbox"] + label > span::after, .vspec input[type="radio"] + label > span::before, .vspec input[type="radio"] + label > span::after {
+  display: none !important;
+}
+
+.vspec table img {
+  max-width: none;
+}
+
+.vspec .imgc, .vspec .imgr, .vspec .imgl {
+  padding: 0;
+  margin: 0;
+}
+
+.vspec .imgr {
+  margin-left: 1em;
+  max-width: 80%;
+}
+
+@media (max-width: 639px) {
+  .vspec .imgr {
+    margin-left: auto;
+    max-width: none;
+  }
+}
+
+.vspec .imgl {
+  margin-right: 1em;
+  max-width: 80%;
+}
+
+@media (max-width: 639px) {
+  .vspec .imgl {
+    margin-right: auto;
+    max-width: none;
+  }
+}
+
+.vspec .article-content figure img {
+  margin-bottom: 0;
+}
+
+.vspec .article-content figcaption {
+  text-align: center;
+  padding: 0.5em 2em 0;
+}
+
+/* special version components */
+/* ============================================================ */
+.vspec [style*="font-family"],
+.vspec [style*="FONT-FAMILY"] {
+  font-family: inherit !important;
+}
+
+.vspec [style*="font-size"],
+.vspec [style*="FONT-SIZE"] {
+  font-size: inherit !important;
+}
+
+.vspec [style*="line-height"],
+.vspec [style*="LINE-HEIGHT"] {
+  line-height: inherit !important;
+}
+
+.vspec [style*="color"],
+.vspec [style*="COLOR"] {
+  color: inherit !important;
+}
+
+.vspec [style*="letter-spacing"],
+.vspec [style*="LETTER-SPACING"] {
+  letter-spacing: inherit !important;
+}
+
+.vspec [style*="background-color"],
+.vspec [style*="BACKGROUND-COLOR"] {
+  background-color: transparent !important;
+}
+
+.vspec [color] {
+  color: inherit !important;
+  font-weight: bold;
+}
+
+.vspec table[width] {
+  width: auto !important;
+}
+
+.vspec table[height] {
+  height: auto !important;
+}
+
+.vspec img[style*="border"] {
+  border: none !important;
+}
+
+.vspec p:empty {
+  display: none !important;
+}
+
+.vspec .logo-spec-wrap {
+  display: block;
+  margin-bottom: 1.2em;
+  font-size: inherit;
+  line-height: 1;
+  text-align: center;
+}
+
+.vspec .logo-spec-wrap .logo-spec {
+  box-sizing: border-box;
+  font-size: 1.2em;
+  line-height: 1.3;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+@media (max-width: 479px) {
+  .vspec .logo-spec-wrap .logo-spec {
+    font-size: 1em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+}
+
+.vspec .logo-spec-wrap .logo-spec > span {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.vspec .logo-spec-wrap a.logo-spec:hover > span {
+  text-decoration: underline;
+}
+
+.vspec .logo-spec-wrap.has-logotype {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  text-align: left;
+}
+
+.vspec .logo-spec-wrap.has-logotype .logo-spec {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.vspec .logo-spec-wrap.has-logotype .logo-spec svg {
+  display: inline-block;
+  vertical-align: top;
+  height: 3.2em;
+  width: 3.2em;
+  margin-right: 1em;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+  .vspec .logo-spec-wrap.has-logotype .logo-spec svg {
+    height: 3.2em;
+    width: 3.2em;
+    margin-right: 0.8em;
+  }
+}
+
+@media (max-width: 479px) {
+  .vspec .logo-spec-wrap.has-logotype .logo-spec svg {
+    margin-right: 0.5em;
+  }
+}
+
+/* style for current project */
+/* ============================================================ */
+.form-radiocheck {
+  font-size: inherit;
+  line-height: inherit;
+  color: currentColor;
+}
+
+.form-radiocheck input[type="checkbox"], .form-radiocheck input[type="radio"] {
+  width: 1em;
+  height: 1em;
+}
+
+.form-radiocheck input[type="checkbox"]:disabled, .form-radiocheck input[type="radio"]:disabled {
+  color: inherit !important;
+  opacity: 0.5;
+}
+
+.form-radiocheck input[type="checkbox"]:disabled + span, .form-radiocheck input[type="radio"]:disabled + span {
+  cursor: default !important;
+  color: inherit !important;
+}
+
+.form-radiocheck input[type="checkbox"]:disabled + span::before, .form-radiocheck input[type="checkbox"]:disabled + span::after, .form-radiocheck input[type="radio"]:disabled + span::before, .form-radiocheck input[type="radio"]:disabled + span::after {
+  border-color: currentColor !important;
+}
+
+.form-radiocheck input[type="checkbox"]:disabled + span::before, .form-radiocheck input[type="radio"]:disabled + span::before {
+  background-color: inherit !important;
+}
+
+.form-radiocheck > span {
+  padding-left: 2em;
+}
+
+.form-radiocheck > span::before {
+  border: 1px solid currentColor;
+  width: 1.2em;
+  height: 1.2em;
+  margin: -0.6em 0;
+}
+
+.form-radiocheck input[type="checkbox"] ~ span::before {
+  border-radius: 0.2em;
+  border: 2px solid currentColor;
+}
+
+.form-radiocheck input[type="checkbox"] ~ span::after {
+  height: 0.4em;
+  width: 0.8em;
+  margin: -0.3em 0.2em;
+  border: solid currentColor;
+  border-width: 0 0 2px 2px;
+}
+
+.form-radiocheck:hover input[type="checkbox"] ~ span::before {
+  border-color: currentColor;
+}
+
+.form-radiocheck input[type="radio"] ~ span::before {
+  border-radius: 1em;
+}
+
+.form-radiocheck input[type="radio"] ~ span::after {
+  height: 0.4em;
+  width: 0.4em;
+  margin: -0em 0em;
+  border: 0em solid currentColor;
+  border-radius: 0em;
+}
+
+.form-radiocheck:hover input[type="radio"] ~ span::before {
+  border-color: currentColor;
+}
+
+.vspec .layout-page {
+  max-width: 1700px;
+}
+
+.vspec .layout-page-spaces {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.vspec .layout-flood {
+  max-width: 1040px;
+}
+
+.vspec .mark {
+  color: currentColor;
+}
+
+.vspec .bottom-space {
+  margin-bottom: 1em;
+}
+
+.vspec .btn-to-top {
+  display: none;
+}
+
+.vspec .scene {
+  display: none;
+}
+
+.vspec.home-page::before, .vspec.home-page::after {
+  display: none;
+}
+
+.vspec .header {
+  min-height: 0 !important;
+}
+
+@media (max-width: 991px) {
+  .vspec .header {
+    margin-bottom: 1em;
+  }
+}
+
+.vspec .header-float {
+  background: none;
+}
+
+.header-is-top .vspec .header-float {
+  position: relative;
+  left: auto;
+  top: auto;
+}
+
+.vspec .header__holder {
+  padding: 0;
+  height: auto;
+  background: none;
+}
+
+.vspec .logo {
+  position: relative;
+  left: auto;
+  top: auto;
+  display: block;
+  margin: 10px auto 40px;
+}
+
+@media (max-width: 991px) {
+  .vspec .logo {
+    margin: 20px auto 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .vspec .logo {
+    margin: 30px auto 20px;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec .logo {
+    margin: 40px auto 40px;
+  }
+}
+
+@media (max-width: 479px) {
+  .vspec .logo {
+    height: 36px;
+    width: 110px;
+    margin: 0;
+  }
+}
+
+.vspec .logo a::before,
+.vspec .logo > span::before {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+@media (max-width: 479px) {
+  .vspec .logo a::before,
+  .vspec .logo > span::before {
+    display: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .vspec .logo a::after,
+  .vspec .logo > span::after {
+    left: 0;
+    top: 0;
+    margin: 0;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.vspec .searchicon {
+  display: none;
+}
+
+.vspec .lang {
+  right: 0;
+  height: auto;
+}
+
+.vspec .lang a {
+  box-shadow: none;
+  color: inherit;
+}
+
+.no-touchevents .vspec .lang a:hover {
+  box-shadow: none;
+}
+
+.vspec .lang > span {
+  color: inherit;
+  font-weight: bold;
+}
+
+.vspec .h-mail {
+  display: none;
+}
+
+.vspec .nav-wrap {
+  transition: none;
+}
+
+@media (max-width: 991px) {
+  .vspec .nav-wrap {
+    height: 100%;
+    padding: 3.5em 0;
+    z-index: 9998;
+  }
+  .vspec-mod_scheme-color_white .vspec .nav-wrap {
+    background-color: #131313;
+  }
+  .vspec-mod_scheme-color_blue .vspec .nav-wrap {
+    background-color: #c8e5ff;
+  }
+  .vspec-mod_scheme-color_brown .vspec .nav-wrap {
+    background-color: #f7f3d6;
+  }
+  .vspec-mod_scheme-color_green .vspec .nav-wrap {
+    background-color: #3b2716;
+  }
+  .vspec .nav-wrap::before {
+    content: none;
+  }
+}
+
+.vspec .nav-footer::before {
+  border-color: currentColor;
+}
+
+@media (max-width: 991px) {
+  .vspec .nav {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 991px) {
+  .vspec .nav__list {
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+@media (max-width: 991px) {
+  .vspec .nav__list .nav__angle {
+    color: inherit;
+  }
+  .vspec .nav__list .nav__angle::before {
+    border-top-color: currentColor;
+  }
+  .vspec .nav__list .nav__angle::after {
+    background: none !important;
+    border: 2px solid currentColor;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.vspec .nav__list a {
+  text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+  .vspec .nav__list li {
+    border-color: currentColor;
+    border-top-width: 2px;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.vspec .nav__list li > a,
+.vspec .nav__list li > span {
+  font-size: 18px;
+  line-height: 24px;
+  color: inherit;
+}
+
+@media (max-width: 991px) {
+  .vspec .nav__list li > a,
+  .vspec .nav__list li > span {
+    padding: 0.6em 1em 0.6em 0;
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+.vspec .nav__list li.hover.current {
+  box-shadow: none;
+  color: inherit;
+}
+
+.vspec .nav__list li.hover > a,
+.vspec .nav__list li > a:hover,
+.vspec .nav__list li.current.hover > a,
+.vspec .nav__list li.current > a:hover {
+  box-shadow: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.vspec .nav__list li.current > a,
+.vspec .nav__list li.current > span {
+  background: none;
+  color: inherit;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+.vspec .nav__list ul {
+  border: 2px solid currentColor;
+  box-shadow: none;
+}
+
+@media (max-width: 991px) {
+  .vspec .nav__list ul {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.vspec-mod_scheme-color_white .vspec .nav__list ul {
+  background-color: #131313;
+}
+
+.vspec-mod_scheme-color_blue .vspec .nav__list ul {
+  background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .vspec .nav__list ul {
+  background-color: #f7f3d6;
+}
+
+.vspec-mod_scheme-color_green .vspec .nav__list ul {
+  background-color: #3b2716;
+}
+
+.vspec .nav__list ul li {
+  border-color: currentColor;
+}
+
+.vspec .main {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.vspec .footer {
+  background: none;
+  color: inherit;
+  width: 100%;
+}
+
+.vspec .footer::before, .vspec .footer::after {
+  content: none;
+}
+
+.vspec .footer__holder {
+  padding-top: 0;
+  padding-bottom: 1em;
+}
+
+.vspec .back-to-top {
+  display: none;
+}
+
+.vspec .footer .back-to-top {
+  display: inline-block;
+}
+
+@media (max-width: 639px) {
+  .vspec .footer .back-to-top {
+    display: block;
+    width: 240px;
+    margin: 0 auto;
+  }
+}
+
+.vspec .developer a {
+  text-decoration: none;
+}
+
+.vspec .developer a:hover {
+  text-decoration: underline;
+}
+
+.vspec .developer__logo {
+  display: inline;
+  text-indent: 0;
+  height: auto;
+  width: auto;
+  top: auto;
+  color: inherit;
+}
+
+.vspec .developer__logo::before, .vspec .developer__logo::after {
+  content: none;
+}
+
+.no-touchevents .vspec a:hover .developer__logo {
+  color: inherit;
+}
+
+.vspec .seo {
+  display: none;
+}
+
+.vspec .main-slider {
+  display: none;
+}
+
+.vspec .m-catalog {
+  margin-bottom: 2.2em;
+}
+
+.vspec .m-catalog:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .m-catalog-elem {
+  padding: 20px;
+  border: 3px solid currentColor;
+  box-shadow: none;
+  background: none;
+  color: inherit;
+}
+
+.no-touchevents .vspec a.m-catalog-elem:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.vspec .m-catalog-elem__content {
+  padding: 0;
+}
+
+.vspec .m-catalog-elem__content::before {
+  content: none;
+}
+
+.vspec .m-catalog-elem__figure {
+  display: none;
+}
+
+.vspec .m-catalog-elem__title {
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1.5em;
+  line-height: 1.7;
+}
+
+@media (max-width: 991px) {
+  .vspec .m-catalog-elem__title {
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec .m-catalog-elem__title {
+    font-size: 1.3em;
+    line-height: 1.83;
+  }
+}
+
+.vspec .p-news {
+  border: 3px solid currentColor;
+  box-shadow: none;
+  background: none;
+  padding: 40px 20px;
+  margin-bottom: 2.2em;
+}
+
+.vspec .p-news:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .p-news::before, .vspec .p-news::after {
+  content: none;
+}
+
+.vspec .p-news__list {
+  display: block;
+  margin: 0;
+  margin-bottom: 1.5em;
+}
+
+.vspec .p-news__list:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .p-news__item {
+  max-width: none;
+  padding: 0;
+  margin-bottom: 1.5em;
+}
+
+.vspec .p-news__item:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .p-news__title {
+  text-align: center;
+}
+
+.vspec .p-news__date {
+  font-size: 0.83em;
+  line-height: 2.2;
+  color: inherit;
+}
+
+.vspec .p-news__text {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.vspec .p-news__footer a {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.vspec .p-news__footer a:hover {
+  text-decoration: none;
+}
+
+.vspec .b-legend {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin-bottom: 2.2em;
+}
+
+.vspec .b-legend:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .banners {
+  padding: 0;
+  margin-bottom: 2.2em;
+}
+
+.vspec .banners:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .banners-item a {
+  border: 2px solid currentColor;
+  box-shadow: none;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 0.8em;
+  font-weight: bold;
+  text-decoration: none;
+  background: none;
+}
+
+.vspec .banners-item a:hover {
+  text-decoration: underline;
+}
+
+.vspec .banners-item a::before {
+  content: attr(title);
+}
+
+.vspec .banners-item a img {
+  display: none;
+}
+
+.vspec .b-prlist ul {
+  width: auto;
+  display: block;
+  padding: 1.5em 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-top: 2px solid currentColor;
+}
+
+.vspec .b-prlist li {
+  display: block;
+  padding: 0;
+  width: auto;
+  margin-bottom: 0.5em;
+}
+
+.vspec .b-prlist li:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .b-prlist a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.vspec .b-prlist a:hover {
+  text-decoration: none;
+}
+
+.vspec .b-prlist b {
+  display: none;
+}
+
+.vspec .b-prlist span {
+  display: inline;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.vspec .content {
+  background: none;
+  border: 2px solid currentColor;
+  box-shadow: none;
+  border-radius: 0.5em;
+}
+
+@media (max-width: 991px) {
+  .vspec .content {
+    border: none;
+    overflow: visible;
+  }
+}
+
+.vspec .content h1 > span,
+.vspec .content .h1 > span {
+  padding: 0;
+  box-shadow: none;
+}
+
+.vspec .content-align::before {
+  border-right: 2px solid currentColor;
+}
+
+.vspec .breadcrumbs {
+  margin-bottom: 2.2em;
+}
+
+.vspec .breadcrumbs:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .breadcrumbs__list {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.vspec .dwcat {
+  margin: 0 0 2em 1em;
+  padding: 20px;
+  border: 2px solid currentColor;
+  border-radius: 10px;
+  width: 300px;
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  .vspec .dwcat {
+    width: 240px;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec .dwcat {
+    width: auto;
+    margin-left: 0;
+  }
+  .vspec-mod_img_on .vspec .dwcat {
+    padding-left: 200px;
+  }
+}
+
+@media (max-width: 479px) {
+  .vspec-mod_img_on .vspec .dwcat {
+    padding-left: 140px;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec .dwcat__figure {
+    left: 20px;
+    width: 160px;
+  }
+}
+
+@media (max-width: 479px) {
+  .vspec .dwcat__figure {
+    width: 100px;
+  }
+}
+
+.vspec-mod_img_off .vspec .dwcat__figure {
+  display: none;
+}
+
+.vspec .dwcat__title {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0 0 0.5em;
+}
+
+.vspec .dwcat__subtitle {
+  font-family: inherit;
+  font-weight: bold;
+  letter-spacing: inherit;
+  color: inherit;
+  text-shadow: none;
+  font-size: 1.17em;
+  line-height: 1.9;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .vspec .dwcat__subtitle {
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec .dwcat__subtitle {
+    font-size: 1.17em;
+    line-height: 1.9;
+  }
+}
+
+.vspec-mod_img_on .vspec .dwcat__subtitle {
+  margin: 0 0 0.8em;
+}
+
+@media (max-width: 639px) {
+  .vspec-mod_img_on .vspec .dwcat__subtitle {
+    margin: 0;
+  }
+}
+
+.vspec .catalogue .item {
+  background: none;
+}
+
+.vspec .catalogue .item::before {
+  content: none;
+}
+
+.vspec .catalogue .image {
+  border: 2px solid currentColor;
+  background: none;
+}
+
+html:not(.vspec-mod_img_on) .vspec .catalogue .image {
+  height: auto;
+}
+
+html:not(.vspec-mod_img_on) .vspec .catalogue .image a {
+  padding: 0;
+}
+
+.vspec .catalogue .info {
+  padding: 10px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: 2px solid currentColor;
+  border-top: none;
+}
+
+.vspec .catalogue .info .moreBtn {
+  display: none !important;
+}
+
+.vspec .catalogue .info h3,
+.vspec .catalogue .info .heading {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-transform: none;
+}
+
+.vspec .catalogue .info p {
+  margin: 1em 0 0;
+  font-size: 0.85em;
+}
+
+.vspec .catalogue .description {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: none;
+  padding: 0;
+}
+
+.vspec .catalogue .descriptionIn {
+  padding: 10px;
+  border: 2px solid currentColor;
+  margin: -2px 0 0;
+}
+
+.vspec-mod_scheme-color_white .vspec .catalogue .descriptionIn {
+  background-color: #131313;
+}
+
+.vspec-mod_scheme-color_blue .vspec .catalogue .descriptionIn {
+  background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .vspec .catalogue .descriptionIn {
+  background-color: #f7f3d6;
+}
+
+.vspec-mod_scheme-color_green .vspec .catalogue .descriptionIn {
+  background-color: #3b2716;
+}
+
+.vspec .catalogue .descriptionIn::before {
+  content: none;
+}
+
+.vspec .catalogue .description .label {
+  font-family: inherit;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.vspec .enter {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  max-width: none;
+  margin-bottom: 2.2em;
+}
+
+.vspec .enter:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+  .vspec .btn-menu {
+    display: block;
+    color: currentColor;
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 9999;
+    height: auto;
+    width: auto;
+    font-size: 1.5em;
+    line-height: inherit;
+    text-align: center;
+    text-decoration: underline;
+    margin-top: 0.4em;
+    margin-bottom: 1em;
+  }
+  .shutter-after-open .vspec .btn-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .vspec .btn-menu::before, .vspec .btn-menu::after {
+    content: none;
+  }
+  .vspec .btn-menu.active::before {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: inline-block;
+    content: "×";
+    -ms-transform: none;
+        transform: none;
+    opacity: 1;
+    height: auto;
+    width: auto;
+    margin: 0 0.1em 0 0;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: currentColor;
+  }
+  .vspec .btn-menu > span {
+    clip: auto;
+    margin: 0;
+    height: auto;
+    width: auto;
+    position: relative;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  .vspec .btn-menu i {
+    display: none;
+  }
+}
+
+.no-touchevents .vspec .btn-menu:hover {
+  box-shadow: none;
+}
+
+@media (max-width: 991px) {
+  .vspec .sidebar {
+    z-index: 100000;
+  }
+  .vspec-mod_scheme-color_white .vspec .sidebar {
+    background-color: #131313;
+  }
+  .vspec-mod_scheme-color_blue .vspec .sidebar {
+    background-color: #c8e5ff;
+  }
+  .vspec-mod_scheme-color_brown .vspec .sidebar {
+    background-color: #f7f3d6;
+  }
+  .vspec-mod_scheme-color_green .vspec .sidebar {
+    background-color: #3b2716;
+  }
+}
+
+.vspec .sidebar__header {
+  border-color: currentColor;
+  border-width: 2px;
+}
+
+.vspec .sidebar__header .btn-close {
+  width: auto;
+  color: currentColor;
+  padding: 0 20px;
+}
+
+.vspec .sidebar__header .btn-close i {
+  display: none;
+}
+
+.vspec .sidebar__header .btn-close span {
+  clip: auto;
+  height: auto;
+  width: auto;
+  position: static;
+}
+
+.vspec .sidebar__footer .btn-def {
+  display: block;
+  width: 100%;
+  border-radius: 0;
+}
+
+.vspec .btns__item .icon {
+  display: none;
+}
+
+.vspec .menu a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.vspec .menu a:hover {
+  text-decoration: underline;
+}
+
+.vspec .menu, .vspec .menu ul {
+  font-size: 0.9em;
+  line-height: inherit;
+}
+
+.vspec .menu > li {
+  border-color: currentColor;
+}
+
+.vspec .menu > li > a,
+.vspec .menu > li > span {
+  color: inherit;
+  font-size: 1.2em;
+  line-height: inherit;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.vspec .menu > li > a:hover {
+  text-decoration: underline;
+}
+
+.vspec .menu li.current > a,
+.vspec .menu li.current > span {
+  font-family: inherit;
+}
+
+.vspec .menu li.menu-subtitle {
+  font-family: inherit;
+  font-size: 1.2em;
+}
+
+.vspec .menu .menu-arr {
+  color: inherit;
+}
+
+.vspec .menu .menu-arr::before {
+  border-top-color: currentColor;
+}
+
+.vspec .menu .menu-arr::after {
+  background: none !important;
+  border: 2px solid currentColor;
+  width: 32px;
+  height: 32px;
+}
+
+.vspec .menu .download a {
+  padding-left: 3rem;
+  background: none;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+html:not(.vspec-mod_img_on) .vspec .product .info {
+  float: none;
+  width: auto;
+}
+
+html:not(.vspec-mod_img_on) .vspec .product .image {
+  display: none;
+}
+
+.vspec .similar-slider .swiper-wrapper {
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.vspec .similar-slider .swiper-slide {
+  background: none;
+  font-family: inherit;
+  font-size: 0.85em;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  padding: 15px;
+  border: 2px solid currentColor;
+  border-radius: 10px;
+  height: auto;
+}
+
+.vspec .similar-slider .swiper-slide .image {
+  display: none;
+}
+
+.vspec .similar-slider .swiper-slide .novelty,
+.vspec .similar-slider .swiper-slide .postnoe,
+.vspec .similar-slider .swiper-slide .halal {
+  display: none;
+}
+
+.vspec .similar-slider .swiper-slide::before {
+  content: none;
+}
+
+.vspec .similar-slider .swiper-slide h3,
+.vspec .similar-slider .swiper-slide .heading {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  word-break: break-word;
+  margin-bottom: 0.5em;
+}
+
+.vspec .similar-slider .swiper-slide p {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.vspec .swiper-button-prev,
+.vspec .swiper-button-next {
+  filter: grayscale(1) contrast(1) invert(1);
+}
+
+.vspec-mod_scheme-color_white .vspec .catalog-shutter {
+  background-color: #131313;
+}
+
+.vspec-mod_scheme-color_blue .vspec .catalog-shutter {
+  background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .vspec .catalog-shutter {
+  background-color: #f7f3d6;
+}
+
+.vspec-mod_scheme-color_green .vspec .catalog-shutter {
+  background-color: #3b2716;
+}
+
+.vspec .catalog-shutter-close {
+  width: auto;
+  height: 60px;
+  min-width: 60px;
+  padding: 0 20px 10px;
+  font-size: 40px;
+  line-height: calc(60px - 4px - 10px);
+  font-weight: normal;
+  color: currentColor;
+  text-decoration: none;
+  background-image: none;
+  border: 2px solid currentColor;
+}
+
+.vspec-mod_scheme-color_white .vspec .catalog-shutter-close, .vspec-mod_scheme-color_white
+.no-touchevents .vspec .catalog-shutter-close:hover {
+  background-color: #131313;
+}
+
+.vspec-mod_scheme-color_blue .vspec .catalog-shutter-close, .vspec-mod_scheme-color_blue
+.no-touchevents .vspec .catalog-shutter-close:hover {
+  background-color: #c8e5ff;
+}
+
+.vspec-mod_scheme-color_brown .vspec .catalog-shutter-close, .vspec-mod_scheme-color_brown
+.no-touchevents .vspec .catalog-shutter-close:hover {
+  background-color: #f7f3d6;
+}
+
+.vspec-mod_scheme-color_green .vspec .catalog-shutter-close, .vspec-mod_scheme-color_green
+.no-touchevents .vspec .catalog-shutter-close:hover {
+  background-color: #3b2716;
+}
+
+.vspec .catalog-shutter-close::before {
+  content: none;
+}
+
+.vspec .catalog-nav {
+  background: none;
+}
+
+.vspec .catalog-nav__item {
+  border: 2px solid currentColor;
+}
+
+.vspec .catalog-nav__item, .no-touchevents .vspec .catalog-nav__item {
+  background: none !important;
+}
+
+.vspec .catalog-nav__item::before, .vspec .catalog-nav__item::after {
+  content: none;
+}
+
+.vspec .catalog-nav__list a {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit !important;
+}
+
+.vspec .catalog-nav__list > li > a {
+  font-size: 2em;
+  line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+  .vspec .catalog-nav__list > li > a {
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec .catalog-nav__list > li > a {
+    font-size: 1.6em;
+    line-height: 1.7;
+  }
+}
+
+.vspec {
+  /* article content */
+}
+
+.vspec .article-content,
+.vspec .text-page {
+  padding: 20px;
+}
+
+@media (max-width: 991px) {
+  .vspec .article-content,
+  .vspec .text-page {
+    padding: 0;
+  }
+}
+
+.vspec .article-content > p, .vspec .article-content > ul, .vspec .article-content > ol,
+.vspec .article-content > h1, .vspec .article-content > .h1,
+.vspec .article-content > h2, .vspec .article-content > h3, .vspec .article-content > h4, .vspec .article-content > h5, .vspec .article-content > h6,
+.vspec .article-content > .h2, .vspec .article-content > .h3, .vspec .article-content > .h4, .vspec .article-content > .h5, .vspec .article-content > .h6,
+.vspec .article-content > hr, .vspec .article-content > mark, .vspec .article-content > blockquote, .vspec .article-content > figure,
+.vspec .article-content > .layout-text,
+.vspec .article-content > .entry-text,
+.vspec .article-content > .quote,
+.vspec .article-content > .nopr,
+.vspec .article-content > .shortNews,
+.vspec .article-content > .wrap {
+  max-width: none;
+}
+
+.vspec .article-content > h1::after, .vspec .article-content > .h1::after {
+  content: none;
+}
+
+.vspec .article-content > .layout-flood {
+  max-width: none;
+}
+
+.vspec .article-content > p:last-child, .vspec .article-content > ul:last-child, .vspec .article-content > ol:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .article-content blockquote, .vspec .article-content .quote {
+  border: 2px solid currentColor;
+  background: none;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: none;
+  margin-bottom: 1.5em;
+}
+
+.vspec .article-content blockquote:last-child, .vspec .article-content .quote:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .article-content blockquote::before, .vspec .article-content blockquote::after, .vspec .article-content .quote::before, .vspec .article-content .quote::after {
+  content: none;
+}
+
+.vspec .article-content blockquote:last-child, .vspec .article-content .quote:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .article-content .wrap {
+  margin-bottom: 2.2em;
+}
+
+.vspec .article-content .wrap:last-child {
+  margin-bottom: 0;
+}
+
+.vspec .article-content .wrap::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+html:not(.vspec-mod_img_on) .vspec .article-content .wrap .imagebox {
+  display: none;
+}
+
+.vspec .article-content .wrap blockquote {
+  border: none;
+}
+
+.vspec .article-content .historicDate {
+  font-size: 2em;
+  line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+  .vspec .article-content .historicDate {
+    word-wrap: break-word;
+  }
+}
+
+@media (max-width: 639px) {
+  .vspec .article-content .historicDate {
+    font-size: 1.6em;
+    line-height: 1.7;
+  }
+}
+
+.vspec .article-content .historicDate strong {
+  font-family: inherit;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.vspec .article-content .historicDate strong span {
+  font-size: 0.8em;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.vspec .article-content .notice {
+  color: currentColor;
+  background: none;
+}
+
+.vspec .years-slider .swiper-slide .year {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.vspec .years-slider .swiper-slide .year::after {
+  border-color: currentColor;
+}
+
+html:not(.vspec-mod_img_on) .vspec .years-slider .swiper-slide .image {
+  display: none;
+}
+
+.vspec .years-slider .swiper-slide h3,
+.vspec .years-slider .swiper-slide h4,
+.vspec .years-slider .swiper-slide .h3,
+.vspec .years-slider .swiper-slide .h4,
+.vspec .years-slider .swiper-slide .heading {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  font-weight: normal;
+  word-break: break-word;
+}
+
+.vspec .years-slider .swiper-slide h3 a,
+.vspec .years-slider .swiper-slide h4 a,
+.vspec .years-slider .swiper-slide .h3 a,
+.vspec .years-slider .swiper-slide .h4 a,
+.vspec .years-slider .swiper-slide .heading a {
+  color: inherit;
+}
+
+/* article content end */
+/*=========== SPECIAL VERSION end =========== */
+
+/*# sourceMappingURL=special-version.css.map */

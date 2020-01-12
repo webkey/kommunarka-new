@@ -1,0 +1,1081 @@
+@import "../../libs/include-media/dist/include-media";
+@import "src/sass/special-version/vspec-variables";
+@import "../utils/mixins";
+
+.vspec {
+  .layout-page {
+    max-width: 1700px;
+  }
+
+  .layout-page-spaces {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .layout-flood {
+    max-width: 1040px;
+  }
+
+  .mark {
+    color: currentColor;
+  }
+
+  .bottom-space {
+    margin-bottom: 1em;
+  }
+
+  .btn-to-top {
+    display: none;
+  }
+
+  .scene {
+    display: none;
+  }
+
+  &.home-page {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .header {
+    min-height: 0 !important;
+
+    @include media("<vspec-lg") {
+      margin-bottom: 1em;
+    }
+  }
+
+  .header-float {
+    background: none;
+  }
+
+  .header-is-top & .header-float {
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+
+  .header__holder {
+    padding: 0;
+    height: auto;
+    background: none;
+  }
+
+  .logo {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: block;
+    margin: 10px auto 40px;
+
+    @include media('<vspec-lg') {
+      margin: 20px auto 20px;
+    }
+
+    @include media('<vspec-md') {
+      margin: 30px auto 20px;
+    }
+
+    @include media('<vspec-sm') {
+      margin: 40px auto 40px;
+    }
+
+    @include media('<vspec-xs') {
+      height: 36px;
+      width: 110px;
+      margin: 0;
+    }
+
+    a,
+    & > span {
+      &::before {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+
+        @include media('<vspec-xs') {
+          display: none;
+        }
+      }
+
+      &::after {
+        @include media('<vspec-xs') {
+          left: 0;
+          top: 0;
+          margin: 0;
+          background-position: center;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .searchicon {
+    display: none;
+  }
+
+  .lang {
+    right: 0;
+    height: auto;
+
+    a {
+      box-shadow: none;
+      color: inherit;
+    }
+  }
+
+  .no-touchevents & .lang a:hover {
+    box-shadow: none;
+  }
+
+  .lang > span {
+    color: inherit;
+    font-weight: bold;
+  }
+
+  .h-mail {
+    display: none;
+  }
+
+  .nav-wrap {
+    transition: none;
+
+    @include media('<vspec-lg') {
+      height: 100%;
+      padding: 3.5em 0;
+      z-index: 9998;
+
+      .#{$spec-mod--scheme-wb} & {
+        background-color: $spec-bg-color--scheme-wb;
+      }
+
+      .#{$spec-mod--scheme-blue} & {
+        background-color: $spec-bg-color--scheme-blue;
+      }
+
+      .#{$spec-mod--scheme-brown} & {
+        background-color: $spec-bg-color--scheme-brown;
+      }
+
+      .#{$spec-mod--scheme-green} & {
+        background-color: $spec-bg-color--scheme-green;
+      }
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  .nav-footer {
+    &::before {
+      border-color: currentColor;
+    }
+  }
+
+  .nav {
+    @include media("<vspec-lg") {
+      padding: 0 20px;
+    }
+  }
+
+  .nav__list {
+    @include media("<vspec-lg") {
+      padding: 0;
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    .nav__angle {
+      @include media("<vspec-lg") {
+        color: inherit;
+
+        &::before {
+          border-top-color: currentColor;
+        }
+
+        &::after {
+          background: none !important;
+          border: 2px solid currentColor;
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    li {
+      @include media("<vspec-lg") {
+        border-color: currentColor;
+        border-top-width: 2px;
+        padding: 0;
+        margin: 0;
+      }
+
+      & > a,
+      & > span {
+        font-size: 18px;
+        line-height: 24px;
+        color: inherit;
+
+        @include media("<vspec-lg") {
+          padding: 0.6em 1em 0.6em 0;
+          font-size: inherit;
+          line-height: inherit;
+        }
+      }
+
+      &.hover.current {
+        box-shadow: none;
+        color: inherit;
+      }
+
+      &.hover > a,
+      & > a:hover,
+      &.current.hover > a,
+      &.current > a:hover {
+        box-shadow: none;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      &.current {
+        & > a,
+        & > span {
+          background: none;
+          color: inherit;
+          font-weight: bold;
+          font-family: inherit;
+        }
+      }
+    }
+
+    ul {
+      border: 2px solid currentColor;
+      box-shadow: none;
+
+      @include media("<vspec-lg") {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .#{$spec-mod--scheme-wb} & {
+        background-color: $spec-bg-color--scheme-wb;
+      }
+
+      .#{$spec-mod--scheme-blue} & {
+        background-color: $spec-bg-color--scheme-blue;
+      }
+
+      .#{$spec-mod--scheme-brown} & {
+        background-color: $spec-bg-color--scheme-brown;
+      }
+
+      .#{$spec-mod--scheme-green} & {
+        background-color: $spec-bg-color--scheme-green;
+      }
+
+      li {
+        border-color: currentColor;
+      }
+    }
+  }
+
+  .main {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .footer {
+    background: none;
+    color: inherit;
+    width: 100%;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+
+    &__holder {
+      padding-top: 0;
+      padding-bottom: 1em;
+    }
+  }
+
+  .back-to-top {
+    display: none;
+  }
+
+  .footer .back-to-top {
+    display: inline-block;
+
+    @include media('<vspec-sm') {
+      display: block;
+      width: 240px;
+      margin: 0 auto;
+    }
+  }
+
+  .developer {
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__logo {
+      display: inline;
+      text-indent: 0;
+      height: auto;
+      width: auto;
+      top: auto;
+      color: inherit;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  .no-touchevents & a:hover .developer__logo {
+    color: inherit;
+  }
+
+  .seo {
+    display: none;
+  }
+
+  .main-slider {
+    display: none;
+  }
+
+  .m-catalog {
+    @include spec-bottom-space-section;
+  }
+
+  .m-catalog-elem {
+    padding: 20px;
+    border: 3px solid currentColor;
+    box-shadow: none;
+    background: none;
+    color: inherit;
+  }
+
+  .no-touchevents & a.m-catalog-elem:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .m-catalog-elem__content {
+    padding: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .m-catalog-elem__figure {
+    display: none;
+  }
+
+  .m-catalog-elem__title {
+    font-family: inherit;
+    font-weight: bold;
+    @include spec-font--section;
+  }
+
+  .p-news {
+    border: 3px solid currentColor;
+    box-shadow: none;
+    background: none;
+    padding: 40px 20px;
+    @include spec-bottom-space-section;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+
+  .p-news__list {
+    display: block;
+    margin: 0;
+    @include spec-bottom-space-item;
+  }
+
+  .p-news__item {
+    max-width: none;
+    padding: 0;
+    @include spec-bottom-space-item;
+  }
+
+  .p-news__title {
+    text-align: center;
+  }
+
+  .p-news__date {
+    @include spec-font--note;
+    color: inherit;
+  }
+
+  .p-news__text {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+
+  .p-news__footer a {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .b-legend {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    @include spec-bottom-space-section;
+  }
+
+  .banners {
+    padding: 0;
+    @include spec-bottom-space-section;
+  }
+
+  .banners-item a {
+    border: 2px solid currentColor;
+    box-shadow: none;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 0.8em;
+    font-weight: bold;
+    text-decoration: none;
+    background: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::before {
+      content: attr(title);
+    }
+
+    img {
+      display: none;
+    }
+  }
+
+  .b-prlist {
+    ul {
+      width: auto;
+      display: block;
+      padding: 1.5em 0;
+      margin-left: 0;
+      margin-right: 0;
+      border-top: 2px solid currentColor;
+    }
+
+    li {
+      display: block;
+      padding: 0;
+      width: auto;
+      @include spec-bottom-space-element;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    b {
+      display: none;
+    }
+
+    span {
+      display: inline;
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .content {
+    background: none;
+    border: 2px solid currentColor;
+    box-shadow: none;
+    border-radius: 0.5em;
+
+    @include media("<vspec-lg") {
+      border: none;
+      overflow: visible;
+    }
+
+    h1,
+    .h1 {
+      & > span {
+        padding: 0;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .content-align {
+    &::before {
+      border-right: 2px solid currentColor;
+    }
+  }
+
+  .breadcrumbs {
+    @include spec-bottom-space-section  ;
+
+    &__list {
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .dwcat {
+    margin: 0 0 2em 1em;
+    padding: 20px;
+    border: 2px solid currentColor;
+    border-radius: 10px;
+    width: 300px;
+    max-width: 100%;
+
+    @include media("<vspec-lg") {
+      width: 240px;
+    }
+
+    @include media("<vspec-sm") {
+      width: auto;
+      margin-left: 0;
+
+      .#{$spec-mod--image-on} & {
+        padding-left: 200px;
+      }
+    }
+
+    @include media("<vspec-xs") {
+      .#{$spec-mod--image-on} & {
+        padding-left: 140px;
+      }
+    }
+
+    &__figure {
+      @include media("<vspec-sm") {
+        left: 20px;
+        width: 160px;
+      }
+
+      @include media("<vspec-xs") {
+        width: 100px;
+      }
+
+      .#{$spec-mod--image-off} & {
+        display: none;
+      }
+    }
+
+    &__title {
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      margin: 0 0 0.5em;
+    }
+
+    &__subtitle {
+      font-family: inherit;
+      font-weight: bold;
+      letter-spacing: inherit;
+      color: inherit;
+      text-shadow: none;
+      @include spec-font--item;
+      margin: 0;
+
+      .#{$spec-mod--image-on} & {
+        margin: 0 0 0.8em;
+
+        @include media("<vspec-sm") {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .catalogue {
+    .item {
+      background: none;
+
+      &::before {
+        content: none;
+      }
+    }
+
+    .image {
+      border: 2px solid currentColor;
+      background: none;
+
+      html:not(.#{$spec-mod--image-on}) & {
+        height: auto;
+      }
+
+      a {
+        html:not(.#{$spec-mod--image-on}) & {
+          padding: 0;
+        }
+      }
+    }
+
+    .info {
+      padding: 10px;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+      background: none;
+      border: 2px solid currentColor;
+      border-top: none;
+
+      .moreBtn {
+        display: none !important;
+      }
+
+      h3,
+      .heading {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        letter-spacing: inherit;
+        color: inherit;
+        text-transform: none;
+      }
+
+      p {
+        margin: 1em 0 0;
+        font-size: 0.85em;
+      }
+    }
+
+    .description {
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+      background: none;
+      padding: 0;
+
+      &In {
+        padding: 10px;
+        border: 2px solid currentColor;
+        margin: -2px 0 0;
+
+        .#{$spec-mod--scheme-wb} & {
+          background-color: $spec-bg-color--scheme-wb;
+        }
+
+        .#{$spec-mod--scheme-blue} & {
+          background-color: $spec-bg-color--scheme-blue;
+        }
+
+        .#{$spec-mod--scheme-brown} & {
+          background-color: $spec-bg-color--scheme-brown;
+        }
+
+        .#{$spec-mod--scheme-green} & {
+          background-color: $spec-bg-color--scheme-green;
+        }
+
+        &::before {
+          content: none;
+        }
+      }
+
+      .label {
+        font-family: inherit;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+
+  .enter {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    max-width: none;
+    @include spec-bottom-space-section;
+  }
+
+  .btn-menu {
+    @include media("<vspec-lg") {
+      display: block;
+      color: currentColor;
+      position: relative;
+      left: auto;
+      top: auto;
+      z-index: 9999;
+      height: auto;
+      width: auto;
+      font-size: 1.5em;
+      line-height: inherit;
+      text-align: center;
+      text-decoration: underline;
+      margin-top: 0.4em;
+      margin-bottom: 1em;
+
+      .shutter-after-open & {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+
+      &::before,
+      &::after {
+        content: none;
+      }
+
+      &.active {
+        &::before {
+          position: relative;
+          left: auto;
+          top: auto;
+          display: inline-block;
+          content: "×";
+          transform: none;
+          opacity: 1;
+          height: auto;
+          width: auto;
+          margin: 0 0.1em 0 0;
+          background: none;
+          font-family: inherit;
+          font-size: inherit;
+          line-height: inherit;
+          color: currentColor;
+        }
+      }
+
+      & > span {
+        clip: auto;
+        margin: 0;
+        height: auto;
+        width: auto;
+        position: relative;
+        font-size: inherit;
+        line-height: inherit;
+      }
+
+      i {
+        display: none;
+      }
+    }
+
+    .no-touchevents &:hover {
+      box-shadow: none;
+    }
+  }
+
+  .sidebar {
+    @include media("<vspec-lg") {
+      .#{$spec-mod--scheme-wb} & {
+        background-color: $spec-bg-color--scheme-wb;
+      }
+
+      .#{$spec-mod--scheme-blue} & {
+        background-color: $spec-bg-color--scheme-blue;
+      }
+
+      .#{$spec-mod--scheme-brown} & {
+        background-color: $spec-bg-color--scheme-brown;
+      }
+
+      .#{$spec-mod--scheme-green} & {
+        background-color: $spec-bg-color--scheme-green;
+      }
+
+      z-index: 100000;
+    }
+
+    &__header {
+      border-color: currentColor;
+      border-width: 2px;
+
+      .btn-close {
+        width: auto;
+        color: currentColor;
+        padding: 0 20px;
+
+        i {
+          display: none;
+        }
+
+        span {
+          clip: auto;
+          height: auto;
+          width: auto;
+          position: static;
+        }
+      }
+    }
+
+    &__footer {
+      .btn-def {
+        display: block;
+        width: 100%;
+        border-radius: 0;
+      }
+    }
+  }
+
+  .btns__item {
+    .icon {
+      display: none;
+    }
+  }
+
+  .menu {
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &, & ul {
+      font-size: 0.9em;
+      line-height: inherit;
+    }
+
+    & > li {
+      border-color: currentColor;
+
+      & > a,
+      & > span {
+        color: inherit;
+        font-size: 1.2em;
+        line-height: inherit;
+        text-decoration: none;
+        font-weight: normal;
+      }
+
+      & > a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    li {
+      &.current {
+        & > a,
+        & > span {
+          font-family: inherit;
+        }
+      }
+
+      &.menu-subtitle {
+        font-family: inherit;
+        font-size: 1.2em;
+      }
+    }
+
+    .menu-arr {
+      color: inherit;
+
+      &::before {
+        border-top-color: currentColor;
+      }
+
+      &::after {
+        background: none !important;
+        border: 2px solid currentColor;
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    .download {
+      a {
+        padding-left: 3rem;
+        background: none;
+        font-weight: bold;
+        font-size: 1.4em;
+      }
+    }
+  }
+
+  .product {
+    .info {
+      html:not(.#{$spec-mod--image-on}) & {
+        float: none;
+        width: auto;
+      }
+    }
+
+    .image {
+      html:not(.#{$spec-mod--image-on}) & {
+        display: none;
+      }
+    }
+  }
+
+  .similar-slider {
+    .swiper-wrapper {
+      align-items: center;
+    }
+
+    .swiper-slide {
+      background: none;
+      font-family: inherit;
+      font-size: 0.85em;
+      line-height: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+      padding: 15px;
+      border: 2px solid currentColor;
+      border-radius: 10px;
+      height: auto;
+
+      .image {
+        display: none;
+      }
+
+      .novelty,
+      .postnoe,
+      .halal {
+        display: none;
+      }
+
+      &::before {
+        content: none;
+      }
+
+      h3,
+      .heading {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        letter-spacing: inherit;
+        color: inherit;
+        word-break: break-word;
+        margin-bottom: 0.5em;
+      }
+
+      p {
+        font-style: italic;
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    filter: grayscale(1) contrast(1) invert(1);
+  }
+
+  .catalog-shutter {
+    .#{$spec-mod--scheme-wb} & {
+      background-color: $spec-bg-color--scheme-wb;
+    }
+
+    .#{$spec-mod--scheme-blue} & {
+      background-color: $spec-bg-color--scheme-blue;
+    }
+
+    .#{$spec-mod--scheme-brown} & {
+      background-color: $spec-bg-color--scheme-brown;
+    }
+
+    .#{$spec-mod--scheme-green} & {
+      background-color: $spec-bg-color--scheme-green;
+    }
+
+    &-close {
+      width: auto;
+      height: 60px;
+      min-width: 60px;
+      padding: 0 20px 10px;
+      font-size: 40px;
+      line-height: calc(60px - 4px - 10px);
+      font-weight: normal;
+      color: currentColor;
+      text-decoration: none;
+      background-image: none;
+      border: 2px solid currentColor;
+
+      &,
+      .no-touchevents &:hover {
+        .#{$spec-mod--scheme-wb} & {
+          background-color: $spec-bg-color--scheme-wb;
+        }
+
+        .#{$spec-mod--scheme-blue} & {
+          background-color: $spec-bg-color--scheme-blue;
+        }
+
+        .#{$spec-mod--scheme-brown} & {
+          background-color: $spec-bg-color--scheme-brown;
+        }
+
+        .#{$spec-mod--scheme-green} & {
+          background-color: $spec-bg-color--scheme-green;
+        }
+      }
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  .catalog-nav {
+    background: none;
+
+    &__item {
+      border: 2px solid currentColor;
+
+      &, .no-touchevents & {
+        background: none !important;
+      }
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+
+    &__list {
+      a {
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit !important;
+      }
+
+      & > li > a {
+        @include spec-font--title;
+      }
+    }
+  }
+}

@@ -1,0 +1,384 @@
+@import "../../libs/include-media/dist/include-media";
+@import "src/sass/special-version/vspec-variables";
+@import "../utils/mixins";
+
+.#{$spec-mod} {
+  h4, .h4 {
+    margin-top: spec-heading("h4", "margin-top");
+    margin-bottom: spec-heading("h4", "margin-bottom");
+    font-size: spec-heading("h4", "font-size");
+    line-height: spec-heading("h4", "line-height");
+    font-weight: bold;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h5, .h5 {
+    margin-top: spec-heading("h5", "margin-top");
+    margin-bottom: spec-heading("h5", "margin-bottom");
+    font-size: spec-heading("h5", "font-size");
+    line-height: spec-heading("h5", "line-height");
+    font-weight: bold;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h6, .h6 {
+    margin-top: spec-heading("h6", "margin-top");
+    margin-bottom: spec-heading("h6", "margin-bottom");
+    font-size: spec-heading("h6", "font-size");
+    line-height: spec-heading("h6", "line-height");
+    font-weight: bold;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    border-top: $spec-border-width solid currentColor;
+  }
+
+  time {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .mark {
+    @include spec-reset-bg-invert;
+  }
+
+  .nobr {
+    white-space: nowrap;
+  }
+
+  #{$user-content} {
+    a {
+      color: currentColor;
+      text-decoration: underline;
+      transition: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    b, strong, th {
+      font-weight: bold;
+    }
+
+    i, em {
+      font-style: italic;
+    }
+
+    i b, i strong,
+    em b, em strong,
+    b i, b em,
+    strong i, strong em {
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    //ul, ol {
+    //  &#{$not-list-classes} {
+    //    padding: 0 0 0 40px;
+    //
+    //    &:first-child {
+    //      margin-top: 0;
+    //    }
+    //
+    //    &:last-child {
+    //      margin-bottom: 0;
+    //    }
+    //
+    //    li {
+    //      display: list-item;
+    //      list-style: inherit;
+    //      margin: 0.5em 0;
+    //
+    //      &::before {
+    //        content: none;
+    //      }
+    //    }
+    //
+    //    ul, ol {
+    //      margin: 0;
+    //    }
+    //  }
+    //}
+
+    //ul {
+    //  &#{$not-list-classes} {
+    //    list-style-type: disc;
+    //  }
+    //}
+    //
+    //ol {
+    //  &#{$not-list-classes} {
+    //    list-style-type: decimal;
+    //  }
+    //}
+  }
+
+  //blockquote
+  blockquote {
+    max-width: 90%;
+    padding-left: 2em;
+    background: none;
+    margin: $spec-bottom-space-section 0;
+    border: solid currentColor;
+    border-width: 0 0 0 $spec-border-width;
+    @include media("<vspec-lg") {
+      padding-left: 1.5em;
+    }
+
+    @include media("<vspec-xs") {
+      padding-left: 1em;
+    }
+
+    q {
+      font-size: inherit;
+      line-height: inherit;
+      font-style: italic;
+      border-color: currentColor;
+      padding: 0;
+
+      &::before, &::after {
+        display: none;
+      }
+    }
+
+    cite {
+      font-style: italic;
+    }
+  }
+
+  //table
+  table, .tbl {
+    border-collapse: collapse;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    @include spec-reset-border;
+    border: 1px solid currentColor;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    td, th, thead td, tr:first-child td {
+      font: {
+        family: inherit;
+        weight: inherit;
+        style: inherit;
+        size: 0.85em;
+      };
+      line-height: 1.5;
+      letter-spacing: inherit;
+      color: inherit;
+      text-align: left;
+      text-transform: none;
+      text-decoration: none;
+      white-space: normal;
+      border: 1px solid currentColor;
+      //border-color: inherit
+      background: none;
+      padding: 0.4em 0.6em;
+      vertical-align: top;
+
+      td, th {
+        font-size: inherit;
+      }
+    }
+
+    tr {
+      &:hover {
+        background: none;
+      }
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    caption {
+      @include spec-font--note;
+      color: inherit;
+      font-style: italic;
+    }
+  }
+
+  .tbl {
+    table {
+      margin-bottom: 0;
+    }
+  }
+
+  .table-auto {
+    position: relative;
+    overflow: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+
+    table {
+      margin-bottom: 0;
+      width: auto;
+      min-width: 100%;
+    }
+  }
+
+  //forms
+  label {
+    display: block;
+  }
+
+  $f-height: 50px;
+  $f-lh: 24px;
+  $f-bd-width: 2px;
+  $f-pd-v: round(($f-height - $f-lh) / 2 - $f-bd-width);
+  $f-pd-h: 10px;
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="search"],
+  textarea {
+    font: {
+      family: inherit;
+      weight: normal;
+      style: normal;
+      size: 18px;
+    };
+
+    line-height: $f-lh;
+    height: $f-height;
+    width: 100%;
+    padding: $f-pd-v $f-pd-h;
+    letter-spacing: inherit;
+    box-shadow: none;
+    color: inherit;
+    transition: none;
+    background: none;
+    border-radius: 0;
+    border: $f-bd-width solid currentColor;
+    box-sizing: border-box;
+    appearance: none;
+    outline: none;
+
+    .#{$spec-mod--font-large} & {
+      font-size: 22px;
+    }
+
+    &.error {
+      border-color: currentColor;
+      box-shadow: none;
+      color: inherit;
+    }
+
+    &:focus {
+      //box-shadow: none
+      box-shadow: 0 0 0 2px currentColor;
+      border-color: currentColor;
+    }
+
+    @include placeholder {
+      color: currentColor;
+      transition: none;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    $line: 5;
+    min-height: $line * $f-lh + 2 * $f-pd-v;
+    height: $line * $f-lh + 2 * $f-pd-v;
+  }
+
+  select {
+    font-size: inherit;
+    padding: 0.5em;
+    height: auto;
+    width: 100%;
+    border: $spec-border-width solid currentColor;
+  }
+
+  // checkbox, radio
+  input[type="checkbox"], input[type="radio"] {
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.3em;
+
+    & + label {
+      display: inline-block;
+      vertical-align: middle;
+
+      & > span {
+        padding: 0;
+        z-index: auto;
+        display: inline;
+        vertical-align: baseline;
+
+        &::before, &::after {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  table img {
+    max-width: none;
+  }
+
+  .imgc, .imgr, .imgl {
+    padding: 0;
+    margin: 0;
+  }
+
+  .imgr {
+    margin-left: 1em;
+    max-width: 80%;
+    @include media("<vspec-sm") {
+      margin-left: auto;
+      max-width: none;
+    }
+  }
+
+  .imgl {
+    margin-right: 1em;
+    max-width: 80%;
+    @include media("<vspec-sm") {
+      margin-right: auto;
+      max-width: none;
+    }
+  }
+
+  #{$user-content} {
+    figure {
+      img {
+        margin-bottom: 0;
+      }
+    }
+
+    figcaption {
+      text-align: center;
+      padding: 0.5em 2em 0;
+    }
+  }
+}
